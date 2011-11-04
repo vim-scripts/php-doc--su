@@ -1,0 +1,10 @@
+ftp_delete -- 删除 FTP 服务器上的一个文件
+
+  bool ftp_delete(resource ftp_stream, string path)~
+
+|ftp_delete| 函数用来删除 FTP 服务器上的一个由参数 {path}
+指定的的文件。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+vim:ft=help:

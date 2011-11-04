@@ -1,0 +1,254 @@
+array_multisort -- 对多个数组或多维数组进行排序
+
+  bool array_multisort(array ar1 [, mixed arg [, mixed ... [, array ...]]])~
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|array_multisort|
+可以用来一次对多个数组进行排序，或者根据某一维或多维对多维数组进行排序。
+
+关联（string）键名保持不变，但数字键名会被重新索引。
+
+输入数组被当成一个表的列并以行来排序——这类似于 SQL
+的 ORDER BY
+子句的功能。第一个数组是要排序的主要数组。数组中的行（值）比较为相同的话就按照下一个输入数组中相应值的大小来排序，依此类推。
+
+本函数的参数结构有些不同寻常，但是非常灵活。第一个参数必须是一个数组。接下来的每个参数可以是数组或者是下面列出的排序标志。
+
+排序顺序标志： SORT_ASC - 按照上升顺序排序
+
+SORT_DESC - 按照下降顺序排序
+
+排序类型标志： SORT_REGULAR - 将项目按照通常方法比较
+
+SORT_NUMERIC - 将项目按照数值比较
+
+SORT_STRING - 将项目按照字符串比较
+
+每个数组之后不能指定两个同类的排序标志。每个数组后指定的排序标志仅对该数组有效
+- 在此之前为默认值 SORT_ASC 和 SORT_REGULAR。
+
+对多个数组排序
+
+<?php >
+  $ar1 = array("10", 100, 100, "a");
+  $ar2 = array(1, 3, "2", 1);
+  array_multisort($ar1, $ar2);
+  
+  var_dump($ar1);
+  var_dump($ar2);
+?>
+
+本例中经过排序后，第一个数组将包含
+"10"，"a"，100，100。第二个数组将包含
+1，1，"2"，3。第二个数组中的项目顺序完全和第一个数组中相应的项目（100
+和 100）顺序一致。
+
+  array(4) {
+    [0]=> string(2) "10"
+    [1]=> string(1) "a"
+    [2]=> int(100)
+    [3]=> int(100)
+  }
+  array(4) {
+    [0]=> int(1)
+    [1]=> int(1)
+    [2]=> string(1) "2"
+    [3]=> int(3)
+  }
+
+
+
+对多维数组排序
+
+<?php >
+  $ar = array (array ("10", 100, 100, "a"), array (1, 3, "2", 1));
+  array_multisort ($ar[0], SORT_ASC, SORT_STRING,
+                   $ar[1], SORT_NUMERIC, SORT_DESC);
+?>
+
+
+
+
+
+本例中经过排序后，第一个数组将包含
+10，100，100，"a"（作为字符串上升排序），第二个数组将包含
+1，3，"2"，1（作为数值下降排序）。
+
+Sorting multi-dimensional array
+
+<?php >
+  $ar = array(
+         array("10", 11, 100, 100, "a"),
+         array(   1,  2, "2",   3,   1)
+        );
+  array_multisort($ar[0], SORT_ASC, SORT_STRING,
+                  $ar[1], SORT_NUMERIC, SORT_DESC);
+  var_dump($ar);
+?>
+
+本例中在排序后，第一个数组将变成
+"10"，100，100，11，"a"（被当作字符串以升序排列）。第二个数组将包含
+1, 3, "2", 2, 1（被当作数字以降序排列）。
+
+  array(2) {
+    [0]=> array(5) {
+      [0]=> string(2) "10"
+      [1]=> int(100)
+      [2]=> int(100)
+      [3]=> int(11)
+      [4]=> string(1) "a"
+    }
+    [1]=> array(5) {
+      [0]=> int(1)
+      [1]=> int(3)
+      [2]=> string(1) "2"
+      [3]=> int(2)
+      [4]=> int(1)
+    }
+  }
+
+
+
+对数据库结果进行排序 本例中 data
+数组中的每个单元表示一个表中的一行。这是典型的数据库记录的数据集合。
+
+例子中的数据如下：
+
+  volume | edition
+  -------+--------
+      67 |       2
+      86 |       1
+      85 |       6
+      98 |       2
+      86 |       6
+      67 |       7
+
+数据全都存放在名为 data
+的数组中。这通常是通过循环从数据库取得的结果，例如
+|mysql_fetch_assoc|。
+
+<?php >
+  $data[] = array('volume' => 67, 'edition' => 2);
+  $data[] = array('volume' => 86, 'edition' => 1);
+  $data[] = array('volume' => 85, 'edition' => 6);
+  $data[] = array('volume' => 98, 'edition' => 2);
+  $data[] = array('volume' => 86, 'edition' => 6);
+  $data[] = array('volume' => 67, 'edition' => 7);
+?>
+
+本例中将把 volume 降序排列，把 edition 升序排列。
+
+现在有了包含有行的数组，但是 |array_multisort|
+需要一个包含列的数组，因此用以下代码来取得列，然后排序。
+
+<?php >
+  // 取得列的列表
+  foreach ($data as $key => $row) {
+      $volume[$key]  = $row['volume'];
+      $edition[$key] = $row['edition'];
+  }
+  
+  // 将数据根据 volume 降序排列，根据 edition 升序排列
+  // 把 $data 作为最后一个参数，以通用键排序
+  array_multisort($volume, SORT_DESC, $edition, SORT_ASC, $data);
+?>
+
+数据集合现在排好序了，结果如下：
+
+  volume | edition
+  -------+--------
+      98 |       2
+      86 |       1
+      86 |       6
+      85 |       6
+      67 |       2
+      67 |       7
+
+
+
+不区分大小写字母排序 SORT_STRING 和 SORT_REGULAR
+都是区分大小写字母的，大写字母会排在小写字母之前。
+
+要进行不区分大小写的排序，就要按照原数组的小写字母拷贝来排序。
+
+<?php >
+  $array = array('Alpha', 'atomic', 'Beta', 'bank');
+  $array_lowercase = array_map('strtolower', $array);
+  
+  array_multisort($array_lowercase, SORT_ASC, SORT_STRING, $array);
+  
+  print_r($array);
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [0] => Alpha
+      [1] => atomic
+      [2] => bank
+      [3] => Beta
+  )
+
+
+
+【译者注】本函数相当有用，为有助于理解，请再看下面这个例子：
+
+名次排列
+
+<?php >
+  $grade = array("score" => array(70, 95, 70.0, 60, "70"),
+                 "name" => array("Zhang San", "Li Si", "Wang Wu",
+                                 "Zhao Liu", "Liu Qi"));
+  array_multisort($grade["score"], SORT_NUMERIC, SORT_DESC,
+                  // 将分数作为数值，由高到低排序
+                  $grade["name"], SORT_STRING, SORT_ASC);
+                  // 将名字作为字符串，由小到大排序
+  var_dump($grade);
+?>
+
+以上例程会输出：
+
+  array(2) {
+    ["score"]=>
+    array(5) {
+      [0]=>
+      int(95)
+      [1]=>
+      string(2) "70"
+      [2]=>
+      float(70)
+      [3]=>
+      int(70)
+      [4]=>
+      int(60)
+    }
+    ["name"]=>
+    array(5) {
+      [0]=>
+      string(5) "Li Si"
+      [1]=>
+      string(6) "Liu Qi"
+      [2]=>
+      string(7) "Wang Wu"
+      [3]=>
+      string(9) "Zhang San"
+      [4]=>
+      string(8) "Zhao Liu"
+    }
+  }
+
+本例中对包含成绩的数组 $grade
+按照分数（score）由高到低进行排序，分数相同的人则按照名字（name）由小到大排序。排序后李四
+95 分为第一名，赵六 60
+分为第五名没有异议。张三、王五和刘七都是 70
+分，他们的名次则由其姓名的字母顺序排列，Liu 在前，Wang
+在后而 Zhang 在最后。为了区别，三个 70
+分分别用了整数，浮点数和字符串来表示，可以在程序输出中清楚地看到它们排序的结果。
+
+
+
+
+
+vim:ft=help:

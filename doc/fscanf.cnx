@@ -1,0 +1,43 @@
+fscanf -- 从文件中格式化输入
+
+  mixed fscanf(resource handle, string format [, mixed ...])~
+
+|fscanf| 函数和 |sscanf| 相似，但是它从与 {handle}
+关联的文件中接受输入并根据指定的 {format}（定义于
+|sprintf|
+的文档中）来解释输入。如果只给此函数传递了两个参数，解析后的值会被作为数组返回。否则，如果提供了可选参数，此函数将返回被赋值的数目。可选参数必须用引用传递。
+
+格式字符串中的任何空白会与输入流中的任何空白匹配。这意味着甚至格式字符串中的制表符
+\t 也会与输入流中的一个空格字符匹配。
+
+|fscanf| 例子
+
+<?php >
+  $handle = fopen("users.txt","r");
+  while ($userinfo = fscanf($handle, "%s\t%s\t%s\n")) {
+      list ($name, $profession, $countrycode) = $userinfo;
+      //... do something with the values
+  }
+  fclose($handle);
+?>
+
+
+
+users.txt 的内容
+
+  javier  argonaut        pe
+  hiroshi sculptor        jp
+  robert  slacker us
+  luigi   florist it
+
+
+
+
+
+在 PHP 4.3.0 之前，从文件中读入的最大字符数是
+512（或者第一个 \n，看先碰到哪种情况）。从 PHP 4.3.0
+起可以读取任意长的行。
+
+参见 |fread|，|fgets|，|fgetss|，|sscanf|，|printf| 和 |sprintf|。
+
+vim:ft=help:

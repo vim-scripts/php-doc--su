@@ -1,0 +1,31 @@
+is_bool -- 检测变量是否是布尔型
+
+  bool is_bool(mixed var)~
+
+如果 {var} 是 boolean 则返回 TRUE。
+
+|is_bool| 示例
+
+<?php >
+  $a = false;
+  $b = 0;
+  
+  // 因为 $a 是布尔型，所以结果为真
+  if (is_bool($a)) {
+      print "Yes, this is a boolean";
+  }
+  
+  // 因为 $b 不是布尔型，所以结果为非真
+  if (is_bool($b)) {
+      print "Yes, this is a boolean";
+  }
+?>
+
+
+
+
+
+参见 |is_array|、|is_float|、|is_int|、|is_integer|、|is_string| 和
+|is_object|。
+
+vim:ft=help:

@@ -1,0 +1,57 @@
+pg_fetch_array -- 提取一行作为数组
+
+  array pg_fetch_array(resource result [, int row [, int result_type]])~
+
+|pg_fetch_array|
+返回一个与所提取的行（元组/记录）相一致的数组。如果没有更多行可供提取，则返回
+FALSE。
+
+|pg_fetch_array| 是 |pg_fetch_row|
+的扩展版本。在返回的数组中不仅以数字索引方式存放数据（字段编号），默认情况下还用字段名做索引存放数据（字段名）。
+
+{row} 是想要取得的行（记录）的编号。第一行为 0。
+
+{result_type}
+是可选参数，控制着怎样初始化返回值。{result_type}
+是一个常量，可以有以下取值：PGSQL_ASSOC，PGSQL_NUM 和
+PGSQL_BOTH。取值为 PGSQL_ASSOC 时 |pg_fetch_array|
+返回用字段名作为键值索引的关联数组，取值为 PGSQL_NUM
+时用字段编号作为键值，取值为 PGSQL_BOTH
+时则同时用两者作为键值。默认值是 PGSQL_BOTH。 {result_type}
+是在 PHP 4.0 中才加入的参数。
+
+|pg_fetch_array| 并不明显比使用 |pg_fetch_row|
+慢，而且在使用中提供了更大的方便。
+
+|pg_fetch_array|
+
+<?php >
+  $conn = pg_pconnect("dbname=publisher");
+  if (!$conn) {
+      echo "An error occured.\n";
+      exit;
+  }
+  
+  $result = pg_query($conn, "SELECT * FROM authors");
+  if (!$result) {
+      echo "An error occured.\n";
+      exit;
+  }
+  
+  $arr = pg_fetch_array($result, 0, PGSQL_NUM);
+  echo $arr[0] . " <- array\n";
+  
+  $arr = pg_fetch_array($result, 1, PGSQL_ASSOC);
+  echo $arr["author"] . " <- array\n";
+?>
+
+
+
+
+
+从 4.1.0 开始，{row} 成为可选参数。每次调用
+|pg_fetch_array|，内部的行计数器都会加一。
+
+参见 |pg_fetch_row| 和 |pg_fetch_object| 以及 |pg_fetch_result|。
+
+vim:ft=help:

@@ -1,0 +1,13 @@
+pg_escape_string -- 转义 text/char 类型的字符串
+
+  string pg_escape_string(string data)~
+
+|pg_escape_string| 转义 text/char
+数据类型的字符串，返回转义后的字符串。建议用此函数替代
+|addslashes|。
+
+本函数需要 PostgreSQL 7.2 或以上版本。
+
+参见 |pg_escape_bytea|。
+
+vim:ft=help:

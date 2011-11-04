@@ -1,0 +1,27 @@
+basename -- 返回路径中的文件名部分
+
+  string basename(string path [, string suffix])~
+
+给出一个包含有指向一个文件的全路径的字符串，本函数返回基本的文件名。如果文件名是以
+{suffix} 结束的，那这一部分也会被去掉。
+
+在 Windows
+中，斜线（/）和反斜线（\）都可以用作目录分隔符。在其它环境下是斜线（/）。
+
+|basename| 例子
+
+<?php >
+  $path = "/home/httpd/html/index.php";
+  $file = basename($path);        // $file is set to "index.php"
+  $file = basename($path,".php"); // $file is set to "index"
+?>
+
+
+
+
+
+{suffix} 参数是 PHP 4.1.0 新加的。
+
+参见 |dirname|。
+
+vim:ft=help:

@@ -1,0 +1,110 @@
+unset -- 释放给定的变量
+
+  void unset(mixed var [, mixed var [, mixed ...]])~
+
+|unset| 销毁指定的变量。注意在 PHP 3 中，|unset| 将返回
+TRUE（实际上是整型值 1），而在 PHP 4 中，|unset|
+不再是一个真正的函数：它现在是一个语句。这样就没有了返回值，试图获取
+|unset| 的返回值将导致解析错误。
+
+|unset| 示例
+
+<?php >
+  // 销毁单个变量
+  unset ($foo);
+  
+  // 销毁单个数组元素
+  unset ($bar['quux']);
+  
+  // 销毁一个以上的变量
+  unset ($foo1, $foo2, $foo3);
+?>
+
+
+
+
+
+|unset|
+在函数中的行为会依赖于想要销毁的变量的类型而有所不同。
+
+如果在函数中 |unset|
+一个全局变量，则只是局部变量被销毁，而在调用环境中的变量将保持调用
+|unset| 之前一样的值。
+
+<?php >
+  function destroy_foo() {
+      global $foo;
+      unset($foo);
+  }
+  
+  $foo = 'bar';
+  destroy_foo();
+  echo $foo;
+?>
+
+上边的例子将输出：
+
+  bar
+
+如果在函数中 |unset|
+一个通过引用传递的变量，则只是局部变量被销毁，而在调用环境中的变量将保持调用
+|unset| 之前一样的值。
+
+<?php >
+  function foo(&amp;$bar) {
+      unset($bar);
+      $bar = "blah";
+  }
+  
+  $bar = 'something';
+  echo "$bar\n";
+  
+  foo($bar);
+  echo "$bar\n";
+?>
+
+上边的例子将输出：
+
+  something
+  something
+
+如果在函数中 |unset|
+一个静态变量，那么在函数内部此静态变量将被销毁。但是，当再次调用此函数时，此静态变量将被复原为上次被销毁之前的值。
+
+<?php >
+  function foo() {
+      static $a;
+      $a++;
+      echo "$a\n";
+      unset($a);
+  }
+  
+  foo();
+  foo();
+  foo();
+?>
+
+上边的例子将输出：
+
+  1
+  2
+  3
+
+如果您想在函数中 |unset| 一个全局变量，可使用 $GLOBALS
+数组来实现：
+
+<?php >
+  function foo() {
+      unset($GLOBALS['bar']);
+  }
+  
+  $bar = "something";
+  foo();
+?>
+
+因为是一个语言构造器而不是一个函数，不能被 可变函数
+调用。
+
+参见 |isset| 和 |empty|。
+
+vim:ft=help:

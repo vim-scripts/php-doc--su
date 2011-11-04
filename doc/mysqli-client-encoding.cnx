@@ -1,0 +1,7 @@
+mysqli_client_encoding -- mysqli_character_set_name的别名
+
+这个函数是|mysqli_character_set_name|的一个别名。
+
+|mysqli_real_escape_string|
+
+vim:ft=help:

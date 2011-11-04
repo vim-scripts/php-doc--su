@@ -1,0 +1,8 @@
+chop -- rtrim 的别名
+
+此函数是该函数的别名：|rtrim|。
+
+|chop| 与 Perl 的 chop()
+函数有所不同，它会删除字符串的最后一个字符。
+
+vim:ft=help:

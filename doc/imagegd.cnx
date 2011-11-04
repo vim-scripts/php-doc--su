@@ -1,0 +1,16 @@
+imagegd -- 将 GD 图像输出到浏览器或文件
+
+  bool imagegd(resource image [, string filename])~
+
+|imagegd| 将一个 GD 图像输出到 {filename}。{image} 参数是由
+|imagecreatetruecolor| 函数返回的。
+
+{filename}
+参数为可选项，如果为空，则原始图像流会被直接输出。
+
+GD 格式一般是用来加载图像中的一部分时更快。注意 GD
+格式只能用于兼容于 GD 的应用程序。
+
+参见 |imagegd2|。
+
+vim:ft=help:

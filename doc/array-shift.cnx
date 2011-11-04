@@ -1,0 +1,35 @@
+array_shift -- 将数组开头的单元移出数组
+
+  mixed array_shift(array array)~
+
+|array_shift| 将 {array} 的第一个单元移出并作为结果返回，将
+{array}
+的长度减一并将所有其它单元向前移动一位。所有的数字键名将改为从零开始计数，文字键名将不变。如果
+{array} 为空（或者不是数组），则返回 NULL。
+
+使用此函数后会重置(|reset|)array 指针。
+
+|array_shift| 例子
+
+<?php >
+  $stack = array("orange", "banana", "apple", "raspberry");
+  $fruit = array_shift($stack);
+  print_r($stack);
+?>
+
+这将使 $stack 剩下 3 个单元：
+
+  Array
+  (
+      [0] => banana
+      [1] => apple
+      [2] => raspberry
+  )
+
+并且 orange 被赋给了 $fruit。
+
+
+
+参见 |array_unshift|，|array_push| 和 |array_pop|。
+
+vim:ft=help:

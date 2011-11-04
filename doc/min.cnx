@@ -1,0 +1,43 @@
+min -- 找出最小值
+
+  mixed min(number arg1, number arg2)~
+
+  mixed min(number arg1, number arg2, array numbers [, array ...])~
+
+|min| 返回参数中数值最小的。
+
+如果仅有一个参数且为数组，|min|
+返回该数组中最小的值。如果给出了两个或更多参数, |min|
+会返回这些值中最小的一个。
+
+PHP 会将非数值的 string 当成
+0，但如果这个正是最小的数值则仍然会返回一个字符串。如果多个参数都求值为
+0 且是最小值，|min|
+会返回按字母表顺序最小的字符串，如果其中没有字符串的话，则返回数值的
+0。
+
+使用 |min| 的例子
+
+<?php >
+  echo min(2, 3, 1, 6, 7);  // 1
+  echo min(array(2, 4, 5)); // 2
+  echo min(0, 'hello');     // 0
+  echo min('hello', 0);     // hello
+  echo min('hello', -1);    // -1
+  
+  // 对多个数组，min 从左向右比较。
+  // 因此在本例中：2 == 2，但 4 < 5
+  $val = min(array(2, 4, 8), array(2, 5, 1)); // array(2, 4, 8)
+  
+  // 如果同时给出数组和非数组作为参数，则不可能返回数组，因为
+  // 数组被视为最大的
+  $val = min('string', array(2, 5, 7), 42);   // string
+?>
+
+
+
+
+
+参见 |max| 和 |count|。
+
+vim:ft=help:

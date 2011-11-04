@@ -1,0 +1,67 @@
+oci_fetch_all -- 获取结果数据的所有行到一个数组
+
+  int oci_fetch_all(resource statement, array output [, int skip [, int maxrows [, int flags]]])~
+
+|oci_fetch_all|
+从一个结果中获取所有的行到一个用户定义的数组。|oci_fetch_all|
+返回获取的行数，出错则返回 FALSE。{skip}
+是从结果中获取数据时，最开始忽略的行数（默认值是
+0，即从第一行开始）。{maxrows} 是要读取的行数，从第 {skip}
+行开始（默认值是 -1，即所有行）。
+
+此函数将 NULL 字段设置为 PHP NULL 值。
+
+{flags} 参数可以是下列值的任意组合： OCI_FETCHSTATEMENT_BY_ROW
+OCI_FETCHSTATEMENT_BY_COLUMN（默认值） OCI_NUM OCI_ASSOC
+
+|oci_fetch_all| 例子
+
+<?php >
+  /* oci_fetch_all example mbritton at verinet dot com (990624) */
+  
+  $conn = oci_connect("scott", "tiger");
+  
+  $stmt = oci_parse($conn, "select * from emp");
+  
+  oci_execute($stmt);
+  
+  $nrows = oci_fetch_all($stmt, $results);
+  if ($nrows > 0) {
+     echo "<table border=\"1\">\n";
+     echo "<tr>\n";
+     foreach ($results as $key => $val) {
+        echo "<th>$key</th>\n";
+     }
+     echo "</tr>\n";
+  
+     for ($i = 0; $i < $nrows; $i++) {
+        echo "<tr>\n";
+        foreach ($results as $data) {
+           echo "<td>$data[$i]</td>\n";
+        }
+        echo "</tr>\n";
+     }
+     echo "</table>\n";
+  } else {
+     echo "No data found<br />\n";
+  }
+  echo "$nrows Records Selected<br />\n";
+  
+  oci_free_statement($stmt);
+  oci_close($conn);
+?>
+
+
+
+
+
+要获取 OCI8 扩展进行数据类型映射的细节，请参见
+驱动所支持的数据类型
+
+|oci_fetch_all| 如果出错则返回 FALSE。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocifetchstatement|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_fetch_all| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

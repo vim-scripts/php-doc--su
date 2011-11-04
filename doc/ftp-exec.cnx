@@ -1,0 +1,29 @@
+ftp_exec -- 请求运行一条 FTP 命令
+
+  bool ftp_exec(resource ftp_stream, string command)~
+
+发送一个 SITE EXEC {command} 请求到 FTP
+服务器。如果成功（服务器发送响应代码 200）则返回
+TRUE，否则返回 FALSE。
+
+|ftp_exec| 例子
+
+<?php >
+  $command = 'ls -al';
+  $conn_id = ftp_connect($ftp_server);
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  if($res = ftp_exec($conn_id, $command)) {
+      echo "$command executed successfully<br />\n";
+      echo nl2br($res);
+  } else {
+      echo 'could not execute ' . $command;
+  }
+?>
+
+
+
+
+
+参见 |ftp_raw|。
+
+vim:ft=help:

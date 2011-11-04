@@ -1,0 +1,21 @@
+rmdir -- 删除目录
+
+  bool rmdir(string dirname)~
+
+尝试删除 {dirname} 所指定的目录。
+该目录必须是空的，而且要有相应的权限。成功时返回
+TRUE， 或者在失败时返回 &false;.
+
+自 PHP 5.0.0 起 |rmdir| 也可用于某些 URL 封装协议。参见
+的列表看看 |rmdir| 支持哪些 URL 封装协议。
+
+在 PHP 5.0.0 中增加了 对上下文(Context)的支持。 有关
+上下文(Context) 的说明参见 。
+
+当启用 安全模式时， PHP
+会在执行脚本时检查被脚本操作的目录是否与被执行的脚本有相同的
+UID（所有者）。
+
+参见 |mkdir| 和 |unlink|。
+
+vim:ft=help:

@@ -1,0 +1,31 @@
+prev -- 将数组的内部指针倒回一位
+
+  mixed prev(array array)~
+
+返回数组内部指针指向的前一个单元的值，或当没有更多单元时返回
+FALSE。 如果数组包含空的单元，或者单元的值是 0
+则本函数碰到这些单元也返回
+FALSE。要正确遍历可能含有空单元或者单元值为 0
+的数组，参见 |each| 函数。
+
+|prev| 和 |next|
+的行为类似，只除了它将内部指针倒回一位而不是前移一位。
+
+|prev| 及相关函数用法示例
+
+<?php >
+  $transport = array('foot', 'bike', 'car', 'plane');
+  $mode = current($transport); // $mode = 'foot';
+  $mode = next($transport);    // $mode = 'bike';
+  $mode = next($transport);    // $mode = 'car';
+  $mode = prev($transport);    // $mode = 'bike';
+  $mode = end($transport);     // $mode = 'plane';
+?>
+
+
+
+
+
+参见 |current|，|end|，|next| 和 |reset|。
+
+vim:ft=help:

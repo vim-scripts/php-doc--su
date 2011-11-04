@@ -1,0 +1,28 @@
+pg_connection_busy -- 获知连接是否为忙
+
+  bool pg_connection_busy(resource connection)~
+
+|pg_connection_busy| 在此连接状态为忙的时候返回
+TRUE。如果连接状态为忙，说明前一个查询仍然在执行。如果调用
+|pg_get_result| 函数的话，则会被锁死。
+
+|pg_connection_busy| 例子
+
+<?php >
+      $dbconn = pg_connect("dbname=publisher") or die("Could not connect");
+      $bs = pg_connection_busy($dbconn);
+      if ($bs) {
+          echo 'connection is busy';
+      }
+      else {
+         echo 'connection is not busy';
+      }
+?>
+
+
+
+
+
+参见 |pg_connection_status| 和 |pg_get_result|。
+
+vim:ft=help:

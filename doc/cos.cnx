@@ -1,0 +1,19 @@
+cos -- 余弦
+
+  float cos(float arg)~
+
+|cos| 返回参数 {arg} 的余弦值。参数 {arg} 的单位为弧度。
+
+|cos|
+
+<?php >
+  echo cos(M_PI); // -1  
+?>
+
+
+
+
+
+参见： |acos|、 |sin|、 |tan| 和 |deg2rad|。
+
+vim:ft=help:

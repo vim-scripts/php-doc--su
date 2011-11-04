@@ -1,0 +1,29 @@
+hexdec -- 十六进制转换为十进制
+
+  number hexdec(string hex_string)~
+
+返回与 {hex_string}
+参数所表示的十六进制数等值的的十进制数。|hexdec|
+将一个十六进制字符串转换为十进制数。所能转换的最大数值为
+7fffffff，即十进制的 2147483647。PHP 4.1.0
+开始，该函数可以处理大数字，这种情况下，它会返回 float
+类型。
+
+|hexdec| 会忽略所有非十六进制字符。 |hexdec| 例子
+
+<?php >
+  var_dump(hexdec("See"));
+  var_dump(hexdec("ee"));
+  // both print "int(238)"
+  
+  var_dump(hexdec("that")); // print "int(10)"
+  var_dump(hexdec("a0")); // print "int(160)"
+?>
+
+
+
+
+
+参见 |dechex|，|bindec|，|octdec| 和|base_convert|。
+
+vim:ft=help:

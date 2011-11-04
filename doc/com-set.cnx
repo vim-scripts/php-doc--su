@@ -1,0 +1,21 @@
+com_set -- 给 COM 组件的属性赋值
+
+Deprecated, use the OO syntax instead.
+
+不要使用 com_set() ，使用 OO 语法代替
+
+<?php >
+     // do this
+     $obj->property = $value;
+     // instead of this:
+     com_set($obj, 'property', $value);
+?>
+
+
+
+
+
+This function does not exist in PHP 5; instead, you should use the regular and
+more natural OO syntax to access properties or call methods.
+
+vim:ft=help:

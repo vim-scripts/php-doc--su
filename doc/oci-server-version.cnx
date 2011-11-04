@@ -1,0 +1,24 @@
+oci_server_version -- 返回服务器版本信息
+
+  string oci_server_version(resource connection)~
+
+以字符串返回 {connection} 所连接的 Oracle
+服务器的版本信息。出错则返回 FALSE。
+
+|oci_server_version| 例子
+
+<?php >
+      $conn = oci_connect("scott", "tiger");
+      echo "Server Version: " . oci_server_version($conn);
+      oci_close($conn);
+?>
+
+
+
+
+
+在 PHP 5.0.0 之前的版本必须使用 |ociserverversion|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_server_version| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

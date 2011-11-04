@@ -1,0 +1,45 @@
+strcspn -- 获取不匹配遮罩的起始子字符串的长度
+
+  int strcspn(string str1, string str2 [, int start [, int length]])~
+
+返回 {str1} 中，所有字符都不存在于 {str2}
+范围的起始子字符串的长度。
+
+{str1} 第一个字符串。
+
+{str2} 第二个字符串。
+
+{start} 查找的起始位置。
+
+{length} 查找的长度。
+
+以整型数返回子串的长度。
+
+版本 说明 4.3.0 新增 {start} 和 {length} 参数。
+
+|strcspn| example
+
+<?php >
+  $a = strcspn('abcd',  'apple');
+  $b = strcspn('abcd',  'banana');
+  $c = strcspn('hello', 'l');
+  $d = strcspn('hello', 'world');
+  
+  var_dump($a);
+  var_dump($b);
+  var_dump($c);
+  var_dump($d);
+?>
+
+以上例程会输出：
+
+  int(0)
+  int(0)
+  int(2)
+  int(2)
+
+此函数可安全用于二进制对象。
+
+|strspn|
+
+vim:ft=help:

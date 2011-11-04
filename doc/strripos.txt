@@ -1,0 +1,53 @@
+strripos -- Find position of last occurrence of a case-insensitive string in a
+string
+
+  int strripos(string haystack, string needle [, int offset])~
+
+Find position of last occurrence of a string in a string. Unlike |strrpos|,
+|strripos| is case-insensitive.
+
+{haystack} The string to search in.
+
+{needle} If {needle} is not a string, it is converted to an integer and
+applied as the ordinal value of a character.
+
+{offset} If specified, search will stop this number of characters counted from
+the beginning of the string. If the value is negative, search will instead
+start from that many characters from the end of the string.
+
+Returns the numerical position of the last occurrence of {needle}. Also note
+that string positions start at 0, and not 1.
+
+If {needle} is not found, FALSE is returned.
+
+This function may return Boolean FALSE, but may also return a non-Boolean
+value which evaluates to FALSE, such as 0 or "". Please read the section on
+Booleans for more information. Use the === operator for testing the return
+value of this function.
+
+A simple |strripos| example
+
+<?php >
+  $haystack = 'ababcd';
+  $needle   = 'aB';
+  
+  $pos      = strripos($haystack, $needle);
+  
+  if ($pos === false) {
+      echo "Sorry, we did not find ($needle) in ($haystack)";
+  } else {
+      echo "Congratulations!\n";
+      echo "We found the last ($needle) in ($haystack) at position ($pos)";
+  }
+?>
+
+The above example will output:
+
+  Congratulations!
+     We found the last (aB) in (ababcd) at position (2)
+
+
+
+|strpos| |stripos| |strrchr| |substr| |stristr| |strstr|
+
+vim:ft=help:

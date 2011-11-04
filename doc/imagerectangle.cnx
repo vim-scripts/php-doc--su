@@ -1,0 +1,9 @@
+imagerectangle -- 画一个矩形
+
+  bool imagerectangle(resource image, int x1, int y1, int x2, int y2, int col)~
+
+|imagerectangle| 用 {col} 颜色在 {image}
+图像中画一个矩形，其左上角坐标为 x1, y1，右下角坐标为
+x2, y2。图像的左上角坐标为 0, 0。
+
+vim:ft=help:

@@ -1,0 +1,28 @@
+pg_query -- 执行查询
+
+  resource pg_query(resource connection, string query)~
+
+|pg_query|
+在查询可以执行时返回查询结果资源号。如果查询失败或者提供的连接号无效则返回
+FALSE。如果连接号有效，则可以用 |pg_last_error|
+函数来提取详细的错误信息。|pg_query| 发送一条 SQL 语句到
+{connection} 资源指定的 PostgreSQL 数据库。{connection} 必须是由
+|pg_connect| 或 |pg_pconnect|
+返回的合法连接号。本函数返回值是一个其它 PostgreSQL
+函数例如 |pg_fetch_array|
+可以用来访问查询结果的查询结果资源号。 {connection} 是
+|pg_query| 中的可选参数。如果没有指定
+{connection}，则使用默认连接。默认连接是 |pg_connect| 或
+|pg_pconnect| 所打开的最后一个连接。
+
+尽管 {connection}
+参数可以省略，但不推荐这样做。因为这样可能会导致很难发现脚本中的错误。
+
+本函数以前的名字为 pg_exec()。pg_exec()
+函数为了兼容性的原因仍然可以使用，但是鼓励用户使用新的名字。
+
+参见
+|pg_connect|，|pg_pconnect|，|pg_fetch_array|，|pg_fetch_object|，|pg_num_rows|
+和 |pg_affected_rows|。
+
+vim:ft=help:

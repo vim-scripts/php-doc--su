@@ -1,0 +1,21 @@
+pcntl_exec -- 在当前进程空间执行指定程序
+
+  void pcntl_exec(string path [, array args [, array envs]])~
+
+以给定参数执行程序。
+
+{path}
+{path}必须时可执行二进制文件路径或一个在文件第一行指定了
+一个可执行文件路径标头的脚本（比如文件第一行是#!/usr/local/bin/perl的perl脚本）。
+更多的信息请查看您系统的execve（2）手册。
+
+{args} {args}是一个要传递给程序的参数的字符串数组。
+
+{envs}
+{envs}是一个要传递给程序作为环境变量的字符串数组。这个数组是
+key =>
+value格式的，key代表要传递的环境变量的名称，value代表该环境变量值。
+
+当发生错误时返回 FALSE ，没有错误时没有返回。
+
+vim:ft=help:

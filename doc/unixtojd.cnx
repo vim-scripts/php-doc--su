@@ -1,0 +1,13 @@
+unixtojd -- 转变Unix时间戳为Julian Day计数
+
+  int unixtojd([int timestamp])~
+
+根据指定的Unix时间戳{timestamp}，返回Julian天数。如果没有指定时间戳则返回当前日期的天数。
+
+{timestamp} 一个用于转变的时间戳。
+
+一个julian天数。
+
+|jdtounix|
+
+vim:ft=help:

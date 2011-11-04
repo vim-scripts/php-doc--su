@@ -1,0 +1,53 @@
+strnatcmp -- 使用自然排序算法比较字符串
+
+  int strnatcmp(string str1, string str2)~
+
+该函数实现了以人类习惯对数字型字符串进行排序的比较算法，这就是“自然顺序”。注意该比较区分大小写。
+
+{str1} 第一个字符串。
+
+{str2} 第二个字符串。
+
+与其他字符串比较函数类似，如果 {str1} 小于
+{str2}，返回负数；如果 {str1} 大于
+{str2}，返回正数；二者相等则返回 0。
+
+下面的例子展示了该算法与计算机常规字符串比较算法（
+|strcmp| 所使用的）的区别：
+
+<?php >
+  $arr1 = $arr2 = array("img12.png", "img10.png", "img2.png", "img1.png");
+  echo "Standard string comparison\n";
+  usort($arr1, "strcmp");
+  print_r($arr1);
+  echo "\nNatural order string comparison\n";
+  usort($arr2, "strnatcmp");
+  print_r($arr2);
+?>
+
+以上例程会输出：
+
+  Standard string comparison
+  Array
+  (
+      [0] => img1.png
+      [1] => img10.png
+      [2] => img12.png
+      [3] => img2.png
+  )
+  
+  Natural order string comparison
+  Array
+  (
+      [0] => img1.png
+      [1] => img2.png
+      [2] => img10.png
+      [3] => img12.png
+  )
+
+更多信息，参见：Martin Pool 的自然顺序的字符串比较 page.
+
+|preg_match| |strcasecmp| |substr| |stristr| |strcmp| |strncmp| |strncasecmp|
+|strnatcasecmp| |strstr| |natsort| |natcasesort|
+
+vim:ft=help:

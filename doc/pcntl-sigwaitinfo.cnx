@@ -1,0 +1,49 @@
+pcntl_sigwaitinfo -- 等待信号
+
+  int pcntl_sigwaitinfo(array set [, array siginfo])~
+
+|pcntl_sigwaitinfo|函数暂停调用脚本的执行直到接收到{set}
+参数中列出的某个信号。只要其中的一个信号已经在等待状态(比如：
+通过 |pcntl_sigprocmask|函数阻塞)，
+函数|pcntl_sigwaitinfo|就回立刻返回。
+
+{set} 要等待的信号数组。
+
+{siginfo} {siginfo}是一个输出参数，用来返回信号的信息。
+
+以下元素会为所有信号设置： signo: 信号编号 errno:
+错误编号 code: 信号代码
+
+下面元素可能会为SIGCHLD信号设置: status: 退出的值或信号
+utime: 用户消耗的时间 stime: 系统（内核）消耗的时间 pid:
+发送进程ID uid: 发送进程的实际用户ID
+
+信号SIGILL, SIGFPE, SIGSEGV 和 SIGBUS 可能会被设置的元素: addr:
+发生故障的内存位置
+
+可能会为SIGPOLL 信号设置的元素： band: Band event fd:
+文件描述符
+
+成功时，函数|pcntl_sigwaitinfo|返回一个信号编号。
+
+|pcntl_sigwaitinfo| example
+
+<?php >
+  echo "Blocking SIGHUP signal\n";
+  pcntl_sigprocmask(SIG_BLOCK, array(SIGHUP));
+  
+  echo "Sending SIGHUP to self\n";
+  posix_kill(posix_getpid(), SIGHUP);
+  
+  echo "Waiting for signals\n";
+  $info = array();
+  pcntl_sigwaitinfo(array(SIGHUP), $info);
+?>
+
+
+
+
+
+|pcntl_sigprocmask| |pcntl_sigtimedwait|
+
+vim:ft=help:

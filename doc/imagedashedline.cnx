@@ -1,0 +1,8 @@
+imagedashedline -- 画一虚线
+
+  bool imagedashedline(resource image, int x1, int y1, int x2, int y2, int color)~
+
+反对使用本函数。应该用 |imagesetstyle| 和 |imageline|
+的组合替代之。
+
+vim:ft=help:

@@ -1,0 +1,38 @@
+imagecolorallocate -- 为一幅图像分配颜色
+
+  int imagecolorallocate(resource image, int red, int green, int blue)~
+
+|imagecolorallocate| 返回一个标识符，代表了由给定的 RGB
+成分组成的颜色。{red}，{green} 和 {blue}
+分别是所需要的颜色的红，绿，蓝成分。这些参数是 0 到
+255 的整数或者十六进制的 0x00 到 0xFF。|imagecolorallocate|
+必须被调用以创建每一种用在 {image}
+所代表的图像中的颜色。
+
+第一次对 |imagecolorallocate|
+的调用会给基于调色板的图像填充背景色，即用 |imagecreate|
+建立的图像。
+
+|imagecolorallocate| 例子
+
+<?php >
+  $im = imagecreate('example.jpg', 100, 100);
+  // 背景设为红色
+  $background = imagecolorallocate($im, 255, 0, 0);
+  // 设定一些颜色
+  $white = imagecolorallocate($im, 255, 255, 255);
+  $black = imagecolorallocate($im, 0, 0, 0);
+  // 十六进制方式
+  $white = imagecolorallocate($im, 0xFF, 0xFF, 0xFF);
+  $black = imagecolorallocate($im, 0x00, 0x00, 0x00);
+?>
+
+
+
+
+
+如果分配失败则返回 -1。
+
+参见 |imagecolorallocatealpha| 和 |imagecolordeallocate|。
+
+vim:ft=help:

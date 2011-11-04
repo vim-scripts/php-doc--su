@@ -1,0 +1,5 @@
+read_exif_data -- 别名 exif_read_data
+
+此函数是该函数的别名： |exif_read_data|.
+
+vim:ft=help:

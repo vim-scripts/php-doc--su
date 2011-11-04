@@ -1,0 +1,42 @@
+property_exists -- 检查对象或类是否具有该属性
+
+  bool property_exists(mixed class, string property)~
+
+本函数检查给出的 {property}
+是否存在于指定的类中（以及是否能在当前范围内访问）。
+
+As opposed with |isset|, |property_exists| returns TRUE even if the property
+has the value NULL.
+
+{class} 字符串形式的类名或要检查的类的一个对象
+
+{property} 属性的名字
+
+如果该属性存在则返回 TRUE，如果不存在则返回
+FALSE，出错返回 NULL。
+
+|property_exists| 例子
+
+<?php >
+  class myClass {
+      public $mine;
+      private $xpto;
+  
+      static function test() {
+          var_dump(property_exists('myClass', 'xpto')); // true, it can be accessed from here
+      }
+  }
+  
+  var_dump(property_exists('myClass', 'mine'));   //true
+  var_dump(property_exists(new myClass, 'mine')); //true
+  var_dump(property_exists('myClass', 'xpto'));   //false, isn't public
+  myClass::test();
+?>
+
+
+
+
+
+|method_exists|
+
+vim:ft=help:

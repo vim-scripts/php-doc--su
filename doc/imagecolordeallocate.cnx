@@ -1,0 +1,15 @@
+imagecolordeallocate -- 取消图像颜色的分配
+
+  bool imagecolordeallocate(resource image, int color)~
+
+|imagecolordeallocate| 函数取消先前由 |imagecolorallocate| 或
+|imagecolorallocatealpha| 分配的颜色。
+
+<?php >
+  $white = imagecolorallocate($im, 255, 255, 255);
+  imagecolordeallocate($im, $white);
+?>
+
+参见 |imagecolorallocate| 和 |imagecolorallocatealpha|。
+
+vim:ft=help:

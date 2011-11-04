@@ -1,0 +1,22 @@
+eregi_replace -- 不区分大小写的正则表达式替换
+
+  string eregi_replace(string pattern, string replacement, string string)~
+
+本函数和 |ereg_replace|
+完全相同，只除了在匹配字母字符时忽略大小写的区别。
+
+高亮搜索结果
+
+<?php >
+  $pattern = '(>[^<]*)('. quotemeta($_GET['search']) .')';
+  $replacement = '\\1<span class="search">\\2</span>';
+  $body = eregi_replace($pattern, $replacement, $body);
+?>
+
+
+
+
+
+参见 |ereg|，|eregi| 和 |ereg_replace|。
+
+vim:ft=help:

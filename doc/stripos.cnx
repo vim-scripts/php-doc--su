@@ -1,0 +1,59 @@
+stripos -- 查找字符串首次出现的位置（不区分大小写）
+
+  int stripos(string haystack, string needle [, int offset])~
+
+返回在字符串 {haystack} 中 {needle} 首次出现的数字位置。
+
+与 |strpos| 不同，|stripos| 不区分大小写。
+
+{haystack} 在该字符串中查找。
+
+{needle} 注意 {needle}
+可以是一个单字符或者多字符的字符串。
+
+如果 {needle}
+不是一个字符串，那么它将被转换为整型并被视为字符顺序值。
+
+{offset} 可选的 {offset} 参数允许你指定从 {haystack}
+中的哪个字符开始查找。返回的位置数字值仍然相对于
+{haystack} 的起始位置。
+
+如果未发现 {needle}，|stripos| 将返回布尔型 FALSE。
+
+此函数可能返回布尔值 FALSE，但也可能返回等同于 FALSE
+的非布尔值，例如 0 或 ""(空串)。请阅读
+布尔类型章节以获取更多信息。应使用 === 运算符
+来测试此函数的返回值。
+
+|stripos| 范例
+
+<?php >
+  $findme    = 'a';
+  $mystring1 = 'xyz';
+  $mystring2 = 'ABC';
+  
+  $pos1 = stripos($mystring1, $findme);
+  $pos2 = stripos($mystring2, $findme);
+  
+  // 'a' 当然不在 'xyz' 中
+  if ($pos1 === false) {
+      echo "The string '$findme' was not found in the string '$mystring1'";
+  }
+  
+  // 注意这里使用的是 ===。简单的 == 不能像我们期望的那样工作，
+  // 因为 'a' 的位置是 0（第一个字符）。
+  if ($pos2 !== false) {
+      echo "We found '$findme' in '$mystring2' at position $pos2";
+  }
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|strpos| |strrpos| |strrchr| |substr| |stristr| |strstr| |strripos|
+|str_ireplace|
+
+vim:ft=help:

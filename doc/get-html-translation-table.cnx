@@ -1,0 +1,41 @@
+get_html_translation_table -- 返回使用 htmlspecialchars 和 htmlentities
+后的转换表
+
+  array get_html_translation_table([int table [, int quote_style]])~
+
+|get_html_translation_table| 将返回 |htmlspecialchars| 和 |htmlentities|
+处理后的转换表。
+
+特殊字符可以使用多种转换方式。 例如： " 可以被转换成
+", &#34; 或者 &#x22. |get_html_translation_table|
+返回其中最常用的。
+
+{table} 有两个新的常量 (HTML_ENTITIES, HTML_SPECIALCHARS)
+允许你指定你想要的表。
+
+{quote_style} 跟 |htmlspecialchars| 和 |htmlentities|
+类似，你可以指定参数 {quote_style}
+来获得你想要的转换结果。 你可以查看 |htmlspecialchars|
+里面相关描述。
+
+将转换表作为一个数组返回。
+
+Translation Table Example
+
+<?php >
+  $trans = get_html_translation_table(HTML_ENTITIES);
+  $str = "Hallo &amp; <Frau> & Krämer";
+  $encoded = strtr($str, $trans);
+  
+  echo $encoded;
+?>
+
+以上例程会输出：
+
+  Hallo &amp; <Frau> & Kr&auml;mer
+
+
+
+|htmlspecialchars| |htmlentities| |html_entity_decode|
+
+vim:ft=help:

@@ -1,0 +1,11 @@
+is_string -- 检测变量是否是字符串
+
+  bool is_string(mixed var)~
+
+如果 {var} 是 string 则返回 TRUE，否则返回 FALSE。
+
+参见
+|is_bool|、|is_int|、|is_integer|、|is_float|、|is_real|、|is_object| 和
+|is_array|。
+
+vim:ft=help:

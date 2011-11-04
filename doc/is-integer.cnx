@@ -1,0 +1,5 @@
+is_integer -- is_int 的别名
+
+此函数是 |is_int| 的别名函数。
+
+vim:ft=help:

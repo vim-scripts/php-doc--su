@@ -1,0 +1,10 @@
+pg_lo_tell -- 返回大型对象的当前指针位置
+
+  int pg_lo_tell(resource large_object)~
+
+|pg_lo_tell|
+返回当前指针位置（大型对象中从头开始的偏移量）。
+
+参见 |pg_lo_seek|。
+
+vim:ft=help:

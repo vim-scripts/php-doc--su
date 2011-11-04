@@ -1,0 +1,25 @@
+ezmlm_hash -- 计算 EZMLM 所需的散列值
+
+  int ezmlm_hash(string addr)~
+
+|ezmlm_hash| 计算用于在 MySQL 数据库中保存 EZMLM
+邮件列表的散列值。
+
+{addr} 要进行散列算法的电子邮件地址。
+
+{addr} 的散列值。
+
+计算散列值并订阅一个用户
+
+<?php >
+  $user = "joecool@example.com";
+  $hash = ezmlm_hash($user);
+  $query = sprintf("INSERT INTO sample VALUES (%s, '%s')", $hash, $user);
+  $db->query($query); // using PHPLIB db interface
+?>
+
+
+
+
+
+vim:ft=help:

@@ -1,0 +1,14 @@
+imageinterlace -- 激活或禁止隔行扫描
+
+  int imageinterlace(resource image [, int interlace])~
+
+|imageinterlace| 打开或关闭隔行扫描的比特标记。如果
+{interlace} 为 1 则图像为隔行扫描的，如果 {interlace} 为 0
+则图像为非隔行扫描的。
+
+如果设定了隔行扫描比特标记而图像使用 JPEG
+格式，则图像被创建为渐进式 JPEG。
+
+本函数返回图像中是否设定了隔行扫描比特标记。
+
+vim:ft=help:

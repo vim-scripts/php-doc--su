@@ -1,0 +1,48 @@
+get_class -- 返回对象的类名
+
+  string get_class([object obj])~
+
+返回对象实例 {obj} 所属类的名字。如果 {obj}
+不是一个对象则返回 FALSE。
+
+在 PHP 扩展库中定义的类返回其原始定义的名字。在 PHP 4 中
+|get_class| 返回用户定义的类名的小写形式，但是在 PHP 5
+中将返回类名定义时的名字，如同扩展库中的类名一样。
+
+自 PHP 5 起，如果在对象的方法中调用则 {obj} 为可选项。
+
+使用 |get_class|
+
+<?php >
+  class foo {
+      function foo()
+      {
+      // implements some logic
+      }
+  
+      function name()
+      {
+          echo "My name is " , get_class($this) , "\n";
+      }
+  }
+  
+  // create an object
+  $bar = new foo();
+  
+  // external call
+  echo "Its name is " , get_class($bar) , "\n";
+  
+  // internal call
+  $bar->name();
+?>
+
+以上例程会输出：
+
+  Its name is foo
+  My name is foo
+
+
+
+参见 |get_parent_class|、 |gettype| 和 |is_subclass_of|。
+
+vim:ft=help:

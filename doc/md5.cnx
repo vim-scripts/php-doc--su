@@ -1,0 +1,33 @@
+md5 -- 计算字符串的 MD5 散列值
+
+  string md5(string str [, bool raw_output])~
+
+使用 RSA 数据安全公司的 MD5 报文算法计算 {str} 的 MD5
+散列值。
+
+{str} 原始字符串。
+
+{raw_output} 如果可选的 {raw_output} 被设置为 TRUE，那么 MD5
+报文摘要将以原始的 16 位二进制格式返回。
+
+以 32 字符十六进制数字形式返回散列值。
+
+版本 说明 5.0.0 新增 {raw_output} 参数。
+
+|md5| 范例
+
+<?php >
+  $str = 'apple';
+  
+  if (md5($str) === '1f3870be274f6c49b3e31a0c6728957f') {
+      echo "Would you like a green or red apple?";
+  }
+?>
+
+
+
+
+
+|md5_file| |sha1_file| |crc32| |sha1| |hash|
+
+vim:ft=help:

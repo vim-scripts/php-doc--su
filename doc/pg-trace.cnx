@@ -1,0 +1,21 @@
+pg_trace -- 启动一个 PostgreSQL 连接的追踪功能
+
+  bool pg_trace(string pathname [, string mode [, resource connection]])~
+
+|pg_trace| 启动 PostgreSQL 前端／后端通讯的追踪并记录到
+{pathname} 指定的文件中。要完全理解结果，用户需要熟悉
+PostgreSQL
+通讯协议的本质。对不熟悉的用户来说，追踪发送到服务器的查询错误依然有用，例如可以用
+grep '^To backend' trace.log 来查看哪些查询实际上被发送到了
+PostgreSQL 服务器。更多信息参考 PostgreSQL 手册。
+
+参数 {pathname} 和 {mode} 和 |fopen|({mode} 默认为 'w')
+中的一样。{connection}
+指定了要追踪的连接，默认为上一个打开的连接。
+
+如果 {pathname} 可以作为日志文件打开，则 |pg_trace| 返回
+TRUE，否则返回 FALSE。
+
+参见 |fopen| 和 |pg_untrace|。
+
+vim:ft=help:

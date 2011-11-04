@@ -1,0 +1,11 @@
+xml_set_processing_instruction_handler -- 建立处理指令（PI）处理器
+
+  bool xml_set_processing_instruction_handler(resource parser, callback handler)~
+
+为 {parser} 参数指定的 XML
+解析器建立处理指令（PI）处理器函数。参数
+{start_element_handler} 和 {end_element_handler}
+为表示函数名称的字符串，这些函数必须在为 {parser}
+指定的解析器调用 |xml_parse| 函数时已存在。
+
+vim:ft=help:

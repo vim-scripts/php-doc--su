@@ -1,0 +1,5 @@
+ftp_quit -- ftp_close 的 别名
+
+此函数是该函数的别名： |ftp_close|
+
+vim:ft=help:

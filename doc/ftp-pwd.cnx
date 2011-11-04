@@ -1,0 +1,36 @@
+ftp_pwd -- 返回当前目录名
+
+  string ftp_pwd(resource ftp_stream)~
+
+
+
+{ftp_stream} FTP 连接资源。
+
+返回当前目录名称，发生错误则返回 FALSE。
+
+|ftp_pwd| 例子
+
+<?php >
+  // set up basic connection
+  $conn_id = ftp_connect($ftp_server);
+  
+  // login with username and password
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  
+  // change directory to public_html
+  ftp_chdir($conn_id, 'public_html');
+  
+  // print current directory
+  echo ftp_pwd($conn_id); // /public_html
+  
+  // close the connection
+  ftp_close($conn_id);
+?>
+
+
+
+
+
+|ftp_chdir| |ftp_cdup|
+
+vim:ft=help:

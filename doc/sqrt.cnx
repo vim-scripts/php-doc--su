@@ -1,0 +1,21 @@
+sqrt -- 平方根
+
+  float sqrt(float arg)~
+
+返回 {arg} 的平方根。
+
+|sqrt|
+
+<?php >
+  // Precision depends on your precision directive
+  echo sqrt(9); // 3
+  echo sqrt(10); // 3.16227766 ...
+?>
+
+
+
+
+
+参见 |pow|。
+
+vim:ft=help:

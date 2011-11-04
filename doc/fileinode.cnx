@@ -1,0 +1,15 @@
+fileinode -- 取得文件的 inode
+
+  int fileinode(string filename)~
+
+返回文件的 inode 节点号，出错时返回 FALSE。
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+参见 |stat|。
+
+vim:ft=help:

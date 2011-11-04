@@ -1,0 +1,37 @@
+rsort -- 对数组逆向排序
+
+  bool rsort(array array [, int sort_flags])~
+
+本函数对数组进行逆向排序（最高到最低）。
+
+此函数为 {array}
+中的元素赋与新的键名。这将删除原有的键名，而不是仅仅将键名重新排序。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|rsort| 例子
+
+<?php >
+  $fruits = array("lemon", "orange", "banana", "apple");
+  rsort($fruits);
+  foreach ($fruits as $key => $val) {
+      echo "$key = $val\n";
+  }
+?>
+
+以上例程会输出：
+
+  0 = orange
+  1 = lemon
+  2 = banana
+  3 = apple
+
+
+
+fruits 被按照字母顺序逆向排序。
+
+可以用可选参数 {sort_flags} 改变排序的行为，详情见 |sort|。
+
+参见 |arsort|，|asort|，|ksort|，|krsort|，|sort| 和 |usort|。
+
+vim:ft=help:

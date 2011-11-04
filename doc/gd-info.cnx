@@ -1,0 +1,54 @@
+gd_info -- 取得当前安装的 GD 库的信息
+
+  array gd_info()~
+
+返回一个关联数组描述了安装的 GD 库的版本和性能。
+
+|gd_info| 返回的数组的单元 属性 含义 GD Version string
+值描述了安装的 libgd 的版本。 Freetype Support boolean
+值。如果安装了 Freetype 支持则为 TRUE。 Freetype Linkage string
+值描述了 Freetype 连接的方法。取值可能为：'with freetype',
+'with TTF library' 和 'with unknown library'。本单元仅在 Freetype
+Support 的值为 TRUE 时有定义。 T1Lib Support boolean
+值。如果包含有 T1Lib 支持则为 TRUE。 GIF Read Support boolean
+值。如果包含有读取 GIF 图像的支持则为 TRUE。 GIF Create
+Support boolean 值。如果包含有创建 GIF 图像的支持则为 TRUE。
+JPG Support boolean 值。如果包含有 JPG 支持则为 TRUE。 PNG Support
+boolean 值。如果包含有 PNG 支持则为 TRUE。 WBMP Support boolean
+值。如果包含有 WBMP 支持则为 TRUE。 XBM Support boolean
+值。如果包含有 XBM 支持则为 TRUE。
+
+使用 |gd_info|
+
+<?php >
+  var_dump(gd_info());
+?>
+
+典型输出为：
+
+  array(9) {
+    ["GD Version"]=>
+    string(24) "bundled (2.0 compatible)"
+    ["FreeType Support"]=>
+    bool(false)
+    ["T1Lib Support"]=>
+    bool(false)
+    ["GIF Read Support"]=>
+    bool(true)
+    ["GIF Create Support"]=>
+    bool(false)
+    ["JPG Support"]=>
+    bool(false)
+    ["PNG Support"]=>
+    bool(true)
+    ["WBMP Support"]=>
+    bool(true)
+    ["XBM Support"]=>
+    bool(false)
+  }
+
+
+
+参见 |imagepng|，|imagejpeg|，|imagegif|，|imagewbmp| 和 |imagetypes|。
+
+vim:ft=help:

@@ -1,0 +1,13 @@
+JDToGregorian -- 转变一个Julian Day计数为Gregorian历法日期
+
+  string jdtogregorian(int julianday)~
+
+转变一个julian天数为gregorian历法的“月/日/年”形式的日期
+
+{julianday} 一个julian天数
+
+“月/日/年”形式的gregorian日期
+
+|gregoriantojd| |cal_from_jd|
+
+vim:ft=help:

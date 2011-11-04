@@ -1,0 +1,55 @@
+fwrite -- 写入文件（可安全用于二进制文件）
+
+  int fwrite(resource handle, string string [, int length])~
+
+|fwrite| 把 {string} 的内容写入 文件指针 {handle} 处。
+如果指定了 {length}，当写入了 {length} 个字节或者写完了
+{string} 以后，写入就会停止，视乎先碰到哪种情况。
+
+|fwrite| 返回写入的字符数，出现错误时则返回 FALSE 。
+
+注意如果给出了 {length} 参数，则 magic_quotes_runtime
+配置选项将被忽略，而 {string} 中的斜线将不会被抽去。
+
+在区分二进制文件和文本文件的系统上（如 Windows）
+打开文件时，|fopen| 函数的 mode 参数要加上 'b'。
+
+一个简单的 |fwrite| 例子
+
+<?php >
+  $filename = 'test.txt';
+  $somecontent = "添加这些文字到文件\n";
+  
+  // 首先我们要确定文件存在并且可写。
+  if (is_writable($filename)) {
+  
+      // 在这个例子里，我们将使用添加模式打开$filename，
+      // 因此，文件指针将会在文件的末尾，
+      // 那就是当我们使用fwrite()的时候，$somecontent将要写入的地方。
+      if (!$handle = fopen($filename, 'a')) {
+           echo "不能打开文件 $filename";
+           exit;
+      }
+  
+      // 将$somecontent写入到我们打开的文件中。
+      if (fwrite($handle, $somecontent) === FALSE) {
+          echo "不能写入到文件 $filename";
+          exit;
+      }
+  
+      echo "成功地将 $somecontent 写入到文件$filename";
+  
+      fclose($handle);
+  
+  } else {
+      echo "文件 $filename 不可写";
+  }
+?>
+
+
+
+
+
+参见 |fread|，|fopen|，|fsockopen|，|popen| 和 |file_put_contents|。
+
+vim:ft=help:

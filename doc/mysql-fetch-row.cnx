@@ -1,0 +1,21 @@
+mysql_fetch_row -- 从结果集中取得一行作为枚举数组
+
+  array mysql_fetch_row(resource result)~
+
+返回根据所取得的行生成的数组，如果没有更多行则返回
+FALSE。
+
+|mysql_fetch_row|
+从和指定的结果标识关联的结果集中取得一行数据并作为数组返回。每个结果的列储存在一个数组的单元中，偏移量从
+0 开始。
+
+依次调用 |mysql_fetch_row|
+将返回结果集中的下一行，如果没有更多行则返回 FALSE。
+
+此函数返回的字段名大小写敏感。
+
+参见
+|mysql_fetch_array|，|mysql_fetch_assoc|，|mysql_fetch_object|，|mysql_data_seek|，|mysql_fetch_lengths|
+和 |mysql_result|。
+
+vim:ft=help:

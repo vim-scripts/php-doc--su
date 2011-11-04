@@ -1,0 +1,9 @@
+iptcembed -- 将二进制 IPTC 数据嵌入到一幅 JPEG 图像中
+
+  mixed iptcembed(string iptcdata, string jpeg_file_name [, int spool])~
+
+本函数还未编写文档，仅有参数列表。
+
+
+
+vim:ft=help:

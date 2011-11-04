@@ -1,0 +1,13 @@
+pg_end_copy -- 与 PostgreSQL 后端同步
+
+  bool pg_end_copy([resource connection])~
+
+|pg_end_copy| 在处理完 |pg_put_line| 所执行的拷贝操作之后将
+PostgreSQL 前端（通常为 web server 进程）与 PostgreSQL
+服务器进行同步。|pg_end_copy| 必须被调用，否则 PostgreSQL
+服务器可能会和前端失去同步并报错。成功时返回 TRUE，
+或者在失败时返回 &false;.
+
+更多细节和例子参见 |pg_put_line|。
+
+vim:ft=help:

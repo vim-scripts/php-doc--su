@@ -1,0 +1,10 @@
+pg_cancel_query -- 取消异步查询
+
+  bool pg_cancel_query(resource connection)~
+
+|pg_cancel_query| 取消由 |pg_send_query|
+发送的异步查询。不能取消由 |pg_query| 执行的查询。
+
+参见 |pg_send_query| 和 |pg_connection_busy|。
+
+vim:ft=help:

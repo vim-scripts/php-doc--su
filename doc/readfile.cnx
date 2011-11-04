@@ -1,0 +1,25 @@
+readfile -- 输出一个文件
+
+  int readfile(string filename [, bool use_include_path [, resource context]])~
+
+读入一个文件并写入到输出缓冲。
+
+返回从文件中读入的字节数。如果出错返回 FALSE
+并且除非是以 @|readfile| 形式调用，否则会显示错误信息。
+
+如已启用fopen 包装器，在此函数中， URL
+可作为文件名。关于如何指定文件名详见 |fopen|。各种 wapper
+的不同功能请参见
+，注意其用法及其可提供的预定义变量。
+
+如果也想在 include_path
+中搜索文件，可以使用可选的第二个参数并将其设为 TRUE。
+
+在 PHP 5.0.0 中增加了 对上下文(Context)的支持。 有关
+上下文(Context) 的说明参见 。
+
+参见
+|fpassthru|，|file|，|fopen|，|include|，|require|，|virtual|，|file_get_contents|
+和。
+
+vim:ft=help:

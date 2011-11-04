@@ -1,0 +1,46 @@
+is_a -- 如果对象属于该类或该类是此对象的父类则返回 TRUE
+
+  bool is_a(object object, string class_name)~
+
+如果对象是该类或该类是此对象的父类则返回
+TRUE，否则返回 FALSE。
+
+|is_a| 例子
+
+<?php >
+  // define a class
+  class WidgetFactory
+  {
+    var $oink = 'moo';
+  }
+  
+  // create a new object
+  $WF = new WidgetFactory();
+  
+  if (is_a($WF, 'WidgetFactory')) {
+    echo "yes, \$WF is still a WidgetFactory\n";
+  }
+?>
+
+
+
+
+
+|is_a| 函数已废弃，自 PHP 5 起请使用 instanceof
+类型运算符。上例在 PHP 5 中会是这样：
+
+在 PHP 5 中使用 instanceof 运算符
+
+<?php >
+  if ($WF instanceof WidgetFactory) {
+      echo 'Yes, $WF is a WidgetFactory';
+  }
+?>
+
+
+
+
+
+参见 |get_class|，|get_parent_class| 和 |is_subclass_of|。
+
+vim:ft=help:

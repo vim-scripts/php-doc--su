@@ -1,0 +1,31 @@
+mysql_select_db -- 选择 MySQL 数据库
+
+  bool mysql_select_db(string database_name [, resource link_identifier])~
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|mysql_select_db|
+设定与指定的连接标识符所关联的服务器上的当前激活数据库。如果没有指定连接标识符，则使用上一个打开的连接。如果没有打开的连接，本函数将无参数调用
+|mysql_connect| 来尝试打开一个并使用之。
+
+每个其后的 |mysql_query| 调用都会作用于活动数据库。
+
+|mysql_select_db| 例子
+
+<?php >
+  $lnk = mysql_connect('localhost', 'mysql_user', 'mysql_password')
+         or die ('Not connected : ' . mysql_error());
+  
+  // make foo the current db
+  mysql_select_db('foo', $lnk) or die ('Can\'t use foo : ' . mysql_error());
+?>
+
+
+
+
+
+参见 |mysql_connect|，|mysql_pconnect| 和 |mysql_query|。
+
+为向下兼容仍然可以使用 |mysql_selectdb|，但反对这样做。
+
+vim:ft=help:

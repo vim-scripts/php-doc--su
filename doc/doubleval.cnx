@@ -1,0 +1,9 @@
+doubleval -- floatval 的别名
+
+此函数是 |floatval| 的别名。
+
+此别名是函数改名之后的遗留问题。在 PHP
+旧的版本中由于还没有 |floatval|
+函数，所以你可能需要用到这个 |floatval| 的别名函数。
+
+vim:ft=help:

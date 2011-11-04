@@ -1,0 +1,165 @@
+array_map -- 将回调函数作用到给定数组的单元上
+
+  array array_map(callback callback, array arr1 [, array ...])~
+
+|array_map| 返回一个数组，该数组包含了 {arr1}
+中的所有单元经过 {callback} 作用过之后的单元。{callback}
+接受的参数数目应该和传递给 |array_map|
+函数的数组数目一致。
+
+|array_map| 例子
+
+<?php >
+  function cube($n)
+  {
+      return($n * $n * $n);
+  }
+  
+  $a = array(1, 2, 3, 4, 5);
+  $b = array_map("cube", $a);
+  print_r($b);
+?>
+
+这使得 $b 成为：
+
+  Array
+  (
+      [0] => 1
+      [1] => 8
+      [2] => 27
+      [3] => 64
+      [4] => 125
+  )
+
+
+
+|array_map| - 使用更多的数组
+
+<?php >
+  function show_Spanish($n, $m)
+  {
+      return("The number $n is called $m in Spanish");
+  }
+  
+  function map_Spanish($n, $m)
+  {
+      return(array($n => $m));
+  }
+  
+  $a = array(1, 2, 3, 4, 5);
+  $b = array("uno", "dos", "tres", "cuatro", "cinco");
+  
+  $c = array_map("show_Spanish", $a, $b);
+  print_r($c);
+  
+  $d = array_map("map_Spanish", $a , $b);
+  print_r($d);
+?>
+
+以上例程会输出：
+
+  // printout of $c
+  Array
+  (
+      [0] => The number 1 is called uno in Spanish
+      [1] => The number 2 is called dos in Spanish
+      [2] => The number 3 is called tres in Spanish
+      [3] => The number 4 is called cuatro in Spanish
+      [4] => The number 5 is called cinco in Spanish
+  )
+  
+  // printout of $d
+  Array
+  (
+      [0] => Array
+          (
+              [1] => uno
+          )
+  
+      [1] => Array
+          (
+              [2] => dos
+          )
+  
+      [2] => Array
+          (
+              [3] => tres
+          )
+  
+      [3] => Array
+          (
+              [4] => cuatro
+          )
+  
+      [4] => Array
+          (
+              [5] => cinco
+          )
+  
+  )
+
+
+
+通常使用了两个或更多数组时，它们的长度应该相同，因为回调函数是平行作用于相应的单元上的。如果数组的长度不同，则最短的一个将被用空的单元扩充。
+
+本函数一个有趣的用法是构造一个数组的数组，这可以很容易的通过用
+NULL 作为回调函数名来实现。
+
+建立一个数组的数组
+
+<?php >
+  $a = array(1, 2, 3, 4, 5);
+  $b = array("one", "two", "three", "four", "five");
+  $c = array("uno", "dos", "tres", "cuatro", "cinco");
+  
+  $d = array_map(null, $a, $b, $c);
+  print_r($d);
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [0] => Array
+          (
+              [0] => 1
+              [1] => one
+              [2] => uno
+          )
+  
+      [1] => Array
+          (
+              [0] => 2
+              [1] => two
+              [2] => dos
+          )
+  
+      [2] => Array
+          (
+              [0] => 3
+              [1] => three
+              [2] => tres
+          )
+  
+      [3] => Array
+          (
+              [0] => 4
+              [1] => four
+              [2] => cuatro
+          )
+  
+      [4] => Array
+          (
+              [0] => 5
+              [1] => five
+              [2] => cinco
+          )
+  
+  )
+
+
+
+参见 |array_filter|，|array_reduce|，|array_walk| 和callback
+类型的信息。
+
+vim:ft=help:

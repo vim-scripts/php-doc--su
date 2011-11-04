@@ -1,0 +1,24 @@
+sql_regcase -- 产生用于不区分大小的匹配的正则表达式
+
+  string sql_regcase(string string)~
+
+返回与 {string}
+相匹配的正则表达式，不论大小写字母。返回的表达式是将
+{string}
+中的每个字母字符转换为方括号表达式，该方括号表达式包含了该字母的大小写形式。其它字符保留不变。
+
+|sql_regcase| 例子
+
+<?php >
+  echo sql_regcase ("Foo - bar.");
+?>
+
+以上例程会输出：
+
+  [Ff][Oo][Oo] - [Bb][Aa][Rr].
+
+
+
+可以用于在仅支持区分大小写正则表达式的产品中完成不区分大小写的模式匹配。
+
+vim:ft=help:

@@ -1,0 +1,27 @@
+vsprintf -- 返回格式化字符串
+
+  string vsprintf(string format, array args)~
+
+作用与 |sprintf|
+函数类似，但是接收一个数组参数，而不是一系列可变数量的参数。
+
+{format} 关于 {format} 的描述，参见 |sprintf|。
+
+{args}
+
+根据 {format} （|sprintf|
+函数文档中有相关描述）参数指定的格式，在一个字符串中返回一系列值。
+
+|vsprintf|: 前导 0 的整数
+
+<?php >
+  print vsprintf("%04d-%02d-%02d", explode('-', '1988-8-1')); // 1988-08-01
+?>
+
+
+
+
+
+|sprintf| |vprintf|
+
+vim:ft=help:

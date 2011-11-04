@@ -1,0 +1,50 @@
+array_diff_ukey -- 用回调函数对键名比较计算数组的差集
+
+  array array_diff_ukey(array array1, array array2 [, array ..., callback key_compare_func])~
+
+|array_diff_ukey| 返回一个数组，该数组包括了所有出现在
+{array1}
+中但是未出现在任何其它参数数组中的键名的值。注意关联关系保留不变。本函数和
+|array_diff| 相同只除了比较是根据键名而不是值来进行的。
+
+此比较是通过用户提供的回调函数来进行的。如果认为第一个参数小于，等于，或大于第二个参数时必须分别返回一个小于零，等于零，或大于零的整数。
+
+|array_diff_ukey| 例子
+
+<?php >
+  function key_compare_func($key1, $key2)
+  {
+      if ($key1 == $key2)
+          return 0;
+      else if ($key1 > $key2)
+          return 1;
+      else
+          return -1;
+  }
+  
+  $array1 = array('blue'  => 1, 'red'  => 2, 'green'  => 3, 'purple' => 4);
+  $array2 = array('green' => 5, 'blue' => 6, 'yellow' => 7, 'cyan'   => 8);
+  
+  var_dump(array_diff_ukey($array1, $array2, 'key_compare_func'));
+?>
+
+以上例程会输出：
+
+  array(2) {
+    ["red"]=>
+    int(2)
+    ["purple"]=>
+    int(4)
+  }
+
+
+
+注意本函数只检查了多维数组中的一维。当然，可以用
+array_diff_ukey($array1[0], $array2[0], 'callback_func');
+来检查更深的维度。
+
+参见
+|array_diff|，|array_udiff|，|array_diff_assoc|，|array_diff_uassoc|，|array_udiff_assoc|，|array_udiff_uassoc|，|array_diff_key|，|array_intersect|，|array_intersect_assoc|，|array_intersect_uassoc|，|array_intersect_key|
+和 |array_intersect_ukey|。
+
+vim:ft=help:

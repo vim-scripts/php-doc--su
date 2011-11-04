@@ -1,0 +1,10 @@
+imagefilledrectangle -- 画一矩形并填充
+
+  bool imagefilledrectangle(resource image, int x1, int y1, int x2, int y2, int color)~
+
+|imagefilledrectangle| 在 {image} 图像中画一个用 {color}
+颜色填充了的矩形，其左上角坐标为
+{x1}，{y1}，右下角坐标为 {x2}，{y2}。0, 0
+是图像的最左上角。
+
+vim:ft=help:

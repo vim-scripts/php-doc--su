@@ -1,0 +1,34 @@
+pathinfo -- 返回文件路径的信息
+
+  mixed pathinfo(string path [, int options])~
+
+|pathinfo| 返回一个关联数组包含有 path
+的信息。包括以下的数组单元：dirname，basename 和 extension。
+
+可以通过参数 {options}
+指定要返回哪些单元。它们包括：PATHINFO_DIRNAME，PATHINFO_BASENAME
+和
+PATHINFO_EXTENSION。默认是返回全部的单元。如果不是要求取得所有单元，则本函数返回字符串。
+
+|pathinfo| 例子
+
+<?php >
+  $path_parts = pathinfo("/www/htdocs/index.html");
+  echo $path_parts["dirname"] . "\n";
+  echo $path_parts["basename"] . "\n";
+  echo $path_parts["extension"] . "\n";
+?>
+
+以上例程会输出：
+
+  /www/htdocs
+  index.html
+  html
+
+
+
+有关取得当前路径信息的说明，请阅读预定义变量一节。
+
+参见 |dirname|，|basename|，|parse_url| 和 |realpath|。
+
+vim:ft=help:

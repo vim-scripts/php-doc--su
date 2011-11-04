@@ -1,0 +1,38 @@
+easter_days -- 得到指定年份的3月21日到复活节之间的天数
+
+  int easter_days([int year [, int method]])~
+
+返回指定年份的3月21日到复活节之间的天数，如果没有指定年份，默认是当年。
+
+这个函数可以用来代替|easter_date|函数来计算Unix时间戳以外年份的复活节日期。（比如1970年以前或2037年以后）
+
+复活节的日期是由尼西亚议会在AD325年确定的为每年春分月圆后的第一个星期日。春分一般是在3月21日，这就简化为只要计算满月的日期和紧挨的星期日的日期。这里所用的算法是在532年由Dionysius
+Exiguus所介绍的，参考了Julian历法和Gregorian历法这两个历法来提高精确度。（在1753年以前用Julian历法计算，该历法是一个以19年为周期来确定月亮的相位的历法。在1753年以后用Gregorian历法计算，该历法由Clavius和Lilius发明，由Pope
+Gregory 8世在1582年推广）
+
+{year} 正数形式的年份
+
+{method}
+当设置为CAL_EASTER_ROMAN时可以用Gregorian历法来计算1582－1752之间的复活节日期。更多可用的常量参考calendar
+constants。
+
+根据给定参数{year}年份而返回的3月21日至复活节的天数。
+
+版本 说明 Since 4.3.0 参数{year} 可选，缺省默认值是当年。
+Since 4.3.0 引入参数 {method}。
+
+|easter_days| example
+
+<?php >
+  echo easter_days(1999);        // 14, i.e. April 4
+  echo easter_days(1492);        // 32, i.e. April 22
+  echo easter_days(1913);        //  2, i.e. March 23
+?>
+
+
+
+
+
+|easter_date|
+
+vim:ft=help:

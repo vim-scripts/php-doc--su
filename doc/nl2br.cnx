@@ -1,0 +1,5 @@
+nl2br -- 在字符串所有新行之前插入 HTML 换行标记
+
+  string nl2br(string string [, bool is_xhtml])~
+
+vim:ft=help:

@@ -1,0 +1,49 @@
+popen -- 打开进程文件指针
+
+  resource popen(string command, string mode)~
+
+打开一个指向进程的管道，该进程由派生给定的 {command}
+命令执行而产生。
+
+返回一个和 |fopen|
+所返回的相同的文件指针，只不过它是单向的（只能用于读或写）并且必须用
+|pclose| 来关闭。此指针可以用于 |fgets|，|fgetss| 和 |fwrite|。
+
+如果出错返回 FALSE。
+
+如果需要双向支持，使用 |proc_open|。
+
+|popen| 例子
+
+<?php >
+  $handle = popen("/bin/ls", "r");
+?>
+
+
+
+
+
+如果未找到要执行的命令，会返回一个合法的资源。这看上去很怪，但有道理。它允许访问
+shell 返回的任何错误信息：
+
+<?php >
+  error_reporting(E_ALL);
+  
+  /* 加入重定向以得到标准错误输出 stderr。 */
+  $handle = popen('/path/to/spooge 2>&amp;1', 'r');
+  echo "'$handle'; " . gettype($handle) . "\n";
+  $read = fread($handle, 2096);
+  echo $read;
+  pclose($handle);
+?>
+
+安全模式 启用时，可仅可用 safe_mode_exec_dir
+执行文件。实际上，现在不允许在到可执行的路径中存在 ..
+组件。
+
+安全模式 启用时，命令字符串会被 |escapeshellcmd|
+转换。因此， echo y | echo x 会变成 echo y \| echo x。
+
+参见 |pclose|，|fopen| 和 |proc_open|。
+
+vim:ft=help:

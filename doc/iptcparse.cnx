@@ -1,0 +1,10 @@
+iptcparse -- 将二进制 IPTC http://www.iptc.org/ 块解析为单个标记
+
+  array iptcparse(string iptcblock)~
+
+本函数将一个二进制的 IPTC
+块解析为单个的标记。返回一个数组，用 tagmarker
+作为索引，以其值为值。如果出错或未发现 IPTC 数据则返回
+FALSE。例子见 |getimagesize|。
+
+vim:ft=help:

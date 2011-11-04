@@ -1,0 +1,40 @@
+sha1_file -- 计算文件的 sha1 散列值
+
+  string sha1_file(string filename [, bool raw_output])~
+
+利用美国安全散列算法 1，计算并返回由 {filename}
+指定的文件的 sha1 散列值。该散列值是一个 40
+字符长度的十六进制数字。
+
+{filename} 要散列的文件的文件名。
+
+{raw_output} 如果被设置为 TRUE，sha1 摘要将以 20
+字符长度的原始格式返回。
+
+成功返回一个字符串，否则返回 FALSE。
+
+|sha1_file| 范例
+
+<?php >
+  foreach(glob('/home/Kalle/myproject/*.php') as $ent)
+  {
+      if(is_dir($ent))
+      {
+          continue;
+      }
+  
+      echo $ent . ' (SHA1: ' . sha1_file($ent) . ')', PHP_EOL;
+  }
+?>
+
+
+
+
+
+版本 说明 5.0.0 新增 {raw_output} 参数。 5.1.0
+改变函数以使用流 API。这意味着可以使用包装器，比如
+sha1_file('http://example.com/..')。
+
+|sha1| |md5_file| |crc32|
+
+vim:ft=help:

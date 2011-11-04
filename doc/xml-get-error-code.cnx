@@ -1,0 +1,15 @@
+xml_get_error_code -- 获取 XML 解析器错误代码
+
+  int xml_get_error_code(resource parser)~
+
+获取 XML 解析器错误代码。
+
+{parser} 一个指向要返回错误代码的 XML 解析器的指针
+
+如果 {parser}
+参数没有指向一个合法的解析器，该函数将返回
+FALSE，否则将返回错误代码列表中的一个错误代码。
+
+|xml_error_string|
+
+vim:ft=help:

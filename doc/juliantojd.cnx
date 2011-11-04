@@ -1,0 +1,25 @@
+JulianToJD -- 转变一个Julian历法的日期为Julian Day计数
+
+  int juliantojd(int month, int day, int year)~
+
+Julian历法的合理年份为 4713 B.C. 到 9999 A.D.
+
+尽管这个函数也可以处理4713
+B.C.以前的日期，但是没有意义。这个历法是在46
+B.C.创立，但是到了8
+A.D.还没有稳定，可能直到第4世纪才最终完善。而且，每年的开始也不相同，不是所有的国家都认定January为第一个月份的。
+
+记住，当今世界最广泛使用的历法是Gregorian历法，函数|gregoriantojd|可以转变日期为Julian
+Day计数。
+
+{month} 月份的范围从 1 (January) 到 12 ( December)
+
+{day} 日期的范围从 1 到 31
+
+{year} 年份的范围从 -4713 到 9999
+
+指定julian历法中的日期所对应的julian天数。
+
+|jdtojulian| |cal_to_jd|
+
+vim:ft=help:

@@ -1,0 +1,21 @@
+VARIANT -- VARIANT 类
+
+用于将变量封装进 VARIANT 结构中的简单容器。
+
+  string VARIANT::VARIANT([mixed value [, int type [, int codepage]]])~
+
+VARIANT 类构造函数。参数： value 初始值。若省略则创建一个
+VT_EMPTY 对象。
+
+type 指定 VARIANT 对象的内容类型。可用的值为
+VT_UI1、VT_UI2、VT_UI4、VT_I1、VT_I2、VT_I4、VT_R4、VT_R8、VT_INT、VT_UINT、VT_BOOL、VT_ERROR、VT_CY、VT_DATE、VT_BSTR、VT_DECIMAL、VT_UNKNOWN、VT_DISPATCH
+和 VT_VARIANT。这些值相互排斥，但是可以使用 VT_BYREF
+将它们联合起来指定为一个值。若省略，则使用参数 {value}
+的类型。额外信息请查阅 msdn 库。
+
+codepage 指定用于将 PHP 字符串（php-strings）转换成 UNICODE
+字符串（unicode-strings）的代码页，反之亦然。可用的值为
+CP_ACP、CP_MACCP、CP_OEMCP、CP_SYMBOL、CP_THREAD_ACP, CP_UTF7 和
+CP_UTF8。
+
+vim:ft=help:

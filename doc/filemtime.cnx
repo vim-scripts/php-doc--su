@@ -1,0 +1,33 @@
+filemtime -- 取得文件修改时间
+
+  int filemtime(string filename)~
+
+返回文件上次被修改的时间，出错时返回 FALSE。时间以 Unix
+时间戳的方式返回，可用于 |date|。
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+本函数返回文件中的数据块上次被写入的时间，也就是说，文件的内容上次被修改的时间。
+
+|filemtime| 例子
+
+<?php >
+  // outputs e.g.  somefile.txt was last modified: December 29 2002 22:16:23.
+  $filename = 'somefile.txt';
+  if (file_exists($filename)) {
+      echo "$filename was last modified: " . date ("F d Y H:i:s.", filemtime($filename));
+  
+  }
+?>
+
+
+
+
+
+参见 |filectime|，|stat|，|touch| 和 |getlastmod|。
+
+vim:ft=help:

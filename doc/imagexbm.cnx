@@ -1,0 +1,9 @@
+imagexbm -- 将 XBM 图像输出到浏览器或文件
+
+  bool imagexbm(resource image, string filename [, int foreground])~
+
+本函数还未编写文档，仅有参数列表。
+
+此函数仅在与 GD 库捆绑编译的 PHP 版本中可用。
+
+vim:ft=help:

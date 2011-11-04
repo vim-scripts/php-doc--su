@@ -1,0 +1,11 @@
+imageistruecolor -- 检查图像是否为真彩色图像
+
+  bool imageistruecolor(resource image)~
+
+|imageistruecolor| 检查 {image} 图像是否为真彩色图像。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+参见 |imagecreatetruecolor|。
+
+vim:ft=help:

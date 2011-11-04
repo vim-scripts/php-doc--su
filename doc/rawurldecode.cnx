@@ -1,0 +1,22 @@
+rawurldecode -- 对已编码的 URL 字符串进行解码
+
+  string rawurldecode(string str)~
+
+返回字符串，此字符串中百分号（%）后跟两位十六进制数的序列都将被替换成原义字符。
+
+|rawurldecode| 示例
+
+<?php >
+  echo rawurldecode('foo%20bar%40baz'); // foo bar@baz
+?>
+
+
+
+
+
+|rawurldecode| 不会把加号（'+'）解码为空格，而 |urldecode|
+可以。
+
+参见 |rawurlencode|，|urldecode| 和 |urlencode|。
+
+vim:ft=help:

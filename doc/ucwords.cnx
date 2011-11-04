@@ -1,0 +1,33 @@
+ucwords -- 将字符串中每个单词的首字母转换为大写
+
+  string ucwords(string str)~
+
+将 {str}
+中每个单词的首字符（如果首字符是字母）转换为大写字母，并返回这个字符串。
+
+这里单词的定义是紧跟在空白字符（空格符、制表符、换行符、回车符、水平线以及竖线）之后的子字符串。
+
+{str} 输入字符串。
+
+返回转换后的字符串。
+
+|ucwords| 范例
+
+<?php >
+  $foo = 'hello world!';
+  $foo = ucwords($foo);             // Hello World!
+  
+  $bar = 'HELLO WORLD!';
+  $bar = ucwords($bar);             // HELLO WORLD!
+  $bar = ucwords(strtolower($bar)); // Hello World!
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|strtoupper| |strtolower| |ucfirst| |mb_convert_case|
+
+vim:ft=help:

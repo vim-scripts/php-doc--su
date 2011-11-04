@@ -1,0 +1,36 @@
+array_pop -- 将数组最后一个单元弹出（出栈）
+
+  mixed array_pop(array array)~
+
+|array_pop| 弹出并返回 {array} 数组的最后一个单元，并将数组
+{array} 的长度减一。如果 {array}
+为空（或者不是数组）将返回 NULL。
+
+使用此函数后会重置(|reset|)array 指针。
+
+|array_pop| 例子
+
+<?php >
+  $stack = array("orange", "banana", "apple", "raspberry");
+  $fruit = array_pop($stack);
+  print_r($stack);
+?>
+
+经过此操作后，$stack 将只有 3 个单元：
+
+  Array
+  (
+      [0] => orange
+      [1] => banana
+      [2] => apple
+  )
+
+并且 rasberry 将被赋给 $fruit。
+
+
+
+
+
+参见 |array_push|，|array_shift| 和 |array_unshift|。
+
+vim:ft=help:

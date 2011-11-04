@@ -1,0 +1,8 @@
+pg_options -- 获得和连接有关的选项
+
+  string pg_options(resource connection)~
+
+|pg_options| 以字符串形式返回指定 PostgreSQL {connection}
+资源的连接选项。
+
+vim:ft=help:

@@ -1,0 +1,19 @@
+oci_rollback -- 回滚未提交的事务
+
+  bool oci_rollback(resource connection)~
+
+|oci_rollback| 回滚 Oracle 连接 {connection}
+上所有未提交的语句。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+当关闭连接或脚本结束时（看哪个先）事务会自动回卷。需要明确地调用
+|oci_commit| 来提交事务，或 |oci_rollback| 来中止事务。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocirollback|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_rollback| 的别名。不过其已被废弃，不推荐使用。
+
+参见 |oci_commit|。
+
+vim:ft=help:

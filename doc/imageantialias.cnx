@@ -1,0 +1,17 @@
+imageantialias -- 是否使用抗锯齿（antialias）功能
+
+  bool imageantialias(resource im, bool on)~
+
+对线段和多边形启用快速画图抗锯齿方法。不支持 alpha
+部分。使用直接混色操作。仅用于真彩色图像。
+
+不支持线宽和风格。
+
+使用抗锯齿和透明背景色可能出现未预期的结果。混色方法把背景色当成任何其它颜色使用。缺乏
+alpha 部分的支持导致不允许基于 alpha 抗锯齿方法。
+
+此函数仅在与 GD 库捆绑编译的 PHP 版本中可用。
+
+参见 |imagecreatetruecolor|。
+
+vim:ft=help:

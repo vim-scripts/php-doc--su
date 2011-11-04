@@ -1,0 +1,16 @@
+utf8_encode -- 将 ISO-8859-1 编码的字符串转换为 UTF-8 编码
+
+  string utf8_encode(string data)~
+
+该函数将 {data} 字符串转换为 UTF-8
+编码，并返回编码后的字符串。UTF-8
+是一种用于将宽字符值转换为字节流的 Unicode
+的标准机制。UTF-8 对于纯 ASCII
+字符来说是透明的，且是自同步的（也就是说这使得程序能够得知字符从字节流的何处开始），并可被普通字符串比较函数用以比较等操作。PHP
+可将 UTF-8 编码为多达四个字节的字符，如： UTF-8 编码
+字节（bytes） 位（bits） 表 示 1 7 0bbbbbbb 2 11 110bbbbb 10bbbbbb 3
+16 1110bbbb 10bbbbbb 10bbbbbb 4 21 11110bbb 10bbbbbb 10bbbbbb 10bbbbbb
+
+每个 UTF-8 表示一个能被用以储存字符数据的位。
+
+vim:ft=help:

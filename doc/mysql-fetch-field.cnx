@@ -1,0 +1,78 @@
+mysql_fetch_field -- 从结果集中取得列信息并作为对象返回
+
+  object mysql_fetch_field(resource result [, int field_offset])~
+
+返回一个包含字段信息的对象。
+
+|mysql_fetch_field|
+可以用来从某个查询结果中取得字段的信息。如果没有指定字段偏移量，则下一个尚未被
+|mysql_fetch_field| 取得的字段被提取。
+
+对象的属性为： name - 列名
+
+table - 该列所在的表名
+
+max_length - 该列最大长度
+
+not_null - 1，如果该列不能为 NULL
+
+primary_key - 1，如果该列是 primary key
+
+unique_key - 1，如果该列是 unique key
+
+multiple_key - 1，如果该列是 non-unique key
+
+numeric - 1，如果该列是 numeric
+
+blob - 1，如果该列是 BLOB
+
+type - 该列的类型
+
+unsigned - 1，如果该列是无符号数
+
+zerofill - 1，如果该列是 zero-filled
+
+此函数返回的字段名大小写敏感。
+
+|mysql_fetch_field|
+
+<?php >
+  mysql_connect('localhost:3306', $user, $password)
+      or die("Could not connect: " . mysql_error());
+  mysql_select_db("database");
+  $result = mysql_query("select * from table")
+      or die("Query failed: " . mysql_error());
+  /* get column metadata */
+  $i = 0;
+  while ($i < mysql_num_fields($result)) {
+      echo "Information for column $i:<br />\n";
+      $meta = mysql_fetch_field($result);
+      if (!$meta) {
+          echo "No information available<br />\n";
+      }
+      echo "<pre>
+  blob:         $meta->blob
+  max_length:   $meta->max_length
+  multiple_key: $meta->multiple_key
+  name:         $meta->name
+  not_null:     $meta->not_null
+  numeric:      $meta->numeric
+  primary_key:  $meta->primary_key
+  table:        $meta->table
+  type:         $meta->type
+  unique_key:   $meta->unique_key
+  unsigned:     $meta->unsigned
+  zerofill:     $meta->zerofill
+  </pre>";
+      $i++;
+  }
+  mysql_free_result($result);
+?>
+
+
+
+
+
+参见 |mysql_field_seek|。
+
+vim:ft=help:

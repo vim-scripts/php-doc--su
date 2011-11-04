@@ -1,0 +1,16 @@
+pcntl_wifstopped -- 检查子进程当前是否已经停止
+
+  bool pcntl_wifstopped(int status)~
+
+仅查子进程当前是否停止;
+此函数只有作用于使用了WUNTRACED作为
+option的|pcntl_waitpid|函数调用产生的status时才有效。
+
+{status} 参数 {status} 是提供给成功调用 |pcntl_waitpid|
+时的状态参数。
+
+如果子进程当前是停止的返回 TRUE ，其他情况返回 FALSE 。
+
+|pcntl_waitpid|
+
+vim:ft=help:

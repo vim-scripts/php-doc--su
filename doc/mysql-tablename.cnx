@@ -1,0 +1,28 @@
+mysql_tablename -- 取得表名
+
+  string mysql_tablename(resource result, int i)~
+
+|mysql_tablename| 接受 |mysql_list_tables|
+返回的结果指针以及一个整数索引作为参数并返回表名。可以用
+|mysql_num_rows| 函数来判断结果指针中的表的数目。用
+|mysql_tablename|
+函数来遍历此结果指针，或者任何处理结果表的函数，例如
+|mysql_fetch_array|。 |mysql_tablename| 例子
+
+<?php >
+      mysql_connect("localhost", "mysql_user", "mysql_password");
+      $result = mysql_list_tables("mydb");
+  
+      for ($i = 0; $i < mysql_num_rows($result); $i++)
+          printf ("Table: %s\n", mysql_tablename($result, $i));
+  
+      mysql_free_result($result);
+?>
+
+
+
+
+
+参见 |mysql_list_tables|。
+
+vim:ft=help:

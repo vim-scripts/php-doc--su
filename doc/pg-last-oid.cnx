@@ -1,0 +1,20 @@
+pg_last_oid -- 返回上一个对象的 oid
+
+  int pg_last_oid(resource result)~
+
+|pg_last_oid| 在上一条通过 |pg_query| 发送的命令是 SQL INSERT
+的情况下用来取得分配给所插入记录的
+oid。如果存在有效的 oid
+则返回一个正整数，如果出错或者上一条通过 |pg_query|
+发送的命令不是 INSERT 或者该 INSERT 失败则返回 FALSE。
+
+从 PostgreSQL 7.2 版开始 OID
+字段成为可选项。如果一个表中没有定义 OID
+字段，程序员必须用 |pg_result_status|
+函数来检查记录是否被成功插入。
+
+本函数以前的名字为 pg_getlastoid()。
+
+参见 |pg_query| 和 |pg_result_status|。
+
+vim:ft=help:

@@ -1,0 +1,9 @@
+mail -- 发送邮件
+
+  bool mail(string to, string subject, string message [, string additional_headers [, string additional_parameters]])~
+
+发送一封电子邮件。
+
+{to} 电子邮件收件人，或收件人列表。
+
+vim:ft=help:

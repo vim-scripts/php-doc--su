@@ -1,0 +1,8 @@
+imagepalettecopy -- 将调色板从一幅图像拷贝到另一幅
+
+  void imagepalettecopy(resource destination, resource source)~
+
+|imagepalettecopy| 从 {source} 图像把调色板拷贝到 {destination}
+图像。
+
+vim:ft=help:

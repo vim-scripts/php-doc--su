@@ -1,0 +1,5 @@
+is_double -- is_float 的别名
+
+此函数是 |is_float| 的别名函数。
+
+vim:ft=help:

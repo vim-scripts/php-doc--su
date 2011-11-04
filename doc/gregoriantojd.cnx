@@ -1,0 +1,33 @@
+GregorianToJD -- 转变一个Gregorian历法日期到Julian Day计数
+
+  int gregoriantojd(int month, int day, int year)~
+
+Gregorian历法的合理范围是4714 B.C. 至 9999 A.D.
+
+虽然这个函数可以处理4714
+B.C.以前的日期，但是没有意义。Gregorian历法直到1582年10年15日（或是Julian历法的1582年10月5日）才被发明，很久以后一些国家也没有接受它。比如，英国是在1752年开始使用Gregorian历法，苏联是在1918年，希腊是在1923年，大部分的欧洲国家使用Julian历法。
+
+{month} 月份的范围是 1（January）到 12（December）。
+
+{day} 日期的范围是 1到 31。
+
+{year} 年份的范围是 -4714 到 9999。
+
+给定gregorian历法日期的julian天数。
+
+Calendar functions
+
+<?php >
+  $jd = GregorianToJD(10, 11, 1970);
+  echo "$jd\n";
+  $gregorian = JDToGregorian($jd);
+  echo "$gregorian\n";
+?>
+
+
+
+
+
+|jdtogregorian| |cal_to_jd|
+
+vim:ft=help:

@@ -1,0 +1,20 @@
+imagesavealpha -- 设置标记以在保存 PNG 图像时保存完整的 alpha
+通道信息（与单一透明色相反）
+
+  bool imagesavealpha(resource image, bool saveflag)~
+
+|imagesavealpha| 设置标记以在保存 PNG 图像时保存完整的 alpha
+通道信息（与单一透明色相反）。
+
+要使用本函数，必须将 alphablending 清位（imagealphablending($im,
+false)）。
+
+不是所有的浏览器都支持 alpha
+通道，如果在你的浏览器上碰到问题，试着用兼容 alpha
+通道的浏览器（例如最新版的 Mozilla）重新加载脚本。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+参见 |imagealphablending|。
+
+vim:ft=help:

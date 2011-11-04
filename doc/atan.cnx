@@ -1,0 +1,11 @@
+atan -- 反正切
+
+  float atan(float arg)~
+
+返回 {arg} 的反正切值，单位是弧度。|atan| 是 |tan|
+的反函数，它的意思是在 |atan| 范围里的每个值都是
+a==tan(atan(a))。
+
+参见: |atanh|、 |asin| 和 |acos|。
+
+vim:ft=help:

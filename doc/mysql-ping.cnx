@@ -1,0 +1,11 @@
+mysql_ping -- Ping 一个服务器连接，如果没有连接则重新连接
+
+  bool mysql_ping([resource link_identifier])~
+
+|mysql_ping|
+检查到服务器的连接是否正常。如果断开，则自动尝试连接。本函数可用于空闲很久的脚本来检查服务器是否关闭了连接，如果有必要则重新连接上。如果到服务器的连接可用则
+|mysql_ping| 返回 TRUE，否则返回 FALSE。
+
+参见 |mysql_thread_id| 和 |mysql_list_processes|。
+
+vim:ft=help:

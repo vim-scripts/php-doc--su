@@ -1,0 +1,34 @@
+pg_update -- 更新表
+
+  mixed pg_update(resource connection, string table_name, array data, array condition [, int options])~
+
+|pg_update| 用 condition 作为条件查询数据库，用 data
+中的数据更新符合条件的记录。如果指定了 options，则
+|pg_convert| 会按照指定选项作用到 data 上。
+
+pg_update
+
+<?php >
+      $db = pg_connect ('dbname=foo');
+      $data = array('field1'=>'AA', 'field2'=>'BB');
+      // This is safe, since $_POST is converted automatically
+      $res = pg_update($db, 'post_log', $_POST, $data);
+      if ($res) {
+          echo "Data is updated: $res\n";
+      }
+      else {
+          echo "User must have sent wrong inputs\n";
+      }
+?>
+
+
+
+
+
+此函数是实验性的。
+此函数的表象，包括名称及其相关文档都可能在未来的 PHP
+发布版本中未通知就被修改。使用本扩展风险自担 。
+
+参见 |pg_convert|。
+
+vim:ft=help:

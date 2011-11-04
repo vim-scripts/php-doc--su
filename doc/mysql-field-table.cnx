@@ -1,0 +1,9 @@
+mysql_field_table -- 取得指定字段所在的表名
+
+  string mysql_field_table(resource result, int field_offset)~
+
+返回指定字段所在的表的名字。
+
+为向下兼容仍然可以使用 |mysql_fieldtable|，但反对这样做。
+
+vim:ft=help:

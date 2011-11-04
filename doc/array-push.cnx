@@ -1,0 +1,46 @@
+array_push -- 将一个或多个单元压入数组的末尾（入栈）
+
+  int array_push(array array, mixed var [, mixed ...])~
+
+|array_push| 将 {array} 当成一个栈，并将传入的变量压入 {array}
+的末尾。{array}
+的长度将根据入栈变量的数目增加。和如下效果相同：
+
+<?php >
+  $array[] = $var;
+?>
+
+并对每个 {var} 重复以上动作。
+
+返回数组新的单元总数。
+
+|array_push| 例子
+
+<?php >
+  $stack = array("orange", "banana");
+  array_push($stack, "apple", "raspberry");
+  print_r($stack);
+?>
+
+本例将使 $stack 具有如下单元：
+
+  Array
+  (
+      [0] => orange
+      [1] => banana
+      [2] => apple
+      [3] => raspberry
+  )
+
+
+
+如果用 |array_push| 来给数组增加一个单元，还不如用 $array[]
+= ，因为这样没有调用函数的额外负担。
+
+如果第一个参数不是数组，|array_push|
+将发出一条警告。这和 $var[]
+的行为不同，后者会新建一个数组。
+
+参见 |array_pop|，|array_shift| 和 |array_unshift|。
+
+vim:ft=help:

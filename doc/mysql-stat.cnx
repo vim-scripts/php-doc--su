@@ -1,0 +1,36 @@
+mysql_stat -- 取得当前系统状态
+
+  string mysql_stat([resource link_identifier])~
+
+|mysql_stat| 返回当前服务器状态。
+
+|mysql_stat| 目前只返回 uptime，threads，queries，open tables，flush
+tables 和 queries per
+second。要得到其它状态变量的完整列表，只能使用 SQL 命令
+SHOW STATUS。
+
+|mysql_stat| 例子
+
+<?php >
+  $link = mysql_connect('localhost', "mysql_user", "mysql_password");
+  $status = explode('  ', mysql_stat($link));
+  print_r($status);
+?>
+
+以上例子将产生如下输出：
+
+  Array
+  (
+      [0] => Uptime: 5380
+      [1] => Threads: 2
+      [2] => Questions: 1321299
+      [3] => Slow queries: 0
+      [4] => Opens: 26
+      [5] => Flush tables: 1
+      [6] => Open tables: 17
+      [7] => Queries per second avg: 245.595
+  )
+
+
+
+vim:ft=help:

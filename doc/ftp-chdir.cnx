@@ -1,0 +1,47 @@
+ftp_chdir -- 在 FTP 服务器上改变当前目录
+
+  bool ftp_chdir(resource ftp_stream, string directory)~
+
+将当前目录切换为指定的目录。
+
+{ftp_stream} FTP 连接的标识符。
+
+{directory} 目标目录。
+
+成功时返回 TRUE， 或者在失败时返回
+&false;.如果切换目录失败，PHP 还会发出一条警告。
+
+|ftp_chdir| 例子
+
+<?php >
+  // set up basic connection
+  $conn_id = ftp_connect($ftp_server);
+  
+  // login with username and password
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  
+  // check connection
+  if ((!$conn_id) || (!$login_result)) {
+      die("FTP connection has failed !");
+  }
+  
+  echo "Current directory: " . ftp_pwd($conn_id) . "\n";
+  
+  // try to change the directory to somedir
+  if (ftp_chdir($conn_id, "somedir")) {
+      echo "Current directory is now: " . ftp_pwd($conn_id) . "\n";
+  } else {
+      echo "Couldn't change directory\n";
+  }
+  
+  // close the connection 
+  ftp_close($conn_id); 
+?>
+
+
+
+
+
+|ftp_cdup| |ftp_pwd|
+
+vim:ft=help:

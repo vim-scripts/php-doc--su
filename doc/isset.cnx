@@ -1,0 +1,61 @@
+isset -- 检测变量是否设置
+
+  bool isset(mixed var [, mixed var [, mixed ...]])~
+
+如果 {var} 存在则返回 TRUE，否则返回 FALSE。
+
+如果已经使用 |unset| 释放了一个变量之后，它将不再是
+|isset|。若使用 |isset| 测试一个被设置成 NULL
+的变量，将返回 FALSE。同时要注意的是一个 NULL
+字节（"\0"）并不等同于 PHP 的 NULL 常数。
+
+|isset|
+只能用于变量，因为传递任何其它参数都将造成解析错误。若想检测常量是否已设置，可使用
+|defined| 函数。
+
+<?php >
+  $var = '';
+  
+  // 结果为 TRUE，所以后边的文本将被打印出来。
+  if (isset($var)) {
+      print "This var is set set so I will print.";
+  }
+  
+  // 在后边的例子中，我们将使用 var_dump 输出 isset() 的返回值。
+  
+  $a = "test";
+  $b = "anothertest";
+  
+  var_dump( isset($a) );      // TRUE
+  var_dump( isset ($a, $b) ); // TRUE
+  
+  unset ($a);
+  
+  var_dump( isset ($a) );     // FALSE
+  var_dump( isset ($a, $b) ); // FALSE
+  
+  $foo = NULL;
+  var_dump( isset ($foo) );   // FALSE
+?>
+
+这对于数组中的元素也同样有效：
+
+<?php >
+  $a = array ('test' => 1, 'hello' => NULL);
+  
+  var_dump( isset ($a['test']) );            // TRUE
+  var_dump( isset ($a['foo']) );             // FALSE
+  var_dump( isset ($a['hello']) );           // FALSE
+  
+  // 键 'hello' 的值等于 NULL，所以被认为是未置值的。
+  // 如果想检测 NULL 键值，可以试试下边的方法。 
+  var_dump( array_key_exists('hello', $a) ); // TRUE
+?>
+
+因为是一个语言构造器而不是一个函数，不能被 可变函数
+调用。
+
+参见 |empty|、|unset|、|defined|、|array_key_exists| 和错误控制 @
+运算符。
+
+vim:ft=help:

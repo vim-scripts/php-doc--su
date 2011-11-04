@@ -1,0 +1,36 @@
+ftp_close -- 关闭一个 FTP 连接
+
+  bool ftp_close(resource ftp_stream)~
+
+|ftp_close| 关闭给出的连接标识符并释放资源。
+
+调用本函数后，将不能再使用 FTP 连接，必须用 |ftp_connect|
+建立一个新连接。
+
+{ftp_stream} FTP 连接的标识符。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|ftp_close| 例子
+
+<?php >
+  // set up basic connection
+  $conn_id = ftp_connect($ftp_server);
+  
+  // login with username and password
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  
+  // print the current directory
+  echo ftp_pwd($conn_id); // /
+  
+  // close this connection
+  ftp_close($conn_id);
+?>
+
+
+
+
+
+|ftp_connect|
+
+vim:ft=help:

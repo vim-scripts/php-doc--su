@@ -1,0 +1,11 @@
+pcntl_waitpid -- 等待或返回fork的子进程状态
+
+  int pcntl_waitpid(int pid, int status [, int options])~
+
+挂起当前进程的执行直到参数{pid}指定的进程号的进程退出，
+或接收到一个信号要求中断当前进程或调用一个信号处理函数。
+
+如果{pid}指定的子进程在此函数调用时已经退出（俗称僵尸进程），此函数
+将立刻返回。关于waitpid更详细的规范请参见您系统的waitpid（2）手册。
+
+vim:ft=help:

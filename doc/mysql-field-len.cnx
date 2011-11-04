@@ -1,0 +1,9 @@
+mysql_field_len -- 返回指定字段的长度
+
+  int mysql_field_len(resource result, int field_offset)~
+
+|mysql_field_len| 返回指定字段的长度。
+
+为向下兼容仍然可以使用 |mysql_fieldlen|，但反对这样做。
+
+vim:ft=help:

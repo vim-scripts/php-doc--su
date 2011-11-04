@@ -1,0 +1,35 @@
+idate -- 将本地时间日期格式化为整数
+
+  int idate(string format [, int timestamp])~
+
+根据给定的格式字符对 {timestamp}
+格式化并返回数字结果。{timestamp}
+为可选项，默认值为本地当前时间，即 |time| 的值。
+
+和 |date| 不同，|idate| 只接受一个字符作为 {format} 参数。
+
+{format} 参数可识别以下字符 {format} 字符 说明 B Swatch
+Beat/Internet Time d 月份中的第几天 h 小时（12 小时格式） H
+小时（24 小时格式） i 分钟 I 如果启用夏时制则返回
+1，否则返回 0 L 如果是闰年则返回 1，否则返回 0 m
+月份的数字 s 秒数 t 本月的总天数 U 自 Unix 纪元（January 1
+1970 00:00:00 GMT）起的秒数——这和 |time| 作用相同 w
+星期中的第几天（星期天是 0） W ISO-8601
+格式年份中的第几个星期，每星期从星期一开始 y 年份（1
+或 2 位数字——见下面说明） Y 年份（4 位数字） z
+年份中的第几天 Z 以秒为单位的时区偏移量
+
+因为 |idate| 总是返回 integer，不能以“0”开头，因此 |idate|
+可能会返回比用户期望中要少的数字。见下面例子：
+
+<?php >
+  $timestamp = strtotime('1st January 2004'); //1072915200
+  
+  // 下面以两位数字格式显示年份，但是因为
+  // 以“0”打头，因此只会显示“4”
+  echo idate('y', $timestamp);
+?>
+
+参见 |date| 和 |time|。
+
+vim:ft=help:

@@ -1,0 +1,16 @@
+oci_new_collection -- 分配新的 collection 对象
+
+  OCI-Collection oci_new_collection(resource connection, string tdo [, string schema])~
+
+分配一个新的 collection 对象。{tdo}
+参数应为一个有效的名字类型（大写）。第三个可选参数
+{schema} 应指向建立名字对象的架构。|oci_new_collection|
+使用当前用户作为 {schema} 的默认值。
+
+|oci_new_collection| 如果出错返回 FALSE。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocinewcollection|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_new_collection| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

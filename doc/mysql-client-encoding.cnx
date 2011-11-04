@@ -1,0 +1,33 @@
+mysql_client_encoding -- 返回字符集的名称
+
+  string mysql_client_encoding([resource link_identifier])~
+
+从 MySQL 中取得 character_set 变量的值。
+
+{ link_identifier}MySQL 连接。如不指定连接标识，则使用由
+|mysql_connect|
+最近打开的连接。如果没有找到该连接，会尝试不带参数调用
+|mysql_connect|
+来创建。如没有找到连接或无法建立连接，则会生成
+E_WARNING 级别的错误。
+
+返回当前连接的默认字符集名称。
+
+|mysql_client_encoding| 例子
+
+<?php >
+  $link    = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+  $charset = mysql_client_encoding($link);
+  
+  echo "The current character set is: $charset\n";
+?>
+
+以上例程的输出类似于：
+
+  The current character set is: latin1
+
+
+
+|mysql_real_escape_string|
+
+vim:ft=help:

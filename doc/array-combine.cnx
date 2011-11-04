@@ -1,0 +1,34 @@
+array_combine --
+创建一个数组，用一个数组的值作为其键名，另一个数组的值作为其值
+
+  array array_combine(array keys, array values)~
+
+返回一个 array，用来自 {keys} 数组的值作为键名，来自
+{values} 数组的值作为相应的值。
+
+如果两个数组的单元数不同或者数组为空时返回 FALSE。
+
+简单的 |array_combine| 例子
+
+<?php >
+  $a = array('green', 'red', 'yellow');
+  $b = array('avocado', 'apple', 'banana');
+  $c = array_combine($a, $b);
+  
+  print_r($c);
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [green]  => avocado
+      [red]    => apple
+      [yellow] => banana
+  )
+
+
+
+参见 |array_merge|，|array_walk| 和 |array_values|。
+
+vim:ft=help:

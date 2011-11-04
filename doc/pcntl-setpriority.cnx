@@ -1,0 +1,22 @@
+pcntl_setpriority -- 修改任意进程的优先级
+
+  bool pcntl_setpriority(int priority [, int pid [, int process_identifier]])~
+
+|pcntl_setpriority| 设置进程号为 {pid}的进程的优先级。
+
+{priority} {priority}
+通常时-20至20这个范围内的值。默认优先级是0,值越小代表
+优先级越高。由于不同的系统类型以及内核版本下优先级可能不同，因此请参考您系统的setpriority（2）
+手册以获取详细的规范。
+
+{pid} 如果没有指定，默认是当前进程的进程号。
+
+{process_identifier} PRIO_PGRP（译注：获取进程组优先级）,
+PRIO_USER （译注：获取用户进程优先级）或
+PRIO_PROCESS（译注：默认值;获取进程优先级）三者之一。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|pcntl_getpriority|
+
+vim:ft=help:

@@ -1,0 +1,27 @@
+octdec -- 八进制转换为十进制
+
+  number octdec(string octal_string)~
+
+返回 {octal_string}
+参数所表示的八进制数的十进制等值。可转换的最大的数值为
+17777777777 或十进制的 2147483647。PHP 4.1.0
+开始，该函数可以处理大数字，这种情况下，它会返回 float
+类型。
+
+|octdec| 范例
+
+<?php >
+  echo octdec('77') . "\n";
+  echo octdec(decoct(45));
+?>
+
+以上例程会输出：
+
+  63
+  45
+
+
+
+参见 |decoct||bindec|，|hexdec| 和 |base_convert|.。
+
+vim:ft=help:

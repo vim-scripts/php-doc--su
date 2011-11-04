@@ -1,0 +1,52 @@
+natsort -- 用“自然排序”算法对数组排序
+
+  bool natsort(array array)~
+
+本函数实现了一个和人们通常对字母数字字符串进行排序的方法一样的排序算法并保持原有键／值的关联，这被称为“自然排序”。本算法和通常的计算机字符串排序算法（用于
+|sort|）的区别见下面示例。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|natsort| 例子
+
+<?php >
+  $array1 = $array2 = array("img12.png", "img10.png", "img2.png", "img1.png");
+  
+  sort($array1);
+  echo "Standard sorting\n";
+  print_r($array1);
+  
+  natsort($array2);
+  echo "\nNatural order sorting\n";
+  print_r($array2);
+?>
+
+以上例程会输出：
+
+  Standard sorting
+  Array
+  (
+      [0] => img1.png
+      [1] => img10.png
+      [2] => img12.png
+      [3] => img2.png
+  )
+  
+  Natural order sorting
+  Array
+  (
+      [3] => img1.png
+      [2] => img2.png
+      [1] => img10.png
+      [0] => img12.png
+  )
+
+更多信息见 Martin Pool 的 Natural Order String Comparison 页面。
+
+
+
+
+
+参见 |natcasesort|，|strnatcmp| 和 |strnatcasecmp|。
+
+vim:ft=help:

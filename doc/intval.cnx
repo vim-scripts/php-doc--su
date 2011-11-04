@@ -1,0 +1,15 @@
+intval -- 获取变量的整数值
+
+  int intval(mixed var [, int base])~
+
+通过使用特定的进制转换（默认是十进制），返回变量 {var}
+的 integer 数值。
+
+{var} 可以是任何标量类型。|intval| 不能用于 array 或 object。
+
+除非 {var} 参数是字符串，否则 |intval| 的 {base}
+参数不会有效果。
+
+参见 |floatval|、|strval|、|settype| 和 类型戏法。
+
+vim:ft=help:

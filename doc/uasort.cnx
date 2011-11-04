@@ -1,0 +1,15 @@
+uasort --
+使用用户自定义的比较函数对数组中的值进行排序并保持索引关联
+
+  bool uasort(array array, callback cmp_function)~
+
+本函数对数组排序并保持索引和单元之间的关联。主要用于对那些单元顺序很重要的结合数组进行排序。比较函数是用户自定义的。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+用户自定义比较函数的例子请参考 |usort| 和 |uksort|。
+
+参见 |usort|，|uksort|，|sort|，|asort|，|arsort|，|ksort| 和
+|rsort|。
+
+vim:ft=help:

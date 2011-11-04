@@ -1,0 +1,28 @@
+array_sum -- 计算数组中所有值的和
+
+  number array_sum(array array)~
+
+|array_sum|
+将数组中的所有值的和以整数或浮点数的结果返回。
+
+|array_sum| 例子
+
+<?php >
+  $a = array(2, 4, 6, 8);
+  echo "sum(a) = " . array_sum($a) . "\n";
+  
+  $b = array("a" => 1.2, "b" => 2.3, "c" => 3.4);
+  echo "sum(b) = " . array_sum($b) . "\n";
+?>
+
+以上例程会输出：
+
+  sum(a) = 20
+  sum(b) = 6.9
+
+
+
+PHP 4.2.1
+之前的版本修改了传入的数组本身，将其中的字符串值转换成数值（大多数情况下都转换成了零，根据具体值而定）。
+
+vim:ft=help:

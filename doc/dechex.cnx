@@ -1,0 +1,25 @@
+dechex -- 十进制转换为十六进制
+
+  string dechex(int number)~
+
+返回一字符串，包含有给定 {number}
+参数的十六进制表示。所能转换的最大数值为十进制的
+4294967295，其结果为 "ffffffff"。
+
+|dechex| 范例
+
+<?php >
+  echo dechex(10) . "\n";
+  echo dechex(47);
+?>
+
+以上例程会输出：
+
+  a
+  2f
+
+
+
+参见 |hexdec|，|decbin|，|decoct| 和 |base_convert|.。
+
+vim:ft=help:

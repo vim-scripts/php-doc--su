@@ -1,0 +1,33 @@
+asort -- 对数组进行排序并保持索引关系
+
+  bool asort(array array [, int sort_flags])~
+
+本函数对数组进行排序，数组的索引保持和单元的关联。主要用于对那些单元顺序很重要的结合数组进行排序。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|asort| 例子
+
+<?php >
+  $fruits = array("d" => "lemon", "a" => "orange", "b" => "banana", "c" => "apple");
+  asort($fruits);
+  foreach ($fruits as $key => $val) {
+      echo "$key = $val\n";
+  }
+?>
+
+以上例程会输出：
+
+  c = apple
+  b = banana
+  d = lemon
+  a = orange
+
+fruits 被按照字母顺序排序，并且单元的索引关系不变。
+
+可以用可选的参数 {sort_flags} 改变排序的行为，详情见
+|sort|。
+
+参见 |arsort|，|rsort|，|ksort| 和 |sort|。
+
+vim:ft=help:

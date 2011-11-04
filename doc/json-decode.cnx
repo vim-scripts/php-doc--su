@@ -1,0 +1,45 @@
+json_decode -- 对 JSON 格式的字符串进行编码
+
+  mixed json_decode(string json [, bool assoc])~
+
+接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+
+{json} 待解码的 {json} string 格式的字符串。
+
+{assoc} 当该参数为 TRUE 时，将返回 array 而非 object 。
+
+Returns an object or if the optional {assoc} parameter is TRUE, an associative
+array is instead returned.
+
+|json_decode| 的例子
+
+<?php >
+  $json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
+  
+  var_dump(json_decode($json));
+  var_dump(json_decode($json, true));
+?>
+
+以上例程会输出：
+
+  object(stdClass)#1 (5) {
+      ["a"] => int(1)
+      ["b"] => int(2)
+      ["c"] => int(3)
+      ["d"] => int(4)
+      ["e"] => int(5)
+  }
+  
+  array(5) {
+      ["a"] => int(1)
+      ["b"] => int(2)
+      ["c"] => int(3)
+      ["d"] => int(4)
+      ["e"] => int(5)
+  }
+
+
+
+|json_encode|
+
+vim:ft=help:

@@ -1,0 +1,44 @@
+is_scalar -- 检测变量是否是一个标量
+
+  bool is_scalar(mixed var)~
+
+如果给出的变量参数 {var} 是一个标量，|is_scalar| 返回
+TRUE，否则返回 FALSE。
+
+标量变量是指那些包含了 integer、float、string 或
+boolean的变量，而 array、object 和 resource 则不是标量。
+
+<?php >
+  function show_var($var) {
+      if (is_scalar($var)) {
+          echo $var;
+      } else {
+          var_dump($var);
+      }
+  }
+  $pi = 3.1416;
+  $proteins = array("hemoglobin", "cytochrome c oxidase", "ferredoxin");
+  
+  show_var($pi);
+  // 打印：3.1416
+  
+  show_var($proteins)
+  // 打印：
+  // array(3) {
+  //   [0]=>
+  //   string(10) "hemoglobin"
+  //   [1]=>
+  //   string(20) "cytochrome c oxidase"
+  //   [2]=>
+  //   string(10) "ferredoxin"
+  // }
+?>
+
+尽管当前的 resource 类型是居于整数的，但 |is_scalar|
+不会把它们当作是标量，因为资源是抽象数据类型。不能依赖于执行细节，因为它可能会改变。
+
+参见
+|is_bool|、|is_numeric|、|is_float|、|is_int|、|is_real|、|is_string|、|is_object|、|is_array|
+和 |is_integer|。
+
+vim:ft=help:

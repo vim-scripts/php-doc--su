@@ -1,0 +1,58 @@
+oci_commit -- 提交未执行的事务处理
+
+  bool oci_commit(resource connection)~
+
+|oci_commit| 将 Oracle 连接 {connection}
+上正在运行的事务中所有未执行的语句提交处理。
+
+|oci_commit| 例子
+
+<?php >
+      // Login to Oracle server
+      $conn = oci_connect('scott', 'tiger');
+  
+      // Parse SQL
+      $stmt = oci_parse($conn, "
+                                INSERT INTO
+                                           employees (name, surname)
+                                     VALUES
+                                           ('Maxim', 'Maletsky')
+                               ");
+  
+      /* Execute statement
+         OCI_DEFAULT tells oci_execute()
+         not to commit statement immediately */
+      oci_execute($stmt, OCI_DEFAULT);
+  
+      /*
+      ....
+      Parsing and executing other statements here ...
+      ....
+      */
+  
+      // Commit transaction
+      $committed = oci_commit($conn);
+  
+      // Test whether commit was successful. If error occurred, return error message
+      if (!$committed) {
+          $error = oci_error($conn);
+          echo 'Commit failed. Oracle reports: ' . $error['message'];
+      }
+?>
+
+
+
+
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+当关闭连接或脚本结束时（看哪个先）事务会自动回卷。需要明确地调用
+|oci_commit| 来提交事务，或 |oci_rollback| 来中止事务。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocicommit|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_commit| 的别名。不过其已被废弃，不推荐使用。
+
+参见 |oci_rollback| 和 |oci_execute|。
+
+vim:ft=help:

@@ -1,0 +1,15 @@
+snmpget -- 获取一个 SNMP 对象
+
+  string snmpget(string hostname, string community, string object_id [, int timeout [, int retries]])~
+
+成功则返回 SNMP 的对象值，失败则返回 FALSE。
+
+函数 |snmpget| 用于读取由 {object_id} 指定的 SNMP
+对象值。{hostname} 指定 SNMP 代理，而 {community}
+参数指定具有读权限的域的名字。
+
+<?php >
+  $syscontact = snmpget("127.0.0.1", "public", "system.SysContact.0");
+?>
+
+vim:ft=help:

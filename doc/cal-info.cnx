@@ -1,0 +1,76 @@
+cal_info -- 返回选定历法的信息
+
+  array cal_info([int calendar])~
+
+|cal_info|返回选定 {calendar}的作息。
+
+历法信息以一个数组的形式返回，包含的元素有历法名称，历法代码，月份，月份的缩写和单月的最多天数。作为参数的{calendar}历法名字可以有：
+0 or CAL_GREGORIAN - Gregorian Calendar
+
+1 or CAL_JULIAN - Julian Calendar
+
+2 or CAL_JEWISH - Jewish Calendar
+
+3 or CAL_FRENCH - French Revolutionary Calendar
+
+如果没有指定参数{calendar}，所支持的所有历法将以数组形式返回。
+
+{calendar}
+返回信息所指定的历法名称，如果没有指定历法，将返回所有历法。
+
+
+
+版本 说明 Since 5.0
+参数{calendar}作为可选项，缺省时默认值为"所有历法"。
+
+|cal_info| example
+
+<?php >
+  $info = cal_info(0);
+  print_r($info);
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [months] => Array
+          (
+              [1] => January
+              [2] => February
+              [3] => March
+              [4] => April
+              [5] => May
+              [6] => June
+              [7] => July
+              [8] => August
+              [9] => September
+              [10] => October
+              [11] => November
+              [12] => December
+          )
+  
+      [abbrevmonths] => Array
+          (
+              [1] => Jan
+              [2] => Feb
+              [3] => Mar
+              [4] => Apr
+              [5] => May
+              [6] => Jun
+              [7] => Jul
+              [8] => Aug
+              [9] => Sep
+              [10] => Oct
+              [11] => Nov
+              [12] => Dec
+          )
+  
+      [maxdaysinmonth] => 31
+      [calname] => Gregorian
+      [calsymbol] => CAL_GREGORIAN
+  )
+
+
+
+vim:ft=help:

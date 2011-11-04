@@ -1,0 +1,47 @@
+fseek -- 在文件指针中定位
+
+  int fseek(resource handle, int offset [, int whence])~
+
+在与 {handle}
+关联的文件中设定文件指针位置。新位置从文件头开始以字节数度量，是以
+{whence} 指定的位置加上 {offset}。{whence} 的值定义为： SEEK_SET
+- 设定位置等于 {offset} 字节。 SEEK_CUR -
+设定位置为当前位置加上 {offset}。 SEEK_END -
+设定位置为文件尾加上
+{offset}。（要移动到文件尾之前的位置，需要给 {offset}
+传递一个负值。）
+
+如果没有指定 {whence}，默认为 SEEK_SET。
+
+成功则返回 0；否则返回 -1。注意移动到 EOF
+之后的位置不算错误。
+
+|fseek| 例子
+
+<?php >
+  $fp = fopen('somefile.txt', 'r');
+  
+  // read some data
+  $data = fgets($fp, 4096);
+  
+  // move back to the begining of the file
+  // same as rewind($fp);
+  fseek($fp, 0);
+?>
+
+
+
+
+
+可能不能用于在 |fopen| 中以 "http://" 或 "ftp://"
+格式打开所返回的文件指针。在附加模式（加参数 "a"
+打开文件）中 |ftell| 会返回未定义错误。
+
+{whence} 参数是 PHP 4.0.0 之后增加的。
+
+如果使用附加模试（"a" 或
+"a+"），任何写入文件数据都会被附加上去，而文件的位置将会被忽略。
+
+参见 |ftell| 和 |rewind|。
+
+vim:ft=help:

@@ -1,0 +1,31 @@
+array_unshift -- 在数组开头插入一个或多个单元
+
+  int array_unshift(array array, mixed var [, mixed ...])~
+
+|array_unshift| 将传入的单元插入到 {array}
+数组的开头。注意单元是作为整体被插入的，因此传入单元将保持同样的顺序。所有的数值键名将修改为从零开始重新计数，所有的文字键名保持不变。
+
+返回 {array} 数组新的单元数目。
+
+|array_unshift| 例子
+
+<?php >
+  $queue = array("orange", "banana");
+  array_unshift($queue, "apple", "raspberry");
+?>
+
+这将使 $queue 包含如下单元：
+
+  Array
+  (
+      [0] => apple
+      [1] => raspberry
+      [2] => orange
+      [3] => banana
+  )
+
+
+
+参见 |array_shift|，|array_push| 和 |array_pop|。
+
+vim:ft=help:

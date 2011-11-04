@@ -1,0 +1,15 @@
+iterator_to_array -- 将迭代器中的元素拷贝到数组
+
+  array iterator_to_array(Traversable iterator [, bool use_keys])~
+
+本函数还未编写文档，仅有参数列表。
+
+将迭代器中的元素拷贝到数组。
+
+{iterator} 要未拷贝的迭代器。
+
+{use_keys}
+
+拷贝后的数组。
+
+vim:ft=help:

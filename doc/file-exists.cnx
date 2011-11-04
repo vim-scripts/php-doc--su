@@ -1,0 +1,39 @@
+file_exists -- 检查文件或目录是否存在
+
+  bool file_exists(string filename)~
+
+如果由 {filename} 指定的文件或目录存在则返回
+TRUE，否则返回 FALSE。
+
+在 Windows 中要用 //computername/share/filename 或者
+\\computername\share\filename 来检查网络中的共享文件。
+
+测试一个文件是否存在
+
+<?php >
+  $filename = '/path/to/foo.txt';
+  
+  if (file_exists($filename)) {
+      echo "The file $filename exists";
+  } else {
+      echo "The file $filename does not exist";
+  }
+?>
+
+
+
+
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+如果因为安全模式的限制而导致不能访问文件的话，该函数会返回
+FALSE。然而，如果文件在 safe_mode_include_dir
+所指定的目录内的话，仍然可以使用 include 来包含。
+
+参见 |is_readable|，|is_writable|，|is_file| 和 |file|。
+
+vim:ft=help:

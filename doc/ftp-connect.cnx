@@ -1,0 +1,33 @@
+ftp_connect -- 建立一个新的 FTP 连接
+
+  resource ftp_connect(string host [, int port [, int timeout]])~
+
+如果成功返回一个连接标识，失败则返回 FALSE 。
+
+|ftp_connect| 打开一个 FTP 连接，参数 {host}
+为要连接的服务器。{host}
+后面不应以斜线结尾，前面也不需要用 ftp://
+开头。可选参数{port} 为要连接到的 FTP
+器的端口号，如果没有设置或者为0，则会使用默认的端口
+21 来连接。
+
+可选参数 {timeout}
+用来设置网络传输的超时时间限制。如果此选项留空，则默认的值为
+90 秒。超时时间可以在任何时候通过函数 |ftp_set_option| 及
+|ftp_get_option| 来改变和获取。 参数 {timeout} 仅适用于 PHP 4.2.0
+及以上版本.
+
+|ftp_connect| 例子
+
+<?php >
+  $ftp_server = "ftp.example.com";
+  
+  // set up a connection or die
+  $conn_id = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server");
+?>
+
+
+
+参见 |ftp_close| 和 |ftp_ssl_connect|。
+
+vim:ft=help:

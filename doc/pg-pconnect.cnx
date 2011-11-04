@@ -1,0 +1,21 @@
+pg_pconnect -- 打开一个持久的 PostgreSQL 连接
+
+  resource pg_pconnect(string connection_string)~
+
+|pg_pconnect| 打开一个到 PostgreSQL
+数据库的持久连接。返回其它 PostgreSQL
+函数所需要的连接资源号。
+
+{connection_string} 参数的定义见 |pg_connect|。
+
+要打开持久连接功能，php.ini 中的 pgsql.allow_persistent
+参数必须为 "On"（也是默认值）。 最大持久连接数目由
+php.ini 中的 pgsql.max_persistent 参数定义（默认为 -1
+表示没有限制）。所有连接的数目可由 php.ini 中的
+pgsql.max_links 参数设置。
+
+|pg_close| 不能关闭由 |pg_pconnect| 打开的持久连接。
+
+参见 |pg_connect| 以及持久数据库连接。
+
+vim:ft=help:

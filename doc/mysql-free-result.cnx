@@ -1,0 +1,15 @@
+mysql_free_result -- 释放结果内存
+
+  bool mysql_free_result(resource result)~
+
+|mysql_free_result| 将释放所有与结果标识符 {result}
+所关联的内存。
+
+|mysql_free_result|
+仅需要在考虑到返回很大的结果集时会占用多少内存时调用。在脚本结束后所有关联的内存都会被自动释放。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+为向下兼容仍然可以使用 |mysql_freeresult|，但反对这样做。
+
+vim:ft=help:

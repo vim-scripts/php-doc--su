@@ -1,0 +1,12 @@
+pg_untrace -- 关闭 PostgreSQL 连接的追踪功能
+
+  bool pg_untrace([resource connection])~
+
+停止由 |pg_trace| 启动的追踪功能。{connection}
+指定了被追踪的连接号，默认为上一个打开的连接。
+
+本函数总是返回 TRUE。
+
+参见 |pg_trace|。
+
+vim:ft=help:

@@ -1,0 +1,8 @@
+pg_tty -- 返回该连接的 tty 号
+
+  string pg_tty(resource connection)~
+
+|pg_tty| 返回指定 PostgreSQL {connection}
+资源在服务器端输出调试信息的 tty 号。
+
+vim:ft=help:

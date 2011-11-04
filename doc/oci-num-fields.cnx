@@ -1,0 +1,43 @@
+oci_num_fields -- 返回结果列的数目
+
+  int oci_num_fields(resource statement)~
+
+|oci_num_fields| 返回 {statement} 中的列的数目。
+
+|oci_num_fields| 例子
+
+<?php >
+      echo "<pre>\n";
+      $conn = oci_connect("scott", "tiger");
+      $stmt = oci_parse($conn, "select * from emp");
+  
+      oci_execute($stmt);
+  
+      while (oci_fetch($stmt)) {
+          echo "\n";
+          $ncols = oci_num_fields($stmt);
+          for ($i = 1; $i <= $ncols; $i++) {
+              $column_name  = oci_field_name($stmt, $i);
+              $column_value = oci_result($stmt, $i);
+              echo $column_name . ': ' . $column_value . "\n";
+          }
+          echo "\n";
+      }
+  
+      oci_free_statement($stmt);
+      oci_close($conn);
+  
+      echo "</pre>";
+?>
+
+
+
+
+
+|oci_num_fields| 在出错时返回 FALSE。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocinumcols|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_num_fields| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

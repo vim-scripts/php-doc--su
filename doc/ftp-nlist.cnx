@@ -1,0 +1,48 @@
+ftp_nlist -- 返回给定目录的文件列表
+
+  array ftp_nlist(resource ftp_stream, string directory)~
+
+{ftp_stream} FTP 连接资源。
+
+{directory}
+指定要列表的目录。本参数接受带参数的形式，例如：
+ftp_nlist($conn_id, "-la /you/dir");
+注意此参数不对传入值做处理，在目录或者文件名包括空格或特殊的情况下，可能会存在问题。
+
+如果成功则返回给定目录下的文件名组成的数组，否则返回
+FALSE。
+
+|ftp_nlist| 例子
+
+<?php >
+  // set up basic connection
+  $conn_id = ftp_connect($ftp_server);
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  
+  // check connection
+  if ((!$conn_id) || (!$login_result)) {
+      die("FTP connection has failed !");
+  }
+   
+  // get contents of the root directory
+  $contents = ftp_nlist($conn_id, "/");
+  
+  // output $contents
+  var_dump($contents);
+?>
+
+以上例程的输出类似于：
+
+  array(3) {
+    [0]=>
+    string(11) "public_html"
+    [1]=>
+    string(10) "public_ftp"
+    [2]=>
+    string(3) "www"
+
+
+
+|ftp_rawlist|
+
+vim:ft=help:

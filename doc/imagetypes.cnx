@@ -1,0 +1,20 @@
+imagetypes -- 返回当前 PHP 版本所支持的图像类型
+
+  int imagetypes()~
+
+本函数以比特字段方式返回与当前 PHP 版本关联的 GD
+库所支持的图像格式。将返回以下结果，IMG_GIF | IMG_JPG |
+IMG_PNG | IMG_WBMP| IMG_XPM。 例如要检查是否支持 PNG，这样做：
+|imagetypes| 例子
+
+<?php >
+  if (imagetypes() &amp; IMG_PNG) {
+      echo "PNG Support is enabled";
+  }
+?>
+
+
+
+
+
+vim:ft=help:

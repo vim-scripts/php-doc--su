@@ -1,0 +1,53 @@
+substr_count -- 计算字串出现的次数
+
+  int substr_count(string haystack, string needle [, int offset [, int length]])~
+
+|substr_count| 返回子字符串{needle} 在字符串 {haystack}
+中出现的次数。注意 {needle} 区分大小写。
+
+该函数不会计算重叠字符串。参见下面的例子。
+
+{haystack} 在此字符串中进行搜索。
+
+{needle} 要搜索的字符串。
+
+{offset} 开始计数的偏移位置。
+
+{length}
+指定偏移位置之后的最大搜索长度。如果偏移量加上这个长度的和大于
+{haystack} 的总长度，则打印警告信息。
+
+该函数返回整型。
+
+版本 说明 5.1.0 新增 {offset} 和 {length} 参数。
+
+|substr_count| 范例
+
+<?php >
+  $text = 'This is a test';
+  echo strlen($text); // 14
+  
+  echo substr_count($text, 'is'); // 2
+  
+  // 字符串被简化为 's is a test'，因此输出 1
+  echo substr_count($text, 'is', 3);
+  
+  // 字符串被简化为 's i'，所以输出 0
+  echo substr_count($text, 'is', 3, 3);
+  
+  // 因为 5+10 > 14，所以生成警告
+  echo substr_count($text, 'is', 5, 10);
+  
+  
+  // 输出 1，因为该函数不计算重叠字符串
+  $text2 = 'gcdgcdgcd';
+  echo substr_count($text2, 'gcdgcd');
+?>
+
+
+
+
+
+|count_chars| |strpos| |substr| |strstr|
+
+vim:ft=help:

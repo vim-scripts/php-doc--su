@@ -1,0 +1,9 @@
+snmprealwalk -- 返回指定的所有对象，包括它们各自的对象 ID
+
+  array snmprealwalk(string host, string community, string object_id [, int timeout [, int retries]])~
+
+本函数还未编写文档，仅有参数列表。
+
+
+
+vim:ft=help:

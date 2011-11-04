@@ -1,0 +1,42 @@
+dirname -- 返回路径中的目录部分
+
+  string dirname(string path)~
+
+给出一个包含有指向一个文件的全路径的字符串，本函数返回去掉文件名后的目录名。
+
+在 Windows
+中，斜线（/）和反斜线（\）都可以用作目录分隔符。在其它环境下是斜线（/）。
+
+|dirname| 例子
+
+<?php >
+  $path = "/etc/passwd";
+  $file = dirname($path); // $file is set to "/etc"
+?>
+
+
+
+
+
+在 PHP 4.0.3 中，|dirname| 被修正为 POSIX
+兼容。本质上就意味着如果在 {path}
+中没有斜线，则返回一个点（'.'），表示当前目录。否则返回的是把
+{path} 中结尾的
+/component（最后一个斜线以及后面部分）去掉之后的字符串。注意这意味着在老的函数返回一个空字符串的情形下通常从
+|dirname| 得到的是斜线或者一个点。
+
+|dirname| 从 PHP 4.3.0 开始有所改变。请看以下例子：
+
+<?php >
+  // PHP 4.3.0 以前
+  dirname('c:/'); // 返回 '.'
+  
+  // PHP 4.3.0 以后
+  dirname('c:/'); // 返回 'c:'
+?>
+
+|dirname| 的操作从 PHP 5.0.0 版开始是二进制安全的。
+
+参见 |basename|，|pathinfo| 和 |realpath|。
+
+vim:ft=help:

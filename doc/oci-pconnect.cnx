@@ -1,0 +1,50 @@
+oci_pconnect -- 使用一个持久连接连到 Oracle 数据库
+
+  resource oci_pconnect(string username, string password [, string db [, string charset [, int session_mode]]])~
+
+|oci_pconnect| 创建一个到 Oracle
+服务器的持久连接并登录。持久连接会被缓冲并在请求之间重复使用，可以降低每个页面加载的消耗。一个典型的
+PHP 应用程序对于每个 Apache 子进程（或者 PHP FastCGI/CGI
+进程）会有一个打开的持久连接到 Oracle
+服务器。更多信息见数据库持久连接一节。
+
+自 OCI8 扩展库版本 1.1 起，持久 Oracle
+连接的生命周期和最大数目可以通过设定以下配置选项来调整：oci8.persistent_timeout，oci8.ping_interval
+和 oci8.max_persistent。
+
+可选的第三个参数可以是本地 Oracle 实例的名字或者是在
+tnsnames.ora 的条目中的名字。如果没有指定第三个参数， PHP
+使用环境变量 ORACLE_SID 和 TWO_TASK 来分别确定本地 Oracle
+实例的名字和 tnsnames.ora 的位置。
+
+{session_mode} 参数自版本 1.1
+起可用并接受如下值：OCI_DEFAULT，OCI_SYSOPER 和
+OCI_SYSDBA。如果指定了 OCI_SYSOPER 或 OCI_SYSDBA
+其中之一，|oci_new_connect|
+将尝试使用外部认证信息建立特权连接。特权连接默认被禁止。要启用，需要将
+oci8.privileged_connect 设为 On。
+
+如果 PHP 用的是 Oracle Instant
+Client，可以用容易的命名连接方法，说明见这里：http://download.oracle.com/docs/cd/E11882_01/network.112/e10836/naming.htm。基本上这意味着可以指定
+"//db_host[:port]/database_name"
+作为数据库名。但如果想用命名的旧方法则必须设定
+ORACLE_HOME 或 TNS_ADMIN 二者之一。
+
+使用 Oracle
+客户端库来确定字符集。字符集不需要与数据库的字符集相匹配。如果不匹配，Oracle
+会尽可能地将数据从数据库字符集进行转换。因为依赖于字符集，可能不能给出可用的结果。转换也增加一些时间开销。
+
+如果不指定，Oracle 客户端用 NLS_LANG
+环境变量来决定字符集。
+
+传递此参数可减少连接时间。
+
+|oci_pconnect| 返回连接标识符，出错则返回 FALSE。
+
+在 PHP 5.0.0 之前的版本必须使用 |ociplogon|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_pconnect| 的别名。不过其已被废弃，不推荐使用。
+
+参见 |oci_connect| 和 |oci_new_connect|。
+
+vim:ft=help:

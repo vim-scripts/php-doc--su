@@ -1,0 +1,9 @@
+cosh -- 双曲余弦
+
+  float cosh(float arg)~
+
+返回 {arg} 的双曲余弦值，定义为 (exp(arg) + exp(-arg))/2。
+
+参见： |cos|、 |acosh|、 |sin|和 |tan|。
+
+vim:ft=help:

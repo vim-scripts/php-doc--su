@@ -1,0 +1,33 @@
+md5_file -- 计算指定文件的 MD5 散列值
+
+  string md5_file(string filename [, bool raw_output])~
+
+使用 RSA 数据安全公司的 MD5 报文算法计算 {filename} 文件的
+MD5 散列值并返回。该散列值为 32 字符的十六进制数字。
+
+{filename} 文件名
+
+{raw_output} 如果被设置为 TRUE，那么报文摘要将以原始的 16
+位二进制格式返回。
+
+成功返回字符串，否则返回 FALSE。
+
+版本 说明 5.0.0 新增 {raw_output} 参数。 5.1.0 函数改用流
+API。这意味着能够配合封装器使用该函数，比如
+md5_file('http://example.com/..')。
+
+|md5_file| 使用范例
+
+<?php >
+  $file = 'php-5.3.0alpha2-Win32-VC9-x64.zip';
+  
+  echo 'MD5 file hash of ' . $file . ': ' . md5_file($file);
+?>
+
+
+
+
+
+|md5| |sha1_file| |crc32|
+
+vim:ft=help:

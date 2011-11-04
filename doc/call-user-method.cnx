@@ -1,0 +1,41 @@
+call_user_method -- 对特定对象调用用户方法（已废弃）
+
+  mixed call_user_method(string method_name, object obj [, mixed parameter [, mixed ...]])~
+
+|call_user_method| 函数从 PHP 4.1.0 开始已经停用，使用
+|call_user_func| 函数和 array(&$obj, "method_name") 语法代替。
+
+从用户定义的 {obj} 对象中调用 {method_name}
+指的方法。下边是用法示例，我们定义了一个类，接着创建了一个对象实例，然后使用
+|call_user_method| 间接调用它的 print_info 方法。
+
+<?php >
+  class Country {
+      var $NAME;
+      var $TLD;
+      
+      function Country($name, $tld)
+      {
+          $this->NAME = $name;
+          $this->TLD = $tld;
+      }
+  
+      function print_info($prestr="")
+      {
+          echo $prestr . "Country: " . $this->NAME . "\n";
+          echo $prestr . "Top Level Domain: " . $this->TLD . "\n";
+      }
+  }
+  
+  $cntry = new Country("Peru", "pe");
+  
+  echo "* Calling the object method directly\n";
+  $cntry->print_info();
+  
+  echo "\n* Calling the same method indirectly\n";
+  call_user_method("print_info", $cntry, "\t");
+?>
+
+参见 |call_user_func_array| 和 |call_user_func|。
+
+vim:ft=help:

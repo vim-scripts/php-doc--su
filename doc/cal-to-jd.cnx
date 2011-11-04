@@ -1,0 +1,25 @@
+cal_to_jd -- 从一个支持的历法转变为Julian Day计数。
+
+  int cal_to_jd(int calendar, int month, int day, int year)~
+
+|cal_to_jd|函数从一个给定的历法日期计算出Julian天数，支持的历法有
+CAL_GREGORIAN，CAL_JULIAN，CAL_JEWISH和CAL_FRENCH。
+
+{calendar}
+选定的历法，可以是CAL_GREGORIAN，CAL_JULIAN，CAL_JEWISH或CAL_FRENCH中的某一个。
+
+{month}
+数字形式的月份，根据选定的{calendar}历法来确定范围。
+
+{day}
+数字形式的日期，根据选定的{calendar}历法来确定范围。
+
+{year}
+数字形式的年份，根据选定的{calendar}历法来确定范围。
+
+一个Julian天数。
+
+|cal_from_jd| |frenchtojd| |gregoriantojd| |jewishtojd| |juliantojd|
+|unixtojd|
+
+vim:ft=help:

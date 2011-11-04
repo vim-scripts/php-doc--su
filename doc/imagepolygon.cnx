@@ -1,0 +1,43 @@
+imagepolygon -- 画一个多边形
+
+  bool imagepolygon(resource image, array points, int num_points, int color)~
+
+|imagepolygon| 在图像中创建一个多边形。{points} 是一个 PHP
+数组，包含了多边形的各个顶点坐标，即 points[0] =
+x0，points[1] = y0，points[2] = x1，points[3] =
+y1，以此类推。{num_points} 是顶点的总数。
+
+|imagepolygon| 例子
+
+<?php >
+  // create a blank image
+  $image = imagecreatetruecolor(400, 300);
+  
+  // fill the background color
+  $bg = imagecolorallocate($image, 0, 0, 0);
+  
+  // choose a color for the polygon
+  $col_poly = imagecolorallocate($image, 255, 255, 255);
+  
+  // draw the polygon
+  imagepolygon($image,
+               array (
+                      0, 0,
+                      100, 200,
+                      300, 200
+               ),
+               3,
+               $col_poly);
+  
+  // output the picture
+  header("Content-type: image/png");
+  imagepng($image);
+?>
+
+
+
+
+
+参见 |imagecreate| 和 |imagecreatetruecolor|。
+
+vim:ft=help:

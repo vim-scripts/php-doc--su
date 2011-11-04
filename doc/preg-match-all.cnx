@@ -1,0 +1,69 @@
+preg_match_all -- 执行一个全局正则表达式匹配
+
+  int preg_match_all(string pattern, string subject, array matches [, int flags [, int offset]])~
+
+搜索{subject}中所有匹配{pattern}给定正则表达式
+的匹配结果并且将它们以{flag}指定顺序输出到{matches}中.
+
+自第一个匹配找到后, 子序列继续从最后一次匹配位置搜索.
+
+{pattern} 要搜索的模式, 字符串形式.
+
+{subject} 输入字符串.
+
+{matches} 多维数组, 作为输出参数输出所有匹配结果,
+数组排序通过{flags}指定.
+
+{flags}
+可以结合下面标记使用(注意不能同时使用PREG_PATTERN_ORDER和
+PREG_SET_ORDER): PREG_PATTERN_ORDER
+结果排序为$matches[0]保存完整模式的所有匹配, $matches[1]
+保存第一个子组的所有匹配, 以此类推.
+
+<?php >
+  preg_match_all("|<[^>]+>(.*)</[^>]+>|U",
+      "<b>example: </b><div align=left>this is a test</div>",
+      $out, PREG_PATTERN_ORDER);
+  echo $out[0][0] . ", " . $out[0][1] . "\n";
+  echo $out[1][0] . ", " . $out[1][1] . "\n";
+?>
+
+以上例程会输出：
+
+  <b>example: </b>, <div align=left>this is a test</div>
+  example: , this is a test
+
+因此, $out[0]是包含匹配完整模式的字符串的数组,
+$out[1]是包含闭合标签内的字符串的数组.
+
+PREG_SET_ORDER
+结果排序为$matches[0]包含第一次匹配得到的所有匹配(包含子组),
+$matches[1]是包含第二次匹配到的所有匹配(包含子组)的数组,
+以此类推.
+
+<?php >
+  preg_match_all("|<[^>]+>(.*)</[^>]+>|U",
+      "<b>example: </b><div align=\"left\">this is a test</div>",
+      $out, PREG_SET_ORDER);
+  echo $out[0][0] . ", " . $out[0][1] . "\n";
+  echo $out[1][0] . ", " . $out[1][1] . "\n";
+?>
+
+以上例程会输出：
+
+  <b>example: </b>, example:
+  <div align="left">this is a test</div>, this is a test
+
+PREG_OFFSET_CAPTURE 如果这个标记被传递,
+每个发现的匹配返回时会增加它相对目标字符串的偏移量.
+注意这会改变{matches}中的每一个匹配结果字符串元素, 使其
+成为一个第0个元素为匹配结果字符串, 第1个元素为
+匹配结果字符串在{subject}中的偏移量.
+
+如果没有给定排序标记, 假定设置为PREG_PATTERN_ORDER.
+
+{offset} 通常,
+查找时从目标字符串的开始位置开始.可选参数{offset}用于
+从目标字符串中指定位置开始搜索(单位是字节).
+
+vim:ft=help:

@@ -1,0 +1,28 @@
+str_shuffle -- 随机打乱一个字符串
+
+  string str_shuffle(string str)~
+
+|str_shuffle|
+函数打乱一个字符串，使用任何一种可能的排序方案。
+
+{str} 输入字符串。
+
+返回打乱后的字符串。
+
+|str_shuffle| 范例
+
+<?php >
+  $str = 'abcdef';
+  $shuffled = str_shuffle($str);
+  
+  // 输出类似于: bfdaec
+  echo $shuffled;
+?>
+
+
+
+
+
+|shuffle| |rand|
+
+vim:ft=help:

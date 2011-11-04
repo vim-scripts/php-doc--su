@@ -1,0 +1,61 @@
+str_split -- 将字符串转换为数组
+
+  array str_split(string string [, int split_length])~
+
+将一个字符串转换为数组。
+
+{string} 输入字符串。
+
+{split_length} 每一段的长度。
+
+如果指定了可选的 {split_length}
+参数，返回数组中的每个元素均为一个长度为 {split_length}
+的字符块，否则每个字符块为单个字符。
+
+如果 {split_length} 小于 1，返回 FALSE。如果 {split_length}
+参数超过了 {string} 超过了字符串 {string}
+的长度，整个字符串将作为数组仅有的一个元素返回。
+
+|str_split| 使用范例
+
+<?php >
+  $str = "Hello Friend";
+  
+  $arr1 = str_split($str);
+  $arr2 = str_split($str, 3);
+  
+  print_r($arr1);
+  print_r($arr2);
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [0] => H
+      [1] => e
+      [2] => l
+      [3] => l
+      [4] => o
+      [5] =>
+      [6] => F
+      [7] => r
+      [8] => i
+      [9] => e
+      [10] => n
+      [11] => d
+  )
+  
+  Array
+  (
+      [0] => Hel
+      [1] => lo
+      [2] => Fri
+      [3] => end
+  )
+
+
+
+|chunk_split| |preg_split| |explode| |count_chars| |str_word_count| for
+
+vim:ft=help:

@@ -1,0 +1,22 @@
+pg_dbname -- 获得数据库名
+
+  string pg_dbname(resource connection)~
+
+|pg_dbname| 返回给定 PostgreSQL {connection}
+资源的数据库名称。如果 {connection} 不是有效的 PostgreSQL
+连接资源则返回 FALSE。
+
+|pg_dbname| 例子
+
+<?php >
+      error_reporting(E_ALL);
+  
+      pg_connect("host=localhost port=5432 dbname=mary");
+      echo pg_dbname(); // mary
+?>
+
+
+
+
+
+vim:ft=help:

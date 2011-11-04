@@ -1,0 +1,10 @@
+is_finite -- 判断是否为有限值
+
+  bool is_finite(float val)~
+
+如果 {val} 是本机平台上 PHP
+浮点数所允许范围中的一个合法的有限值，则返回 TRUE。
+
+参见 |is_infinite| 和 |is_nan|。
+
+vim:ft=help:

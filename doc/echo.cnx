@@ -1,0 +1,86 @@
+echo -- 输出一个或多个字符串
+
+  void echo(string arg1 [, string ...])~
+
+输出所有参数。
+
+|echo| 不是一个函数（它是一个语言结构），
+因此你不一定要使用小括号来指明参数，单引号，双引号都可以。
+|echo| （不像其他语言构造）不表现得像一个函数，
+所以不能总是使用一个函数的上下文。
+另外，如果你想给|echo| 传递多个参数，
+那么就不能使用小括号。
+
+|echo| 也有一个快捷用法，示例如下。但是你必须在php.ini
+里面打开short_open_tag
+
+  I have <?=$foo?> foo.
+
+{arg1} 要输出的参数
+
+{...}
+
+没有返回值。
+
+|echo| examples
+
+<?php >
+  echo "Hello World";
+  
+  echo "This spans
+  multiple lines. The newlines will be
+  output as well";
+  
+  echo "This spans\nmultiple lines. The newlines will be\noutput as well.";
+  
+  echo "Escaping characters is done \"Like this\".";
+  
+  // You can use variables inside of an echo statement
+  $foo = "foobar";
+  $bar = "barbaz";
+  
+  echo "foo is $foo"; // foo is foobar
+  
+  // You can also use arrays
+  $baz = array("value" => "foo");
+  
+  echo "this is {$baz['value']} !"; // this is foo !
+  
+  // Using single quotes will print the variable name, not the value
+  echo 'foo is $foo'; // foo is $foo
+  
+  // If you are not using any other characters, you can just echo variables
+  echo $foo;          // foobar
+  echo $foo,$bar;     // foobarbarbaz
+  
+  // Some people prefer passing multiple parameters to echo over concatenation.
+  echo 'This ', 'string ', 'was ', 'made ', 'with multiple parameters.', chr(10);
+  echo 'This ' . 'string ' . 'was ' . 'made ' . 'with concatenation.' . "\n";
+  
+  echo <<<END
+  This uses the "here document" syntax to output
+  multiple lines with $variable interpolation. Note
+  that the here document terminator must appear on a
+  line with just a semicolon. no extra whitespace!
+  END;
+  
+  // Because echo does not behave like a function, the following code is invalid.
+  ($some_var) ? echo 'true' : echo 'false';
+  
+  // However, the following examples will work:
+  ($some_var) ? print 'true' : print 'false'; // print is also a construct, but
+                                              // it behaves like a function, so
+                                              // it may be used in this context.
+  echo $some_var ? 'true': 'false'; // changing the statement around
+?>
+
+
+
+
+
+因为是一个语言构造器而不是一个函数，不能被 可变函数
+调用。
+
+|print| |printf| |flush| Heredoc syntax
+
+vim:ft=help:

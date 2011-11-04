@@ -1,0 +1,50 @@
+get_parent_class -- 返回对象或类的父类名
+
+  string get_parent_class([mixed obj])~
+
+如果 {obj} 是对象，则返回对象实例 {obj} 所属类的父类名。
+
+如果 {obj}
+是字符串，则返回以此字符串为名的类的父类名。此功能是在
+PHP 4.0.5 中增加的。
+
+自 PHP 5 起，如果在对象的方法内调用，则 {obj} 为可选项。
+
+使用 |get_parent_class|
+
+<?php >
+  class dad {
+      function dad()
+      {
+      // implements some logic
+      }
+  }
+  
+  class child extends dad {
+      function child()
+      {
+          echo "I'm " , get_parent_class($this) , "'s son\n";
+      }
+  }
+  
+  class child2 extends dad {
+      function child2()
+      {
+          echo "I'm " , get_parent_class('child2') , "'s son too\n";
+      }
+  }
+  
+  $foo = new child();
+  $bar = new child2();
+?>
+
+以上例程会输出：
+
+  I'm dad's son
+  I'm dad's son too
+
+
+
+参见 |get_class| 和 |is_subclass_of|。
+
+vim:ft=help:

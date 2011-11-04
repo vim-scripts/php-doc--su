@@ -1,0 +1,9 @@
+mysqli_bind_result -- mysqli_stmt_bind_result的别名
+
+这个函数是|mysqli_stmt_bind_result|的一个别名
+
+|mysqli_bind_result|已经被废弃并且将会被移除。
+
+|mysqli_stmt_bind_result|
+
+vim:ft=help:

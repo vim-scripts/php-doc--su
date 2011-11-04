@@ -1,0 +1,48 @@
+ereg -- 正则表达式匹配
+
+  int ereg(string pattern, string string [, array regs])~
+
+使用 Perl 兼容正则表达式语法的 |preg_match| 函数通常是比
+|ereg| 更快的替代方案。
+
+以区分大小写的方式在 {string} 中寻找与给定的正则表达式
+{pattern} 所匹配的子串。
+
+如果找到与 {pattern}
+中圆括号内的子模式相匹配的子串并且函数调用给出了第三个参数
+{regs}，则匹配项将被存入 {regs} 数组中。$regs[1]
+包含第一个左圆括号开始的子串，$regs[2]
+包含第二个子串，以此类推。$regs[0]
+包含整个匹配的字符串。
+
+直到 PHP 4.1.0 为止，$regs
+将被填充为正好十个单元，即使实际匹配的子串少于十个。这并不影响
+|ereg| 匹配更多子串的能力。如果没有找到匹配，则 $regs
+不会被 |ereg| 更改。
+
+如果在 {string} 中找到 {pattern} 模式的匹配则返回
+所匹配字符串的长度，如果没有找到匹配或出错则返回
+FALSE。如果没有传递入可选参数 {regs}
+或者所匹配的字符串长度为 0，则本函数返回 1。
+
+以下代码片断接受 ISO 格式的日期（YYYY-MM-DD）然后以
+DD.MM.YYYY 格式显示：
+
+|ereg| 例子
+
+<?php >
+  if (ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $date, $regs)) {
+      echo "$regs[3].$regs[2].$regs[1]";
+  } else {
+      echo "Invalid date format: $date";
+  }
+?>
+
+
+
+
+
+参见 |eregi|，|ereg_replace|，|eregi_replace|，|preg_match|，|strpos|
+和 |strstr|。
+
+vim:ft=help:

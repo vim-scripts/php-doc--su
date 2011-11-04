@@ -1,0 +1,12 @@
+pg_copy_from -- 根据数组将记录插入表中
+
+  bool pg_copy_from(resource connection, string table_name, array rows [, string delimiter [, string null_as]])~
+
+|pg_copy_from| 将数组 {rows}
+的内容作为记录插入表中。它在内部使用了 COPY FROM SQL
+命令来插入记录。成功时返回 TRUE， 或者在失败时返回
+&false;.
+
+参见 |pg_copy_to|。
+
+vim:ft=help:

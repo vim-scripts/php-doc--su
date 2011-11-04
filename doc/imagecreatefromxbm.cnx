@@ -1,0 +1,17 @@
+imagecreatefromxbm -- 从 XBM 文件或 URL 新建一图像
+
+  resource imagecreatefromxbm(string filename)~
+
+|imagecreatefromxbm|
+返回一图像标识符，代表了从给定的文件名取得的图像。
+
+如已启用fopen 包装器，在此函数中， URL
+可作为文件名。关于如何指定文件名详见 |fopen|。各种 wapper
+的不同功能请参见
+，注意其用法及其可提供的预定义变量。
+
+Windows 版本的 PHP 在 4.3.0
+版之前不支持通过此函数访问远程文件，即使已经启用
+allow_url_fopen.
+
+vim:ft=help:

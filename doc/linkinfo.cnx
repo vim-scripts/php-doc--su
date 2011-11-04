@@ -1,0 +1,24 @@
+linkinfo -- 获取一个连接的信息
+
+  int linkinfo(string path)~
+
+|linkinfo| 返回 lstat 系统调用所返回的 UNIX C stat 结构中的
+st_dev 字段。本函数用来验证一个连接（由 {path}
+所指向的）是否确实存在（使用 stat.h 中的 S_ISLNK
+宏同样的方法）。如果出错则返回 0 或 FALSE。
+
+|linkinfo| 例子
+
+<?php >
+  echo linkinfo('/vmlinuz'); // 835
+?>
+
+
+
+
+
+此函数未在 Windows 平台下实现。
+
+参见 |symlink|，|link| 和 |readlink|。
+
+vim:ft=help:

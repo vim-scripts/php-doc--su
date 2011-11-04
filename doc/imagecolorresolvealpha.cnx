@@ -1,0 +1,12 @@
+imagecolorresolvealpha -- 取得指定颜色 + alpha
+的索引值或有可能得到的最接近的替代值
+
+  int imagecolorresolvealpha(resource image, int red, int green, int blue, int alpha)~
+
+本函数可以保证对所请求的颜色返回一个颜色索引，要么是确切值要么是所能得到最接近的替代值。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+参见 |imagecolorclosestalpha|。
+
+vim:ft=help:

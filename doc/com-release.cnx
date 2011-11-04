@@ -1,0 +1,11 @@
+com_release -- 减少组件引用计数。[被废弃]
+
+  void com_release()~
+
+减少组件引用计数。
+
+你应当不再需要使用该函数。
+
+该函数已经在 PHP 5 取消。
+
+vim:ft=help:

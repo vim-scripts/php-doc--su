@@ -1,0 +1,6 @@
+get_meta_tags -- 从一个文件中提取所有的 meta 标签 content
+属性，返回一个数组
+
+  array get_meta_tags(string filename [, bool use_include_path])~
+
+vim:ft=help:

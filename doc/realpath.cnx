@@ -1,0 +1,26 @@
+realpath -- 返回规范化的绝对路径名
+
+  string realpath(string path)~
+
+|realpath| 扩展所有的符号连接并且处理输入的 {path} 中的
+'/./', '/../' 以及多余的 '/'
+并返回规范化后的绝对路径名。返回的路径中没有符号连接，'/./'
+或 '/../' 成分。
+
+|realpath| 失败时返回 FALSE，比如说文件不存在的话。在 BSD
+系统上，如果仅仅是 {path} 不存在的话，PHP
+并不会像其它系统那样返回 FALSE。
+
+|realpath| 例子
+
+<?php >
+  $real_path = realpath("../../index.php");
+?>
+
+
+
+
+
+参见 |basename|，|dirname| 和 |pathinfo|。
+
+vim:ft=help:

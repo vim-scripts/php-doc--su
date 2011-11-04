@@ -1,0 +1,58 @@
+substr_replace -- 替换字符串的子串
+
+  mixed substr_replace(mixed string, string replacement, int start [, int length])~
+
+|substr_replace| 在字符串 {string} 的副本中将由 {start} 和可选的
+{length} 参数限定的子字符串使用 {replacement} 进行替换。
+
+{string} 输入字符串。
+
+{replacement} 替换字符串。
+
+{start} 如果 {start} 为正数，替换将从 {string} 的 {start}
+位置开始。
+
+如果 {start} 为负数，替换将从 {string} 的倒数第 {start}
+个位置开始。
+
+{length} 如果设定了这个参数并且为正数，表示 {string}
+中被替换的子字符串的长度。如果设定为负数，它表示待替换的子字符串结尾处距离
+{string}
+末端的字符个数。如果没有提供此参数，那么它默认为
+strlen( {string} ) （字符串的长度）。当然，如果 {length} 为
+0，那么这个函数的功能为将 {replacement} 插入到 {string} 的
+{start} 位置处。
+
+返回结果字符串。如果 {string}
+是个数组，那么也将返回一个数组。
+
+|substr_replace| 范例
+
+<?php >
+  $var = 'ABCDEFGH:/MNRPQR/';
+  echo "Original: $var<hr />\n";
+  
+  /* 这两个例子使用 “bob” 替换整个 $var。*/
+  echo substr_replace($var, 'bob', 0) . "<br />\n";
+  echo substr_replace($var, 'bob', 0, strlen($var)) . "<br />\n";
+  
+  /* 将 “bob” 插入到 $var 的开头处。*/
+  echo substr_replace($var, 'bob', 0, 0) . "<br />\n";
+  
+  /* 下面两个例子使用 “bob” 替换 $var 中的 “MNRPQR”。*/
+  echo substr_replace($var, 'bob', 10, -1) . "<br />\n";
+  echo substr_replace($var, 'bob', -7, -1) . "<br />\n";
+  
+  /* 从 $var 中删除 “MNRPQR”。*/
+  echo substr_replace($var, '', 10, -1) . "<br />\n";
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|str_replace| |substr| 字符串访问与修改
+
+vim:ft=help:

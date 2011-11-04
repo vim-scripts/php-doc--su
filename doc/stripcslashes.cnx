@@ -1,0 +1,14 @@
+stripcslashes -- 反引用一个使用 addcslashes 转义的字符串
+
+  string stripcslashes(string str)~
+
+返回反转义后的字符串。可识别类似 C 语言的 \n，\r，...
+八进制以及十六进制的描述。
+
+{str} 需要反转义的字符串。
+
+返回反转义后的字符串。
+
+|addcslashes|
+
+vim:ft=help:

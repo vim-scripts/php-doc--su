@@ -1,0 +1,46 @@
+apc_add -- 缓存一个变量到数据存储
+
+  bool apc_add(string key, mixed var [, int ttl])~
+
+仅仅在缓存变量不存在的情况下缓存变量到数据存储中
+
+与PHP中其他的机制不同，使用|apc_add| 存储变量
+在不同的请求之间一直持久存在（直到从缓存系统中移除）
+
+{key} 存储缓存变量使用的名称{key}s 是唯一的，
+所以试图使用 |apc_add| 去添加一个名称已经存在的缓存，
+将会覆盖现有的缓存的值, 并且返回 FALSE. (这个是 |apc_add|
+和 |apc_store|之间唯一的不同.)
+
+{var} 存储的变量
+
+{ttl} 生存时间;在缓存中存储{var}共{ttl}秒,
+在{ttl}秒过去后,存储的变量将会从缓存中擦除(在下一次请求时),
+如果没有设置{ttl}(或者{ttl}是0),
+变量将一直存活到被手动移除为止,除此之外不在缓存中的可能原因是，缓存系统使用clear，或者restart等
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+A |apc_add| example
+
+<?php >
+  $bar = 'BAR';
+  apc_add('foo', $bar);
+  var_dump(apc_fetch('foo'));
+  echo "\n";
+  $bar = 'NEVER GETS SET';
+  apc_add('foo', $bar);
+  var_dump(apc_fetch('foo'));
+  echo "\n";
+?>
+
+以上例程会输出：
+
+  string(3) "BAR"
+  string(3) "BAR"
+
+
+
+|apc_store| |apc_fetch| |apc_delete|
+
+vim:ft=help:

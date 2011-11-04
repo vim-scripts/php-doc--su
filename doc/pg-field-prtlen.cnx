@@ -1,0 +1,15 @@
+pg_field_prtlen -- 返回打印出来的长度
+
+  int pg_field_prtlen(resource result, int row_number, string field_name)~
+
+|pg_field_prtlen| 返回 PostgreSQL {result}
+中得到的值实际上打印出来的长度（字符数）。行编号从 0
+开始。如果出错本函数返回 -1。
+
+例子参见 |pg_field_name| 页。
+
+本函数以前的名字为 pg_field_prtlen()。
+
+参见 |pg_field_size|。
+
+vim:ft=help:

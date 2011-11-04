@@ -1,0 +1,17 @@
+imagepsencodefont -- 改变字体中的字符编码矢量
+
+  bool imagepsencodefont(resource font_index, string encodingfile)~
+
+从文件中加载字符编码矢量并用其替换给定字体的编码矢量。由于
+PostScript 字体的默认矢量缺少大多数超过 127
+的字符位置，因此如果使用其它非英语的语言的话肯定需要改变它。编码文件的确切格式定义在
+T1lib 文档中。T1lib
+包含有两个可马上使用的文件，IsoLatin1.enc 和 IsoLatin2.enc。
+
+如果发现自己总是要用本函数，更好的定义编码的做法是在配置文件中将
+ps.default_encoding
+设定为指向正确的编码文件，这样加载的所有字体就会自动具有正确编码了。
+
+此函数仅在 PHP 编译时指定了 --with-t1lib[=DIR] 时可用。
+
+vim:ft=help:

@@ -1,0 +1,73 @@
+ereg_replace -- 正则表达式替换
+
+  string ereg_replace(string pattern, string replacement, string string)~
+
+本函数在 {string} 中扫描与 {pattern}
+匹配的部分，并将其替换为 {replacement}。
+
+返回替换后的字符串。（如果没有可供替换的匹配项则会返回原字符串。）
+
+如果 {pattern} 包含有括号内的子串，则 {replacement}
+可以包含形如 \\digit
+的子串，这些子串将被替换为数字表示的的第几个括号内的子串；\\0
+则包含了字符串的整个内容。最多可以用九个子串。括号可以嵌套，此情形下以左圆括号来计算顺序。
+
+如果未在 {string} 中找到匹配项，则 {string} 将原样返回。
+
+例如，下面的代码片断输出 "This was a test" 三次：
+
+|ereg_replace| 例子
+
+<?php >
+  $string = "This is a test";
+  echo str_replace(" is", " was", $string);
+  echo ereg_replace("( )is", "\\1was", $string);
+  echo ereg_replace("(( )is)", "\\2was", $string);
+?>
+
+
+
+
+
+要注意的一点是如果在 {replacement}
+参数中使用了整数值，则可能得不到所期望的结果。这是因为
+|ereg_replace|
+将把数字作为字符的序列值来解释并应用之。例如：
+
+|ereg_replace| 例子
+
+<?php >
+  /* 不能产生出期望的结果 */
+  $num = 4;
+  $string = "This string has four words.";
+  $string = ereg_replace('four', $num, $string);
+  echo $string;   /* Output: 'This string has   words.' */
+  
+  /* 本例工作正常 */
+  $num = '4';
+  $string = "This string has four words.";
+  $string = ereg_replace('four', $num, $string);
+  echo $string;   /* Output: 'This string has 4 words.' */
+?>
+
+
+
+
+
+将 URL 替换为超连接
+
+<?php >
+  $text = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]",
+                       "<a href=\"\\0\">\\0</a>", $text);
+?>
+
+
+
+
+
+|preg_replace| 函数使用了 Perl 兼容正则表达式语法，通常是比
+|ereg_replace| 更快的替代方案。
+
+参见 |ereg|，|eregi|，|eregi_replace|，|str_replace| 和 |preg_match|。
+
+vim:ft=help:

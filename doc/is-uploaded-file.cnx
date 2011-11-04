@@ -1,0 +1,37 @@
+is_uploaded_file -- 判断文件是否是通过 HTTP POST 上传的
+
+  bool is_uploaded_file(string filename)~
+
+如果 {filename} 所给出的文件是通过 HTTP POST 上传的则返回
+TRUE。这可以用来确保恶意的用户无法欺骗脚本去访问本不能访问的文件，例如
+/etc/passwd。
+
+这种检查显得格外重要，如果上传的文件有可能会造成对用户或本系统的其他用户显示其内容的话。
+
+为了能使 |is_uploaded_file| 函数正常工作，必段指定类似于
+$_FILES['userfile']['tmp_name']
+的变量，而在从客户端上传的文件名 $_FILES['userfile']['name']
+不能正常运作。
+
+|is_uploaded_file| 例子
+
+<?php >
+  if (is_uploaded_file($_FILES['userfile']['tmp_name'])) {
+     echo "File ". $_FILES['userfile']['name'] ." uploaded successfully.\n";
+     echo "Displaying contents\n";
+     readfile($_FILES['userfile']['tmp_name']);
+  } else {
+     echo "Possible file upload attack: ";
+     echo "filename '". $_FILES['userfile']['tmp_name'] . "'.";
+  }
+?>
+
+
+
+|is_uploaded_file| 仅可用于 PHP 3 的 3.0.16 版之后，以及 PHP 4 的
+4.0.2
+版之后。如果执意要用老版本，可以用下面的函数来保护自己：
+以下例子不能用于 PHP 4 的 4.0.2 版之后。它依赖的 PHP
+内部函数在该版本之后改变了。
+
+vim:ft=help:

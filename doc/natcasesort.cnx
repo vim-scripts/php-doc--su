@@ -1,0 +1,58 @@
+natcasesort --
+用“自然排序”算法对数组进行不区分大小写字母的排序
+
+  bool natcasesort(array array)~
+
+本函数实现了一个和人们通常对字母数字字符串进行排序的方法一样的排序算法并保持原有键／值的关联，这被称为“自然排序”。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|natcasesort| 是 |natsort| 函数的不区分大小写字母的版本。
+
+|natcasesort| 例子
+
+<?php >
+  $array1 = $array2 = array('IMG0.png', 'img12.png', 'img10.png', 'img2.png', 'img1.png', 'IMG3.png');
+  
+  sort($array1);
+  echo "Standard sorting\n";
+  print_r($array1);
+  
+  natcasesort($array2);
+  echo "\nNatural order sorting (case-insensitive)\n";
+  print_r($array2);
+?>
+
+以上例程会输出：
+
+  Standard sorting
+  Array
+  (
+      [0] => IMG0.png
+      [1] => IMG3.png
+      [2] => img1.png
+      [3] => img10.png
+      [4] => img12.png
+      [5] => img2.png
+  )
+  
+  Natural order sorting (case-insensitive)
+  Array
+  (
+      [0] => IMG0.png
+      [4] => img1.png
+      [3] => img2.png
+      [5] => IMG3.png
+      [2] => img10.png
+      [1] => img12.png
+  )
+
+更多信息见 Martin Pool 的 Natural Order String Comparison 页面。
+
+
+
+
+
+参见 |sort|，|natsort|，|strnatcmp| 和 |strnatcasecmp|。
+
+vim:ft=help:

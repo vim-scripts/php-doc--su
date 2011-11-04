@@ -1,0 +1,21 @@
+pg_unescape_bytea -- 取消 bytea 类型中的字符串转义
+
+  string pg_unescape_bytea(string data)~
+
+|pg_unescape_bytea| 将 bytea
+数据类型中的字符串取消转义。返回未转义的字符串（二进制）。
+
+当 SELECT bytea 类型，PostgreSQL 返回用 \
+前导的八进制字节值（例如
+\032）。用户需要自行将其转换回二进制格式。
+
+本函数需要 PostgreSQL 7.2 或更新版本。在 PostgreSQL 7.2.0 和
+7.2.1 中，当激活了多字节支持时必须强制转换为 bytea
+类型，例如 INSERT INTO test_table (image) VALUES
+('$image_escaped'::bytea);。PostgreSQL 7.2.2
+或更新版本不需要强制转换。例外是当客户端和后端的字符编码不匹配时，有可能出现多字节流错误。用户必须强制转换为
+bytea 来避免此错误。
+
+参见 |pg_escape_bytea| 和 |pg_escape_string|。
+
+vim:ft=help:

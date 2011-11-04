@@ -1,0 +1,41 @@
+gettimeofday -- 取得当前时间
+
+  mixed gettimeofday([bool return_float])~
+
+本函数是 gettimeofday(2)
+的接口。返回一个关联数组，包含有系统调用返回的数据。
+
+自 PHP 5.1.0 起有个可选参数 {return_float}，当其设为 TRUE
+时，|gettimeofday| 会返回一个浮点数。
+
+数组中的键为： "sec" - 自 Unix 纪元起的秒数
+
+"usec" - 微秒数
+
+"minuteswest" - 格林威治向西的分钟数
+
+"dsttime" - 夏令时修正的类型
+
+|gettimeofday| example
+
+<?php >
+  print_r(gettimeofday());
+  
+  echo gettimeofday(true);
+?>
+
+以上例程的输出类似于：
+
+  Array
+  (
+      [sec] => 1073504408
+      [usec] => 238215
+      [minuteswest] => 0
+      [dsttime] => 1
+  )
+  
+  1073504408.23910
+
+
+
+vim:ft=help:

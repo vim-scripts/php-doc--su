@@ -1,0 +1,10 @@
+preg_quote -- 转义正则表达式字符
+
+  string preg_quote(string str [, string delimiter])~
+
+|preg_quote|需要参数{str}并向其中
+每个正则表达式语法中的字符前增加一个反斜线.
+这通常用于你有一些运行时字符串
+需要作为正则表达式进行匹配的时候.
+
+vim:ft=help:

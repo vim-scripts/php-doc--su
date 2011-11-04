@@ -1,0 +1,18 @@
+JewishToJD -- 转变一个Jewish历法的日期为一个Julian Day计数
+
+  int jewishtojd(int month, int day, int year)~
+
+尽管这个函数可以处理1（3761
+B.C.）以前的年份，但这是没有意义的。Jewish历法被用了几千年，但早期的时候一个月的开始没有固定的准则，通常是观察到一个新月后定为一个月份的开始。
+
+{month} 在1到13之间的月份
+
+{day} 在1到30日之间的日子
+
+{year} 在1到9999之间的年份
+
+指定的jewish历法的日期的julian天数。
+
+|jdtojewish| |cal_to_jd|
+
+vim:ft=help:

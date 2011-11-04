@@ -1,0 +1,16 @@
+xml_get_current_column_number -- 获取 XML 解析器的当前列号
+
+  int xml_get_current_column_number(resource parser)~
+
+获得指定 XML 解析器当前的列号。
+
+{parser} 一个指向要获取列号的 XML 解析器的指针。
+
+如果 {parser}
+参数没有指向一个合法的解析器，该函数将返回
+FALSE，否则将返回指定解析器所在行（由函数
+|xml_get_current_line_number| 给定）的当前列号。
+
+|xml_get_current_byte_index| |xml_get_current_line_index|
+
+vim:ft=help:

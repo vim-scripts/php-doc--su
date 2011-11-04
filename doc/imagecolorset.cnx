@@ -1,0 +1,9 @@
+imagecolorset -- 给指定调色板索引设定颜色
+
+  void imagecolorset(resource image, int index, int red, int green, int blue)~
+
+本函数将调色板中指定的索引设定为指定的颜色。对于在调色板图像中创建类似区域填充（flood-fill）的效果很有用，免去了真的去填充的开销。
+
+参见 |imagecolorat|。
+
+vim:ft=help:

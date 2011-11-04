@@ -1,0 +1,44 @@
+str_ireplace -- str_replace 的忽略大小写版本
+
+  mixed str_ireplace(mixed search, mixed replace, mixed subject [, int count])~
+
+该函数返回一个字符串或者数组。该字符串或数组是将
+{subject} 中全部的 {search} 都被 {replace}
+替换（忽略大小写）之后的结果。如果没有一些特殊的替换规则，你应该使用该函数替换带有
+i 修正符的 |preg_replace| 函数。
+
+{search} {search} 元素的每次替换都是基于前一次替换结果的。
+
+{replace}
+
+{subject} 如果 {subject} 是一个数组，替换操作将遍历整个
+{subject}，并且也将返回一个数组。
+
+{count} {needles} 的匹配和替换数量将在 {count}
+中返回，它是以引用方式传递的。
+
+如果 {search} 和 {replace} 为数组，那么 |str_replace| 将对
+{subject} 做二者的映射替换。如果 {replace} 的值的个数少于
+{search} 的个数，多余的替换将使用空字符串来进行。如果
+{search} 是一个数组而 {replace} 是一个字符串，那么 {search}
+中每个元素的替换将始终使用这个字符串。
+
+返回替换后的字符串或者数组。
+
+版本 说明 5.0.0 新增 {count} 参数。
+
+|str_ireplace| 范例
+
+<?php >
+  $bodytag = str_ireplace("%body%", "black", "<body text=%BODY%>");
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|str_replace| |preg_replace| |strtr|
+
+vim:ft=help:

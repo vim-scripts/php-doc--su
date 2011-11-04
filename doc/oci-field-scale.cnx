@@ -1,0 +1,17 @@
+oci_field_scale -- 返回字段范围
+
+  int oci_field_scale(resource statement, int field)~
+
+返回索引为 {field}（从 1
+开始）的字段的范围。如果无此字段则返回 FALSE。
+
+对于 FLOAT 字段，精度为非零值且范围为 -127。如果精度为
+0，则字段为 NUMBER。其它类型为 NUMBER(precision, scale)。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocicolumnscale|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_field_scale| 的别名。不过其已被废弃，不推荐使用。
+
+参见 |oci_field_precision| 和 |oci_field_type|。
+
+vim:ft=help:

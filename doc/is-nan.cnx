@@ -1,0 +1,10 @@
+is_nan -- 判断是否为合法数值
+
+  bool is_nan(float val)~
+
+如果 {val} 为“非数值”，例如 acos(1.01) 的结果，则返回
+TRUE。
+
+参见 |is_finite| 和 |is_infinite|。
+
+vim:ft=help:

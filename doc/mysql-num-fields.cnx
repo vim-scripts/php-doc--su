@@ -1,0 +1,12 @@
+mysql_num_fields -- 取得结果集中字段的数目
+
+  int mysql_num_fields(resource result)~
+
+|mysql_num_fields| 返回结果集中字段的数目。
+
+参见 |mysql_select_db|，|mysql_query|，|mysql_fetch_field| 和
+|mysql_num_rows|。
+
+为向下兼容仍然可以使用 |mysql_numfields|，但反对这样做。
+
+vim:ft=help:

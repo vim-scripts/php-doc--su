@@ -1,0 +1,16 @@
+oci_set_prefetch -- 设置预提取行数
+
+  bool oci_set_prefetch(resource statement [, int rows])~
+
+在成功调用 |oci_execute| 之后设定预提取的行数。{rows}
+的默认值为 1。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocisetprefetch|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_set_prefetch| 的别名。不过其已被废弃，不推荐使用。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+参见 oci8_.default_prefetch INI 选项。
+
+vim:ft=help:

@@ -1,0 +1,28 @@
+base_convert -- 在任意进制之间转换数字
+
+  string base_convert(string number, int frombase, int tobase)~
+
+返回一字符串，包含 {number} 以 {tobase} 进制的表示。{number}
+本身的进制由 {frombase} 指定。{frombase} 和 {tobase} 都只能在 2
+和 36 之间（包括 2 和 36）。高于十进制的数字用字母 a-z
+表示，例如 a 表示 10，b 表示 11 以及 z 表示 35。 |base_convert|
+范例
+
+<?php >
+  $hexadecimal = 'A37334';
+  echo base_convert($hexadecimal, 16, 2);
+?>
+
+输出为：
+
+  101000110111001100110100
+
+
+
+由于使用内部的 "double" 或 "float" 类型，|base_convert|
+的操作可能会导致大数值中的精度丢失。请参见本手册的
+浮点数 章节以便获得更多详细信息。
+
+参见 |intval|。
+
+vim:ft=help:

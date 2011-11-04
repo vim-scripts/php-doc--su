@@ -1,0 +1,36 @@
+mysql_list_dbs -- 列出 MySQL 服务器中所有的数据库
+
+  resource mysql_list_dbs([resource link_identifier])~
+
+|mysql_list_dbs| 将返回一个结果指针，包含了当前 MySQL
+进程中所有可用的数据库。用 |mysql_tablename|
+函数来遍历此结果指针，或者任何使用结果表的函数，例如
+|mysql_fetch_array|。
+
+|mysql_list_dbs| 例子
+
+<?php >
+  $link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+  $db_list = mysql_list_dbs($link);
+  
+  while ($row = mysql_fetch_object($db_list)) {
+      echo $row->Database . "\n";
+  }
+?>
+
+以上例子将产生如下输出：
+
+  database1
+  database2
+  database3
+  ...
+
+
+
+以上代码用起来和 |mysql_fetch_row| 或类似函数一样简单。
+
+为向下兼容仍然可以使用 |mysql_listdbs|，但反对这样做。
+
+参见 |mysql_db_name|。
+
+vim:ft=help:

@@ -1,0 +1,50 @@
+strip_tags -- 从字符串中去除 HTML 和 PHP 标记
+
+  string strip_tags(string str [, string allowable_tags])~
+
+该函数尝试返回给定的字符串 {str} 去除空字符、HTML 和 PHP
+标记后的结果。它使用与函数 |fgetss|
+一样的标记去除状态机。
+
+{str} 输入字符串。
+
+{allowable_tags}
+使用可选的第二个参数指定不被去除的字符列表。
+
+HTML 注释和 PHP
+标签也会被去除。这里是硬编码处理的，所以无法通过
+{allowable_tags} 参数进行改变。
+
+返回处理后的字符串。
+
+版本 说明 5.0.0 |strip_tags| 变为二进制安全的。 4.3.0 HTML
+注释总是被删除。
+
+|strip_tags| 范例
+
+<?php >
+  $text = '<p>Test paragraph.</p><!-- Comment --> <a href="#fragment">Other text</a>';
+  echo strip_tags($text);
+  echo "\n";
+  
+  // 允许 <p> 和 <a>
+  echo strip_tags($text, '<p><a>');
+?>
+
+以上例程会输出：
+
+  Test paragraph. Other text
+  <p>Test paragraph.</p> <a href="#fragment">Other text</a>
+
+
+
+由于 |strip_tags| 无法实际验证
+HTML，不完整或者破损标签将导致更多的数据被删除。
+
+该函数不会修改 {allowable_tags}
+参数中指定的允许标记的任何属性，包括 style 和 onmouseover
+属性，用户可能会在提交的内容中恶意滥用这些属性，从而展示给其他用户。
+
+|htmlspecialchars|
+
+vim:ft=help:

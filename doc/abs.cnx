@@ -1,0 +1,19 @@
+abs -- 绝对值
+
+  number abs(mixed number)~
+
+返回参数 {number} 的绝对值。如果参数 {number} 是
+float，则返回的类型也是 float，否则返回 integer（因为 float
+通常比 integer 有更大的取值范围）。
+
+|abs|
+
+<?php >
+  $abs = abs(-4.2); // $abs = 4.2; (double/float)
+  $abs2 = abs(5);   // $abs2 = 5; (integer)
+  $abs3 = abs(-5);  // $abs3 = 5; (integer)
+?>
+
+
+
+vim:ft=help:

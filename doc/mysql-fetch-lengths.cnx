@@ -1,0 +1,15 @@
+mysql_fetch_lengths -- 取得结果集中每个输出的长度
+
+  array mysql_fetch_lengths(resource result)~
+
+以数组返回上一次用 |mysql_fetch_row|
+取得的行中每个字段的长度，如果出错返回 FALSE。
+
+|mysql_fetch_lengths| 将上一次 |mysql_fetch_row|，|mysql_fetch_array| 和
+|mysql_fetch_object|
+所返回的每个列的长度储存到一个数组中，偏移量从 0
+开始。
+
+参见 |mysql_fetch_row|。
+
+vim:ft=help:

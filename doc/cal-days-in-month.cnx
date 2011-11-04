@@ -1,0 +1,26 @@
+cal_days_in_month -- 返回某个历法中某年中某月的天数
+
+  int cal_days_in_month(int calendar, int month, int year)~
+
+该函数返回特定{历法}中的某{年}中的某{月}的天数。
+
+{calendar} 用来计算的某个历法
+
+{month} 选定历法中的某月
+
+{year} 选定历法中的某年
+
+指定历法中选定的某月的天数。
+
+|cal_days_in_month| example
+
+<?php >
+  $num = cal_days_in_month(CAL_GREGORIAN, 8, 2003); // 31
+  echo "There was $num days in August 2003";
+?>
+
+
+
+
+
+vim:ft=help:

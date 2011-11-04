@@ -1,0 +1,39 @@
+pcntl_signal_dispatch -- 调用等待信号的处理器
+
+  bool pcntl_signal_dispatch()~
+
+函数|pcntl_signal_dispatch|调用每个等待信号通过|pcntl_signal|
+安装的处理器。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|pcntl_signal_dispatch| 示例
+
+<?php >
+  echo "安装信号处理器...\n";
+  pcntl_signal(SIGHUP,  function($signo) {
+       echo "信号处理器被调用\n";
+  });
+  
+  echo "为自己生成SIGHUP信号...\n";
+  posix_kill(posix_getpid(), SIGHUP);
+  
+  echo "分发...\n";
+  pcntl_signal_dispatch();
+  
+  echo "完成\n";
+?>
+
+以上例程的输出类似于：
+
+  安装信号处理器...
+  为自己生成SIGHUP信号...
+  分发...
+  信号处理器被调用
+  完成
+
+
+
+|pcntl_signal| |pcntl_sigprocmask| |pcntl_sigwaitinfo| |pcntl_sigtimedwait|
+
+vim:ft=help:

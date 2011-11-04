@@ -1,0 +1,27 @@
+xml_set_default_handler -- 建立默认处理器
+
+  bool xml_set_default_handler(resource parser, callback handler)~
+
+为 {parser} 指定的 XML 处理器建立默认处理函数。{handler}
+为表示一个函数名称的字符串，该函数必须在为 {parser}
+指定的解析器调用 |xml_parse| 函数时已存在。
+
+  bool (resource parser, callback handler, resource parser, string data)~
+
+由 {handler} 参数命名的函数名必须接受两个参数： {parser}
+第一个参数 parser 为指向要调用处理器的 XML
+解析器的指针。
+
+{data} 第二个参数 {data}
+为包含有字符数据的字符串。其内容可以是 XML
+声明、文档类型声明、实体名或者其它没有已存在处理器的地数据。
+
+如果处理器函数名被设置为空字符串或者
+FALSE，则该有问题的处理器将被屏蔽。
+
+如果处理器被成功的建立，该函数将返回 TRUE，如果 {parser}
+指向的不是合法的解析器，函数该函数将返回 FALSE。
+
+除了函数名，含有对象引用的数组和方法名也可以作为参数。
+
+vim:ft=help:

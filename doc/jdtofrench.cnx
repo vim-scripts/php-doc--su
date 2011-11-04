@@ -1,0 +1,13 @@
+JDToFrench -- 转变一个Julian Day计数到French Republican历法的日期
+
+  string jdtofrench(int juliandaycount)~
+
+转变一个Julian Day计数到French Republican历法的日期。
+
+{julianday} 一个julian天数
+
+以"月/日/年"形式的french revolution日期
+
+|frenchtojd| |cal_from_jd|
+
+vim:ft=help:

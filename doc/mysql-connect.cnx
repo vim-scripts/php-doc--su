@@ -1,0 +1,114 @@
+mysql_connect -- 打开一个到 MySQL 服务器的连接
+
+  resource mysql_connect([string server [, string username [, string password [, bool new_link [, int client_flags]]]]])~
+
+打开或重复使用一个到 MySQL 服务器的连接。
+
+{server} MySQL 服务器。可以包括端口号，例如
+"hostname:port"，或者到本地套接字的路径，例如对于 localhost
+的 ":/path/to/socket"。
+
+如果 PHP 指令 mysql.default_host
+未定义（默认情况），则默认值是 'localhost:3306'。
+
+{username} 用户名。默认值是服务器进程所有者的用户名。
+
+{password} 密码。默认值是空密码。
+
+{new_link} 如果用同样的参数第二次调用
+|mysql_connect|，将不会建立新连接，而将返回已经打开的连接标识。参数
+{new_link} 改变此行为并使 |mysql_connect|
+总是打开新的连接，甚至当 |mysql_connect|
+曾在前面被用同样的参数调用过。
+
+{client_flags} {client_flags}
+参数可以是以下常量的组合：MYSQL_CLIENT_SSL，MYSQL_CLIENT_COMPRESS，MYSQL_CLIENT_IGNORE_SPACE
+或 MYSQL_CLIENT_INTERACTIVE。进一步信息见。
+
+如果成功则返回一个 MySQL 连接标识，失败则返回 FALSE。
+
+版本 说明 4.3.0 添加 {client_flags} 参数。 4.2.0 添加 {new_link}
+参数。 3.0.10 对 {server} 添加 ":/path/to/socket" 支持。 3.0.0 对
+{server} 添加 ":port" 支持。
+
+|mysql_connect| 例子
+
+<?php >
+  $link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect: ' . mysql_error());
+  }
+  echo 'Connected successfully';
+  mysql_close($link);
+?>
+
+
+
+
+
+|mysql_connect| 例子：使用 hostname:port 语法
+
+<?php >
+  // we connect to example.com and port 3307
+  $link = mysql_connect('example.com:3307', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect: ' . mysql_error());
+  }
+  echo 'Connected successfully';
+  mysql_close($link);
+  
+  // we connect to localhost at port 3307
+  $link = mysql_connect('127.0.0.1:3307', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect: ' . mysql_error());
+  }
+  echo 'Connected successfully';
+  mysql_close($link);
+?>
+
+
+
+
+
+|mysql_connect| 例子：使用 ":/path/to/socket" 语法
+
+<?php >
+  // we connect to localhost and socket e.g. /tmp/mysql.sock
+  
+  //variant 1: ommit localhost
+  $link = mysql_connect('/tmp/mysql', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect: ' . mysql_error());
+  }
+  echo 'Connected successfully';
+  mysql_close($link);
+  
+  
+  // variant 2: with localhost
+  $link = mysql_connect('localhost:/tmp/mysql.sock', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect: ' . mysql_error());
+  }
+  echo 'Connected successfully';
+  mysql_close($link);
+?>
+
+
+
+
+
+只要将 server 指定为 "localhost" 或 "localhost:port"，MySQL
+客户端库会越过此值并尝试连接到本地套接字（Windows
+中的名字管道）。如果想用 TCP/IP，应该用 "127.0.0.1" 代替
+"localhost"。如果 MySQL
+客户端库试图连接到一个错误的本地套接字，则应该在 PHP
+配置中设定 的正确路径并把 server 留空。
+
+脚本一结束，到服务器的连接就被关闭，除非之前已经明确调用
+|mysql_close| 关闭了。
+
+可以在函数名前加上一个 @ 来抑制出错时的错误信息。
+
+|mysql_pconnect| |mysql_close|
+
+vim:ft=help:

@@ -1,0 +1,15 @@
+pg_free_result -- 释放查询结果占用的内存
+
+  bool pg_free_result(resource result)~
+
+|pg_free_result|
+仅在当你担心脚本执行时占用了过多内存时调用。脚本执行完毕后所有的查询结果占用的内存都会被自动释放。不过如果你确认在脚本中不会再用到查询结果了，你可以用
+{result} 作为参数调用 |pg_free_result|
+来释放有关的内存。成功时返回 TRUE， 或者在失败时返回
+&false;.
+
+本函数以前的名字为 pg_freeresult()。
+
+参见 |pg_query|。
+
+vim:ft=help:

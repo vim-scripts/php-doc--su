@@ -1,0 +1,28 @@
+touch -- 设定文件的访问和修改时间
+
+  bool touch(string filename [, int time [, int atime]])~
+
+尝试将由 {filename}
+给出的文件的访问和修改时间设定为给出的时间。如果没有给出可选参数
+{time}，则使用当前系统时间。如果给出了第三个参数
+{atime}，则给定文件的访问时间会被设为
+{atime}。注意访问时间总是会被修改的，不论有几个参数。
+
+如果文件不存在，则会被创建。成功时返回 TRUE，
+或者在失败时返回 &false;.
+
+|touch| 例子
+
+<?php >
+  if (touch($FileName)) {
+      echo "$FileName modification time has been changed to present time";
+  } else {
+      echo "Sorry, could not change modification time of $FileName";
+  }
+?>
+
+
+
+
+
+vim:ft=help:

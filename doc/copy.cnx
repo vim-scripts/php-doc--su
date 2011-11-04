@@ -1,0 +1,36 @@
+copy -- 拷贝文件
+
+  bool copy(string source, string dest)~
+
+将文件从 {source} 拷贝到 {dest}。成功时返回 TRUE，
+或者在失败时返回 &false;. |copy| 例子
+
+<?php >
+  $file = 'example.txt';
+  $newfile = 'example.txt.bak';
+  
+  if (!copy($file, $newfile)) {
+      echo "failed to copy $file...\n";
+  }
+?>
+
+
+
+
+
+如果要移动文件的话，请使用 |rename| 函数。
+
+从 PHP 4.3.0 开始，如果启用了“fopen wrappers”的话，{source}
+和 {dest} 都可以是 URL。更多细节见 |fopen|。如果 {dest}
+是一个
+URL，则如果封装协议不支持覆盖已有的文件时拷贝操作会失败。
+
+如果目标文件已存在，将会被覆盖。
+
+如果复制一个零字节的文件，|copy| 将返回 FALSE
+，但文件也会被正确复制。
+
+参见 |move_uploaded_file|，|rename|
+和手册中的文件上传处理一章。
+
+vim:ft=help:

@@ -1,0 +1,49 @@
+serialize -- 产生一个可存储的值的表示
+
+  string serialize(mixed value)~
+
+|serialize| 返回字符串，此字符串包含了表示 {value}
+的字节流，可以存储于任何地方。
+
+这有利于存储或传递 PHP 的值，同时不丢失其类型和结构。
+
+想要将已序列化的字符串变回 PHP 的值，可使用
+|unserialize|。|serialize| 可处理除了 resource
+之外的任何类型。甚至可以 |serialize|
+那些包含了指向其自身引用的数组。你正 |serialize|
+的数组／对象中的引用也将被存储。
+
+当序列化对象时，PHP
+将试图在序列动作之前调用该对象的成员函数
+|__sleep|。这样就允许对象在被序列化之前做任何清除操作。类似的，当使用
+|unserialize| 恢复对象时， 将调用 |__wakeup| 成员函数。
+
+在 PHP 3 中，对象属性将被序列化，但是方法则会丢失。PHP 4
+打破了此限制，可以同时存储属性和方法。请参见类与对象中的序列化对象部分获取更多信息。
+
+|serialize| 示例
+
+<?php >
+  // $session_data 是包含了当前用户 session 信息的多维数组。
+  // 我们使用 serialize() 在请求结束之前将其存储到数据库中。
+  
+  $conn = odbc_connect ("webdb", "php", "chicken");
+  $stmt = odbc_prepare ($conn,
+        "UPDATE sessions SET data = ? WHERE id = ?");
+  $sqldata = array (serialize($session_data), $PHP_AUTH_USER);
+  if (!odbc_execute ($stmt, &amp;$sqldata)) {
+      $stmt = odbc_prepare($conn,
+       "INSERT INTO sessions (id, data) VALUES(?, ?)");
+      if (!odbc_execute($stmt, &$sqldata)) {
+      /* 出错 */
+      }
+  }
+?>
+
+
+
+
+
+参见：|unserialize|。
+
+vim:ft=help:

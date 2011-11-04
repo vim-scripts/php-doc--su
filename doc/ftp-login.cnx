@@ -1,0 +1,29 @@
+ftp_login -- 登录 FTP 服务器
+
+  bool ftp_login(resource ftp_stream, string username, string password)~
+
+使用用户名和密码登录入给定的 FTP 连接。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|ftp_login| 例子
+
+<?php >
+  $ftp_server = "ftp.example.com";
+  $ftp_user = "foo";
+  $ftp_pass = "bar";
+  
+  // set up a connection or die
+  $conn_id = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server");
+  
+  // try to login
+  if (@ftp_login($conn_id, $ftp_user, $ftp_pass)) {
+      echo "Connected as $ftp_user@$ftp_server\n";
+  } else {
+      echo "Couldn't connect as $ftp_user\n";
+  }
+?>
+
+
+
+vim:ft=help:

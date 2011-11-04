@@ -1,0 +1,20 @@
+pg_fetch_result -- 从结果资源中返回值
+
+  mixed pg_fetch_result(resource result, int row, mixed field)~
+
+|pg_fetch_result| 根据由 |pg_query| 返回的 {result}
+资源返回相应的值。{row} 为整型数。{field}
+为字段名（字符串）或字段索引（整数）。{row} 和 {field}
+指明了查询结果中的哪个单元被返回。行编号从 0
+开始。除了用字段名之外，还可以用不带引号的数字作为字段索引。字段索引从
+0 开始。
+
+PostgreSQL
+有很多内置的类型，这里只直接支持基本类型。所有形式的
+integer，boolean 和 void 类型都被返回为 integer 值。所有形式的
+float 和 real 类型都被返回为 float 值。Boolean 类型被返回为
+"t" 或者
+"f"。所有其它类型包括数组都被返回为字符串，该字符串的格式和默认的
+PostgreSQL 风格一样，可以在 psql 程序中看到。
+
+vim:ft=help:

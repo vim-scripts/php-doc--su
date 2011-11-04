@@ -1,0 +1,10 @@
+is_object -- 检测变量是否是一个对象
+
+  bool is_object(mixed var)~
+
+如果 {var} 是一个 object 则返回 TRUE，否则返回 FALSE。
+
+参见 |is_bool|、|is_int|、|is_integer|、|is_float|、|is_string| 和
+|is_array|。
+
+vim:ft=help:

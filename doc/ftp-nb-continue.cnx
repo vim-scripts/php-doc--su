@@ -1,0 +1,9 @@
+ftp_nb_continue -- 连续获取／发送文件（non-blocking）
+
+  int ftp_nb_continue(resource ftp_stream)~
+
+以不分块的方式连续获取／发送一个文件。
+
+返回常量 FTP_FAILED 或 FTP_FINISHED 或 FTP_MOREDATA。
+
+vim:ft=help:

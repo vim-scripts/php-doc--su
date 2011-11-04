@@ -1,0 +1,15 @@
+pcntl_wifexited -- 检查状态代码是否代表一个正常的退出。
+
+  bool pcntl_wifexited(int status)~
+
+检查子进程状态代码是否代表正常退出。
+
+{status} 参数 {status} 是提供给成功调用 |pcntl_waitpid|
+时的状态参数。
+
+当子进程状态代码代表正常退出时返回 TRUE ，其他情况返回
+FALSE。
+
+|pcntl_waitpid| |pcntl_wexitstatus|
+
+vim:ft=help:

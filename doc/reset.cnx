@@ -1,0 +1,33 @@
+reset -- 将数组的内部指针指向第一个单元
+
+  mixed reset(array array)~
+
+|reset| 将 {array}
+的内部指针倒回到第一个单元并返回第一个数组单元的值，如果数组为空则返回
+FALSE。
+
+|reset| 例子
+
+<?php >
+  $array = array('step one', 'step two', 'step three', 'step four');
+  
+  // by default, the pointer is on the first element
+  echo current($array) . "<br />\n"; // "step one"
+  
+  // skip two steps
+  next($array);
+  next($array);
+  echo current($array) . "<br />\n"; // "step three"
+  
+  // reset pointer, start again on step one
+  reset($array);
+  echo current($array) . "<br />\n"; // "step one"
+?>
+
+
+
+
+
+参见 |current|，|each|，|end|，|next| 和 |prev|。
+
+vim:ft=help:

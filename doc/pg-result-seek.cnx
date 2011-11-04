@@ -1,0 +1,12 @@
+pg_result_seek -- 在结果资源中设定内部行偏移量
+
+  array pg_result_seek(resource result, int offset)~
+
+|pg_result_seek|
+在结果资源中设定内部行偏移量。如果出错则返回 FALSE。
+
+参见
+|pg_fetch_row|，|pg_fetch_assoc|，|pg_fetch_array|，|pg_fetch_object| 和
+|pg_fetch_result|。
+
+vim:ft=help:

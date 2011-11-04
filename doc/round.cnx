@@ -1,0 +1,33 @@
+round -- 对浮点数进行四舍五入
+
+  float round(float val [, int precision])~
+
+返回将 {val} 根据指定精度
+{precision}（十进制小数点后数字的数目）进行四舍五入的结果。{precision}
+也可以是负数或零（默认值）。
+
+|round| 例子
+
+<?php >
+  echo round(3.4);         // 3
+  echo round(3.5);         // 4
+  echo round(3.6);         // 4
+  echo round(3.6, 0);      // 4
+  echo round(1.95583, 2);  // 1.96
+  echo round(1241757, -3); // 1242000
+  echo round(5.045, 2);    // 5.05
+  echo round(5.055, 2);    // 5.06
+?>
+
+
+
+
+
+PHP 默认不能正确处理类似 "12,300.2"
+的字符串。见字符串转换为数值。
+
+{precision} 参数是在 PHP 4 中被引入的。
+
+参见 |ceil|，|floor| 和 |number_format|。
+
+vim:ft=help:

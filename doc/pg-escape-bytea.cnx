@@ -1,0 +1,21 @@
+pg_escape_bytea -- 转义 bytea 类型的二进制数据
+
+  string pg_escape_bytea(string data)~
+
+|pg_escape_bytea| 转义 bytea
+数据类型的二进制字符串，返回转义后的字符串。
+
+当对 bytea 类型字段进行 SELECT 操作时，PostgreSQL 返回前导 \
+的八进制字节值（例如
+\032）。用户需要自己将结果转换为二进制格式。
+
+本函数需要 PostgreSQL 7.2 或以上版本。在 PostgreSQL 7.2.0 和
+7.2.1 版中，如果使用了多字节支持，bytea
+类型必须被强制转换。例如 INSERT INTO test_table (image) VALUES
+('$image_escaped'::bytea);。PostgreSQL 7.2.2
+或以上版本不需要强制转换。异常情况是当客户端和后端字符编码不匹配时，可能会有多字节流错误。用户必须强制转换
+bytea 以避免此错误。
+
+参见 |pg_unescape_bytea| 和 |pg_escape_string|。
+
+vim:ft=help:

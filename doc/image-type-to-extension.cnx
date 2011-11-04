@@ -1,0 +1,7 @@
+image_type_to_extension -- 取得图像类型的文件后缀
+
+  string image_type_to_extension(int imagetype [, bool include_dot])~
+
+本函数还未编写文档，仅有参数列表。
+
+vim:ft=help:

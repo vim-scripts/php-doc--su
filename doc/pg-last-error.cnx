@@ -1,0 +1,18 @@
+pg_last_error -- 得到某连接的最后一条错误信息
+
+  string pg_last_error([resource connection])~
+
+|pg_last_error| 返回指定连接 {connection} 的最后一条错误信息。
+
+错误信息可能会被 PostgreSQL(libpq)
+的内部函数调用所覆盖。如果 PostgreSQL
+的内部模块函数产生了多个错误，则可能不能返回适当的错误信息。
+
+使用 |pg_result_error|，|pg_result_status| 和 |pg_connection_status|
+来取得更好的错误处理。
+
+本函数以前的名字为 pg_errormessage()。
+
+参见 |pg_result_error|。
+
+vim:ft=help:

@@ -1,0 +1,42 @@
+ftp_rename -- 更改 FTP 服务器上的文件或目录名
+
+  bool ftp_rename(resource ftp_stream, string oldname, string newname)~
+
+|ftp_rename| 将 FTP 服务器上的一个文件或目录改名。
+
+{ftp_stream} FTP 连接的标识符。
+
+{oldname} 原来的文件／目录名。
+
+{newname} 新名字。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|ftp_rename| 例子
+
+<?php >
+  $old_file = 'somefile.txt.bak';
+  $new_file = 'somefile.txt';
+  
+  // set up basic connection
+  $conn_id = ftp_connect($ftp_server);
+  
+  // login with username and password
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  
+  // try to rename $old_file to $new_file
+  if (ftp_rename($conn_id, $old_file, $new_file)) {
+      echo "successfully renamed $old_file to $new_file\n";
+  } else {
+      echo "There was a problem while renaming $old_file to $new_file\n";
+  }
+  
+  // close the connection
+  ftp_close($conn_id);
+?>
+
+
+
+
+
+vim:ft=help:

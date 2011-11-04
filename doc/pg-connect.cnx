@@ -1,0 +1,39 @@
+pg_connect -- 打开一个 PostgreSQL 连接
+
+  resource pg_connect(string connection_string)~
+
+|pg_connect| 返回其它 PostgreSQL 函数所需要的资源。
+
+|pg_connect| 打开一个由 {connection_string} 所指定的 PostgreSQL
+数据库的连接。如果成功则返回连接资源，如果不能连接则返回
+FALSE。{connection_string} 应该是用引号引起来的字符串。 使用
+|pg_connect|
+
+<?php >
+  $dbconn = pg_connect("dbname=mary");
+  //connect to a database named "mary"
+  $dbconn2 = pg_connect("host=localhost port=5432 dbname=mary");
+  // connect to a database named "mary" on "localhost" at port "5432"
+  $dbconn3 = pg_connect("host=sheep port=5432 dbname=mary user=lamb password=foo");
+  //connect to a database named "mary" on the host "sheep" with a username and password
+  
+  $conn_string = "host=sheep port=5432 dbname=test user=lamb password=bar";
+  $dbconn4 = pg_connect($conn_string);
+  //connect to a database named "test" on the host "sheep" with a username and password
+?>
+
+
+
+{connection_string} 所包括的参数有 {host}，{port}，{tty},
+{options}，{dbname}, {user} 和 {password}。
+
+如果用同样的 {connection_string} 再次调用
+|pg_connect|，不会建立新连接，而是返回前面已经打开的连接资源。如果使用不同的连接字符串，则可以和同一个数据库建立多个连接。
+
+旧的多参数语法 $conn = pg_connect("host", "port", "options", "tty",
+"dbname") 已经不提倡使用。
+
+参见 |pg_pconnect|，|pg_close|，|pg_host|，|pg_port|,
+|pg_tty|，|pg_options| 和 |pg_dbname|。
+
+vim:ft=help:

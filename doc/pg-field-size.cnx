@@ -1,0 +1,16 @@
+pg_field_size -- 返回指定字段占用内部存储空间的大小
+
+  int pg_field_size(resource result, int field_number)~
+
+|pg_field_size| 返回 PostgreSQL {result}
+中指定字段占用内部存储空间的大小（字节数）。字段编号从
+0 开始。字段大小为 -1
+表示可变长度字段。如果出错本函数返回 FALSE。
+
+参考 |pg_field_name| 页面中的例子。
+
+本函数以前的名字为 pg_fieldsize()。
+
+参见 |pg_field_prtlen| 和 |pg_field_type|。
+
+vim:ft=help:

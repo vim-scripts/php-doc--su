@@ -1,0 +1,30 @@
+imagepsbbox -- 给出一个使用 PostScript Type1 字体的文本方框
+
+  array imagepsbbox(string text, int font, int size [, int space, int tightness, float angle])~
+
+{size} 以像素表示。
+
+{space}
+可以用来改变字体中默认间距的值。此值将被加到通常的值上，可以为负值。
+
+{tightness}
+可以控制字符之间的间距。此值将被加到通常字符宽度上，可以为负值。
+
+{angle} 以角度表示。
+
+{space} 和 {tightness} 以字符间距单元表示，1 个单元为 1
+em-square 的一千分之一。
+
+{space}，{tightness} 和 {angle} 参数为可选项。
+
+围绕文本范围的虚拟方框是用从字符度量学中的可用信息来计算的，不幸的是往往和实际上光栅生成的文本的结果有少许不同。如果角度为
+0 度，（根据经验）文本在每个方向上都需要多 1 个像素。
+
+此函数仅在 PHP 编译时指定了 --with-t1lib[=DIR] 时可用。
+
+本函数返回包含有下列单元的数组： 0 左下角的 X 坐标 1
+左下角的 Y 坐标 2 右上角的 X 坐标 3 右上角的 Y 坐标
+
+参见 |imagepstext|。
+
+vim:ft=help:

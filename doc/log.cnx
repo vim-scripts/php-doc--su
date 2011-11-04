@@ -1,0 +1,16 @@
+log -- 自然对数
+
+  float log(float arg [, float base])~
+
+如果指定了可选的参数 {base}，|log| 返回 logbase {arg}，否则
+|log| 返回参数 {arg} 的自然对数。
+
+参数 {base} 自 PHP 4.3.0 开始可用。
+
+你可以计算任意以 b 为底 n
+的对数，但其实使用的是数学等式：logb(n) =
+log(n)/log(b)，其中 log 是自然对数。
+
+参见 |exp|。
+
+vim:ft=help:

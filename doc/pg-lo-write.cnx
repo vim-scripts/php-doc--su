@@ -1,0 +1,16 @@
+pg_lo_write -- 向大型对象写入数据
+
+  int pg_lo_write(resource large_object, string data)~
+
+|pg_lo_write| 把 {data}
+参数中的数据尽可能多地写入大型对象并返回实际写入的字节数。如果出错则返回
+FALSE。{large_object} 参数是 |pg_lo_open|
+函数所返回的大型对象资源号。
+
+要使用大型对象（lo）接口，需要将其放置在事务块中。
+
+本函数以前的名字为 pg_lo_write()。
+
+参见 |pg_lo_create| 和 |pg_lo_open|。
+
+vim:ft=help:

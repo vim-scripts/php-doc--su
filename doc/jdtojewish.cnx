@@ -1,0 +1,32 @@
+jdtojewish -- 转换一个julian天数为Jewish历法的日期
+
+  string jdtojewish(int juliandaycount [, bool hebrew [, int fl]])~
+
+转换一个julian天数为Jewish历法的日期。
+
+{julianday} 一个julian天数
+
+{hebrew} 如果参数 {hebrew}设置为
+TRUE，参数{fl}可用于希伯莱语的格式。
+
+{fl} 可用的格式有： CAL_JEWISH_ADD_ALAFIM_GERESH,
+CAL_JEWISH_ADD_ALAFIM, CAL_JEWISH_ADD_GERESHAYIM.
+
+以“月/日/年”的格式显示jewish日期。
+
+版本 说明 5.0.0 增加了参数 {fl}。 4.3.0 增加了参数 {hebrew} 。
+
+|jdtojewish| Example
+
+<?php >
+  echo jdtojewish(gregoriantojd(10, 8, 2002), true,
+         CAL_JEWISH_ADD_GERESHAYIM + CAL_JEWISH_ADD_ALAFIM + CAL_JEWISH_ADD_ALAFIM_GERESH); 
+?>
+
+
+
+
+
+|jewishtojd| |cal_from_jd|
+
+vim:ft=help:

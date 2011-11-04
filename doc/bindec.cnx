@@ -1,0 +1,31 @@
+bindec -- 二进制转换为十进制
+
+  number bindec(string binary_string)~
+
+返回 {binary_string} 参数所表示的二进制数的十进制等价值。
+
+|bindec| 将一个二进制数转换成 integer。可转换的最大的数为
+31 位 1 或者说十进制的 2147483647。PHP 4.1.0
+开始，该函数可以处理大数值，这种情况下，它会返回 float
+类型。
+
+|bindec| 范例
+
+<?php >
+  echo bindec('110011') . "\n";
+  echo bindec('000110011') . "\n";
+   
+  echo bindec('111');
+?>
+
+以上例程会输出：
+
+  51
+  51
+  7
+
+
+
+参见 |decbin|，|octdec|，|hexdec| 和 |base_convert|。
+
+vim:ft=help:

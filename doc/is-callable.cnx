@@ -1,0 +1,9 @@
+is_callable -- 检测参数是否为合法的可调用结构
+
+  bool is_callable(mixed var [, bool syntax_only [, string callable_name]])~
+
+本函数还未编写文档，仅有参数列表。
+
+
+
+vim:ft=help:

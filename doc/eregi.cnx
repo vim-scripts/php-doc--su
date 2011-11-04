@@ -1,0 +1,23 @@
+eregi -- 不区分大小写的正则表达式匹配
+
+  int eregi(string pattern, string string [, array regs])~
+
+本函数和 |ereg|
+完全相同，只除了在匹配字母字符时忽略大小写的区别。
+
+|eregi| 例子
+
+<?php >
+  $string = 'XYZ';
+     if (eregi('z', $string)) {
+      echo "'$string' contains a 'z' or 'Z'!";
+  }
+?>
+
+
+
+
+
+参见 |ereg|，|ereg_replace|，|eregi_replace|，|stripos| 和 |stristr|。
+
+vim:ft=help:

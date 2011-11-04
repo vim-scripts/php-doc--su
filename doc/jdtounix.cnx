@@ -1,0 +1,5 @@
+jdtounix -- 转变Julian Day计数为一个Unix时间戳
+
+  int jdtounix(int jday)~
+
+vim:ft=help:

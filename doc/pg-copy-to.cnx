@@ -1,0 +1,12 @@
+pg_copy_to -- 将一个表拷贝到数组中
+
+  array pg_copy_to(resource connection, string table_name [, string delimiter [, string null_as]])~
+
+|pg_copy_to|
+将一个表拷贝到数组中，该数组作为结果返回。它在内部使用了
+COPY FROM SQL
+命令来插入记录，并返回结果数组。如果失败则返回 FALSE。
+
+参见 |pg_copy_from|。
+
+vim:ft=help:

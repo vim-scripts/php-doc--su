@@ -1,0 +1,16 @@
+hex2bin -- Converts the hex representation of data to binary
+
+  string hex2bin(string data)~
+
+
+
+This function is currently not documented; only its argument list is
+available.
+
+Hexadecimal representation of data.
+
+Returns the binary representation of the given data.
+
+|bin2hex| |unpack|
+
+vim:ft=help:

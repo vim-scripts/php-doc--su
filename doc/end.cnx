@@ -1,0 +1,20 @@
+end -- 将数组的内部指针指向最后一个单元
+
+  mixed end(array array)~
+
+|end| 将 {array} 的内部指针移动到最后一个单元并返回其值。
+
+简单的 |end| 例子
+
+<?php >
+  $fruits = array('apple','banana','cranberry');
+  echo end($fruits); // cranberry
+?>
+
+
+
+
+
+参见 |current|，|each|，|prev|，|next| 和 |reset|。
+
+vim:ft=help:

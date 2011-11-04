@@ -1,0 +1,36 @@
+fgetc -- 从文件指针中读取字符
+
+  string fgetc(resource handle)~
+
+返回一个包含有一个字符的字符串，该字符从 {handle}
+指向的文件中得到。碰到 EOF 则返回 FALSE。
+
+文件指针必须是有效的，必须指向由 |fopen| 或 |fsockopen|
+成功打开的文件(并还未由 |fclose| 关闭)。
+
+此函数可能返回布尔值 FALSE，但也可能返回等同于 FALSE
+的非布尔值，例如 0 或 ""(空串)。请阅读
+布尔类型章节以获取更多信息。应使用 === 运算符
+来测试此函数的返回值。
+
+|fgetc| 例子
+
+<?php >
+  $fp = fopen('somefile.txt', 'r');
+  if (!$fp) {
+      echo 'Could not open file somefile.txt';
+  }
+  while (false !== ($char = fgetc($fp))) {
+      echo "$char\n";
+  }
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+参见 |fread|，|fopen|，|popen|，|fsockopen| 和 |fgets|。
+
+vim:ft=help:

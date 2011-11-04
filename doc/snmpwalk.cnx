@@ -1,0 +1,27 @@
+snmpwalk -- 从代理返回所有的 SNMP 对象
+
+  array snmpwalk(string hostname, string community, string object_id [, int timeout [, int retries]])~
+
+返回由 {object_id} 作为根的 SNMP
+对象值所组成的数组，错误则返回 FALSE。
+
+|snmpwalk| 函数是用来读取所有由 {hostname} 指定的 SNMP
+代理的值。{Community} 指定该代理中具有读权限的域。一个为
+NULL 的 {object_id} 将被看作 SNMP
+对象树的根，而在此树下的所有对象将作为一个数组被返回。如果指定了
+{object_id}，则返回所有在 {object_id} 下的 SNMP 对象。
+
+<?php >
+  $a = snmpwalk("127.0.0.1", "public", ""); 
+?>
+
+上边的函数调用将从运行于本机的 SNMP 代理那里返回所有的
+SNMP 对象。可使用循环遍历这些值。
+
+<?php >
+  foreach ($a as $val) {
+      echo "$val\n";
+  }
+?>
+
+vim:ft=help:

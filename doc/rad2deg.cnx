@@ -1,0 +1,19 @@
+rad2deg -- 将弧度数转换为相应的角度数
+
+  float rad2deg(float number)~
+
+本函数将 {number} 从弧度转换为角度。
+
+|rad2deg|
+
+<?php >
+  echo rad2deg(M_PI_4); // 45
+?>
+
+
+
+
+
+参见 |deg2rad|。
+
+vim:ft=help:

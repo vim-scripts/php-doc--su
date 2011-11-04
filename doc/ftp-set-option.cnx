@@ -1,0 +1,35 @@
+ftp_set_option -- 设置各种 FTP 运行时选项
+
+  bool ftp_set_option(resource ftp_stream, int option, mixed value)~
+
+本函数控制指定 FTP 流的各种运行时选项。
+
+{ftp_stream} FTP 连接的标识符。
+
+{option} 目前支持以下选项： 所支持的 FTP 运行时选项
+FTP_TIMEOUT_SEC 改变网络传输的超时时间。参数 {value}
+必须为整数且大于 0。默认的超时时间为 90 秒。 FTP_AUTOSEEK
+当此选项打开时，带 {resumepos} 或 {startpos} 参数的GET 或 PUT
+请求
+将先检索到文件中指定的位置。此选项默认是打开的。
+
+{value} 本参数取决于要修改哪个 {option}。
+
+如果选项能够被设置，返回 TRUE，否则返回 FALSE。如果参数
+{option} 不被支持或者给定的参数 {value} 的值与参数 {option}
+不匹配，则会同时返回一条警告信息。
+
+|ftp_set_option| 例子
+
+<?php >
+  // 设置网络传输超时时间为 10 秒
+  ftp_set_option($conn_id, FTP_TIMEOUT_SEC, 10);
+?>
+
+
+
+
+
+|ftp_get_option|
+
+vim:ft=help:

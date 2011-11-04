@@ -1,0 +1,14 @@
+JDToJulian -- 转变一个Julian Day计数到Julian历法的日期
+
+  string jdtojulian(int julianday)~
+
+转变一个Julian
+Day计数到以“月/日/年”形式显示的Julian历法的日期。
+
+{julianday} 一个julian天数
+
+以“月/日/年”形式显示的Julian历法的日期
+
+|juliantojd| |cal_from_jd|
+
+vim:ft=help:

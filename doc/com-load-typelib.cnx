@@ -1,0 +1,9 @@
+com_load_typelib -- 装载一个 Typelib
+
+  void com_load_typelib(string typelib_name [, int case_insensitive])~
+
+本函数还未编写文档，仅有参数列表。
+
+
+
+vim:ft=help:

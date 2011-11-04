@@ -1,0 +1,41 @@
+strrchr -- 查找指定字符在字符串中的最后一次出现
+
+  string strrchr(string haystack, mixed needle)~
+
+该函数返回 {haystack} 字符串中的一部分，这部分以 {needle}
+的最后出现位置开始，直到 {haystack} 末尾。
+
+{haystack} 在该字符串中查找。
+
+{needle} 如果 {needle}
+包含了不止一个字符，那么仅使用第一个字符。该行为不同于
+|strstr|。
+
+如果 {needle}
+不是一个字符串，那么将被转化为整型并被视为字符顺序值。
+
+该函数返回字符串的一部分。如果 {needle} 未被找到，返回
+FALSE。
+
+版本 说明 4.3.0 该函数是二进制安全的。
+
+|strrchr| 范例
+
+<?php >
+  // 获取 $PATH 中不含磁盘符号的目录
+  $dir = substr(strrchr($PATH, ":"), 1);
+  
+  // 获取最后一行内容
+  $text = "Line 1\nLine 2\nLine 3";
+  $last = substr(strrchr($text, 10), 1 );
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|strstr| |substr| |stristr|
+
+vim:ft=help:

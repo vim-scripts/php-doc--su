@@ -1,0 +1,15 @@
+memcache_debug -- 转换调试输出的开/关
+
+  bool memcache_debug(bool on_off)~
+
+|memcache_debug|在参数
+{on_off}设置为TRUE时打开调试输出，在值为
+FALSE时关闭调试输出。
+|memcache_debug|仅仅在PHP以--enable-debug方式编译时可以访问，并且
+总是返回TRUE，其他情况下此函数不会产生任何影响并总是返回FALSE。
+
+{on_off} TRUE表明打开调试输出。 FALSE表明关闭调试输出。
+
+当PHP以--enalbe-debug选项构建时返回TRUE其他情况下返回FALSE。
+
+vim:ft=help:

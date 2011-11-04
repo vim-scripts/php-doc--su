@@ -1,0 +1,49 @@
+xml_set_unparsed_entity_decl_handler --
+建立未解析实体定义声明处理器
+
+  bool xml_set_unparsed_entity_decl_handler(resource parser, callback handler)~
+
+为 {parser} 参数指定的 XML
+解析器建立未解析实体定义声明处理器函数。参数
+{start_element_handler} 和 {end_element_handler}
+为表示函数名称的字符串，这些函数必须在为 {parser}
+指定的解析器调用 |xml_parse| 函数时已存在。
+
+当 XML 解析器遇到如下含有 NDATA
+声明的外部实体定义声明时，该处理器将被调用：
+
+  <!ENTITY <parameter>name</parameter> {<parameter>publicId</parameter> | <parameter>systemId</parameter>} 
+          NDATA <parameter>notationName</parameter>
+
+
+
+请参阅 XML 1.0 参考的第 4.2.2
+节以获取有关已声明外部实体注释定义的信息。
+
+  bool (resource parser, callback handler, resource parser, string entity_name, string base, string system_id, string public_id, string notation_name)~
+
+由 {handler} 参数命名的函数名必须接受六个参数： {parser}
+第一个参数 parser 为指向要调用处理器的 XML
+解析器的指针。
+
+{entity_name} 将被定义的实体名。
+
+{base}
+这个参数是解析外部实体的系统标识符（{system_id}）的基础。当前该参数通常都被设置为空字符串。
+
+{system_id} 外部实体的系统标识符。
+
+{public_id} 外部实体的公共标识符。
+
+{notation_name} 该实体的注释名（请参阅
+|xml_set_notation_decl_handler|）。
+
+如果处理器函数名被设置为空字符串或者
+FALSE，则该有问题的处理器将被屏蔽。
+
+如果处理器被成功的建立，该函数将返回 TRUE；如果 {parser}
+指向的不是合法的解析器，函数该函数将返回 FALSE。
+
+除了函数名，含有对象引用的数组和方法名也可以作为参数。
+
+vim:ft=help:

@@ -1,0 +1,16 @@
+curl_multi_remove_handle --
+移除curl批处理句柄资源中的某个句柄资源
+
+  int curl_multi_remove_handle(resource mh, resource ch)~
+
+从给定的批处理句柄{mh}中移除{ch}句柄。当{ch}句柄被移除以后，仍然可以合法地用|curl_exec|执行这个句柄。当正在移除的句柄正在被使用，在处理的过程中所有的传输任务会被终止。
+
+{mh} 由 |curl_multi_init| 返回的 cURL 多个句柄。
+
+{ch} 由 |curl_init| 返回的 cURL 句柄。
+
+成功时返回一个cURL句柄，失败时返回FALSE。
+
+|curl_init| |curl_multi_init| |curl_multi_add_handle|
+
+vim:ft=help:

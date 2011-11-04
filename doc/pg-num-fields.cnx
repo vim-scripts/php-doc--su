@@ -1,0 +1,13 @@
+pg_num_fields -- 返回字段的数目
+
+  int pg_num_fields(resource result)~
+
+|pg_num_fields| 返回 PostgreSQL {result}
+中的字段（列）数目。参数是由 |pg_query|
+函数返回的查询结果资源号。如果出错则返回 -1。
+
+本函数以前的名字为 pg_numfields()。
+
+参见 |pg_num_rows| 和 |pg_affected_rows|。
+
+vim:ft=help:

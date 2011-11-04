@@ -1,0 +1,11 @@
+imagepsfreefont -- 释放一个 PostScript Type 1 字体所占用的内存
+
+  bool imagepsfreefont(resource fontindex)~
+
+|imagepsfreefont| 释放一个 PostScript Type 1 字体所占用的内存。
+
+此函数仅在 PHP 编译时指定了 --with-t1lib[=DIR] 时可用。
+
+参见 |imagepsloadfont|。
+
+vim:ft=help:

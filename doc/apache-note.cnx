@@ -1,0 +1,17 @@
+apache_note -- 取得或设置 apache 请求记录
+
+  string apache_note(string note_name [, string note_value])~
+
+|apache_note| 是用于 Apache 的函数，可以取得或者设置请求
+notes 表中的值。
+
+{note_name} note 名。
+
+{note_value} note 值。
+
+如果只有一个参数调用，则返回记录 note_name
+的当前值。如果用两个参数调用，则将记录 note_name
+的值设为 note_value 并返回记录 note_name
+的前一个值。如果未能获取记录，则返回 FALSE。
+
+vim:ft=help:

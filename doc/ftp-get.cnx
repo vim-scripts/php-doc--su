@@ -1,0 +1,39 @@
+ftp_get -- 从 FTP 服务器上下载一个文件
+
+  bool ftp_get(resource ftp_stream, string local_file, string remote_file, int mode [, int resumepos])~
+
+|ftp_get| 函数用来下载 FTP 服务器上由 {remote_file}
+参数指定的文件，并保存到由参数 {local_file}
+指定的本地文件。传送模式参数 {mode} 只能为 (文本模式)
+FTP_ASCII 或 (二进制模式) FTP_BINARY 中的其中一个。
+
+参数 {resumepos} 仅在适用于 PHP 4.3.0 以上版本.
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|ftp_get| 例子
+
+<?php >
+  // define some variables
+  $local_file = 'local.zip';
+  $server_file = 'server.zip';
+  // connect to the FTP server
+  $conn_id = ftp_connect($ftp_server);
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  // try to download
+  if (ftp_get($conn_id, $local_file, $server_file, FTP_BINARY)) {
+      echo "Successfully written to $local_file\n";
+  } else {
+      echo "There was a problem\n";
+  }
+  // close the connection
+  ftp_close($conn_id);
+?>
+
+
+
+
+
+参见 |ftp_fget|，|ftp_nb_get| 和 |ftp_nb_fget|。
+
+vim:ft=help:

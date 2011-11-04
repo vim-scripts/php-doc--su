@@ -1,0 +1,9 @@
+session_encode -- 将当前会话数据编码为一个字符串
+
+  string session_encode()~
+
+|session_encode|返回一个字符串,该字符串包含有被编码的当前会话数据。
+
+参见 |session_decode|。
+
+vim:ft=help:

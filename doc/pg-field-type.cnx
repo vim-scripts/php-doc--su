@@ -1,0 +1,14 @@
+pg_field_type -- 返回相应字段的类型名称
+
+  string pg_field_type(resource result, int field_number)~
+
+|pg_field_type| 以字符串返回 PostgreSQL {result} 资源中指定
+{field_number} 字段的类型。字段编号从 0 开始。
+
+参考 |pg_field_name| 页面中的例子。
+
+本函数以前的名字为 pg_fieldtype()。
+
+参见 |pg_field_prtlen| 和 |pg_field_name|。
+
+vim:ft=help:

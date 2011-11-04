@@ -1,0 +1,83 @@
+imagecopyresampled -- 重采样拷贝部分图像并调整大小
+
+  bool imagecopyresampled(resource dst_image, resource src_image, int dst_x, int dst_y, int src_x, int src_y, int dst_w, int dst_h, int src_w, int src_h)~
+
+|imagecopyresampled|
+将一幅图像中的一块正方形区域拷贝到另一个图像中，平滑地插入像素值，因此，尤其是，减小了图像的大小而仍然保持了极大的清晰度。成功时返回
+TRUE， 或者在失败时返回 &false;.
+
+{dst_image} 和 {src_image}
+分别是目标图像和源图像的标识符。如果源和目标的宽度和高度不同，则会进行相应的图像收缩和拉伸。坐标指的是左上角。本函数可用来在同一幅图内部拷贝（如果
+{dst_image} 和 {src_image}
+相同的话）区域，但如果区域交迭的话则结果不可预知。
+
+因为调色板图像限制（255+1
+种颜色）有个问题。重采样或过滤图像通常需要多于 255
+种颜色，计算新的被重采样的像素及其颜色时采用了一种近似值。对调色板图像尝试分配一个新颜色时，如果失败我们选择了计算结果最接近（理论上）的颜色。这并不总是视觉上最接近的颜色。这可能会产生怪异的结果，例如空白（或者视觉上是空白）的图像。要跳过这个问题，请使用真彩色图像作为目标图像，例如用
+|imagecreatetruecolor| 创建的。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+简单例子 本例中将把一幅图像重采样为原始大小的一半。
+
+<?php >
+  // The file
+  $filename = 'test.jpg';
+  $percent = 0.5;
+  
+  // Content type
+  header('Content-type: image/jpeg');
+  
+  // Get new dimensions
+  list($width, $height) = getimagesize($filename);
+  $new_width = $width * $percent;
+  $new_height = $height * $percent;
+  
+  // Resample
+  $image_p = imagecreatetruecolor($new_width, $new_height);
+  $image = imagecreatefromjpeg($filename);
+  imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+  
+  // Output
+  imagejpeg($image_p, null, 100);
+?>
+
+
+
+按比例重采样图像 本例将把一幅图像按最宽或最高 200
+像素来显示。
+
+<?php >
+  // The file
+  $filename = 'test.jpg';
+  
+  // Set a maximum height and width
+  $width = 200;
+  $height = 200;
+  
+  // Content type
+  header('Content-type: image/jpeg');
+  
+  // Get new dimensions
+  list($width_orig, $height_orig) = getimagesize($filename);
+  
+  if ($width &amp;& ($width_orig < $height_orig)) {
+      $width = ($height / $height_orig) * $width_orig;
+  } else {
+      $height = ($width / $width_orig) * $height_orig;
+  }
+  
+  // Resample
+  $image_p = imagecreatetruecolor($width, $height);
+  $image = imagecreatefromjpeg($filename);
+  imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+  
+  // Output
+  imagejpeg($image_p, null, 100);
+?>
+
+
+
+|imagecopyresized|
+
+vim:ft=help:

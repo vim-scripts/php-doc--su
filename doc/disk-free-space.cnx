@@ -1,0 +1,25 @@
+disk_free_space -- 返回目录中的可用空间
+
+  float disk_free_space(string directory)~
+
+给出一个包含有一个目录的字符串，本函数将根据相应的文件系统或磁盘分区返回可用的字节数。
+
+|disk_free_space| 例子
+
+<?php >
+  // $df 包含根目录下可用的字节数
+  $df = disk_free_space("/");
+  //在 Windows 下:
+  disk_free_space("C:");
+  disk_free_space("D:");
+?>
+
+
+
+
+
+此函数不能作用于远程文件，被检查的文件必须是可通过服务器的文件系统访问的。
+
+参见 |disk_total_space|。
+
+vim:ft=help:

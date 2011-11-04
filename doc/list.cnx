@@ -1,0 +1,84 @@
+list -- 把数组中的值赋给一些变量
+
+  void list(mixed varname, mixed ...)~
+
+像 |array| 一样，这不是真正的函数，而是语言结构。|list|
+用一步操作给一组变量进行赋值。
+
+|list| 仅能用于数字索引的数组并假定数字索引从 0 开始。
+
+|list| 例子
+
+<?php >
+  $info = array('coffee', 'brown', 'caffeine');
+  
+  // Listing all the variables
+  list($drink, $color, $power) = $info;
+  echo "$drink is $color and $power makes it special.\n";
+  
+  // Listing some of them
+  list($drink, , $power) = $info;
+  echo "$drink has $power.\n";
+  
+  // Or let's skip to only the third one
+  list( , , $power) = $info;
+  echo "I need $power!\n";
+?>
+
+
+
+
+
+使用 |list| 的例子
+
+  <table>
+   <tr>
+    <th>Employee name</th>
+    <th>Salary</th>
+   </tr>
+<?php >
+  $result = mysql_query("SELECT id, name, salary FROM employees",$conn);
+  while (list($id, $name, $salary) = mysql_fetch_row($result)) {
+      echo " <tr>\n".
+           "  <td><a href=\"info.php?id=$id\">$name</a></td>\n".
+           "  <td>$salary</td>\n".
+           " </tr>\n";
+  }
+?>
+  
+  </table>
+
+
+
+
+
+|list|
+从最右边一个参数开始赋值。如果你用单纯的变量，不用担心这一点。但是如果你用了具有索引的数组，通常你期望得到的结果和在
+|list|
+中写的一样是从左到右的，但实际上不是。是以相反顺序赋值的。
+
+在 |list| 中使用数组索引
+
+<?php >
+  $info = array('coffee', 'brown', 'caffeine');
+  list($a[0], $a[1], $a[2]) = $info;
+  var_dump($a);
+?>
+
+产生如下输出（注意单元顺序和 |list|
+语法中所写的顺序的比较）：
+
+  array(3) {
+    [2]=>
+    string(8) "caffeine"
+    [1]=>
+    string(5) "brown"
+    [0]=>
+    string(6) "coffee"
+  }
+
+
+
+参见 |each|，|array| 和 |extract|。
+
+vim:ft=help:

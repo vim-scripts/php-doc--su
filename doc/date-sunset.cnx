@@ -1,0 +1,37 @@
+date_sunset -- 返回给定的日期与地点的日落时间
+
+  mixed date_sunset(int timestamp [, int format [, float latitude [, float longitude [, float zenith [, float gmt_offset]]]]])~
+
+|date_sunset| 返回给定的日期（以 {timestamp}
+指定）与地点的日落时间。{latitude}，{longitude} 和 {zenith}
+参数默认值分别为配置选项中的
+date.default_latitude，date.default_longitude 和 date.sunrise_zenith。
+
+{latitude}
+默认是指北纬。因此如果要指定南纬，必须传递一个负值。同样规则也适用于
+{longitude}，其默认是指东经。
+
+{gmt_offset} 参数的单位是小时。
+
+|date_sunset| 例子
+
+<?php >
+  /* 计算葡萄牙里斯本的日落时间
+  Latitude:  北纬 38.4 度
+  Longitude: 西经 9 度
+  Zenith ~= 90
+  offset: +1 GMT
+  */
+  
+  echo date("D M d Y"). ', sunset time : ' .date_sunset(time(), SUNFUNCS_RET_STRING, 38.4, -9, 90, 1);
+?>
+
+以上例程的输出类似于：
+
+  Mon Dec 20 2004, sunset time : 18:13
+
+
+
+参见 |date_sunrise|。
+
+vim:ft=help:

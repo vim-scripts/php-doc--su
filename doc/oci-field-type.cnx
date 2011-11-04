@@ -1,0 +1,52 @@
+oci_field_type -- 返回字段的数据类型
+
+  mixed oci_field_type(resource stmt, int field)~
+
+|oci_field_type| 返回字段的数据类型。{field}
+参数是字段的索引（从 1 开始）。
+
+|oci_field_type| 例子
+
+<?php >
+      $conn = oci_connect("scott", "tiger");
+      $stmt = oci_parse($conn, "SELECT * FROM emp");
+      oci_execute($stmt);
+  
+      echo "<table border=\"1\">";
+      echo "<tr>";
+      echo "<th>Name</th>";
+      echo "<th>Type</th>";
+      echo "<th>Length</th>";
+      echo "</tr>";
+  
+      $ncols = oci_num_fields($stmt);
+  
+      for ($i = 1; $i <= $ncols; $i++) {
+          $column_name  = oci_field_name($stmt, $i);
+          $column_type  = oci_field_type($stmt, $i);
+          $column_size  = oci_field_size($stmt, $i);
+  
+          echo "<tr>";
+          echo "<td>$column_name</td>";
+          echo "<td>$column_type</td>";
+          echo "<td>$column_size</td>";
+          echo "</tr>";
+      }
+  
+      echo "</table>\n";
+  
+      oci_free_statement($stmt);
+      oci_close($conn);
+?>
+
+
+
+
+
+在 PHP 5.0.0 之前的版本必须使用 |ocicolumntype|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_field_type| 的别名。不过其已被废弃，不推荐使用。
+
+参见 |oci_num_fields|，|oci_field_name| 和 |oci_field_size|。
+
+vim:ft=help:

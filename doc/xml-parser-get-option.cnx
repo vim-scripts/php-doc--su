@@ -1,0 +1,15 @@
+xml_parser_get_option -- 从 XML 解析器获取选项设置信息
+
+  mixed xml_parser_get_option(resource parser, int option)~
+
+{parser} 指向要获取设置信息的 XML 解析器的指针。
+
+{option} 要获取的设置选项名称。可以使用 XML_OPTION_CASE_FOLDING
+和 XML_OPTION_TARGET_ENCODING 常量。其说明见
+|xml_parser_set_option|。
+
+如果 {parser} 参数没有指向一个合法的解析器或者 {option}
+参数无效，该函数将返回 FALSE（同时产生 E_WARNING
+警告）。否则将返回指定设置选项的值。
+
+vim:ft=help:

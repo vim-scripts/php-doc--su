@@ -1,0 +1,26 @@
+imagecolorat -- 取得某像素的颜色索引值
+
+  int imagecolorat(resource image, int x, int y)~
+
+返回 {image} 所指定的图形中指定位置像素的颜色索引值。
+
+如果 PHP 编译时加上了 GD 库 2.0
+或更高的版本并且图像是真彩色图像，则本函数以整数返回该点的
+RGB 值。用移位加掩码来取得红，绿，蓝各自成分的值：
+取得各自的 RGB 值
+
+<?php >
+  $im = ImageCreateFromPng("rockym.png");
+  $rgb = ImageColorAt($im, 100, 100);
+  $r = ($rgb >> 16) &amp; 0xFF;
+  $g = ($rgb >> 8) &amp; 0xFF;
+  $b = $rgb &amp; 0xFF;
+?>
+
+
+
+
+
+参见 |imagecolorset| 和 |imagecolorsforindex|。
+
+vim:ft=help:

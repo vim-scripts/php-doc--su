@@ -1,0 +1,33 @@
+pg_delete -- 删除记录
+
+  mixed pg_delete(resource connection, string table_name, array assoc_array [, int options])~
+
+|pg_delete| 删除符合条件的记录，条件在 assoc_array 中以
+field=>value 格式给出。如果指定了 option，则 |pg_convert|
+按照该选项作用于 assoc_array 之上。
+
+|pg_delete| 例子
+
+<?php >
+      $db = pg_connect('dbname=foo');
+      // This is safe, since $_POST is converted automatically
+      $res = pg_delete($db, 'post_log', $_POST);
+      if ($res) {
+          echo "POST data is deleted: $res\n";
+      }
+      else {
+          echo "User must have sent wrong inputs\n";
+      }
+?>
+
+
+
+
+
+此函数是实验性的。
+此函数的表象，包括名称及其相关文档都可能在未来的 PHP
+发布版本中未通知就被修改。使用本扩展风险自担 。
+
+参见 |pg_convert|。
+
+vim:ft=help:

@@ -1,0 +1,31 @@
+array_intersect -- 计算数组的交集
+
+  array array_intersect(array array1, array array2 [, array ...])~
+
+|array_intersect| 返回一个数组，该数组包含了所有在 {array1}
+中也同时出现在所有其它参数数组中的值。注意键名保留不变。
+
+|array_intersect| 例子
+
+<?php >
+  $array1 = array("a" => "green", "red", "blue");
+  $array2 = array("b" => "green", "yellow", "red");
+  $result = array_intersect($array1, $array2);
+?>
+
+这使得 $result 成为：
+
+  Array
+  (
+      [a] => green
+      [0] => red
+  )
+
+
+
+两个单元仅在 (string) $elem1 === (string) $elem2
+时被认为是相同的。也就是说，当字符串的表达是一样的时候。
+
+参见 |array_intersect_assoc|，|array_diff| 和 |array_diff_assoc|。
+
+vim:ft=help:

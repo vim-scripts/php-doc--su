@@ -1,0 +1,15 @@
+pg_field_num -- 返回字段的编号
+
+  int pg_field_num(resource result, string field_name)~
+
+|pg_field_num| 返回给定 PostgreSQL {result} 资源中的 {field_name}
+所代表的列（字段）的编号。字段编号从 0
+开始。如果出错本函数返回 -1。
+
+例子参见 |pg_field_name| 页。
+
+本函数以前的名字为 pg_fieldnum()。
+
+参见 |pg_field_name|。
+
+vim:ft=help:

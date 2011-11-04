@@ -1,0 +1,15 @@
+w32api_invoke_function --
+带有一个参数的执行一个函数，参数传递在函数名的后面
+
+  mixed w32api_invoke_function(string funcname, mixed argument [, mixed ...])~
+
+此函数是实验性的。
+此函数的表象，包括名称及其相关文档都可能在未来的 PHP
+发布版本中未通知就被修改。使用本扩展风险自担 。
+
+|w32api_invoke_function| 尝试查找一个注册为私有的函数，名为
+{funcname}
+的函数，需要提供传递的参数。返回的类型是你在注册函数时指定的，值则是由函数自身返回的。任何参数的类型可以是
+PHP 类型，如果需要还可以使用 |w32api_deftype| 函数定义。
+
+vim:ft=help:

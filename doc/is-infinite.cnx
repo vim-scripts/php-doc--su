@@ -1,0 +1,11 @@
+is_infinite -- 判断是否为无限值
+
+  bool is_infinite(float val)~
+
+如果 {val} 为无穷大（正的或负的），例如 log(0)
+的结果或者任何超出本平台的浮点数范围的值，则返回
+TRUE。
+
+参见 |is_finite| 和 |is_nan|。
+
+vim:ft=help:

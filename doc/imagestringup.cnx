@@ -1,0 +1,11 @@
+imagestringup -- 垂直地画一行字符串
+
+  bool imagestringup(resource image, int font, int x, int y, string s, int col)~
+
+|imagestring| 用 {col} 颜色将字符串 {s} 垂直地画到 {image}
+所代表的图像的 {x}, {y} 座标处（图像的左上角为 0,
+0）。如果 {font} 是 1，2，3，4 或 5，则使用内置字体。
+
+参见 |imageloadfont|。
+
+vim:ft=help:

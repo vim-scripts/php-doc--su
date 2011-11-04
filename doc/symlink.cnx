@@ -1,0 +1,14 @@
+symlink -- 建立符号连接
+
+  bool symlink(string target, string link)~
+
+|symlink| 对于已有的 {target} 建立一个名为 {link}
+的符号连接。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+此函数未在 Windows 平台下实现。
+
+参见 |link| 来建立硬连接，以及 |readlink| 和 |linkinfo|。
+
+vim:ft=help:

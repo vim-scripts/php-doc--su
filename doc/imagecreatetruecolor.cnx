@@ -1,0 +1,36 @@
+imagecreatetruecolor -- 新建一个真彩色图像
+
+  resource imagecreatetruecolor(int x_size, int y_size)~
+
+|imagecreatetruecolor| 返回一个图像标识符，代表了一幅大小为
+{x_size} 和 {y_size} 的黑色图像。
+
+是否定义了本函数取决于 PHP 和 GD 的版本。从 PHP 4.0.6 到
+4.1.x 只要加载了 GD 模块本函数一直存在，但是在没有安装
+GD2 的时候调用，PHP 将发出致命错误并退出。在 PHP 4.2.x
+中此行为改为发出警告而不是错误。其它版本只在安装了正确的
+GD 版本时定义了本函数。
+
+新建一个新的 GD 图像流并输出图像
+
+<?php >
+  header("Content-type: image/png");
+  $im = @imagecreatetruecolor(50, 100)
+        or die("Cannot Initialize new GD image stream");
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  "A Simple Text String", $text_color);
+  imagepng($im);
+  imagedestroy($im);
+?>
+
+
+
+
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+本函数不能用于 GIF 文件格式。
+
+参见 |imagedestroy| 和 |imagecreate|。
+
+vim:ft=help:

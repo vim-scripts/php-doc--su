@@ -1,0 +1,33 @@
+pg_fetch_all -- 从结果中提取所有行作为一个数组
+
+  array pg_fetch_all(resource result)~
+
+|pg_fetch_all|
+从结果资源中返回一个包含有所有的行（元组/记录）的数组。如果没有更多行可供提取，则返回
+FALSE。
+
+|pg_fetch_all| 例子
+
+<?php >
+  $conn = pg_pconnect("dbname=publisher");
+  if (!$conn) {
+      echo "An error occured.\n";
+      exit;
+  }
+  $result = pg_query($conn, "SELECT * FROM authors");
+  if (!$result) {
+      echo "An error occured.\n";
+      exit;
+  }
+  $arr = pg_fetch_all($result);
+  var_dump($arr);
+?>
+
+
+
+
+
+参见 |pg_fetch_row|，|pg_fetch_array|，|pg_fetch_object| 和
+|pg_fetch_result|。
+
+vim:ft=help:

@@ -1,0 +1,13 @@
+oci_field_is_null -- 检查字段是否为 NULL
+
+  bool oci_field_is_null(resource statement, mixed field)~
+
+如果 {statement} 语句结果中返回的 {field} 字段的值是
+NULL，|oci_field_is_null| 返回 TRUE。{field}
+参数可以是字段的索引或字段名（大写字母）。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocicolumnisnull|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_field_is_null| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

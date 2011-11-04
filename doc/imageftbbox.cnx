@@ -1,0 +1,13 @@
+imageftbbox -- 给出一个使用 FreeType 2 字体的文本框
+
+  array imageftbbox(float size, float angle, string font_file, string text [, array extrainfo])~
+
+本函数还未编写文档，仅有参数列表。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+
+
+{extrainfo} 参数自 PHP 4.3.5 起成为可选项。
+
+vim:ft=help:

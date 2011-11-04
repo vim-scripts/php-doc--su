@@ -1,0 +1,51 @@
+mysql_list_tables -- 列出 MySQL 数据库中的表
+
+  resource mysql_list_tables(string database [, resource link_identifier])~
+
+|mysql_list_tables| 接受一个数据库名并返回和 |mysql_query|
+函数很相似的一个结果指针。用 |mysql_tablename|
+函数来遍历此结果指针，或者任何使用结果表的函数，例如
+|mysql_fetch_array|。
+
+{database}
+参数是需要被取得其中的的表名的数据库名。如果失败
+|mysql_list_tables| 返回 FALSE。
+
+为向下兼容仍然可以使用本函数的别名
+|mysql_listtables|，但反对这样做。
+
+该函数已经被删除了，请不要再使用该函数。您可以用命令
+SHOW TABLES FROM DATABASE 来实现该函数的功能。
+
+|mysql_list_tables| 例子
+
+<?php >
+      $dbname = 'mysql_dbname';
+  
+      if (!mysql_connect('mysql_host', 'mysql_user', 'mysql_password')) {
+          print 'Could not connect to mysql';
+          exit;
+      }
+  
+      $result = mysql_list_tables($dbname);
+  
+      if (!$result) {
+          print "DB Error, could not list tables\n";
+          print 'MySQL Error: ' . mysql_error();
+          exit;
+      }
+  
+      while ($row = mysql_fetch_row($result)) {
+          print "Table: $row[0]\n";
+      }
+  
+      mysql_free_result($result);
+?>
+
+
+
+
+
+参见 |mysql_list_dbs| 和 |mysql_tablename|。
+
+vim:ft=help:

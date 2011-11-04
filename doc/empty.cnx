@@ -1,0 +1,42 @@
+empty -- 检查一个变量是否为空
+
+  bool empty(mixed var)~
+
+如果 {var} 是非空或非零的值，则 |empty| 返回
+FALSE。换句话说，""、0、"0"、NULL、FALSE、array()、var $var;
+以及没有任何属性的对象都将被认为是空的，如果 {var}
+为空，则返回 TRUE。
+
+除了当变量没有置值时不产生警告之外，|empty| 是 (boolean)
+var 的反义词。参见转换为布尔值获取更多信息。
+
+|empty| 与 |isset| 的一个简单比较。
+
+<?php >
+  $var = 0;
+  
+  // 结果为 true，因为 $var 为空
+  if (empty($var)) {  
+      echo '$var is either 0 or not set at all';
+  }
+  
+  // 结果为 false，因为 $var 已设置
+  if (!isset($var)) { 
+      echo '$var is not set at all';
+  }
+?>
+
+
+
+
+
+因为是一个语言构造器而不是一个函数，不能被 可变函数
+调用。
+
+|empty|
+只检测变量，检测任何非变量的东西都将导致解析错误。换句话说，后边的语句将不会起作用：
+empty(addslashes($name))。
+
+参见 |isset|、|unset|、|array_key_exists|、|count| 和 |strlen|。
+
+vim:ft=help:

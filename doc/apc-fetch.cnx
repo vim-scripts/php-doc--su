@@ -1,0 +1,30 @@
+apc_fetch -- 从缓存中取出存储的变量
+
+  mixed apc_fetch(mixed key [, bool success])~
+
+从缓存中取出存储的变量
+
+{key} {key} 是使用 |apc_store| 存储的键名。
+如果传递的是一个数组，则数组中的每个元素的值都被返回
+
+{success} Set to TRUE in success and FALSE in failure.
+
+存储一个变量或者一个数组失败时返回; FALSE
+
+A |apc_fetch| example
+
+<?php >
+  $bar = 'BAR';
+  apc_store('foo', $bar);
+  var_dump(apc_fetch('foo'));
+?>
+
+以上例程会输出：
+
+  string(3) "BAR"
+
+
+
+|apc_store| |apc_delete| APCIterator
+
+vim:ft=help:

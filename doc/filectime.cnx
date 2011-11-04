@@ -1,0 +1,41 @@
+filectime -- 取得文件的 inode 修改时间
+
+  int filectime(string filename)~
+
+返回文件上次 inode 被修改的时间，如果出错则返回
+FALSE。时间以 Unix 时间戳的方式返回。
+
+注意：在大多数 Unix 文件系统中，当一个文件的 inode
+数据被改变时则该文件被认为是修改了。也就是说，当文件的权限，所有者，所有组或其它
+inode 中的元数据被更新时。参见
+|filemtime|（这才是你想用于在 Web
+页面中建立“最后更新时间”脚注的函数）和 |fileatime|。
+
+注意某些 Unix 说明文本中把 ctime
+说成是该文件建立的时间，这是错的。在大多数 Unix
+文件系统中没有 Unix 文件的建立时间。
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+一个 |fileatime| 的例子
+
+<?php >
+  // 输出类似：somefile.txt was last changed: December 29 2002 22:16:23.
+  
+  $filename = 'somefile.txt';
+  if (file_exists($filename)) {
+      echo "$filename was last changed: " . date("F d Y H:i:s.", filectime($filename));
+  }
+?>
+
+
+
+
+
+参见 |filemtime|。
+
+vim:ft=help:

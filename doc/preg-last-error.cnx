@@ -1,0 +1,28 @@
+preg_last_error -- 返回最后一个PCRE正则执行产生的错误代码
+
+  int preg_last_error()~
+
+返回最后一次PCRE正则执行的错误代码.
+
+|preg_last_error| 示例
+
+<?php >
+  preg_match('/(?:\D+|<\d+>)*[!?]/', 'foobar foobar foobar');
+  
+  if (preg_last_error() == PREG_BACKTRACK_LIMIT_ERROR) {
+      print 'Backtrack limit was exhausted!';
+  }
+?>
+
+以上例程会输出：
+
+  Backtrack limit was exhausted!
+
+
+
+返回下面常量中的一个(查看它们自身的解释): PREG_NO_ERROR
+PREG_INTERNAL_ERROR PREG_BACKTRACK_LIMIT_ERROR (see also pcre.backtrack_limit)
+PREG_RECURSION_LIMIT_ERROR (see also pcre.recursion_limit) PREG_BAD_UTF8_ERROR
+PREG_BAD_UTF8_OFFSET_ERROR (since PHP 5.3.0)
+
+vim:ft=help:

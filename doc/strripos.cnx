@@ -1,0 +1,56 @@
+strripos --
+计算指定字符串在目标字符串中最后一次出现的位置（不区分大小写）
+
+  int strripos(string haystack, string needle [, int offset])~
+
+以不区分大小写的方式查找指定字符串在目标字符串中最后一次出现的位置。与
+|strrpos| 不同，|strripos| 不区分大小写。
+
+{haystack} 在此字符串中进行查找。
+
+{needle} 注意 {needle}
+可以是一个单字符或者多字符的字符串。
+
+{offset} 参数 {offset}
+可以被指定来查找字符串中任意长度的子字符串。
+
+负数偏移量将使得查找从字符串的起始位置开始，到 {offset}
+位置为止。
+
+返回 {needle}
+最后一次出现的数字位置。注意字符串的起始位置为 0 而非
+1。
+
+如果 {needle} 未被发现，返回 FALSE。
+
+此函数可能返回布尔值 FALSE，但也可能返回等同于 FALSE
+的非布尔值，例如 0 或 ""(空串)。请阅读
+布尔类型章节以获取更多信息。应使用 === 运算符
+来测试此函数的返回值。
+
+|strripos| 简单范例
+
+<?php >
+  $haystack = 'ababcd';
+  $needle   = 'aB';
+  
+  $pos      = strripos($haystack, $needle);
+  
+  if ($pos === false) {
+      echo "Sorry, we did not find ($needle) in ($haystack)";
+  } else {
+      echo "Congratulations!\n";
+      echo "We found the last ($needle) in ($haystack) at position ($pos)";
+  }
+?>
+
+以上例程会输出：
+
+  Congratulations!
+     We found the last (aB) in (ababcd) at position (2)
+
+
+
+|strpos| |stripos| |strrchr| |substr| |stristr| |strstr|
+
+vim:ft=help:

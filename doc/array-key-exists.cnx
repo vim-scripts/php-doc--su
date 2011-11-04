@@ -1,0 +1,39 @@
+array_key_exists -- 检查给定的键名或索引是否存在于数组中
+
+  bool array_key_exists(mixed key, array search)~
+
+|array_key_exists| 在给定的 {key} 存在于数组中时返回 TRUE。{key}
+可以是任何能作为数组索引的值。|array_key_exists|
+也可用于对象。
+
+|array_key_exists| 例子
+
+<?php >
+  $search_array = array('first' => 1, 'second' => 4);
+  if (array_key_exists('first', $search_array)) {
+      echo "The 'first' element is in the array";
+  }
+?>
+
+
+
+
+
+在 PHP 4.0.6 中本函数名为 |key_exists|。
+
+|array_key_exists| 与 |isset| 对比 |isset| 对于数组中为 NULL
+的值不会返回 TRUE，而 |array_key_exists| 会。
+
+<?php >
+  $search_array = array('first' => null, 'second' => 4);
+  
+  // returns false
+  isset($search_array['first']);
+  
+  // returns true
+  array_key_exists('first', $search_array);
+?>
+
+参见 |isset|，|array_keys| 和 |in_array|。
+
+vim:ft=help:

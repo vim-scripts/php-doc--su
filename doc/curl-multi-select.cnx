@@ -1,0 +1,15 @@
+curl_multi_select -- 等待所有cURL批处理中的活动连接
+
+  int curl_multi_select(resource mh [, float timeout])~
+
+阻塞直到cURL批处理连接中有活动连接。
+
+{mh} 由 |curl_multi_init| 返回的 cURL 多个句柄。
+
+{timeout} 以秒为单位，等待响应的时间。
+
+成功时返回描述符集合中描述符的数量。失败时，select失败时返回-1，否则返回超时(从底层的select系统调用).
+
+|curl_multi_init|
+
+vim:ft=help:

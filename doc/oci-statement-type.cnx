@@ -1,0 +1,53 @@
+oci_statement_type -- 返回 OCI 语句的类型
+
+  string oci_statement_type(resource statement)~
+
+|oci_statement_type| 返回语句 {statement}
+的查询类型，其值为下列之一： SELECT
+
+UPDATE
+
+DELETE
+
+INSERT
+
+CREATE
+
+DROP
+
+ALTER
+
+BEGIN
+
+DECLARE
+
+UNKNOWN
+
+{statement} 参数是一个由 |oci_parse| 所返回的有效的 OCI
+语句标识符。
+
+|oci_statement_type| 例子
+
+<?php >
+      $conn = oci_connect("scott", "tiger");
+      $sql  = "delete from emp where deptno = 10";
+  
+      $stmt = oci_parse($conn, $sql);
+      if (oci_statement_type($stmt) == "DELETE") {
+          die("You are not allowed to delete from this table<br />");
+      }
+  
+      oci_close($conn);
+?>
+
+
+
+
+
+|oci_statement_type| 在出错时返回 FALSE。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocistatementtype|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_statement_type| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

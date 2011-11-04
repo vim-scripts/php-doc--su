@@ -1,0 +1,5 @@
+OCI-Lob->saveFile -- Alias of OCI-Lob->import
+
+This function is an alias of: OCI-Lob->import.
+
+vim:ft=help:

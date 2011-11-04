@@ -1,0 +1,11 @@
+is_numeric -- 检测变量是否为数字或数字字符串
+
+  bool is_numeric(mixed var)~
+
+如果 {var} 是数字和数字字符串则返回 TRUE，否则返回 FALSE。
+
+参见
+|is_bool|、|is_float|、|is_int|、|is_string|、|is_object|、|is_array| 和
+|is_integer|。
+
+vim:ft=help:

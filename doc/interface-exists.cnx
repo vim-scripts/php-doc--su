@@ -1,0 +1,30 @@
+interface_exists -- 检查接口是否已被定义
+
+  bool interface_exists(string interface_name [, bool autoload])~
+
+本函数在由 {interface_name} 给出的接口已定义时返回
+TRUE，否则返回 FALSE。
+
+|interface_exists| 例子
+
+<?php >
+  // Check the interface exists before trying to use it
+  if (interface_exists('MyInterface')) {
+      class MyClass implements MyInterface
+      {
+          // Methods
+      }
+  }
+?>
+
+
+
+
+
+|interface_exists| 默认会尝试调用 __autoload，如果不希望
+|interface_exists| 去调用 __autoload，可以将 {autoload} 参数设为
+FALSE。
+
+参见 |class_exists|。
+
+vim:ft=help:

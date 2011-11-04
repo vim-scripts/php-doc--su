@@ -1,0 +1,10 @@
+imagepsslantfont -- 倾斜某字体
+
+  bool imagepsslantfont(resource font_index, float slant)~
+
+用 {slant} 参数指定的倾斜值来倾斜 {font_index}
+参数指定的字体。
+
+此函数仅在 PHP 编译时指定了 --with-t1lib[=DIR] 时可用。
+
+vim:ft=help:

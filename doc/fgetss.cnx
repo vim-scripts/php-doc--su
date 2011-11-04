@@ -1,0 +1,19 @@
+fgetss -- 从文件指针中读取一行并过滤掉 HTML 标记
+
+  string fgetss(resource handle [, int length [, string allowable_tags]])~
+
+和 |fgets| 相同，只除了 fgetss 尝试从读取的文本中去掉任何
+HTML 和 PHP 标记。
+
+可以用可选的第三个参数指定哪些标记不被去掉。
+{allowable_tags} 是 PHP 3.0.13，PHP 4.0.0 新加的。
+
+参数 {length} 从 PHP 5 起开始可选。
+
+在读取在 Macintosh 电脑中或由其创建的文件时， 如果 PHP
+不能正确的识别行结束符，启用运行时配置可选项
+auto_detect_line_endings 也许可以解决此问题。
+
+参见 |fgets|，|fopen|，|fsockopen|，|popen| 和 |strip_tags|。
+
+vim:ft=help:

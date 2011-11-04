@@ -1,0 +1,24 @@
+snmp_get_quick_print -- 返回 UCD 库中 quick_print 设置的当前值
+
+  bool snmp_get_quick_print()~
+
+返回保存在 UCD 库中 quick_print 的当前值。默认情况下
+quick_print 为 off。 |snmp_get_quick_print| 示例
+
+<?php >
+    $quickprint = snmp_get_quick_print();
+?>
+
+
+
+
+
+如果 quick_print 为 off，上边的函数调用将返回 FALSE，而如果
+quick_print 为 on，则返回 TRUE。
+
+|snmp_get_quick_print| 仅在使用了 UCD SNMP 库时才可用。当使用
+Windows SNMP 库时，此函数不可用。
+
+参见 |snmp_set_quick_print| 查看 quick_print 的详细说明。
+
+vim:ft=help:

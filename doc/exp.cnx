@@ -1,0 +1,25 @@
+exp -- 计算 e 的指数
+
+  float exp(float arg)~
+
+返回 e 的 {arg} 次方值。
+
+用 'e' 作为自然对数的底 2.718282.
+
+|exp| 范例
+
+<?php >
+  echo exp(12) . "\n";
+  echo exp(5.7);
+?>
+
+以上例程会输出：
+
+  1.6275E+005
+  298.87
+
+
+
+参见 |log| 和 |pow|。
+
+vim:ft=help:

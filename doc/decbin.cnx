@@ -1,0 +1,25 @@
+decbin -- 十进制转换为二进制
+
+  string decbin(int number)~
+
+返回一字符串，包含有给定 {number}
+参数的二进制表示。所能转换的最大数值为十进制的
+4294967295，其结果为 32 个 1 的字符串。
+
+|decbin| 范例
+
+<?php >
+  echo decbin(12) . "\n";
+  echo decbin(26);
+?>
+
+以上例程会输出：
+
+  1100
+  11010
+
+
+
+参见 |bindec|，|decoct|，|dechex| 和 |base_convert|。
+
+vim:ft=help:

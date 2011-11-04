@@ -1,0 +1,16 @@
+chroot -- 改变根目录
+
+  bool chroot(string directory)~
+
+将当前进程的根目录改变为 {directory}。
+
+本函数仅在系统支持且运行于 CLI，CGI 或嵌入 SAPI
+版本时才能正确工作。此外本函数还需要 root 权限。
+
+{directory} 新目录
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+此函数未在 Windows 平台下实现。
+
+vim:ft=help:

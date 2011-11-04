@@ -1,0 +1,25 @@
+pcntl_getpriority -- 获取任意进程的优先级
+
+  int pcntl_getpriority([int pid [, int process_identifier]])~
+
+|pcntl_getpriority| 获取进程号为
+{pid}的进程的优先级。由于不同的系统类型以及内核版本下
+优先级可能不同，因此请参考您系统的getpriority（2）手册以获取详细的规范。
+
+{pid} 如果没有指定，默认是当前进程的进程号。
+
+{process_identifier} PRIO_PGRP（译注：获取进程组优先级）,
+PRIO_USER （译注：获取用户进程优先级）或
+PRIO_PROCESS（译注：默认值;获取进程优先级）三者之一。
+
+|pcntl_getpriority| 返回进程的优先级或在错误时返回 FALSE 。
+值越小代表优先级越高。
+
+此函数可能返回布尔值 FALSE，但也可能返回等同于 FALSE
+的非布尔值，例如 0 或 ""(空串)。请阅读
+布尔类型章节以获取更多信息。应使用 === 运算符
+来测试此函数的返回值。
+
+|pcntl_setpriority|
+
+vim:ft=help:

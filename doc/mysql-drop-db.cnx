@@ -1,0 +1,20 @@
+mysql_drop_db -- 丢弃（删除）一个 MySQL 数据库
+
+  bool mysql_drop_db(string database_name [, resource link_identifier])~
+
+|mysql_drop_db|
+尝试丢弃（删除）指定连接标识所关联的服务器上的一整个数据库。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+为向下兼容也可以用 |mysql_dropdb|，但反对这样做。
+
+不提倡使用 |mysql_drop_db| 函数。最好用 |mysql_query| 提交一条
+SQL DROP DATABASE 语句来替代。
+
+如果 MySQL 扩展库是基于 MySQL 4.x
+客户端库建立的，则本函数不可用。
+
+参见 |mysql_create_db| 和 |mysql_query|。
+
+vim:ft=help:

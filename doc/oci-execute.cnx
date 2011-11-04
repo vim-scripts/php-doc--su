@@ -1,0 +1,20 @@
+oci_execute -- 执行一条语句
+
+  bool oci_execute(resource stmt [, int mode])~
+
+|oci_execute| 执行一条之前被解析过的语句（见
+|oci_parse|）。可选参数 {mode} 允许定义执行模式（默认是
+OCI_COMMIT_ON_SUCCESS）。如果不需要将语句自动提交，则需要把
+{mode} 设为 OCI_DEFAULT。
+
+用 OCI_DEFAULT
+模式时，将建立一个事务。事务会在关闭连接或脚本结束时（看哪个先）自动回卷。需要明确调用
+|oci_commit| 来提交事务，或者 |oci_rollback| 中止事务。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+在 PHP 5.0.0 之前的版本必须使用 |ociexecute|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_execute| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

@@ -1,0 +1,24 @@
+hebrev --
+将逻辑顺序希伯来文（logical-Hebrew）转换为视觉顺序希伯来文（visual-Hebrew）
+
+  string hebrev(string hebrew_text [, int max_chars_per_line])~
+
+将逻辑顺序希伯来文（logical-Hebrew）转换为视觉顺序希伯来文（visual-Hebrew）
+
+函数将会尝试避免破坏单词。
+
+鉴于希伯来语是由右向左书写，故ISO-8859-8有视觉顺序(Visual
+order) 与逻辑顺序(Logical
+order)之分。"视觉顺序"即不理会希伯来语字母的排列，
+按照西欧语言习惯由左至右记录，
+而"逻辑顺序"则以希伯来语使用者的习惯记录。
+
+{hebrew_text} 逻辑顺序希伯来文字符串。
+
+{max_chars_per_line} 可选参数，表示每行可返回的最多字符数。
+
+返回视觉顺序字符串。
+
+|hebrevc|
+
+vim:ft=help:

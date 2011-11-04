@@ -1,0 +1,30 @@
+convert_uuencode -- 使用 uuencode 编码一个字符串
+
+  string convert_uuencode(string data)~
+
+|convert_uuencode| 使用 uuencode 算法对一个字符串进行编码。
+
+uuencode
+算法会将所有（含二进制）字符串转化为可输出的字符，
+并且可以被安全的应用于网络传输。使用 uuencode
+编码后的数据 将会比源数据大35%左右
+
+{data} 需要被编码的数据
+
+返回 uuencode 编码后的数据
+
+|convert_uuencode| example
+
+<?php >
+  $some_string = "test\ntext text\r\n";
+  
+  echo convert_uuencode($some_string);
+?>
+
+
+
+
+
+|convert_uudecode| |base64_encode|
+
+vim:ft=help:

@@ -1,0 +1,57 @@
+strtr -- 转换指定字符
+
+  string strtr(string str, string from, string to)~
+
+  string strtr(string str, string from, string to, string str, array replace_pairs)~
+
+该函数返回 {str} 的一个副本，并将在 {from}
+中指定的字符转换为 {to} 中相应的字符。
+
+如果 {from} 与 {to}
+长度不相等，那么多余的字符部分将被忽略。
+
+{str} 待转换的字符串。
+
+{from} 字符串中与将要被转换的目的字符 {to}
+相对应的源字符。
+
+{to} 字符串中与将要被转换的字符 {from}
+相对应的目的字符。
+
+{replace_pairs} 参数 {replace_pairs} 可以用来取代 {to} 和 {from}
+参数，因为它是以 array('from' => 'to', ...) 格式出现的数组。
+
+返回转换后的字符串。
+
+如果 {replace_pairs}
+中包含一个空字符串（""）键，那么将返回 FALSE。
+
+|strtr| 范例
+
+<?php >
+  $addr = strtr($addr, "äåö", "aao");
+?>
+
+
+
+
+
+可以使用两个参数调用
+|strtr|。如果被以两个参数调用，它将以不同的方式运行：{from}
+必须是一组待转换的字符串对。|strtr|
+总是首先尽可能尝试最长的匹配，并且它不会处理已经被转换过的部分。
+
+使用两个参数的 |strtr| 范例
+
+<?php >
+  $trans = array("hello" => "hi", "hi" => "hello");
+  echo strtr("hi all, I said hello", $trans);
+?>
+
+以上例程会输出：
+
+  hello all, I said hi
+
+|str_replace| |preg_replace|
+
+vim:ft=help:

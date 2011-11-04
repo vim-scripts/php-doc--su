@@ -1,0 +1,26 @@
+mysql_get_server_info -- 取得 MySQL 服务器信息
+
+  string mysql_get_server_info([resource link_identifier])~
+
+|mysql_get_server_info| 返回 {link_identifier}
+所使用的服务器版本。如果省略
+{link_identifier}，则使用上一个打开的连接。
+
+|mysql_get_server_info| 例子
+
+<?php >
+      mysql_connect("localhost", "mysql_user", "mysql_password") or
+          die("Could not connect: " . mysql_error());
+      printf ("MySQL server version: %s\n", mysql_get_server_info());
+?>
+
+以上例子将产生如下输出：
+
+  MySQL server version: 4.0.1-alpha
+
+
+
+参见 |mysql_get_client_info|，|mysql_get_host_info| 和
+|mysql_get_proto_info|。
+
+vim:ft=help:

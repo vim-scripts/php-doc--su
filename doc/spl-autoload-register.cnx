@@ -1,0 +1,40 @@
+spl_autoload_register -- 注册__autoload()函数
+
+  bool spl_autoload_register([callback autoload_function])~
+
+将函数注册到SPL
+__autoload函数栈中。如果该栈中的函数尚未激活，则激活它们。
+
+如果在你的程序中已经实现了__autoload函数，它必须显式注册到__autoload栈中。因为
+spl_autoload_register()函数会将Zend
+Engine中的__autoload函数取代为spl_autoload()或spl_autoload_call()。
+
+{autoload_function}
+欲注册的自动装载函数。如果没有提供任何参数，则自动注册autoload的默认实现函数|spl_autoload|。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|spl_autoload_register| example
+
+<?php >
+  namespace Foobar;
+  
+  class Foo {
+      static public function test($name) {
+          print '[['. $name .']]';
+      }
+  }
+  
+  spl_autoload_register(__NAMESPACE__ .'::Foo::test'); // As of PHP 5.3.0
+  
+  new InexistentClass;
+?>
+
+以上例程的输出类似于：
+
+  [[Foobar::InexistentClass]]
+  Fatal error: Class 'Foobar::InexistentClass' not found in ...
+
+
+
+vim:ft=help:

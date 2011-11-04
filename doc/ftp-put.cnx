@@ -1,0 +1,52 @@
+ftp_put -- 上传文件到 FTP 服务器
+
+  bool ftp_put(resource ftp_stream, string remote_file, string local_file, int mode [, int startpos])~
+
+|ftp_put| 函数用来上传由 {local_file} 参数指定的文件到 FTP
+服务器，上传后的位置由 {remote_file} 指定。传输模式参数
+
+{ftp_stream} FTP 连接资源。
+
+{remote_file} 远程文件路径。
+
+{local_file} 本地文件路径。
+
+{mode} 传送模式，只能为 FTP_ASCII（文本模式）或
+FTP_BINARY（二进制模式）。
+
+{startpos}
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|ftp_put| 实例
+
+<?php >
+  $file = 'somefile.txt';
+  $remote_file = 'readme.txt';
+  
+  // set up basic connection
+  $conn_id = ftp_connect($ftp_server);
+  
+  // login with username and password
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  
+  // upload a file
+  if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+   echo "successfully uploaded $file\n";
+  } else {
+   echo "There was a problem while uploading $file\n";
+  }
+  
+  // close the connection
+  ftp_close($conn_id);
+?>
+
+
+
+
+
+版本 说明 4.3.0 增加 {startpos} 参数。
+
+|ftp_pasv| |ftp_fput| |ftp_nb_fput| |ftp_nb_put|
+
+vim:ft=help:

@@ -1,0 +1,22 @@
+convert_cyr_string -- 将字符由一种 Cyrillic 字符转换成另一种
+
+  string convert_cyr_string(string str, string from, string to)~
+
+此函数将给定的字符串从一种 Cyrillic
+字符转换成另一种，返回转换之后的字符串。{from} 和 {to}
+参数为单个字符，分别代表了源及目标 Cyrillic
+字符集。支持的类型有： k - koi8-r
+
+w - windows-1251
+
+i - iso8859-5
+
+a - x-cp866
+
+d - x-cp866
+
+m - x-mac-cyrillic
+
+此函数可安全用于二进制对象。
+
+vim:ft=help:

@@ -1,0 +1,10 @@
+imagecolorclosesthwb --
+取得与给定颜色最接近的色度的黑白色的索引
+
+  int imagecolorclosesthwb(resource image, int red, int green, int blue)~
+
+本函数还未编写文档，仅有参数列表。
+
+
+
+vim:ft=help:

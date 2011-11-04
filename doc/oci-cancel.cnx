@@ -1,0 +1,14 @@
+oci_cancel -- 取消从游标读取数据
+
+  bool oci_cancel(resource stmt)~
+
+|oci_cancel|
+使一个游标无效，释放所有与之关联的资源并取消了从中读取的能力。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+在 PHP 5.0.0 之前的版本必须使用 |ocicancel|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_cancel| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

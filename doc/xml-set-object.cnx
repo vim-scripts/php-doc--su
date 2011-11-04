@@ -1,0 +1,55 @@
+xml_set_object -- 在对象中使用 XML 解析器
+
+  pool xml_set_object(resource parser, object object)~
+
+该函数使得 {parser} 指定的解析器可以被用在 {object}
+对象中。所有的回叫函数（callback function）都可以由
+|xml_set_element_handler| 等函数来设置，它们被假定为 {object}
+对象的方法。
+
+|xml_set_object| 示例
+
+<?php >
+  class xml  {
+      var $parser;
+  
+      function xml() 
+      {
+          $this->parser = xml_parser_create();
+  
+          xml_set_object($this->parser, $this);
+          xml_set_element_handler($this->parser, "tag_open", "tag_close");
+          xml_set_character_data_handler($this->parser, "cdata");
+      }
+  
+       function parse($data) 
+      {
+          xml_parse($this->parser, $data);
+      }
+  
+      function tag_open($parser, $tag, $attributes) 
+      {
+          var_dump($parser, $tag, $attributes); 
+      }
+  
+      function cdata($parser, $cdata) 
+      {
+          var_dump($parser, $cdata);
+      }
+  
+      function tag_close($parser, $tag) 
+      {
+          var_dump($parser, $tag);
+      }
+  
+  } // end of class xml
+  
+  $xml_parser = new xml();
+  $xml_parser->parse("<A ID='hallo'>PHP</A>");
+?>
+
+
+
+
+
+vim:ft=help:

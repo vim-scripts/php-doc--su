@@ -1,0 +1,23 @@
+spl_object_hash -- 返回指定对象的hash id
+
+  string spl_object_hash(object obj)~
+
+本函数为指定对象返回一个唯一标识符。这个标识符可用于作为保存对象或区分不同对象的hash
+key。
+
+{object} Any object.
+
+字符串，对于每个对象它都是唯一的，并且对同一个对象它总是相同。
+
+A |spl_object_hash| example
+
+<?php >
+  $id = spl_object_hash($object);
+  $storage[$id] = $object;
+?>
+
+
+
+
+
+vim:ft=help:

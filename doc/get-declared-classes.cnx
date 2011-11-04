@@ -1,0 +1,36 @@
+get_declared_classes -- 返回由已定义类的名字所组成的数组
+
+  array get_declared_classes()~
+
+返回由当前脚本中已定义类的名字组成的数组。
+
+在 PHP 4.0.1pl2
+中，有三个额外的类存在于返回的数组中：stdClass（在
+Zend/zend.c 中定义）、OverloadedTestClass（在
+ext/standard/basic_functions.c 中定义）和 Directory（在
+ext/standard/dir.c 中定义）。
+
+还需要注意的是额外类的出现依赖于你已编译到 PHP
+中的库。这意味着你不能使用这些类名定义自己的类。在附录的
+预定义类 部分有预定义类的列表。
+
+|get_declared_classes| 例子
+
+<?php >
+  print_r(get_declared_classes());
+?>
+
+以上例程的输出类似于：
+
+  Array
+  (
+      [0] => stdClass
+      [1] => __PHP_Incomplete_Class
+      [2] => Directory
+  )
+
+
+
+参见 |class_exists| 和 |get_declared_interfaces|。
+
+vim:ft=help:

@@ -1,0 +1,30 @@
+strpbrk -- 在字符串中查找一组字符的任何一个字符
+
+  string strpbrk(string haystack, string char_list)~
+
+|strpbrk| 函数在 {haystack} 字符串中查找 {char_list} 中的字符。
+
+{haystack} 在此字符串中查找 {char_list}。
+
+{char_list} 该参数区分大小写。
+
+返回一个以找到的字符开始的子字符串。如果没有找到，则返回
+FALSE。
+
+|strpbrk| 范例
+
+<?php >
+  $text = 'This is a Simple text.';
+  
+  // 输出 "is is a Simple text."，因为 'i' 先被匹配
+  echo strpbrk($text, 'mi');
+  
+  // 输出 "Simple text."，因为字符区分大小写
+  echo strpbrk($text, 'S');
+?>
+
+
+
+
+
+vim:ft=help:

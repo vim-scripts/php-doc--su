@@ -1,0 +1,21 @@
+mysql_unbuffered_query -- 向 MySQL 发送一条 SQL
+查询，并不获取和缓存结果的行
+
+  resource mysql_unbuffered_query(string query [, resource link_identifier])~
+
+|mysql_unbuffered_query| 向 MySQL 发送一条 SQL 查询 {query}，但不像
+|mysql_query|
+那样自动获取并缓存结果集。一方面，这在处理很大的结果集时会节省可观的内存。另一方面，可以在获取第一行后立即对结果集进行操作，而不用等到整个
+SQL
+语句都执行完毕。当使用多个数据库连接时，必须指定可选参数
+{link_identifier}。
+
+|mysql_unbuffered_query| 的好处是有代价的：在
+|mysql_unbuffered_query| 返回的结果集之上不能使用 |mysql_num_rows|
+和 |mysql_data_seek|。此外在向 MySQL 发送一条新的 SQL
+查询之前，必须提取掉所有未缓存的 SQL
+查询所产生的结果行。
+
+参见 |mysql_query|。
+
+vim:ft=help:

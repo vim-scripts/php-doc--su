@@ -1,0 +1,24 @@
+base64_decode -- 对使用 MIME base64 编码的数据进行解码
+
+  string base64_decode(string encoded_data)~
+
+|base64_decode| 对 {encoded_data}
+进行解码，返回原始数据，失败则返回
+FALSE。返回的数据可能是二进制的。
+
+|base64_decode| 示例
+
+<?php >
+  $str = 'VGhpcyBpcyBhbiBlbmNvZGVkIHN0cmluZw==';
+  echo base64_decode($str);
+?>
+
+此示例将显示：
+
+  This is an encoded string
+
+
+
+参见 |base64_encode| 和 RFC 2045 的 6.8 章节。
+
+vim:ft=help:

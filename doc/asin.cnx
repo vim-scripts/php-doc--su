@@ -1,0 +1,11 @@
+asin -- 反正弦
+
+  float asin(float arg)~
+
+返回 {arg} 的反正弦值，单位是弧度。|asin| 是 |sin|
+的反函数，它的意思是在 |asin| 范围里的每个值都是
+a==sin(asin(a)) 。
+
+参见 |asinh|, |acos| 和 |atan|。
+
+vim:ft=help:

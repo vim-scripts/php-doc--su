@@ -1,0 +1,46 @@
+pg_send_query -- 发送异步查询
+
+  bool pg_send_query(resource connection, string query)~
+
+  bool pg_send_query(resource connection, string query, string query)~
+
+|pg_send_query| 向 {connection} 连接发送异步查询。和 |pg_query|
+不同，它可以向 PostgreSQL 发送多个查询并用 |pg_get_result|
+依次得到结果。当执行查询时脚本的执行不会被锁定。用
+|pg_connection_busy|
+来检查连接连接是否为忙（即查询正在执行中）。调用
+|pg_cancel_query| 则有可能取消查询。
+
+尽管用户可以一次发送多个查询，但用户不能通过正忙的连接发送多个查询。如果向正忙的连接发送了查询，则会等待上一条查询结束并丢弃所有结果。
+
+异步查询
+
+<?php >
+      $dbconn = pg_connect("dbname=publisher") or die("Could not connect");
+      if (!pg_connection_busy($dbconn)) {
+          pg_send_query($dbconn,"select * from authors; select count(*) from authors;");
+      }
+      $res1 = pg_get_result($dbconn);
+      echo "First call to pg_get_result(): $res1\n";
+      $rows1 = pg_num_rows($res1);
+      echo "$res1 has $rows1 records\n\n";
+      $res2 = pg_get_result($dbconn);
+      echo "second call to pg_get_result(): $res2\n";
+      $rows2 = pg_num_rows($res2);
+      echo "$res2 has $rows2 records\n";
+?>
+
+上例输出如下：
+
+  first call to pg_get_result(): Resource id #3
+  Resource id #3 has 3 records
+  
+  second call to pg_get_result(): Resource id #4
+  Resource id #4 has 1 records
+
+
+
+参见 |pg_query|，|pg_cancel_query|，|pg_get_result| 和
+|pg_connection_busy|。
+
+vim:ft=help:

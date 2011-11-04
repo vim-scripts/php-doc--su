@@ -1,0 +1,11 @@
+ftp_mkdir -- 建立新目录
+
+  string ftp_mkdir(resource ftp_stream, string directory)~
+
+在 FTP 服务器上建立一个目录名为参数 {directory} 的新目录。
+
+如果成功返回新建的目录名，否则返回 FALSE。
+
+参见 |ftp_rmdir|。
+
+vim:ft=help:

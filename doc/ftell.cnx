@@ -1,0 +1,33 @@
+ftell -- 返回文件指针读/写的位置
+
+  int ftell(resource handle)~
+
+返回由 {handle}
+指定的文件指针的位置，也就是文件流中的偏移量。
+
+如果出错，返回 FALSE。
+
+文件指针必须是有效的，且必须指向一个通过 |fopen| 或
+|popen| 成功打开的文件。在附加模式（加参数 "a"
+打开文件）中 |ftell| 会返回未定义错误。
+
+|ftell| 例子
+
+<?php >
+  // 打开文件并读些数据
+  $fp = fopen("/etc/passwd", "r");
+  $data = fgets($fp, 12);
+  
+  // 现在指针到哪里了？
+  echo ftell($fp); // 11
+  
+  fclose($fp);
+?>
+
+
+
+
+
+参见 |fopen|，|popen|，|fseek| 和 |rewind|。
+
+vim:ft=help:

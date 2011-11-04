@@ -1,0 +1,16 @@
+oci_close -- 关闭 Oracle 连接
+
+  bool oci_close(resource connection)~
+
+|oci_close| 将 Oracle 连接 {connection} 关闭。
+
+自版本 1.1 起 |oci_close| 正确关闭 Oracle 连接。使用
+oci8.old_oci_close_semantics 选项来恢复本函数的旧行为。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+在 PHP 5.0.0 之前的版本必须使用 |ocilogoff|
+替代本函数。该函数名仍然可用，为向下兼容作为 |oci_close|
+的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

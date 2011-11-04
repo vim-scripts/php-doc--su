@@ -1,0 +1,21 @@
+strncmp -- 二进制安全比较字符串开头的若干个字符
+
+  int strncmp(string str1, string str2, int len)~
+
+该函数与 |strcmp|
+类似，不同之处在于你可以指定两个字符串比较时使用的长度（即最大比较长度）。
+
+注意该比较区分大小写。
+
+{str1} 第一个字符串。
+
+{str2} 第二个字符串。
+
+{len} 最大比较长度。
+
+如果 {str1} 小于 {str2}，返回负数；如果 {str1} 大于
+{str2}，返回正数；二者相等则返回 0。
+
+|preg_match| |strcmp| |strcasecmp| |substr| |stristr| |strncasecmp| |strstr|
+
+vim:ft=help:

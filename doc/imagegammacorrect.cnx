@@ -1,0 +1,9 @@
+imagegammacorrect -- 对 GD 图像应用 gamma 修正
+
+  bool imagegammacorrect(resource image, float inputgamma, float outputgamma)~
+
+|imagegammacorrect| 函数用给定的输入 gamma 值 {inputgamma} 和输出
+gamma 值 {outputgamma} 对一幅 GD 图像流（{image}）应用 gamma
+修正。
+
+vim:ft=help:

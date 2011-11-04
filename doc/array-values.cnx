@@ -1,0 +1,27 @@
+array_values -- 返回数组中所有的值
+
+  array array_values(array input)~
+
+|array_values| 返回 {input}
+数组中所有的值并给其建立数字索引。
+
+|array_values| 例子
+
+<?php >
+  $array = array("size" => "XL", "color" => "gold");
+  print_r(array_values($array));
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [0] => XL
+      [1] => gold
+  )
+
+
+
+参见 |array_keys|。
+
+vim:ft=help:

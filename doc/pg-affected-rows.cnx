@@ -1,0 +1,25 @@
+pg_affected_rows -- 返回受影响的记录数目
+
+  int pg_affected_rows(resource result)~
+
+|pg_affected_rows| 返回在 |pg_query| 中执行 INSERT，UPDATE 和 DELETE
+查询后受到影响的记录数目（包括实例／记录／行）。如果本函数没有影响到任何记录，则返回
+0。
+
+|pg_affected_rows| 例子
+
+<?php >
+  $result = pg_query($conn, "INSERT INTO authors VALUES ('Orwell', 2002, 'Animal Farm')");
+  $cmdtuples = pg_affected_rows($result);
+  echo $cmdtuples . " tuples are affected.\n";
+?>
+
+
+
+
+
+本函数以前被称为 pg_cmdtuples()。
+
+参见 |pg_query| 和 |pg_num_rows|。
+
+vim:ft=help:

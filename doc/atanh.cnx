@@ -1,0 +1,12 @@
+atanh -- 反双曲正切
+
+  float atanh(float arg)~
+
+返回 {arg} 的反双曲正切值，即，其双曲正切为 {arg}
+的那个值。
+
+此函数未在 Windows 平台下实现。
+
+参见： |atan|、 |asinh|和 |acosh|。
+
+vim:ft=help:

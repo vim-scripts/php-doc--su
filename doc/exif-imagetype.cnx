@@ -1,0 +1,41 @@
+exif_imagetype -- 判断一个图像的类型
+
+  int exif_imagetype(string filename)~
+
+|exif_imagetype| 读取一个图像的第一个字节并检查其签名。
+
+本函数可用来避免调用其它 exif
+函数用到了不支持的文件类型上或和 $_SERVER['HTTP_ACCEPT']
+结合使用来检查浏览器是否可以显示某个指定的图像。
+
+{filename} 被检查的图像文件名。
+
+如果发现了恰当的签名则返回一个对应的常量，否则返回
+FALSE。返回值和 |getimagesize| 返回的数组中的索引 2
+的值是一样的，但本函数快得多。
+
+版本 说明 4.3.2 支持 JPC，JP2，JPX，JB2，XBM 以及 WBMP 4.3.0
+支持 SWC
+
+定义有以下常量，并代表了 |exif_imagetype| 可能的返回值：
+图像类型常量 值 常量 1 IMAGETYPE_GIF 2 IMAGETYPE_JPEG 3 IMAGETYPE_PNG
+4 IMAGETYPE_SWF 5 IMAGETYPE_PSD 6 IMAGETYPE_BMP 7 IMAGETYPE_TIFF_II（Intel
+字节顺序） 8 IMAGETYPE_TIFF_MM（Motorola 字节顺序） 9 IMAGETYPE_JPC
+10 IMAGETYPE_JP2 11 IMAGETYPE_JPX 12 IMAGETYPE_JB2 13 IMAGETYPE_SWC 14
+IMAGETYPE_IFF 15 IMAGETYPE_WBMP 16 IMAGETYPE_XBM
+
+|exif_imagetype| 例子
+
+<?php >
+  if (exif_imagetype("image.gif") != IMAGETYPE_GIF) {
+      echo "The picture is not a gif";
+  }
+?>
+
+
+
+
+
+|getimagesize|
+
+vim:ft=help:

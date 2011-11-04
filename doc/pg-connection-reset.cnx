@@ -1,0 +1,28 @@
+pg_connection_reset -- 重置连接（再次连接）
+
+  bool pg_connection_reset(resource connection)~
+
+|pg_connection_reset|
+重置一个连接，用于错误恢复。成功时返回 TRUE，
+或者在失败时返回 &false;.
+
+|pg_connection_reset| 例子
+
+<?php >
+      $dbconn = pg_connect("dbname=publisher") or die("Could not connect");
+      $dbconn2 = pg_connection_reset($dbconn);
+      if ($dbconn2) {
+          echo "reset successful\n";
+      }
+      else {
+          echo "reset failed\n";
+      }
+?>
+
+
+
+
+
+参见 |pg_connect|，|pg_pconnect| 和 |pg_connection_status|。
+
+vim:ft=help:

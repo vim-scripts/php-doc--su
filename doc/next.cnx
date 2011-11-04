@@ -1,0 +1,32 @@
+next -- 将数组中的内部指针向前移动一位
+
+  mixed next(array array)~
+
+返回数组内部指针指向的下一个单元的值，或当没有更多单元时返回
+FALSE。
+
+|next| 和 |current|
+的行为类似，只有一点区别，在返回值之前将内部指针向前移动一位。这意味着它返回的是下一个数组单元的值并将数组指针向前移动了一位。如果移动指针的结果是超出了数组单元的末端，则
+|next| 返回 FALSE。 如果数组包含空的单元，或者单元的值是
+0 则本函数碰到这些单元也返回
+FALSE。要正确遍历可能含有空单元或者单元值为 0
+的数组，参见 |each| 函数。
+
+|next| 及相关函数的用法示例
+
+<?php >
+  $transport = array('foot', 'bike', 'car', 'plane');
+  $mode = current($transport); // $mode = 'foot';
+  $mode = next($transport);    // $mode = 'bike';
+  $mode = next($transport);    // $mode = 'car';
+  $mode = prev($transport);    // $mode = 'bike';
+  $mode = end($transport);     // $mode = 'plane';
+?>
+
+
+
+
+
+参见 |current|，|end|，|prev| 和 |reset|。
+
+vim:ft=help:

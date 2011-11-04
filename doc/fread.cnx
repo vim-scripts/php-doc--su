@@ -1,0 +1,57 @@
+fread -- 读取文件（可安全用于二进制文件）
+
+  string fread(int handle, int length)~
+
+|fread| 从文件指针 {handle} 读取最多 {length}
+个字节。该函数在读取完最多 {length} 个字节数，或到达 EOF
+的时候，或（对于网络流）当一个包可用时，或（在打开用户空间流之后）已读取了
+8192 个字节时就会停止读取文件，视乎先碰到哪种情况。
+
+返回所读取的字符串，如果出错返回 FALSE。
+
+<?php >
+  // get contents of a file into a string
+  $filename = "/usr/local/something.txt";
+  $handle = fopen($filename, "r");
+  $contents = fread($handle, filesize ($filename));
+  fclose($handle);
+?>
+
+在区分二进制文件和文本文件的系统上（如
+Windows）打开文件时，|fopen| 函数的 mode 参数要加上 'b'。
+
+<?php >
+  $filename = "c:\\files\\somepic.gif";
+  $handle = fopen($filename, "rb");
+  $contents = fread($handle, filesize ($filename));
+  fclose($handle);
+?>
+
+当从任何不是普通本地文件读取时，例如在读取从远程文件或
+|popen| 以及 |proc_open|
+返回的流时，读取会在一个包可用之后停止。这意味着应该如下例所示将数据收集起来合并成大块。
+
+<?php >
+  // 对 PHP 5 及更高版本
+  $handle = fopen("http://www.example.com/", "rb");
+  $contents = stream_get_contents($handle);
+  fclose($handle);
+?>
+
+<?php >
+  $handle = fopen ("http://www.example.com/", "rb");
+  $contents = "";
+  while (!feof($handle)) {
+    $contents .= fread($handle, 8192);
+  }
+  fclose($handle);
+?>
+
+如果只是想将一个文件的内容读入到一个字符串中，用
+|file_get_contents|，它的性能比上面的代码好得多。
+
+参见
+|fwrite|，|fopen|，|fsockopen|，|popen|，|fgets|，|fgetss|，|fscanf|，|file|
+和 |fpassthru|。
+
+vim:ft=help:

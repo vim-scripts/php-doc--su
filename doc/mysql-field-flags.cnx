@@ -1,0 +1,15 @@
+mysql_field_flags -- 从结果中取得和指定字段关联的标志
+
+  string mysql_field_flags(resource result, int field_offset)~
+
+|mysql_field_flags|
+返回指定字段的字段标志。每个标志都用一个单词表示，之间用一个空格分开，因此可以用
+|explode| 将其分开。
+
+如果 MySQL 版本足够新，则会支持以下的标志："not_null",
+"primary_key", "unique_key", "multiple_key", "blob", "unsigned", "zerofill",
+"binary", "enum", "auto_increment", "timestamp"。
+
+为向下兼容仍然可以使用 |mysql_fieldflags|，但反对这样做。
+
+vim:ft=help:

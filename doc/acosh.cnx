@@ -1,0 +1,12 @@
+acosh -- 反双曲余弦
+
+  float acosh(float arg)~
+
+返回 {arg} 的反双曲余弦值，即，其双曲余弦为 {arg}
+的那个值。
+
+此函数未在 Windows 平台下实现。
+
+参见 |acos|， |asinh|, 和 |atanh|。
+
+vim:ft=help:

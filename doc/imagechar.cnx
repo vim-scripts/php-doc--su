@@ -1,0 +1,33 @@
+imagechar -- 水平地画一个字符
+
+  bool imagechar(resource image, int font, int x, int y, string c, int color)~
+
+|imagechar| 将字符串 {c} 的第一个字符画在 {image}
+指定的图像中，其左上角位于 {x}，{y}（图像左上角为 0,
+0），颜色为 {color}。如果 {font} 是 1，2，3，4 或
+5，则使用内置的字体（更大的数字对应于更大的字体）。
+
+|imagechar| 例子
+
+<?php >
+  $im = imagecreate(100,100);
+  
+  $string = 'PHP';
+  
+  $bg = imagecolorallocate($im, 255, 255, 255);
+  $black = imagecolorallocate($im, 0, 0, 0);
+  
+  // prints a black "P" in the top left corner
+  imagechar($im, 1, 0, 0, $string, $black);
+  
+  header('Content-type: image/png');
+  imagepng($im);
+?>
+
+
+
+
+
+参见 |imagecharup| 和 |imageloadfont|。
+
+vim:ft=help:

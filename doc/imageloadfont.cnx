@@ -1,0 +1,39 @@
+imageloadfont -- 载入一新字体
+
+  int imageloadfont(string file)~
+
+|imageloadfont|
+加载一个用户定义的位图字体并返回该字体的标识符（其值总是大于
+5，因此不会和内置字体冲突）。
+在产生错误的情况下，该函数返回 FALSE 。
+
+字体文件格式目前是二进制的且和平台有关。这意味着应该用和你运行
+PHP 的机器相同类型 CPU 的机器生成字体。
+
+字体文件格式 字节位置 C 数据类型 说明 byte 0-3 int
+字体中的字符数目 byte 4-7 int
+字体中第一个字符的值（通常是 32 代表空格） byte 8-11 int
+每个字符宽度的像素值 byte 12-15 int 每个字符高度的像素值
+byte 16- char 字符数据的数组，每字符中每像素一字节，一共
+(nchars*width*height) 字节。
+
+使用 imageloadfont
+
+<?php >
+  header("Content-type: image/png");
+  $im = imagecreatetruecolor(50, 20);
+  $black = imagecolorallocate($im, 0, 0, 0);
+  $white = imagecolorallocate($im, 255, 255, 255);
+  imagefilledrectangle($im, 0, 0, 49, 19, $white);
+  $font = imageloadfont("04b.gdf");
+  imagestring($im, $font, 0, 0, "Hello", $black);
+  imagepng($im);
+?>
+
+
+
+
+
+参见 |imagefontwidth| 和 |imagefontheight|。
+
+vim:ft=help:

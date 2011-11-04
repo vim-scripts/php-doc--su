@@ -1,0 +1,12 @@
+pg_result_error -- 获得查询结果的错误信息
+
+  string pg_result_error(resource result)~
+
+|pg_result_error| 返回和 {result}
+资源关联的错误信息。因此用户更有机会可以得到比
+|pg_last_error| 更好的错误信息。
+
+参见 |pg_query|，|pg_send_query|，|pg_get_result|，|pg_last_error| 和
+|pg_last_notice|。
+
+vim:ft=help:

@@ -1,0 +1,16 @@
+strcmp -- 二进制安全字符串比较
+
+  int strcmp(string str1, string str2)~
+
+注意该比较区分大小写。
+
+{str1} 第一个字符串。
+
+{str2} 第二个字符串。
+
+如果 {str1} 小于 {str2}，返回负数；如果 {str1} 大于
+{str2}，返回正数；二者相等则返回 0。
+
+|preg_match| |strcasecmp| |substr| |stristr| |strncasecmp| |strncmp| |strstr|
+
+vim:ft=help:

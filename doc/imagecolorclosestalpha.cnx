@@ -1,0 +1,13 @@
+imagecolorclosestalpha --
+取得与指定的颜色加透明度最接近的颜色
+
+  int imagecolorclosestalpha(resource image, int red, int green, int blue, int alpha)~
+
+返回图像调色板中与指定的 RGB 值以及 {alpha}
+深度最“接近”的颜色。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+参见 |imagecolorexactalpha|。
+
+vim:ft=help:

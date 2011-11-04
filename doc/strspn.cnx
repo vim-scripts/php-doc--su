@@ -1,0 +1,65 @@
+strspn --
+计算字符串中全部字符都存在于指定字符集合中的第一段子串的长度。
+
+  int strspn(string subject, string mask [, int start [, int length]])~
+
+返回 {subject} 中全部字符都存在于 {mask}
+中的第一组连续字符(子字符串)的长度。
+
+如果省略了 {start} 和 {length} 参数，则检查整个 {subject}
+字符串；如果指定了这两个参数，则效果等同于调用
+strspn(substr($subject, $start, $length), $mask)（更多信息，参见
+）。
+
+代码行：
+
+<?php >
+  $var = strspn("42 is the answer to the 128th question.", "1234567890");
+?>
+
+$var 将被指派为 2，因为 '42' 是 {subject}
+中第一段全部字符都存在于 '1234567890' 的连续字符。
+
+{subject} 待检查的字符串。
+
+{mask} 检查字符列表。
+
+{start} {subject} 的开始检查位置。
+
+如果 {start} 被设置并且是非负的，|strspn| 将从 {subject} 的第
+{start} 个位置开始检查。例如，在字符串 'abcdef' 中，第 0
+个位置的字符是 'a'，第二个位置的字符是 'c'，等等。
+
+如果 {start} 被设置并且为负数，|strspn| 将从 {subject}
+的尾部倒数第 {start} 个位置开始检查 {subject}。
+
+{length} {subject} 中检查的长度。
+
+如果 {length}
+被设置并且为非负数，那么将从起始位置开始，检查
+{subject} 的 {length} 个长度的字符。
+
+如果 {length}
+被设置并且为负数，那么将从起始位置开始，直到从
+{subject} 尾部开始第 {length} 个位置，对 {subject} 进行检查。
+
+返回 {str1} 中第一段全部字符都存在于 {str2}
+范围的字符串的长度。
+
+版本 说明 4.3.0 新增 {start} 和 {length} 参数。
+
+|strspn| 范例
+
+<?php >
+  echo strspn("foo", "o", 1, 2); // 打印: 2
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|strcspn|
+
+vim:ft=help:

@@ -1,0 +1,14 @@
+xmlrpc_server_register_method -- 注册一个 PHP 函数用于匹配 xmlrpc
+方法名
+
+  bool xmlrpc_server_register_method(resource server, string method_name, string function)~
+
+此函数是实验性的。
+此函数的表象，包括名称及其相关文档都可能在未来的 PHP
+发布版本中未通知就被修改。使用本扩展风险自担 。
+
+本函数还未编写文档，仅有参数列表。
+
+
+
+vim:ft=help:

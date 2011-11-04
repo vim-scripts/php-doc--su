@@ -1,0 +1,17 @@
+pg_lo_read -- 从大型对象中读入数据
+
+  string pg_lo_read(resource large_object, int len)~
+
+|pg_lo_read| 从大型对象中读入最多 {len}
+字节的数据并以字符串返回。{large_object}
+指定了有效的大型对象的资源号，{len}
+则指定了大型对象的段所允许的最大长度。如果出错则返回
+FALSE。
+
+要使用大型对象（lo）接口，需要将其放置在事务块中。
+
+本函数以前的名字为 pg_loread()。
+
+参见 |pg_lo_read_all|。
+
+vim:ft=help:

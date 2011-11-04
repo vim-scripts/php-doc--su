@@ -1,0 +1,5 @@
+mysqli_set_opt -- mysqli_options的别名
+
+这个函数是|mysqli_options|的一个别名。
+
+vim:ft=help:

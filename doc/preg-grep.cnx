@@ -1,0 +1,35 @@
+preg_grep -- 返回匹配模式的数组条目
+
+  array preg_grep(string pattern, array input [, int flags])~
+
+返回给定数组{input}中与模式{pattern} 匹配的元素组成的数组.
+
+{pattern} 要搜索的模式, 字符串形式.
+
+{input} 输入数组.
+
+{flags} 如果设置为PREG_GREP_INVERT, 这个函数返回输入数组中与
+给定模式{pattern}不匹配的元素组成的数组.
+
+返回使用{input}中key做索引的数组.
+
+版本 说明 4.2.0 增加了参数{flags}. 4.0.4 在此版本之前,
+返回数组的索引与{input}数组的key无关.
+
+如果你想仿照这种旧有的行为,
+在返回数组上使用|array_values|重建索引.
+
+|preg_grep| 示例
+
+<?php >
+  // 返回所有包含浮点数的元素
+  $fl_array = preg_grep("/^(\d+)?\.\d+$/", $array);
+?>
+
+
+
+
+
+PCRE Patterns |preg_match_all| |preg_filter| |preg_last_error|
+
+vim:ft=help:

@@ -1,0 +1,188 @@
+xml_parse_into_struct -- 将 XML 数据解析到数组中
+
+  int xml_parse_into_struct(resource parser, string data, array values [, array index])~
+
+该函数将 XML 文件解析到两个对应的数组中，{index}
+参数含有指向 {values}
+数组中对应值的指针。最后两个数组参数可由指针传递给函数。
+
+|xml_parse_into_struct| 失败返回 0，成功返回 1。这和 FALSE 与
+TRUE 不同，使用例如 === 的运算符时要注意。
+
+以下范例显示了由该函数生成的数组的内部结构。我们简单地将一个
+note 嵌入到一个 para
+标记中，解析后我们可以打印出生成的数组的结构：
+|xml_parse_into_struct| 示例
+
+<?php >
+  $simple = "<para><note>simple note</note></para>";
+  $p = xml_parser_create();
+  xml_parse_into_struct($p, $simple, $vals, $index);
+  xml_parser_free($p);
+  echo "Index array\n";
+  print_r($index);
+  echo "\nVals array\n";
+  print_r($vals);
+?>
+
+运行以上代码，我们得到的输出将是：
+
+  Index array
+  Array
+  (
+      [PARA] => Array
+          (
+              [0] => 0
+              [1] => 2
+          )
+  
+      [NOTE] => Array
+          (
+              [0] => 1
+          )
+  
+  )
+  
+  Vals array
+  Array
+  (
+      [0] => Array
+          (
+              [tag] => PARA
+              [type] => open
+              [level] => 1
+          )
+  
+      [1] => Array
+          (
+              [tag] => NOTE
+              [type] => complete
+              [level] => 2
+              [value] => simple note
+          )
+  
+      [2] => Array
+          (
+              [tag] => PARA
+              [type] => close
+              [level] => 1
+          )
+  
+  )
+
+
+
+如果您的 XML
+文档很复杂，基于该文档的事件处理（Event-driven）解析（基于
+expat 扩展库）也会对应的变得复杂。该函数生成的并非 DOM
+风格的对象，而是横向的树状结构。因此，我们能够方便的建立表达
+XML 文件数据的对象。我们假设以下 XML
+文件表示一个关于氨基酸信息的小型数据库： moldb.xml -
+分子信息的小型数据库
+
+  <?xml version="1.0"?>
+  <moldb>
+  
+      <molecule>
+          <name>Alanine</name>
+          <symbol>ala</symbol>
+          <code>A</code>
+          <type>hydrophobic</type>
+      </molecule>
+  
+      <molecule>
+          <name>Lysine</name>
+          <symbol>lys</symbol>
+          <code>K</code>
+          <type>charged</type>
+      </molecule>
+  
+  </moldb>
+
+
+
+以下是解析该文档并生成相应对象的代码： parsemoldb.php - 将
+moldb.xml 解析到分子（molecular）对象的数组中
+
+<?php >
+  class AminoAcid {
+      var $name;  // aa 姓名
+      var $symbol;    // 三字母符号
+      var $code;  // 单字母代码
+      var $type;  // hydrophobic, charged 或 neutral
+  
+      function AminoAcid ($aa)
+      {
+          foreach ($aa as $k=>$v)
+              $this->$k = $aa[$k];
+      }
+  }
+  
+  function readDatabase($filename)
+  {
+      // 读取 aminoacids 的 XML 数据
+      $data = implode("",file($filename));
+      $parser = xml_parser_create();
+      xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, 0);
+      xml_parser_set_option($parser, XML_OPTION_SKIP_WHITE, 1);
+      xml_parse_into_struct($parser, $data, $values, $tags);
+      xml_parser_free($parser);
+  
+      // 遍历 XML 结构
+      foreach ($tags as $key=>$val) {
+          if ($key == "molecule") {
+              $molranges = $val;
+              // each contiguous pair of array entries are the
+              // lower and upper range for each molecule definition
+              for ($i=0; $i < count($molranges); $i+=2) {
+                  $offset = $molranges[$i] + 1;
+                  $len = $molranges[$i + 1] - $offset;
+                  $tdb[] = parseMol(array_slice($values, $offset, $len));
+              }
+          } else {
+              continue;
+          }
+      }
+      return $tdb;
+  }
+  
+  function parseMol($mvalues)
+  {
+      for ($i=0; $i < count($mvalues); $i++) {
+          $mol[$mvalues[$i]["tag"]] = $mvalues[$i]["value"];
+      }
+      return new AminoAcid($mol);
+  }
+  
+  $db = readDatabase("moldb.xml");
+  echo "** Database of AminoAcid objects:\n";
+  print_r($db);
+?>
+
+
+
+在执行完 parsemoldb.php 后，变量 $db 将包含有一个由 AminoAcid
+对象组成的数组，该脚本的输出如下：
+
+  ** Database of AminoAcid objects:
+  Array
+  (
+      [0] => aminoacid Object
+          (
+              [name] => Alanine
+              [symbol] => ala
+              [code] => A
+              [type] => hydrophobic
+          )
+  
+      [1] => aminoacid Object
+          (
+              [name] => Lysine
+              [symbol] => lys
+              [code] => K
+              [type] => charged
+          )
+  
+  )
+
+vim:ft=help:

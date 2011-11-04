@@ -1,0 +1,26 @@
+crc32 -- 计算一个字符串的 crc32 多项式
+
+  int crc32(string str)~
+
+生成 {str} 的 32
+位循环冗余校验码多项式。这通常用于检查传输的数据是否完整。
+
+由于 PHP 的整数是带符号的，许多 crc32
+校验码将返回负整数，因此你需要使用 |sprintf| 或 |printf|
+的“%u”格式符来获取表示无符号 crc32 校验码的字符串。
+
+示例中的第二行演示了如何使用 |printf| 函数转换校验码：
+显示 crc32 校验码
+
+<?php >
+  $checksum = crc32("The quick brown fox jumped over the lazy dog.");
+  printf("%u\n", $checksum);
+?>
+
+
+
+
+
+参见 |md5| 和 |sha1|。
+
+vim:ft=help:

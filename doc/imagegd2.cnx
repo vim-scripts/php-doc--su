@@ -1,0 +1,23 @@
+imagegd2 -- 将 GD2 图像输出到浏览器或文件
+
+  bool imagegd2(resource image [, string filename [, int chunk_size [, int type]]])~
+
+|imagegd2| 将一个 GD 图像输出到 {filename}。{image} 参数是由
+|imagecreatetruecolor| 函数返回的。
+
+{filename}
+参数为可选项，如果为空，则原始图像流会被直接输出。
+
+可选的 {type} 参数可以是 IMG_GD2_RAW 或
+IMG_GD2_COMPRESSED。默认为 IMG_GD2_RAW。
+
+可选的 {chunk_size} 和 {type} 参数自 PHP 4.3.2 起可用。
+
+GD2 格式一般是用来加载图像中的一部分时更快。注意 GD2
+格式只能用于兼容于 GD2 的应用程序。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+参见 |imagegd|。
+
+vim:ft=help:

@@ -1,0 +1,51 @@
+opendir -- 打开目录句柄
+
+  resource opendir(string path [, resource context])~
+
+打开一个目录句柄，可用于之后的 |closedir|，|readdir| 和
+|rewinddir| 调用中。
+
+{path} 要打开的目录路径
+
+{context} {context} 参数的说明见手册中的 Streams API 一章。
+
+如果成功则返回目录句柄的 resource，失败则返回 FALSE。
+
+如果 {path}
+不是一个合法的目录或者因为权限限制或文件系统错误而不能打开目录，|opendir|
+返回 FALSE 并产生一个 E_WARNING 级别的 PHP 错误信息。可以在
+|opendir| 前面加上“@”符号来抑制错误信息的输出。
+
+版本 说明 5.0.0 {path} 支持 ftp:// URL wrapper 4.3.0 {path}
+可以是任何支持目录列表的 URL，不过在 PHP 4 中只有 file://
+URL wrapper 支持此功能
+
+|opendir| 例子
+
+<?php >
+  $dir = "/etc/php5/";
+  
+  // Open a known directory, and proceed to read its contents
+  if (is_dir($dir)) {
+      if ($dh = opendir($dir)) {
+          while (($file = readdir($dh)) !== false) {
+              echo "filename: $file : filetype: " . filetype($dir . $file) . "\n";
+          }
+          closedir($dh);
+      }
+  }
+?>
+
+以上例程的输出类似于：
+
+  filename: . : filetype: dir
+  filename: .. : filetype: dir
+  filename: apache : filetype: dir
+  filename: cgi : filetype: dir
+  filename: cli : filetype: dir
+
+
+
+|is_dir| |readdir| Dir
+
+vim:ft=help:

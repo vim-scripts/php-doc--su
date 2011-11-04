@@ -1,0 +1,14 @@
+pcntl_alarm -- 为进程设置一个alarm闹钟信号
+
+  int pcntl_alarm(int seconds)~
+
+创建一个计时器，在指定的秒数后向进程发送一个SIGALRM信号。每次对
+|pcntl_alarm|的调用都会取消之前设置的alarm信号。
+
+{seconds}
+等待的秒数。如果{seconds}设置为0,将不会创建alarm信号。
+
+返回上次alarm调度（离alarm信号发送）剩余的秒数，或者之前没有alarm调度（译注：或者之前调度已完成）
+时返回0。
+
+vim:ft=help:

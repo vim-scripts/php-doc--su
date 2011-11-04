@@ -1,0 +1,26 @@
+pg_ping -- Ping 数据库连接
+
+  bool pg_ping(resource connection)~
+
+|pg_ping| ping
+数据库连接，如果中断则尝试重新连接。如果连接在活动状态返回
+TRUE，否则返回 FALSE。
+
+|pg_ping|
+
+<?php >
+  $conn = pg_pconnect ("dbname=publisher");
+  if (!$conn) {
+      echo "An error occured.\n";
+      exit;
+  }
+  
+  if (!pg_ping($conn))
+      die("Connection is broken\n");
+?>
+
+
+
+参见 |pg_connection_status| 和 |pg_connection_reset|。
+
+vim:ft=help:

@@ -1,0 +1,5 @@
+is_writeable -- is_writable 的别名
+
+此函数是该函数的别名：|is_writable|。
+
+vim:ft=help:

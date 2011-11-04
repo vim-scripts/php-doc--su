@@ -1,0 +1,32 @@
+mysql_escape_string -- 转义一个字符串用于 mysql_query
+
+  string mysql_escape_string(string unescaped_string)~
+
+本函数将 {unescaped_string} 转义，使之可以安全用于
+|mysql_query|。
+
+|mysql_escape_string| 并不转义 % 和 _。
+
+本函数和 |mysql_real_escape_string| 完全一样，除了
+|mysql_real_escape_string|
+接受的是一个连接句柄并根据当前字符集转移字符串之外。|mysql_escape_string|
+并不接受连接参数，也不管当前字符集设定。
+
+|mysql_escape_string| 例子
+
+<?php >
+      $item = "Zak's Laptop";
+      $escaped_item = mysql_escape_string($item);
+      printf ("Escaped string: %s\n", $escaped_item);
+?>
+
+以上例子将产生如下输出：
+
+  Escaped string: Zak\'s Laptop
+
+
+
+参见 |mysql_real_escape_string|，|addslashes| 和 magic_quotes_gpc
+指令。
+
+vim:ft=help:

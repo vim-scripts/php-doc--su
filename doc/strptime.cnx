@@ -1,0 +1,61 @@
+strptime -- 解析由 strftime 生成的日期／时间
+
+  array strptime(string date, string format)~
+
+|strptime| 返回一个将 {date} 解析后的数组，如果出错返回
+FALSE。
+
+月份和星期几的名字以及其它与语种有关的字符串对应于
+|setlocale|设定的当前区域（LC_TIME）。
+
+{date}（string） 被解析的字符串（例如从 |strftime| 返回的）
+
+{format}（string） {date} 所使用的格式（例如同 |strftime|
+中所使用的相同）。
+
+更多有关格式选项的信息见 |strftime| 页面。
+
+返回一个数组，失败则返回 FALSE。
+
+数组中包含以下单元 键名 说明 tm_sec
+当前分钟内的秒数（0-61） tm_min
+当前小时内的分钟数（0-59） tm_hour 午夜起的小时数（0-23）
+tm_mday 月份中的第几天（1-31） tm_mon
+自一月起过了几个月（0-11） tm_year 自 1900 年起过了几年
+tm_wday 自星期天起过了几天（0-6） tm_yday
+本年自一月一日起过了多少天（0-365） unparsed {date}
+中未能通过指定的 {format} 识别的部分
+
+|strptime| 例子
+
+<?php >
+  $format = '%d/%m/%Y %H:%M:%S';
+  $strf = strftime($format);
+  
+  echo "$strf\n";
+  
+  print_r(strptime($strf, $format));
+?>
+
+以上例程的输出类似于：
+
+  03/10/2004 15:54:19
+  
+  Array
+  (
+      [tm_sec] => 19
+      [tm_min] => 54
+      [tm_hour] => 15
+      [tm_mday] => 3
+      [tm_mon] => 9
+      [tm_year] => 104
+      [tm_wday] => 0
+      [tm_yday] => 276
+      [unparsed] =>
+  )
+
+
+
+|strftime|
+
+vim:ft=help:

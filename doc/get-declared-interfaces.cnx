@@ -1,0 +1,30 @@
+get_declared_interfaces -- 返回一个数组包含所有已声明的接口
+
+  array get_declared_interfaces()~
+
+本函数返回一个数组，其内容是当前脚本中所有已声明的接口的名字。
+
+|get_declared_interfaces| 例子
+
+<?php >
+  print_r(get_declared_interfaces());
+?>
+
+以上例程的输出类似于：
+
+  Array
+  (
+      [0] => Traversable
+      [1] => IteratorAggregate
+      [2] => Iterator
+      [3] => ArrayAccess
+      [4] => reflector
+      [5] => RecursiveIterator
+      [6] => SeekableIterator
+  )
+
+
+
+参见 |get_declared_classes|。
+
+vim:ft=help:

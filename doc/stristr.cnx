@@ -1,0 +1,65 @@
+stristr -- strstr 函数的忽略大小写版本
+
+  string stristr(string haystack, mixed needle [, bool before_needle])~
+
+返回 {haystack} 字符串从 {needle} 第一次出现的位置开始到
+{haystack} 结尾的字符串。
+
+{haystack} 在该字符串中查找。
+
+{needle} 如果 {needle}
+不是一个字符串，那么它将被转换为整型并被视为字符顺序值。
+
+{before_needle} 若为 TRUE，|strstr| 将返回 {needle} 在 {haystack}
+中的位置之前的部分。
+
+参数 {needle} 和 {haystack} 将以不区分大小写的方式对待。
+
+返回匹配的子字符串。如果 {needle} 未找到，返回 FALSE。
+
+版本 说明 5.3.0 新增可选的 {before_needle} 参数。 4.3.0 |stristr|
+变为二进制安全的。
+
+|stristr| 范例
+
+<?php >
+    $email = 'USER@EXAMPLE.com';
+    echo stristr($email, 'e'); // 输出 ER@EXAMPLE.com
+    echo stristr($email, 'e', true); // 自 PHP 5.3.0 起，输出 US
+?>
+
+
+
+
+
+测试字符串的存在与否
+
+<?php >
+    $string = 'Hello World!';
+    if(stristr($string, 'earth') === FALSE) {
+      echo '"earth" not found in string';
+    }
+  // 输出: "earth" not found in string
+?>
+
+
+
+
+
+使用非字符串 needle
+
+<?php >
+    $string = 'APPLE';
+    echo stristr($string, 97); // 97 = 小写字母 a
+  // 输出: APPLE
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|strstr| |strrchr| |substr| |preg_match|
+
+vim:ft=help:

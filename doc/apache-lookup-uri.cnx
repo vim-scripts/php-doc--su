@@ -1,0 +1,56 @@
+apache_lookup_uri -- 对指定的 URI
+执行部分请求并返回所有有关信息
+
+  object apache_lookup_uri(string filename)~
+
+本函数对一个 URL
+执行部分请求。取得所有有关给定资源的重要信息后就停手。
+
+、 仅在将 PHP 安装为 Apache 模块时，支持此函数。
+
+{filename} 被请求的文件名（URI）。
+
+一个有关 URI 信息的 object。此 object 的属性有：
+
+status the_request status_line method content_type handler uri filename
+path_info args boundary no_cache no_local_copy allowed send_bodyct bytes_sent
+byterange clength unparsed_uri mtime request_time
+
+|apache_lookup_uri| 例子
+
+<?php >
+  $info = apache_lookup_uri('index.php?var=value');
+  print_r($info);
+  
+  if (file_exists($info->filename)) {
+      echo 'file exists!';
+  }
+?>
+
+以上例程的输出类似于：
+
+  stdClass Object
+  (
+      [status] => 200
+      [the_request] => GET /dir/file.php HTTP/1.1
+      [method] => GET
+      [mtime] => 0
+      [clength] => 0
+      [chunked] => 0
+      [content_type] => application/x-httpd-php
+      [no_cache] => 0
+      [no_local_copy] => 1
+      [unparsed_uri] => /dir/index.php?var=value
+      [uri] => /dir/index.php
+      [filename] => /home/htdocs/dir/index.php
+      [args] => var=value
+      [allowed] => 0
+      [sent_bodyct] => 0
+      [bytes_sent] => 0
+      [request_time] => 1074282764
+  )
+  file exists!
+
+
+
+vim:ft=help:

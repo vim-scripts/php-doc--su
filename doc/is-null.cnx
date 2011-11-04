@@ -1,0 +1,14 @@
+is_null -- 检测变量是否为 NULL
+
+  bool is_null(mixed var)~
+
+如果 {var} 是 null 则返回 TRUE，否则返回 FALSE。
+
+查看 NULL 类型获知变量什么时候被认为是
+NULL，而什么时候不是。
+
+参见
+NULL、|is_bool|、|is_numeric|、|is_float|、|is_int|、|is_string|、|is_object|、|is_array|、|is_integer|
+和 |is_real|。
+
+vim:ft=help:

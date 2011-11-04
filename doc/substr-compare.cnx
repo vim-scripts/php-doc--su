@@ -1,0 +1,46 @@
+substr_compare --
+二进制安全比较字符串（从偏移位置比较指定长度）
+
+  int substr_compare(string main_str, string str, int offset [, int length [, bool case_insensitivity]])~
+
+|substr_compare| 从偏移位置 {offset} 开始比较 {main_str} 与
+{str}，比较长度为 {length} 个字符。
+
+{main_str} 待比较的第一个字符串。
+
+{str} 待比较的第二个字符串。
+
+{offset}
+比较开始的位置。如果为负数，则从字符串结尾处开始算起。
+
+{length} 比较的长度。默认值为 {str} 的长度与 {main_str}
+的长度减去位置偏移量 {offset} 后二者中的较大者。
+
+{case_insensitivity} 如果 {case_insensitivity} 为
+TRUE，比较将不区分大小写。
+
+如果 {main_str} 从偏移位置 {offset} 起的子字符串小于
+{str}，则返回小于 0 的数；如果大于 {str}，则返回大于 0
+的数；如果二者相等，则返回 0。如果 {offset} 大于等于
+{main_str} 的长度或 {length} 被设置为小于 1
+的值，|substr_compare| 将打印出一条警告信息并且返回 FALSE。
+
+版本 说明 5.1.0 允许使用负数的 {offset} 参数。
+
+|substr_compare| 范例
+
+<?php >
+  echo substr_compare("abcde", "bc", 1, 2); // 0
+  echo substr_compare("abcde", "de", -2, 2); // 0
+  echo substr_compare("abcde", "bcg", 1, 2); // 0
+  echo substr_compare("abcde", "BC", 1, 2, true); // 0
+  echo substr_compare("abcde", "bc", 1, 3); // 1
+  echo substr_compare("abcde", "cd", 1, 2); // -1
+  echo substr_compare("abcde", "abc", 5, 1); // warning
+?>
+
+
+
+
+
+vim:ft=help:

@@ -1,0 +1,9 @@
+imagecolorstotal -- 取得一幅图像的调色板中颜色的数目
+
+  int imagecolorstotal(resource image)~
+
+本函数返回指定图像的调色板中的颜色数目。
+
+参见 |imagecolorat| 和 |imagecolorsforindex|。
+
+vim:ft=help:

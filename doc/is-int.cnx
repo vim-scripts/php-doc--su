@@ -1,0 +1,14 @@
+is_int -- 检测变量是否是整数
+
+  bool is_int(mixed var)~
+
+如果 {var} 是 integer 则返回 TRUE，否则返回 FALSE。
+
+若想测试一个变量是否是数字或数字字符串（如表单输入，它们通常为字符串），必须使用
+|is_numeric|。
+
+参见
+|is_bool|、|is_float|、|is_integer|、|is_numeric|、|is_string|、|is_array|
+和 |is_object|。
+
+vim:ft=help:

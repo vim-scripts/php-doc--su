@@ -1,0 +1,43 @@
+fputcsv -- 将行格式化为 CSV 并写入文件指针
+
+  int fputcsv(resource handle [, array fields [, string delimiter [, string enclosure]]])~
+
+|fputcsv| 将一行（用 {fields} 数组传递）格式化为 CSV
+格式并写入由 {handle}
+指定的文件。返回写入字符串的长度，出错则返回 FALSE。
+
+可选的 {delimiter}
+参数设定字段分界符（只允许一个字符）。默认为逗号：,。
+
+可选的 {enclosure}
+参数设定字段字段环绕符（只允许一个字符）。默认为双引号："。
+
+|fputcsv| 例子
+
+<?php >
+  $list = array (
+      'aaa,bbb,ccc,dddd',
+      '123,456,789',
+      '"aaa","bbb"'
+  );
+  
+  $fp = fopen('file.csv', 'w');
+  
+  foreach ($list as $line) {
+      fputcsv($fp, split(',', $line));
+  }
+  
+  fclose($fp);
+?>
+
+
+
+
+
+在读取在 Macintosh 电脑中或由其创建的文件时， 如果 PHP
+不能正确的识别行结束符，启用运行时配置可选项
+auto_detect_line_endings 也许可以解决此问题。
+
+参见 |fgetcsv|。
+
+vim:ft=help:

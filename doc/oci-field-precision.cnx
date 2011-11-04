@@ -1,0 +1,16 @@
+oci_field_precision -- 返回字段精度
+
+  int oci_field_precision(resource statement, int field)~
+
+返回索引为 {field}（从 1 开始）的字段的精度。
+
+对于 FLOAT 字段，精度为非零值且范围为 -127。如果精度为
+0，则字段为 NUMBER。其它类型为 NUMBER(precision, scale)。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocicolumnprecision|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_field_precision| 的别名。不过其已被废弃，不推荐使用。
+
+参见 |oci_field_scale| 和 |oci_field_type|。
+
+vim:ft=help:

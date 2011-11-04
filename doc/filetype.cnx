@@ -1,0 +1,32 @@
+filetype -- 取得文件类型
+
+  string filetype(string filename)~
+
+返回文件的类型。可能的值有
+fifo，char，dir，block，link，file 和 unknown。
+
+如果出错则返回 FALSE。如果 stat
+调用失败或者文件类型未知的话 |filetype| 还会产生一个
+E_NOTICE 消息。
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+|filetype| 例子
+
+<?php >
+  echo filetype('/etc/passwd');  // file
+  echo filetype('/etc/');        // dir
+?>
+
+
+
+
+
+参见 |is_dir|，|is_file|，|is_link|，|file_exists|，|stat| 和
+|mime_content_type|。
+
+vim:ft=help:

@@ -1,0 +1,25 @@
+urldecode -- 解码已编码的 URL 字符串
+
+  string urldecode(string str)~
+
+解码给出的已编码字符串中的任何
+%##。返回解码后的字符串。 |urldecode| 例子
+
+<?php >
+  $a = explode('&amp;', $QUERY_STRING);
+  $i = 0;
+  while ($i < count($a)) {
+      $b = split('=', $a[$i]);
+      echo 'Value for parameter ', htmlspecialchars(urldecode($b[0])),
+           ' is ', htmlspecialchars(urldecode($b[1])), "<br />\n";
+      $i++;
+  }
+?>
+
+
+
+
+
+参见 |urlencode|，|rawurlencode| 和 |rawurldecode|。
+
+vim:ft=help:

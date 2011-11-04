@@ -1,0 +1,9 @@
+imagedestroy -- 销毁一图像
+
+  bool imagedestroy(resource image)~
+
+|imagedestroy| 释放与 {image} 关联的内存。{image}
+是由图像创建函数返回的图像标识符，例如
+|imagecreatetruecolor|。
+
+vim:ft=help:

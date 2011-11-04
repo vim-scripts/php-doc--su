@@ -1,0 +1,9 @@
+log10 -- 以 10 为底的对数
+
+  float log10(float arg)~
+
+返回参数 {arg} 以 10 为底的对数。
+
+参见 |log|。
+
+vim:ft=help:

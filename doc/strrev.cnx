@@ -1,0 +1,21 @@
+strrev -- 反转字符串
+
+  string strrev(string string)~
+
+返回 {string} 反转后的字符串。
+
+{string} 待反转的原始字符串。
+
+返回反转后的字符串。
+
+使用 |strrev| 反转字符串
+
+<?php >
+  echo strrev("Hello world!"); // 输出 "!dlrow olleH"
+?>
+
+
+
+
+
+vim:ft=help:

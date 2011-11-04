@@ -1,0 +1,9 @@
+mt_getrandmax -- 显示随机数的最大可能值
+
+  int mt_getrandmax()~
+
+返回调用 |mt_rand| 所能返回的最大的随机数。
+
+参见： |mt_rand|、 |mt_srand|和 |getrandmax|。
+
+vim:ft=help:

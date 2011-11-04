@@ -1,0 +1,32 @@
+pg_field_is_null -- 测试字段是否为 NULL
+
+  int pg_field_is_null(resource result, int row, mixed field)~
+
+|pg_field_is_null| 测试字段是否为
+NULL。如果字段在给出的行中为 NULL 则返回
+1，如果字段在给出的行中不是 NULL 则返回
+0。字段可以以列的索引号（数字）方式给出，也可以以字段名（字符串）方式给出。行的编号从
+0 开始。
+
+|pg_field_is_null| 例子
+
+<?php >
+      $dbconn = pg_connect("dbname=publisher") or die ("Could not connect");
+      $res = pg_query($dbconn, "select * from authors where author = 'Orwell'");
+      if ($res) {
+          if (pg_field_is_null($res, 0, "year") == 1) {
+              echo "The value of the field year is null.\n";
+          }
+          if (pg_field_is_null($res, 0, "year") == 0) {
+              echo "The value of the field year is not null.\n";
+        }
+     }
+?>
+
+
+
+
+
+本函数以前的名字为 pg_fieldisnull()。
+
+vim:ft=help:

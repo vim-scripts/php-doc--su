@@ -1,0 +1,27 @@
+pg_get_pid -- Ping 数据库连接
+
+  int pg_get_pid(resource connection)~
+
+|pg_get_pid| 取得后端（数据库服务器进程）的 PID。PID
+用来检查其它进程是否发送了 NOTIFY 消息。
+
+PostgreSQL 后端 PID
+
+<?php >
+  $conn = pg_pconnect("dbname=publisher");
+  if (!$conn) {
+      echo "An error occured.\n";
+      exit;
+  }
+  
+  // Backend process PID. Use PID with pg_get_notify()
+  $pid = pg_get_pid($conn);
+?>
+
+
+
+
+
+参见 |pg_get_notify|。
+
+vim:ft=help:

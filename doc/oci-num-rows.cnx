@@ -1,0 +1,45 @@
+oci_num_rows -- 返回语句执行后受影响的行数
+
+  int oci_num_rows(resource stmt)~
+
+|oci_num_rows| 返回语句执行后受影响的行数。
+
+本函数并不返回 SELECT 查询出来的行数！对于 SELECT
+语句本函数将返回用 |oci_fetch*| 函数取到缓冲区的行数。
+
+|oci_num_rows| 例子
+
+<?php >
+      echo "<pre>";
+      $conn = oci_connect("scott", "tiger");
+  
+      $stmt = oci_parse($conn, "create table emp2 as select * from emp");
+      oci_execute($stmt);
+      echo oci_num_rows($stmt) . " rows inserted.<br />";
+      oci_free_statement($stmt);
+  
+      $stmt = oci_parse($conn, "delete from emp2");
+      oci_execute($stmt, OCI_DEFAULT);
+      echo oci_num_rows($stmt) . " rows deleted.<br />";
+      oci_commit($conn);
+      oci_free_statement($stmt);
+  
+      $stmt = oci_parse($conn, "drop table emp2");
+      oci_execute($stmt);
+      oci_free_statement($stmt);
+  
+      oci_close($conn);
+      echo "</pre>";
+?>
+
+
+
+
+
+|oci_num_rows| 在出错时返回 FALSE。
+
+在 PHP 5.0.0 之前的版本必须使用 |ocirowcount|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_num_rows| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

@@ -1,0 +1,37 @@
+imagerotate -- 用给定角度旋转图像
+
+  resource imagerotate(resource src_im, float angle, int bgd_color [, int ignore_transparent])~
+
+将 {src_im} 图像用给定的 {angle} 角度旋转。{bgd_color}
+指定了旋转后没有覆盖到的部分的颜色。
+
+旋转的中心是图像的中心，旋转后的图像会按比例缩小以适合目标图像的大小——边缘不会被剪去。
+
+如果 {ignore_transparent}
+被设为非零值，则透明色会被忽略（否则会被保留）。此参数是
+PHP 5.1 新加的。
+
+将图像旋转 180 度 本例将把一幅图像旋转 180
+度——上下颠倒。
+
+  // File and rotation
+  $filename = 'test.jpg';
+  $degrees = 180;
+  
+  // Content type
+  header('Content-type: image/jpeg');
+  
+  // Load
+  $source = imagecreatefromjpeg($filename);
+  
+  // Rotate
+  $rotate = imagerotate($source, $degrees, 0);
+  
+  // Output
+  imagejpeg($rotate);
+
+
+
+此函数仅在与 GD 库捆绑编译的 PHP 版本中可用。
+
+vim:ft=help:

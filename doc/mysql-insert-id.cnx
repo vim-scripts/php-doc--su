@@ -1,0 +1,40 @@
+mysql_insert_id -- 取得上一步 INSERT 操作产生的 ID
+
+  int mysql_insert_id([resource link_identifier])~
+
+|mysql_insert_id| 返回给定的 {link_identifier} 中上一步 INSERT
+查询中产生的 AUTO_INCREMENT 的 ID 号。如果没有指定
+{link_identifier}，则使用上一个打开的连接。
+
+如果上一查询没有产生 AUTO_INCREMENT 的值，则 |mysql_insert_id|
+返回
+0。如果需要保存该值以后使用，要确保在产生了值的查询之后立即调用
+|mysql_insert_id|。
+
+MySQL 中的 SQL 函数 LAST_INSERT_ID() 总是保存着最新产生的
+AUTO_INCREMENT 值，并且不会在查询语句之间被重置。
+
+|mysql_insert_id| 将 MySQL 内部的 C API 函数 mysql_insert_id()
+的返回值转换成 long（PHP 中命名为 int）。如果 AUTO_INCREMENT
+的列的类型是 BIGINT，则 |mysql_insert_id|
+返回的值将不正确。可以在 SQL 查询中用 MySQL 内部的 SQL
+函数 LAST_INSERT_ID() 来替代。
+
+|mysql_insert_id| 例子
+
+<?php >
+      mysql_connect("localhost", "mysql_user", "mysql_password") or
+          die("Could not connect: " . mysql_error());
+      mysql_select_db("mydb");
+  
+      mysql_query("INSERT INTO mytable (product) values ('kossu')");
+      printf ("Last inserted record has id %d\n", mysql_insert_id());
+?>
+
+
+
+
+
+参见 |mysql_query|。
+
+vim:ft=help:

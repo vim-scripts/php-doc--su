@@ -1,0 +1,22 @@
+ceil -- 进一法取整
+
+  float ceil(float value)~
+
+返回不小于 {value} 的下一个整数，{value}
+如果有小数部分则进一位。|ceil| 返回的类型仍然是
+float，因为 float 值的范围通常比 integer 要大。
+
+|ceil| 例子
+
+<?php >
+  echo ceil(4.3);    // 5
+  echo ceil(9.999);  // 10
+?>
+
+
+
+
+
+参见 |floor| 和 |round|。
+
+vim:ft=help:

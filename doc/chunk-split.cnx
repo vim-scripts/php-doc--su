@@ -1,0 +1,23 @@
+chunk_split -- 将字符串分割成小块
+
+  string chunk_split(string body [, int chunklen [, string end]])~
+
+使用此函数将字符串分割成小块非常有用。例如将
+|base64_encode| 的输出转换成符合 RFC 2045
+语义的字符串。它会在每 {chunklen}（默认为
+76）个字符后边插入
+{end}（默认为“\r\n”）。此函数会返回新的字符串，而不会修改原有字符串。
+|chunk_split| 例子
+
+<?php >
+  // 使用 RFC 2045 语义格式化 $data
+  $new_string = chunk_split(base64_encode($data));
+?>
+
+
+
+
+
+参见 |str_split|，|explode|，|split|，|wordwrap| 和 RFC 2045。
+
+vim:ft=help:

@@ -1,0 +1,8 @@
+pg_port -- 返回该连接的端口号
+
+  int pg_port(resource connection)~
+
+|pg_port| 返回给定的 PostgreSQL {connection}
+资源所连接的端口号。
+
+vim:ft=help:

@@ -1,0 +1,41 @@
+settype -- 设置变量的类型
+
+  bool settype(mixed var, string type)~
+
+将变量 {var} 的类型设置成 {type}。
+
+{type} 的可能值为： “boolean” （或为“bool”，从 PHP 4.2.0
+起）
+
+“integer” （或为“int”，从 PHP 4.2.0 起）
+
+“float” （只在 PHP 4.2.0
+之后可以使用，对于旧版本中使用的“double”现已停用）
+
+“string”
+
+“array”
+
+“object”
+
+“null” （从 PHP 4.2.0 起）
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|settype| 示例
+
+<?php >
+  $foo = "5bar"; // string
+  $bar = true;   // boolean
+  
+  settype($foo, "integer"); // $foo 现在是 5   (integer)
+  settype($bar, "string");  // $bar 现在是 "1" (string)
+?>
+
+
+
+
+
+参见 |gettype|、类型转换和类型戏法。
+
+vim:ft=help:

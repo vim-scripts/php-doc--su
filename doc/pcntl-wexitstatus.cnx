@@ -1,0 +1,15 @@
+pcntl_wexitstatus -- 返回一个中断的子进程的返回代码
+
+  int pcntl_wexitstatus(int status)~
+
+返回一个中断的子进程的返回代码。这个函数仅在函数|pcntl_wifexited|返回
+TRUE.时有效。
+
+{status} 参数 {status} 是提供给成功调用 |pcntl_waitpid|
+时的状态参数。
+
+返回整形的子进程返回代码。
+
+|pcntl_waitpid| |pcntl_wifexited|
+
+vim:ft=help:

@@ -1,0 +1,9 @@
+mysqli_enable_reads_from_master -- 开启从主机读取
+
+  bool mysqli_enable_reads_from_master(mysqli link)~
+
+本函数还未编写文档，仅有参数列表。
+
+自 PHP 5.3.0 起，已经废弃并移除此函数。
+
+vim:ft=help:

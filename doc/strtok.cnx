@@ -1,0 +1,82 @@
+strtok -- 标记分割字符串
+
+  string strtok(string str, string token)~
+
+  string strtok(string str, string token, string token)~
+
+|strtok| 将字符串 {str}
+分割为若干子字符串，每个子字符串以 {token}
+中的字符分割。这也就意味着，如果有个字符串是 "This is an
+example
+string"，你可以使用空格字符将这句话分割成独立的单词。
+
+注意仅第一次调用 strtok 函数时使用 string
+参数。后来每次调用 strtok，都将只使用 token
+参数，因为它会记住它在字符串 string
+中的位置。如果要重新开始分割一个新的字符串，你需要再次使用
+string 来调用 strtok 函数，以便完成初始化工作。注意可以在
+token
+参数中使用多个字符。字符串将被该参数中任何一个字符分割。
+
+{str} 被分成若干子字符串的原始字符串。
+
+{token} 分割 {str} 时使用的分界字符。
+
+标记后的字符串。
+
+|strtok| 范例
+
+<?php >
+  $string = "This is\tan example\nstring";
+  /* 使用制表符和换行符作为分界符 */
+  $tok = strtok($string, " \n\t");
+  
+  while ($tok !== false) {
+      echo "Word=$tok<br />";
+      $tok = strtok(" \n\t");
+  }
+?>
+
+
+
+
+
+对于空串的处理机制，PHP 从 4.1.0
+开始发生了变化。旧的运行机制返回空字符串，而新的运行机制选择恰当地跳过这一部分：
+
+旧的 |strtok| 运行机制
+
+<?php >
+  $first_token  = strtok('/something', '/');
+  $second_token = strtok('/');
+  var_dump($first_token, $second_token);
+?>
+
+以上例程会输出：
+
+  string(0) ""
+      string(9) "something"
+
+新的 |strtok| 运行机制
+
+<?php >
+  $first_token  = strtok('/something', '/');
+  $second_token = strtok('/');
+  var_dump($first_token, $second_token);
+?>
+
+以上例程会输出：
+
+  string(9) "something"
+      bool(false)
+
+
+
+此函数可能返回布尔值 FALSE，但也可能返回等同于 FALSE
+的非布尔值，例如 0 或 ""(空串)。请阅读
+布尔类型章节以获取更多信息。应使用 === 运算符
+来测试此函数的返回值。
+
+|split| |explode|
+
+vim:ft=help:

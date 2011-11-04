@@ -1,0 +1,9 @@
+rewinddir -- 倒回目录句柄
+
+  void rewinddir(resource dir_handle)~
+
+将 {dir_handle} 指定的目录流重置到目录的开头。
+
+{dir_handle} 目录句柄的 resource，之前由 |opendir| 打开
+
+vim:ft=help:

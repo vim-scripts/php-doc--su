@@ -1,0 +1,50 @@
+array_intersect_ukey -- 用回调函数比较键名来计算数组的交集
+
+  array array_intersect_ukey(array array1, array array2 [, array ..., callback key_compare_func])~
+
+|array_intersect_ukey| 返回一个数组，该数组包含了所有出现在
+{array1} 中并同时出现在所有其它参数数组中的键名的值。
+
+此比较是通过用户提供的回调函数来进行的。如果认为第一个参数小于，等于，或大于第二个参数时必须分别返回一个小于零，等于零，或大于零的整数。
+
+|array_intersect_ukey| 例子
+
+<?php >
+  function key_compare_func($key1, $key2)
+  {
+      if ($key1 == $key2)
+          return 0;
+      else if ($key1 > $key2)
+          return 1;
+      else
+          return -1;
+  }
+  
+  $array1 = array('blue'  => 1, 'red'  => 2, 'green'  => 3, 'purple' => 4);
+  $array2 = array('green' => 5, 'blue' => 6, 'yellow' => 7, 'cyan'   => 8);
+  
+  var_dump(array_intersect_ukey($array1, $array2, 'key_compare_func'));
+?>
+
+以上例程会输出：
+
+  array(2) {
+    ["blue"]=>
+    int(1)
+    ["green"]=>
+    int(3)
+  })
+
+
+
+上例中可以看到只有 'blue' 和 'green'
+两个键名出现在两个数组中，因此被返回。此外注意 'blue'
+和 'green'
+的值在两个数组中是不同的。但因为只检查键名，因此还是匹配。返回的值只是
+{array1} 中的。
+
+参见
+|array_diff|，|array_udiff|，|array_diff_assoc|，|array_diff_uassoc|，|array_udiff_assoc|，|array_udiff_uassoc|，|array_diff_key|，|array_diff_ukey|，|array_intersect|，|array_intersect_assoc|，|array_intersect_uassoc|
+和 |array_intersect_key|。
+
+vim:ft=help:

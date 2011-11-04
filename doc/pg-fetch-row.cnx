@@ -1,0 +1,47 @@
+pg_fetch_row -- 提取一行作为枚举数组
+
+  array pg_fetch_row(resource result, int row)~
+
+|pg_fetch_row| 根据指定的 {result}
+资源提取一行数据（记录）作为数组返回。每个得到的列依次存放在数组中，从偏移量
+0 开始。
+
+返回的数组和提取的行相一致。如果没有更多行可提取，则返回
+FALSE。
+
+|pg_fetch_row| 例子
+
+<?php >
+  $conn = pg_pconnect("dbname=publisher");
+  if (!$conn) {
+      echo "An error occured.\n";
+      exit;
+  }
+  
+  $result = pg_query($conn, "SELECT * FROM authors");
+  if (!$result) {
+      echo "An error occured.\n";
+      exit;
+  }
+  
+  while ($row = pg_fetch_row($result, $i)) {
+    for ($j=0; $j < count($row); $j++) {
+      echo $row[$j] . "&amp;nbsp;";
+    }
+  
+    echo "<br />\n";
+  
+  }
+?>
+
+
+
+
+
+从 4.1.0 开始，{row} 成为可选参数。每次调用
+|pg_fetch_row|，内部的行计数器都会加一。
+
+参见 |pg_query|，|pg_fetch_array|，|pg_fetch_object| 和
+|pg_fetch_result|。
+
+vim:ft=help:

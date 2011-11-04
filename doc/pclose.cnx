@@ -1,0 +1,13 @@
+pclose -- 关闭进程文件指针
+
+  int pclose(resource handle)~
+
+关闭用 |popen| 打开的指向管道的文件指针。
+
+文件指针必须有效，且必须是成功调用 |popen| 所返回的。
+
+返回运行的进程的终止状态。
+
+参见 |popen|。
+
+vim:ft=help:

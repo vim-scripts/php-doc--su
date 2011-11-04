@@ -1,0 +1,62 @@
+get_class_methods -- 返回由类的方法名组成的数组
+
+  array get_class_methods(mixed class_name)~
+
+返回由 {class_name}
+指定的类中定义的方法名所组成的数组。如果出错，则返回
+NULL。
+
+从 PHP 4.0.6 开始，可以指定对象本身来代替
+{class_name}，例如：
+
+<?php >
+  $class_methods = get_class_methods($my_object); // see below the full example
+?>
+
+|get_class_methods| 示例
+
+<?php >
+  class myclass {
+      // constructor
+      function myclass()
+      {
+          return(true);
+      }
+      
+      // method 1
+      function myfunc1()
+      {
+          return(true);
+      }
+  
+      // method 2
+      function myfunc2()
+      {
+          return(true);
+      }
+  }
+  
+  $class_methods = get_class_methods('myclass');
+  // or
+  $class_methods = get_class_methods(new myclass());
+  
+  foreach ($class_methods as $method_name) {
+      echo "$method_name\n";
+  }
+?>
+
+以上例程会输出：
+
+  myclass
+  myfunc1
+  myfunc2
+
+
+
+自 PHP 5
+起，本函数按照方法被定义的名字返回（区分大小写）。在
+PHP 4 中总是返回小写的。
+
+参见 |get_class|，|get_class_vars| 和 |get_object_vars|。
+
+vim:ft=help:

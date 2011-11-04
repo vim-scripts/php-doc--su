@@ -1,0 +1,19 @@
+mysqli->rpl_query_type -- 返回RPL查询类型
+
+面向对象风格
+
+  int rpl_query_type(string query)~
+
+过程化风格
+
+  int mysqli_rpl_query_type(string query, mysqli link, string query)~
+
+依赖于一个查询类型返回MYSQLI_RPL_MASTER， MYSQLI_RPL_SLAVE或
+MYSQLI_RPL_ADMIN。INSERT, UPDATE都类似 于master查询，SELECT是slave，
+FLUSH和REPAIR都是admin。
+
+本函数还未编写文档，仅有参数列表。
+
+自 PHP 5.3.0 起，已经废弃并移除此函数。
+
+vim:ft=help:

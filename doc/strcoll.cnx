@@ -1,0 +1,23 @@
+strcoll -- 基于区域设置的字符串比较
+
+  int strcoll(string str1, string str2)~
+
+注意该比较区分大小写。和 |strcmp|
+不同，该函数不是二进制安全的。
+
+|strcoll| 使用当前区域设置进行比较。如果当前区域为 C 或
+POSIX，该函数等同于 |strcmp|。
+
+{str1} 第一个字符串。
+
+{str2} 第二个字符串。
+
+如果 {str1} 小于 {str2}，返回负数；如果 {str1} 大于
+{str2}，返回正数；二者相等则返回 0。
+
+版本 说明 4.2.3 函数在 Win32 平台可用。
+
+|preg_match| |strcmp| |strcasecmp| |substr| |stristr| |strncasecmp| |strncmp|
+|strstr| |setlocale|
+
+vim:ft=help:

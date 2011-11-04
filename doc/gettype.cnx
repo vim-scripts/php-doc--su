@@ -1,0 +1,40 @@
+gettype -- 获取变量的类型
+
+  string gettype(mixed var)~
+
+返回 PHP 变量的类型 {var}.
+
+不要使用 |gettype|
+来测试某种类型，因为其返回的字符串在未来的版本中可能需要改变。此外，由于包含了字符串的比较，它的运行也是较慢的。
+
+使用 is_* 函数代替。
+
+返回的字符串的可能值为： “boolean”（从 PHP 4 起）
+
+“integer”
+
+“double”（由于历史原因，如果是 float
+则返回“double”，而不是“float”）
+
+“string”
+
+“array”
+
+“object”
+
+“resource”（从 PHP 4 起）
+
+“NULL”（从 PHP 4 起）
+
+“user function”（只用于 PHP 3，现已停用）
+
+“unknown type”
+
+对于 PHP 4，你应该使用 |function_exists| 和 |method_exists|
+取代先前将 |gettype| 作用于函数的用法。
+
+参见
+|settype|、|is_array|、|is_bool|、|is_float|、|is_integer|、|is_null|、|is_numeric|、|is_object|、|is_resource|、|is_scalar|
+和 |is_string|。
+
+vim:ft=help:

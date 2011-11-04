@@ -1,0 +1,25 @@
+chr -- 返回指定的字符
+
+  string chr(int ascii)~
+
+返回相对应于 {ascii} 所指定的单个字符。 |chr| 例子
+
+<?php >
+  $str = "The string ends in escape: ";
+  $str .= chr(27); /* 在 $str 后边增加换码符 */
+  
+  /* 通常这样更有用 */
+  
+  $str = sprintf("The string ends in escape: %c", 27);
+?>
+
+
+
+
+
+可以在此处找到 ASCII 码表：http://www.asciitable.com。
+
+此函数与 |ord| 是互补的。参见 |sprintf| 如何使用格式字符串
+%c。
+
+vim:ft=help:

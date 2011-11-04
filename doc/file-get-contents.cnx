@@ -1,0 +1,43 @@
+file_get_contents -- 将整个文件读入一个字符串
+
+  string file_get_contents(string filename [, bool use_include_path [, resource context [, int offset [, int maxlen]]]])~
+
+和 |file| 一样，只除了 |file_get_contents|
+把文件读入一个字符串。将在参数 {offset}
+所指定的位置开始读取长度为 {maxlen}
+的内容。如果失败，|file_get_contents| 将返回 FALSE。
+
+|file_get_contents|
+函数是用来将文件的内容读入到一个字符串中的首选方法。如果操作系统支持还会使用内存映射技术来增强性能。
+
+如果要打开有特殊字符的 URL
+（比如说有空格），就需要使用 |urlencode| 进行 URL 编码。
+
+{context} 参数可以用 NULL 来忽略。
+
+版本 说明 5.0.0 添加了对 context 的支持。 5.1.0 添加了 {offset}
+和 {maxlen} 参数。
+
+此函数可安全用于二进制对象。
+
+如已启用fopen 包装器，在此函数中， URL
+可作为文件名。关于如何指定文件名详见 |fopen|。各种 wapper
+的不同功能请参见
+，注意其用法及其可提供的预定义变量。
+
+在 PHP 5.0.0 中增加了 对上下文(Context)的支持。 有关
+上下文(Context) 的说明参见 。
+
+使用 SSL 时，Microsoft IIS
+会违反协议不发送close_notify标记就关闭连接。PHP
+会在到达数据尾端时报告“SSL: Fatal Protocol Error”。
+要解决此问题，error_reporting
+应设定为降低级别至不包含警告。 PHP 4.3.7
+及更高版本可以在使用 https://
+包装器打开流时检测出有问题的 IIS 服务器软件
+并抑制警告。在使用 |fsockopen| 创建 ssl:// 套接字时,
+开发者需检测并抑制此警告。
+
+|file| |fgets| |fread| |readfile| |file_put_contents| |stream_get_contents|
+
+vim:ft=help:

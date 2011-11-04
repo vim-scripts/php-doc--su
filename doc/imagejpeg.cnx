@@ -1,0 +1,26 @@
+imagejpeg -- 以 JPEG 格式将图像输出到浏览器或文件
+
+  bool imagejpeg(resource image [, string filename [, int quality]])~
+
+|imagejpeg| 从 {image} 图像以 {filename} 为文件名创建一个 JPEG
+图像。{image} 参数是 |imagecreatetruecolor| 函数的返回值。
+
+{filename}
+参数为可选，如果省略，则原始图像流将被直接输出。要省略
+{filename} 参数而提供 {quality}
+参数，使用空字符串（''）。通过 |header| 发送 Content-type:
+image/jpeg 可以使 PHP 脚本直接输出 JPEG 图像。
+
+JPEG 支持仅在 PHP 与 GD-1.8 或更高版本一起编译时可用.
+
+{quality} 为可选项，范围从 0（最差质量，文件更小）到
+100（最佳质量，文件最大）。默认为 IJG
+默认的质量值（大约 75）。
+
+如果想输出渐进式 JPEG，需要用 |imageinterlace|
+函数将隔行扫描比特置位。
+
+参见 |imagepng|，|imagegif|，|imagewbmp|，|imageinterlace| 和
+|imagetypes|。
+
+vim:ft=help:

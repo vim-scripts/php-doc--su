@@ -1,0 +1,11 @@
+pg_get_result -- 取得异步查询结果
+
+  resource pg_get_result([resource connection])~
+
+|pg_get_result| 取得执行 |pg_send_query|
+而得到的查询结果资源。|pg_send_query| 可以向 PostgreSQL
+发送多个查询， |pg_get_result|
+则用来逐个得到查询结果。返回值为查询结果资源号。如果没有更多查询结果，则返回
+FALSE。
+
+vim:ft=help:

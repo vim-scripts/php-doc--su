@@ -1,0 +1,34 @@
+pg_get_notify -- Ping 数据库连接
+
+  array pg_get_notify(resource connection [, int result_type])~
+
+|pg_get_notify| 取得 SQL 命令 NOTIFY
+发送的通告消息。要接收通告消息，必须发送 SQL 命令
+LISTEN。如果连接中有通告消息，则数组包含消息名并且返回后端的
+PID。如果没有消息则返回 FALSE。
+
+参见 |pg_get_pid|。
+
+PostgreSQL NOTIFY 消息
+
+<?php >
+  $conn = pg_pconnect("dbname=publisher");
+  if (!$conn) {
+      echo "An error occured.\n";
+      exit;
+  }
+  
+  // Listen 'author_updated' message from other processes
+  pq_query($conn, 'LISTEN author_updated;');
+  $notify = pg_get_notify($conn);
+  if (!$notify)
+      print("No messages\n");
+  else
+      print_r($notify);
+?>
+
+
+
+
+
+vim:ft=help:

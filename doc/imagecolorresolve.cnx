@@ -1,0 +1,12 @@
+imagecolorresolve --
+取得指定颜色的索引值或有可能得到的最接近的替代值
+
+  int imagecolorresolve(resource image, int red, int green, int blue)~
+
+本函数可以保证对所请求的颜色返回一个颜色索引，要么是确切值要么是所能得到最接近的替代值。
+
+如果从文件创建了图像，只有图像中使用了的颜色会被辨析。仅出现在调色板中的颜色不会被辨析。
+
+参见 |imagecolorclosest|。
+
+vim:ft=help:

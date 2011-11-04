@@ -1,0 +1,29 @@
+vprintf -- 输出格式化字符串
+
+  int vprintf(string format, array args)~
+
+根据 {format} （|sprintf|
+函数文档中有相关描述）参数指定的格式，在一个格式化字符串中显示多个值。
+
+作用与 |printf|
+函数类似，但是接收一个数组参数，而不是一系列可变数量的参数。
+
+{format} 关于 {format} 的描述，参见 |sprintf|。
+
+{args}
+
+返回输出字符串的长度。
+
+|vprintf|: 前导 0 的整数
+
+<?php >
+  vprintf("%04d-%02d-%02d", explode('-', '1988-8-1')); // 1988-08-01
+?>
+
+
+
+
+
+|printf| |sprintf| |vsprintf|
+
+vim:ft=help:

@@ -1,0 +1,18 @@
+oci_parse -- 配置 Oracle 语句预备执行
+
+  resource oci_parse(resource connection, string query)~
+
+|oci_parse| 在 {connection} 上配置 {query}
+并返回语句标识符以用于 |oci_bind_by_name|，|oci_execute|
+以及其它函数。
+
+本函数并不验证 {query}。要知道 {query} 是否是合法的 SQL 或
+PL/SQL 语句的唯一方法是执行它。
+
+|oci_parse| 在出错时返回 FALSE。
+
+在 PHP 5.0.0 之前的版本必须使用 |ociparse|
+替代本函数。该函数名仍然可用，为向下兼容作为 |oci_parse|
+的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

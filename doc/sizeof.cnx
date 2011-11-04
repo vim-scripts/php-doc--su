@@ -1,0 +1,5 @@
+sizeof -- count 的别名
+
+此函数是该函数的别名：|count|。
+
+vim:ft=help:

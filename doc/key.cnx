@@ -1,0 +1,33 @@
+key -- 从关联数组中取得键名
+
+  mixed key(array array)~
+
+|key| 返回数组中当前单元的键名。
+
+|key| 例子
+
+<?php >
+  $array = array(
+   'fruit1' => 'apple',
+   'fruit2' => 'orange',
+   'fruit3' => 'grape',
+   'fruit4' => 'apple',
+   'fruit5' => 'apple');
+  
+  // this cycle echoes all associative array
+  // key where value equals "apple"
+  while ($fruit_name = current($array)) {
+      if ($fruit_name == 'apple') {
+          echo key($array).'<br />';
+      }
+      next($array);
+  }
+?>
+
+
+
+
+
+参见 |current| 和 |next|。
+
+vim:ft=help:

@@ -1,0 +1,11 @@
+oci_free_statement -- 释放关联于语句或游标的所有资源
+
+  bool oci_free_statement(resource statement)~
+
+|oci_free_statement| 释放关联于 Oracle
+游标或语句的资源，该资源是作为 |oci_parse|
+的结果或者是从 Oracle 取得。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+vim:ft=help:

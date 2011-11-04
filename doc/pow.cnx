@@ -1,0 +1,30 @@
+pow -- 指数表达式
+
+  number pow(number base, number exp)~
+
+返回 {base} 的 {exp} 次方的幂。如果可能，本函数会返回
+integer。
+
+如果不能计算幂，将发出一条警告，|pow| 将返回 FALSE。PHP
+4.2.0 版开始 |pow| 不要产生任何的警告。
+
+PHP 不能处理负数的 {base}。
+
+|pow| 例子
+
+<?php >
+  var_dump(pow(2, 8)); // int(256)
+  echo pow(-1, 20); // 1
+  echo pow(0, 0); // 1
+  
+  echo pow(-1, 5.5); // error
+?>
+
+
+
+在 PHP 4.0.6 及之前版本中，|pow| 总是返回
+float，并且不产生警告。
+
+参见 |exp|，|sqrt|，|bcpow| |gmp_pow| 和。
+
+vim:ft=help:

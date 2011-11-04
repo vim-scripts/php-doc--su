@@ -1,0 +1,20 @@
+pg_client_encoding -- 取得客户端编码方式
+
+  string pg_client_encoding([resource connection])~
+
+|pg_client_encoding|
+以字符串形式返回客户端编码。所返回的字符串为以下之一：SQL_ASCII，EUC_JP，EUC_CN，EUC_KR，EUC_TW，UNICODE，MULE_INTERNAL，LATINX
+(X=1...9)，KOI8，WIN，ALT，SJIS，BIG5，WIN1250。
+
+本函数需要 PHP-4.0.3 或以上版本以及 PostgreSQL-7.0
+或以上版本。如果在编译 libpq
+时没有加入多字节编码支持，则 |pg_set_client_encoding|
+总是返回 "SQL_ASCII"。所支持的编码方式取决于 PostgreSQL
+的版本。详情参见 PostgreSQL
+手册如何加入多字节支持以及所支持的编码方式。
+
+本函数以前被称为 |pg_clientencoding|。
+
+参见 |pg_set_client_encoding|。
+
+vim:ft=help:

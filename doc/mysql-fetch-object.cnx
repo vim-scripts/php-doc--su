@@ -1,0 +1,41 @@
+mysql_fetch_object -- 从结果集中取得一行作为对象
+
+  object mysql_fetch_object(resource result)~
+
+返回根据所取得的行生成的对象，如果没有更多行则返回
+FALSE。
+
+|mysql_fetch_object| 和 |mysql_fetch_array| 类似，只有一点区别 -
+返回一个对象而不是数组。间接地也意味着只能通过字段名来访问数组，而不是偏移量（数字是合法的属性名）。
+
+此函数返回的字段名大小写敏感。
+
+<?php >
+  /* this is valid */
+  echo $row->field;
+  /* this is invalid */
+  echo $row->0;
+?>
+
+速度上，本函数和 |mysql_fetch_array| 一样，也几乎和
+|mysql_fetch_row| 一样快（差别很不明显）。 |mysql_fetch_object|
+例子
+
+<?php >
+  mysql_connect("hostname", "user", "password");
+  mysql_select_db("mydb");
+  $result = mysql_query("select * from mytable");
+  while ($row = mysql_fetch_object($result)) {
+      echo $row->user_id;
+      echo $row->fullname;
+  }
+  mysql_free_result($result);
+?>
+
+
+
+
+
+参见 |mysql_fetch_array|，|mysql_fetch_assoc| 和 |mysql_fetch_row|。
+
+vim:ft=help:

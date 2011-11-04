@@ -1,0 +1,9 @@
+sinh -- 双曲正弦
+
+  float sinh(float arg)~
+
+返回 {arg} 的双曲正弦值，定义为 (exp(arg) - exp(-arg))/2。
+
+参见： |sin|、 |asinh|、 |cos|和 |tan|。
+
+vim:ft=help:

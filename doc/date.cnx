@@ -1,0 +1,155 @@
+date -- 格式化一个本地时间／日期
+
+  string date(string format [, int timestamp])~
+
+返回将整数 {timestamp}
+按照给定的格式字串而产生的字符串。如果没有给出时间戳则使用本地当前时间。换句话说，{timestamp}
+是可选的，默认值为 |time|。
+
+自 PHP 5.1.1
+起有几个有用的常量可用作标准的日期／时间格式来指定
+{format} 参数。
+
+自 PHP 5.1 起在 $_SERVER['REQUEST_TIME']
+中保存了发起该请求时刻的时间戳。
+
+有效的时间戳典型范围是格林威治时间 1901 年 12 月 13 日
+20:45:54 到 2038 年 1 月 19 日 03:14:07。（此范围符合 32
+位有符号整数的最小值和最大值）。不过在 PHP 5.1
+之前此范围在某些系统（如 Windows）中限制为从 1970 年 1 月
+1 日到 2038 年 1 月 19 日。
+
+要将字符串表达的时间转换成时间戳，应该使用
+|strtotime|。此外一些数据库有一些函数将其时间格式转换成时间戳（例如
+MySQL 的 UNIX_TIMESTAMP 函数）。
+
+格式字串可以识别以下 {format} 参数的字符串 {format} 字符
+说明 返回值例子 日 --- --- d 月份中的第几天，有前导零的 2
+位数字 01 到 31 D 星期中的第几天，文本表示，3 个字母 Mon
+到 Sun j 月份中的第几天，没有前导零 1 到 31
+l（“L”的小写字母） 星期几，完整的文本格式 Sunday 到
+Saturday N ISO-8601 格式数字表示的星期中的第几天（PHP 5.1.0
+新加） 1（表示星期一）到 7（表示星期天） S
+每月天数后面的英文后缀，2 个字符 st，nd，rd 或者
+th。可以和 j 一起用 w 星期中的第几天，数字表示
+0（表示星期天）到 6（表示星期六） z 年份中的第几天 0 到
+366 星期 --- --- W ISO-8601
+格式年份中的第几周，每周从星期一开始（PHP 4.1.0
+新加的） 例如：42（当年的第 42 周） 月 --- --- F
+月份，完整的文本格式，例如 January 或者 March January 到
+December m 数字表示的月份，有前导零 01 到 12 M
+三个字母缩写表示的月份 Jan 到 Dec n
+数字表示的月份，没有前导零 1 到 12 t
+给定月份所应有的天数 28 到 31 年 --- --- L 是否为闰年
+如果是闰年为 1，否则为 0 o ISO-8601 格式年份数字。这和 Y
+的值相同，只除了如果 ISO
+的星期数（W）属于前一年或下一年，则用那一年。（PHP
+5.1.0 新加） Examples: 1999 or 2003 Y 4 位数字完整表示的年份
+例如：1999 或 2003 y 2 位数字表示的年份 例如：99 或 03 时间
+--- --- a 小写的上午和下午值 am 或 pm A 大写的上午和下午值
+AM 或 PM B Swatch Internet 标准时 000 到 999 g 小时，12
+小时格式，没有前导零 1 到 12 G 小时，24
+小时格式，没有前导零 0 到 23 h 小时，12
+小时格式，有前导零 01 到 12 H 小时，24
+小时格式，有前导零 00 到 23 i 有前导零的分钟数 00 到 59> s
+秒数，有前导零 00 到 59> 时区 --- --- e 时区标识（PHP 5.1.0
+新加） 例如：UTC，GMT，Atlantic/Azores I 是否为夏令时
+如果是夏令时为 1，否则为 0 O
+与格林威治时间相差的小时数 例如：+0200 P
+与格林威治时间（GMT）的差别，小时和分钟之间有冒号分隔（PHP
+5.1.3 新加） 例如：+02:00 T 本机所在的时区
+例如：EST，MDT（【译者注】在 Windows
+下为完整文本格式，例如“Eastern Standard
+Time”，中文版会显示“中国标准时间”）。 Z
+时差偏移量的秒数。UTC 西边的时区偏移量总是负的，UTC
+东边的时区偏移量总是正的。 -43200 到 43200
+完整的日期／时间 --- --- c ISO 8601 格式的日期（PHP 5 新加）
+2004-02-12T15:19:21+00:00 r RFC 822 格式的日期 例如：Thu, 21 Dec 2000
+16:01:07 +0200 U 从 Unix 纪元（January 1 1970 00:00:00
+GMT）开始至今的秒数 参见 |time|
+
+格式字串中不能被识别的字符将原样显示。Z 格式在使用
+|gmdate| 时总是返回 0。
+
+|date| 例子
+
+<?php >
+  // 设定要用的默认时区。自 PHP 5.1 可用
+  date_default_timezone_set('UTC');
+  
+  
+  // 输出类似：Monday
+  echo date("l");
+  
+  // 输出类似：Monday 15th of August 2005 03:12:46 PM
+  echo date('l dS \of F Y h:i:s A');
+  
+  // 输出：July 1, 2000 is on a Saturday
+  echo "July 1, 2000 is on a " . date("l", mktime(0, 0, 0, 7, 1, 2000));
+  
+  /* 在格式参数中使用常量 */
+  // 输出类似：Mon, 15 Aug 2005 15:12:46 UTC
+  echo date(DATE_RFC822);
+  
+  // 输出类似：2000-07-01T00:00:00+00:00
+  echo date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000));
+?>
+
+
+
+
+
+在格式字串中的字符前加上反斜线来转义可以避免它被按照上表解释。如果加上反斜线后的字符本身就是一个特殊序列，那还要转义反斜线。
+在 |date| 中转义字符
+
+<?php >
+  // prints something like: Wednesday the 15th
+  echo date("l \\t\h\e jS");
+?>
+
+
+
+
+
+可以把 |date| 和 |mktime| 结合使用来得到未来或过去的日期。
+|date| 和 |mktime| 例子
+
+<?php >
+  $tomorrow  = mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"));
+  $lastmonth = mktime(0, 0, 0, date("m")-1, date("d"),   date("Y"));
+  $nextyear  = mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1);
+?>
+
+
+
+由于夏令时的缘故，这种方法比简单地在时间戳上加减一天或者一个月的秒数更可靠。
+
+一些使用 |date|
+格式化日期的例子。注意要转义所有其它的字符，因为目前有特殊含义的字符会产生不需要的结果，而其余字符在
+PHP
+将来的版本中可能会被用上。当转义时，注意用单引号以避免类似
+\n 的字符变成了换行符。 |date| 格式举例
+
+<?php >
+  // 假定今天是：March 10th, 2001, 5:16:18 pm
+  $today = date("F j, Y, g:i a");                 // March 10, 2001, 5:16 pm
+  $today = date("m.d.y");                         // 03.10.01
+  $today = date("j, n, Y");                       // 10, 3, 2001
+  $today = date("Ymd");                           // 20010310
+  $today = date('h-i-s, j-m-y, it is w Day z ');  // 05-16-17, 10-03-01, 1631 1618 6 Fripm01
+  $today = date('\i\t \i\s \t\h\e jS \d\a\y.');   // It is the 10th day.
+  $today = date("D M j G:i:s T Y");               // Sat Mar 10 15:16:08 MST 2001
+  $today = date('H:m:s \m \i\s\ \m\o\n\t\h');     // 17:03:17 m is month
+  $today = date("H:i:s");                         // 17:16:17
+?>
+
+
+
+
+
+要格式化其它语种的日期，应该用 |setlocale| 和 |strftime|
+函数来代替 |date|。
+
+参见 |getlastmod|，|gmdate|，|mktime|，|strftime| 和 |time|。
+
+vim:ft=help:

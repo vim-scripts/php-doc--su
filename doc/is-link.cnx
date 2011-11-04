@@ -1,0 +1,15 @@
+is_link -- 判断给定文件名是否为一个符号连接
+
+  bool is_link(string filename)~
+
+如果文件存在并且是一个符号连接则返回 TRUE。
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+参见 |is_dir|，|is_file| 和 |readlink|。
+
+vim:ft=help:

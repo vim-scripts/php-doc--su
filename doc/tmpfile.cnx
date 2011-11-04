@@ -1,0 +1,30 @@
+tmpfile -- 建立一个临时文件
+
+  resource tmpfile()~
+
+以读写（w+）模式建立一个具有唯一文件名的临时文件，返回一个与
+|fopen| 所返回相似的文件句柄。文件会在关闭后（用
+|fclose|）自动被删除，或当脚本结束后。
+
+详细信息请参考系统手册中的 tmpfile(3) 函数，以及 stdio.h
+头文件。
+
+|tmpfile| 例子
+
+<?php >
+  $temp = tmpfile();
+  fwrite($temp, "writing to tempfile");
+  fseek($temp, 0);
+  echo fread($temp, 1024);
+  fclose($temp); // this removes the file
+?>
+
+以上例程会输出：
+
+  writing to tempfile
+
+
+
+参见 |tempnam|。
+
+vim:ft=help:

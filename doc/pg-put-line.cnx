@@ -1,0 +1,30 @@
+pg_put_line -- 向 PostgreSQL 后端发送以 NULL 结尾的字符串
+
+  bool pg_put_line([resource connection, string data])~
+
+|pg_put_line| 向 PostgreSQL 后端服务器发送以 NULL
+结尾的字符串。例如可以通过 PostgreSQL 的 copy
+操作来向表中高速插入数据。结尾的 NULL
+字符会自动加入。成功时返回 TRUE， 或者在失败时返回
+&false;.
+
+应用程序必须明确地在最后一行发送两个字符 "\."
+来向后端指明发送数据结束。
+
+向表中高速插入数据
+
+<?php >
+      $conn = pg_pconnect ("dbname=foo");
+      pg_query($conn, "create table bar (a int4, b char(16), d float8)");
+      pg_query($conn, "copy bar from stdin");
+      pg_put_line($conn, "3\thello world\t4.5\n");
+      pg_put_line($conn, "4\tgoodbye world\t7.11\n");
+      pg_put_line($conn, "\\.\n");
+      pg_end_copy($conn);
+?>
+
+
+
+
+
+vim:ft=help:

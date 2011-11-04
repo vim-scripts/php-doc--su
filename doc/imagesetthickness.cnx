@@ -1,0 +1,11 @@
+imagesetthickness -- 设定画线的宽度
+
+  bool imagesetthickness(resource image, int thickness)~
+
+|imagesetthickness|
+把画矩形，多边形，椭圆等等时所用的线宽设为 {thickness}
+个像素。成功时返回 TRUE， 或者在失败时返回 &false;.
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+vim:ft=help:

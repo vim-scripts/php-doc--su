@@ -1,0 +1,12 @@
+xml_set_start_namespace_decl_handler --
+建立起始命名空间声明处理器
+
+  bool xml_set_start_namespace_decl_handler(resource parser, callback handler)~
+
+本函数还未编写文档，仅有参数列表。
+
+
+
+除了函数名，含有对象引用的数组和方法名也可以作为参数。
+
+vim:ft=help:

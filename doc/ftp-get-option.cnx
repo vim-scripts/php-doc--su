@@ -1,0 +1,23 @@
+ftp_get_option -- 返回当前 FTP 连接的各种不同的选项设置
+
+  mixed ftp_get_option(resource ftp_stream, int option)~
+
+如果成功则返回选项的值，否则，如果给定的参数 {option}
+选项如果不被支持则返回 FALSE 同时会提示一条错误信息。
+
+此函数会返回连接句柄为 {ftp_stream}，指定键值 {option}
+的值，截止到目前，以下选项被支持: 支持 FTP 超时选项
+FTP_TIMEOUT_SEC 返回当前设定的网络操作的超时时间。
+
+|ftp_get_option| 实例
+
+<?php >
+  // Get the timeout of the given FTP stream
+  $timeout = ftp_get_option($conn_id, FTP_TIMEOUT_SEC);
+?>
+
+
+
+参见 |ftp_set_option|。
+
+vim:ft=help:

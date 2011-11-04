@@ -1,0 +1,24 @@
+date_default_timezone_set --
+设定用于一个脚本中所有日期时间函数的默认时区
+
+  bool date_default_timezone_set(string timezone_identifier)~
+
+|date_default_timezone_set|
+设定用于所有日期时间函数的默认时区。
+
+自 PHP 5.1.0
+起（此版本日期时间函数被重写了），如果时区不合法则每个对日期时间函数的调用都会产生一条
+E_NOTICE 级别的错误信息，如果使用系统设定或 TZ
+环境变量则还会产生 E_STRICT 级别的信息。
+
+{timezone_identifier} 时区标识符，例如 UTC 或
+Europe/Lisbon。合法标识符列表见。
+
+如果 {timezone_identifier} 参数无效则返回 FALSE，否则返回
+TRUE。
+
+版本 说明 5.1.2 本版本开始验证 {timezone_identifier} 参数。
+
+|date_default_timezone_get|
+
+vim:ft=help:

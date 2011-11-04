@@ -1,0 +1,17 @@
+imagealphablending -- 设定图像的混色模式
+
+  bool imagealphablending(resource image, bool blendmode)~
+
+|imagealphablending|
+允许在真彩色图像上使用两种不同的绘画模式。在混色（blending）模式下，alpha
+通道色彩成分提供给所有的绘画函数，例如 |imagesetpixel|
+决定底层的颜色应在何种程度上被允许照射透过。作为结果，GD
+自动将该点现有的颜色和画笔颜色混合，并将结果储存在图像中。结果的像素是不透明的。在非混色模式下，画笔颜色连同其
+alpha
+通道信息一起被拷贝，替换掉目标像素。混色模式在画调色板图像时不可用。如果
+{blendmode} 为 TRUE，则启用混色模式，否则关闭。成功时返回
+TRUE， 或者在失败时返回 &false;.
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+vim:ft=help:

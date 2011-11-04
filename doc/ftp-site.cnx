@@ -1,0 +1,41 @@
+ftp_site -- 向服务器发送 SITE 命令
+
+  bool ftp_site(resource ftp_stream, string cmd)~
+
+|ftp_site| 函数向 FTP 服务器发送由参数 {cmd} 指定的命令。
+
+SITE
+命令是非标准化的，不同的服务器不尽相同。主要用于处理文件权限以及组成员等事情。
+
+{ftp_stream} FTP 连接资源。
+
+{command} SITE
+命令。注意本参数没有经过处理，在文件名有存在空格或其它特殊字符的情况下可能会有问题。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+向一个 FTP 服务器发送一条 SITE 命令
+
+<?php >
+  /* Connect to FTP server */
+  $conn = ftp_connect('ftp.example.com');
+  if (!$conn) die('Unable to connect to ftp.example.com');
+  
+  /* Login as "user" with password "pass" */
+  if (!ftp_login($conn, 'user', 'pass')) die('Error logging into ftp.example.com');
+  
+  /* Issue: "SITE CHMOD 0600 /home/user/privatefile" command to ftp server */
+  if (ftp_site($conn, 'CHMOD 0600 /home/user/privatefile')) {
+     echo "Command executed successfully.\n";
+  } else {
+     die('Command failed.');
+  }
+?>
+
+
+
+
+
+|ftp_raw|
+
+vim:ft=help:

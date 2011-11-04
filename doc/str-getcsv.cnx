@@ -1,0 +1,21 @@
+str_getcsv -- 解析 CSV 字符串为一个数组
+
+  array str_getcsv(string input [, string delimiter [, string enclosure [, string escape]]])~
+
+与 |fgetcsv| 类似，该函数解析一个输入字符串，而非像
+|fgetcsv| 那样以文件作为它的输入。
+
+{input} 待解析的字符串。
+
+{delimiter} 设定字段界定符（仅单个字符）。
+
+{enclosure} 设定字段包裹字符（仅单个字符）。
+
+{escape}
+设置转义字符（仅单个字符）。默认为反斜线（\）。
+
+返回一个包含读取到的字段的索引数组。
+
+|fgetcsv|
+
+vim:ft=help:

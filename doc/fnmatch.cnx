@@ -1,0 +1,29 @@
+fnmatch -- 用模式匹配文件名
+
+  bool fnmatch(string pattern, string string [, int flags])~
+
+|fnmatch| 检查传入的 {string} 是否匹配给出的 shell 统配符
+{pattern}。
+
+此函数对于文件名尤其有用，但也可以用于普通的字符串。普通用户可能习惯于
+shell 模式或者至少其中最简单的形式 '?' 和 '*'
+通配符，因此使用 |fnmatch| 来代替 |ereg| 或者 |preg_match|
+来进行前端搜索表达式输入对于非程序员用户更加方便。
+
+用 shell 中的通配符模式匹配来检查颜色
+
+<?php >
+  if (fnmatch("*gr[ae]y", $color)) {
+    echo "some form of gray ...";
+  }
+?>
+
+
+
+目前该函数无法在 Windows 或其它非 POSIX
+兼容的系统上使用。
+
+参见 |glob|，|ereg|，|preg_match| 和 Unix 中 fnmatch(3)
+的手册中的标志名（只要本文档中还未包括它们）。
+
+vim:ft=help:

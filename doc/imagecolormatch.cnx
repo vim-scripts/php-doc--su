@@ -1,0 +1,19 @@
+imagecolormatch --
+使一个图像中调色板版本的颜色与真彩色版本更能匹配
+
+  bool imagecolormatch(resource image1, resource image2)~
+
+本函数还未编写文档，仅有参数列表。
+
+{image1} 必须是真彩色图像，{image2} 必须是调色板图像，而且
+{image1} 和 {image2} 的大小必须相同。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+此函数仅在与 GD 库捆绑编译的 PHP 版本中可用。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+参见 |imagecreatetruecolor|。
+
+vim:ft=help:

@@ -1,0 +1,59 @@
+preg_filter -- 执行一个正则表达式搜索和替换
+
+  mixed preg_filter(mixed pattern, mixed replacement, mixed subject [, int limit [, int count]])~
+
+|preg_filter|等价于|preg_replace|
+除了它仅仅返回(可能经过转化)与目标匹配的结果.
+这个函数怎样工作的更详细信息请阅读 |preg_replace|文档.
+
+如果{subject}是一个数组, 返回一个数组,
+其他情况返回一个字符串.
+
+如果没有找到匹配或者发生了错误, 当{subject}是数组
+时返回一个空数组, 其他情况返回NULL.
+
+比较|preg_filter| 和|preg_replace|的示例
+
+<?php >
+  $subject = array('1', 'a', '2', 'b', '3', 'A', 'B', '4'); 
+  $pattern = array('/\d/', '/[a-z]/', '/[1a]/'); 
+  $replace = array('A:$0', 'B:$0', 'C:$0'); 
+  
+  echo "preg_filter returns\n";
+  print_r(preg_filter($pattern, $replace, $subject)); 
+  
+  echo "preg_replace returns\n";
+  print_r(preg_replace($pattern, $replace, $subject)); 
+?>
+
+以上例程会输出：
+
+  preg_filter returns
+  Array
+  (
+      [0] => A:C:1
+      [1] => B:C:a
+      [2] => A:2
+      [3] => B:b
+      [4] => A:3
+      [7] => A:4
+  )
+  preg_replace returns
+  Array
+  (
+      [0] => A:C:1
+      [1] => B:C:a
+      [2] => A:2
+      [3] => B:b
+      [4] => A:3
+      [5] => A
+      [6] => B
+      [7] => A:4
+  )
+
+
+
+PCRE Patterns |preg_replace| |preg_replace_callback| |preg_grep|
+|preg_last_error|
+
+vim:ft=help:

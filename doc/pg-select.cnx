@@ -1,0 +1,35 @@
+pg_select -- 选择记录
+
+  array pg_select(resource connection, string table_name, array assoc_array [, int options])~
+
+|pg_select| 根据 assoc_array 数组中的 field=>value
+值来选择记录。成功的查询返回和 assoc_array
+指定的条件相匹配的包括记录和字段的数组。如果指定了
+options，|pg_convert| 会按照指定选项作用于 assoc_array 之上。
+
+pg_select
+
+<?php >
+      $db = pg_connect ('dbname=foo');
+      // This is safe, since $_POST is converted automatically
+      $rec = pg_select($db, 'post_log', $_POST);
+      if ($rec) {
+          echo "Records selected\n";
+          var_dump($rec);
+      }
+      else {
+          echo "User must have sent wrong inputs\n";
+      }
+?>
+
+
+
+
+
+此函数是实验性的。
+此函数的表象，包括名称及其相关文档都可能在未来的 PHP
+发布版本中未通知就被修改。使用本扩展风险自担 。
+
+参见 |pg_convert|。
+
+vim:ft=help:

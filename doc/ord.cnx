@@ -1,0 +1,28 @@
+ord -- 返回字符的 ASCII 码值
+
+  int ord(string string)~
+
+返回字符串 {string} 第一个字符的 ASCII 码值。
+
+该函数是 |chr| 的互补函数。
+
+{string} 一个字符。
+
+返回整型的 ASCII 码值。
+
+|ord| 范例
+
+<?php >
+  $str = "\n";
+  if (ord($str) == 10) {
+      echo "The first character of \$str is a line feed.\n";
+  }
+?>
+
+
+
+
+
+|chr| ASCII 码表
+
+vim:ft=help:

@@ -1,0 +1,21 @@
+similar_text -- 计算两个字符串的相似度
+
+  int similar_text(string first, string second [, float percent])~
+
+两个字符串的相似程度计算依据 Oliver [1993]
+的描述进行。注意该实现没有使用 Oliver
+虚拟码中的堆栈，但是却进行了递归调用，这个做法可能会导致整个过程变慢或变快。也请注意，该算法的复杂度是
+O(N**3)，N 是最长字符串的长度。
+
+{first} 第一个字符串。
+
+{second} 第二个字符串。
+
+{percent} 通过引用方式传递第三个参数，|similar_text|
+将计算相似程度百分数。
+
+返回在两个字符串中匹配字符的数目。
+
+|levenshtein| |soundex|
+
+vim:ft=help:

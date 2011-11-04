@@ -1,0 +1,79 @@
+strtotime -- 将任何英文文本的日期时间描述解析为 Unix
+时间戳
+
+  int strtotime(string time [, int now])~
+
+本函数预期接受一个包含美国英语日期格式的字符串并尝试将其解析为
+Unix 时间戳（自 January 1 1970 00:00:00 GMT
+起的秒数），其值相对于 {now}
+参数给出的时间，如果没有提供此参数则用系统当前时间。
+
+本函数将使用 TZ
+环境变量（如果有的话）来计算时间戳。自 PHP 5.1.0
+起有更容易的方法来定义时区用于所有的日期／时间函数。此过程在
+|date_default_timezone_get| 函数页面中有说明。
+
+如果给定的年份是两位数字的格式，则其值 0-69 表示
+2000-2069，70-100 表示 1970-2000。
+
+{time} 被解析的字符串，格式根据 GNU
+日期输入格式的语法。在 PHP 5.0 之前，time
+中不允许有毫秒数，自 PHP 5.0 起可以有但是会被忽略掉。
+
+{now} 用来计算返回值的时间戳。
+
+成功则返回时间戳，否则返回 FALSE。在 PHP 5.1.0
+之前本函数在失败时返回 -1。
+
+版本 说明 5.1.0 失败时返回 FALSE，不再是 -1。
+
+|strtotime| 例子
+
+<?php >
+  echo strtotime("now"), "\n";
+  echo strtotime("10 September 2000"), "\n";
+  echo strtotime("+1 day"), "\n";
+  echo strtotime("+1 week"), "\n";
+  echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
+  echo strtotime("next Thursday"), "\n";
+  echo strtotime("last Monday"), "\n";
+?>
+
+
+
+
+
+失败检查
+
+<?php >
+  $str = 'Not Good';
+  
+  // previous to PHP 5.1.0 you would compare with -1, instead of false
+  if (($timestamp = strtotime($str)) === false) {
+      echo "The string ($str) is bogus";
+  } else {
+      echo "$str == " . date('l dS of F Y h:i:s A', $timestamp);
+  }
+?>
+
+
+
+
+
+在 PHP 5 中到 5.0.2 之前，"now"
+和其它相对时间从今天午夜起错误计算了。这和正确从当前时间起计算的其它版本不同。
+
+在 PHP 4.4 之前，"next" 被错误计算为
++2。对此通常的解决方法是用 "+1"。
+
+有效的时间戳通常从 Fri, 13 Dec 1901 20:45:54 GMT 到 Tue, 19 Jan 2038
+03:14:07 GMT（对应于 32
+位有符号整数的最小值和最大值）。不是所有的平台都支持负的时间戳，那么日记范围就被限制为不能早于
+Unix 纪元。这意味着在 1970 年 1 月 1
+日之前的日期将不能用在 Windows，一些 Linux
+版本，以及几个其它的操作系统中。不过 PHP 5.1.0
+及更新的版本克服了此限制。
+
+|strptime|
+
+vim:ft=help:

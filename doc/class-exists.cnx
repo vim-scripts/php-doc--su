@@ -1,0 +1,50 @@
+class_exists -- 检查类是否已定义
+
+  bool class_exists(string class_name [, bool autoload])~
+
+如果由 {class_name} 所指的类已经定义，此函数返回
+TRUE，否则返回 FALSE。
+
+|class_exists| 例子
+
+<?php >
+  // Check the class exists before trying to use it
+  if (class_exists('MyClass')) {
+      $myclass = new MyClass();
+  }
+?>
+
+
+
+
+
+|class_exists| 默认将会尝试调用 __autoload，如果不想让
+|class_exists| 调用 __autoload，可以将 {autoload} 参数设为 FALSE。
+
+{autoload} 参数例子
+
+<?php >
+  function __autoload($class)
+  {
+      include($class . '.php');
+  
+      // Check to see if the include declared the class
+      if (!class_exists($class, false)) {
+          trigger_error("Unable to load class: $class", E_USER_WARNING);
+      }
+  }
+  
+  if (class_exists('MyClass')) {
+      $myclass = new MyClass();
+  }
+?>
+
+
+
+
+
+{autoload} 参数是 PHP 5 添加的。
+
+参见 |interface_exists| 和 |get_declared_classes|。
+
+vim:ft=help:

@@ -1,0 +1,24 @@
+oci_result -- 返回所取得行中字段的值
+
+  mixed oci_result(resource statement, mixed field)~
+
+|oci_result| 返回由 |oci_fetch| 所取得的当前行中 {field}
+字段的数据。|oci_result|
+对所有类型都返回字符串只除了抽象类型（ROWID，LOB 和
+FILE）。|oci_result| 在出错时返回 FALSE。
+
+可以使用列序号（从 1 开始）或列名（大写）作为 {col}
+的参数。
+
+在 PHP 5.0.0 之前的版本必须使用 |ociresult|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_result| 的别名。不过其已被废弃，不推荐使用。
+
+要获取 OCI8 扩展进行数据类型映射的细节，请参见
+驱动所支持的数据类型
+
+参见
+|oci_fetch_array|，|oci_fetch_assoc|，|oci_fetch_object|，|oci_fetch_row|
+和 |oci_fetch_all|。
+
+vim:ft=help:

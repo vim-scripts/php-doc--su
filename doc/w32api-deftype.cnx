@@ -1,0 +1,15 @@
+w32api_deftype -- 为 w32api_functions 函数定一个类型
+
+  bool w32api_deftype(string typename, string member1_type, string member1_name [, string ... [, string ...]])~
+
+此函数是实验性的。
+此函数的表象，包括名称及其相关文档都可能在未来的 PHP
+发布版本中未通知就被修改。使用本扩展风险自担 。
+
+如果你希望为 win32api
+调用定义一个类型，那么你就需要调用
+|w32api_deftype|函数。这个函数使得到 2n+1 个参数，n
+代表该类型有多少个成员。第一个参数是这个类型的名称。在这之后的是这各类型成员的名称（成对出现）。所有的类型名称大小写敏感。内建的类型名称应该使用小写。
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+vim:ft=help:

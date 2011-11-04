@@ -1,0 +1,30 @@
+strtolower -- 将字符串转化为小写
+
+  string strtolower(string str)~
+
+将 {string} 中所有的字母字符转换为小写并返回。
+
+注意 “字母” 与当前所在区域有关。例如，在默认的
+“C” 区域，字符 umlaut-A（&#228;）就不会被转换。
+
+{str} 输入字符串。
+
+返回转换后的小写字符串。
+
+|strtolower| 范例
+
+<?php >
+  $str = "Mary Had A Little Lamb and She LOVED It So";
+  $str = strtolower($str);
+  echo $str; // 打印 mary had a little lamb and she loved it so
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|strtoupper| |ucfirst| |ucwords| |mb_strtolower|
+
+vim:ft=help:

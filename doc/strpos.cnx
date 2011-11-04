@@ -1,0 +1,80 @@
+strpos -- 查找字符串首次出现的位置
+
+  int strpos(string haystack, mixed needle [, int offset])~
+
+返回 {needle} 在 {haystack} 中首次出现的数字位置。与 |strrpos|
+不同，在 PHP 5 之前，该函数可以使用一个完整字符串作为
+{needle}，并且整个字符串都将被使用。
+
+{haystack} 在该字符串中进行查找。
+
+{needle} 如果 {needle}
+不是一个字符串，那么它将被转换为整型并被视为字符的顺序值。
+
+{offset} 可选的 {offset} 参数可以用来指定从 {haystack}
+中的哪一个字符开始查找。返回的数字位置是相对于
+{haystack} 的起始位置而言的。
+
+以整型返回位置信息。如果没找到 {needle}，|strpos|
+将返回布尔型的 FALSE 值。
+
+此函数可能返回布尔值 FALSE，但也可能返回等同于 FALSE
+的非布尔值，例如 0 或 ""(空串)。请阅读
+布尔类型章节以获取更多信息。应使用 === 运算符
+来测试此函数的返回值。
+
+使用 ===
+
+<?php >
+  $mystring = 'abc';
+  $findme   = 'a';
+  $pos = strpos($mystring, $findme);
+  
+  // 注意这里使用的是 ===。简单的 == 不能像我们期待的那样工作，
+  // 因为 'a' 是第 0 位置上的（第一个）字符。
+  if ($pos === false) {
+      echo "The string '$findme' was not found in the string '$mystring'";
+  } else {
+      echo "The string '$findme' was found in the string '$mystring'";
+      echo " and exists at position $pos";
+  }
+?>
+
+
+
+使用 !==
+
+<?php >
+  $mystring = 'abc';
+  $findme   = 'a';
+  $pos = strpos($mystring, $findme);
+  
+  // 使用 !== 操作符。使用 != 不能像我们期待的那样工作，
+  // 因为 'a' 的位置是 0。语句 (0 != false) 的结果是 false。
+  if ($pos !== false) {
+       echo "The string '$findme' was found in the string '$mystring'";
+           echo " and exists at position $pos";
+  } else {
+       echo "The string '$findme' was not found in the string '$mystring'";
+  }
+?>
+
+
+
+使用位置偏移量
+
+<?php >
+  // 忽视位置偏移量之前的字符进行查找
+  $newstring = 'abcdef abcdef';
+  $pos = strpos($newstring, 'a', 1); // $pos = 7, 不是 0
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|strrpos| |stripos| |strripos| |strrchr| |substr| |stristr| |strstr|
+
+vim:ft=help:

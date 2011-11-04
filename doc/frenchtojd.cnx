@@ -1,0 +1,20 @@
+FrenchToJD -- 从一个French Republican历法的日期得到Julian
+Day计数。
+
+  int frenchtojd(int month, int day, int year)~
+
+从一个French Republican历法的日期得到Julian Day计数。
+
+年份所能用的范围是1到14（Gregorian历法的1792年9月22日到1806年9月22日）。
+
+{month} 月份的范围是1到13。
+
+{day} 日期的范围是1到30。
+
+{year} 年份的范围是1到14。
+
+返回指定french revolution日期的julian天数。
+
+|jdtofrench| |cal_to_jd|
+
+vim:ft=help:

@@ -1,0 +1,45 @@
+oci_define_by_name -- 在 SELECT 中使用 PHP 变量作为定义的步骤
+
+  bool oci_define_by_name(resource statement, string column_name, mixed variable [, int type])~
+
+|oci_define_by_name| 绑定 PHP 到获取的 SQL 列。
+需要注意的是，Oracle 使用大写字母的列名，而用户在 select
+中也可以用小写字母。|oci_define_by_name| 期望 {column_name}
+是大写字母。如果定义一个变量不存在于 select
+语句中，将没有错误被给出。
+
+如果需要定义一个抽象数据类型（LOB/ROWID/BFILE），必须先用
+|oci_new_descriptor| 分配空间。参见 |oci_bind_by_name| 函数。
+
+|oci_define_by_name| 例子
+
+<?php >
+  /* oci_define_by_name example - thies at thieso dot net (980219) */
+  
+  $conn = oci_connect("scott", "tiger");
+  
+  $stmt = oci_parse($conn, "SELECT empno, ename FROM emp");
+  
+  /* the define MUST be done BEFORE oci_execute! */
+  
+  oci_define_by_name($stmt, "EMPNO", $empno);
+  oci_define_by_name($stmt, "ENAME", $ename);
+  
+  oci_execute($stmt);
+  
+  while (oci_fetch($stmt)) {
+      echo "empno:" . $empno . "\n";
+      echo "ename:" . $ename . "\n";
+  }
+  
+  oci_free_statement($stmt);
+  oci_close($conn);
+?>
+
+
+
+在 PHP 5.0.0 之前的版本必须使用 |ocidefinebyname|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_define_by_name| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

@@ -1,0 +1,29 @@
+imagecreate -- 新建一个基于调色板的图像
+
+  resource imagecreate(int x_size, int y_size)~
+
+|imagecreate| 返回一个图像标识符，代表了一幅大小为 {x_size}
+和 {y_size} 的空白图像。
+
+推荐使用 |imagecreatetruecolor|。
+
+新建一个新的 GD 图像流并输出图像
+
+<?php >
+  header("Content-type: image/png");
+  $im = @imagecreate(100, 50)
+      or die("Cannot Initialize new GD image stream");
+  $background_color = imagecolorallocate($im, 255, 255, 255);
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  "A Simple Text String", $text_color);
+  imagepng($im);
+  imagedestroy($im);
+?>
+
+
+
+
+
+参见 |imagedestroy| 和 |imagecreatetruecolor|。
+
+vim:ft=help:

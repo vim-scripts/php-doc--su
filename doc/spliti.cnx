@@ -1,0 +1,31 @@
+spliti -- 用正则表达式不区分大小写将字符串分割到数组中
+
+  array spliti(string pattern, string string [, int limit])~
+
+本函数和 |split|
+相同，只除了在匹配字母字符时忽略大小写的区别。
+
+本例用 'a' 做分隔符来分割一个字符串： |spliti| 例子
+
+<?php >
+  $string = "aBBBaCCCADDDaEEEaGGGA";
+  $chunks = spliti ("a", $string, 5);
+  print_r($chunks);
+?>
+
+以上例程会输出：
+
+  Array
+  (
+    [0] =>
+    [1] => BBB
+    [2] => CCC
+    [3] => DDD
+    [4] => EEEaGGGA
+  )
+
+
+
+参见 |preg_spliti|，|split|，|explode| 和 |implode|。
+
+vim:ft=help:

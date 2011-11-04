@@ -1,0 +1,49 @@
+fpassthru -- 输出文件指针处的所有剩余数据
+
+  int fpassthru(resource handle)~
+
+将给定的文件指针从当前的位置读取到 EOF
+并把结果写到输出缓冲区。
+
+如果发生错误， |fpassthru| 返回 FALSE。否则 |fpassthru| 返回从
+{handle} 读取并传递到输出的字符数目。
+
+文件指针必须是有效的，必须指向由 |fopen| 或 |fsockopen|
+成功打开的文件(并还未由 |fclose| 关闭)。
+
+如果已经向文件写入数据，就必须调用 |rewind|
+来将文件指针指向文件头。
+
+如果既不修改文件也不在特定位置检索，只想将文件的内容下载到输出缓冲区，应该使用
+|readfile|，这样可以省去 |fopen| 调用。
+
+当在 Windows 系统中将 |fpassthru|
+用于二进制文件时，要确保在用 |fopen| 打开文件时在 mode
+中附加了 b 来将文件以二进制方式打开。
+
+鼓励在处理二进制文件时使用 b
+标志，即使系统并不需要，这样可以使脚本的移植性更好。
+
+对二进制文件使用 |fpassthru|
+
+<?php >
+  // 以二进制格式打开文件
+  $name = './img/ok.png'
+  $fp = fopen($name, 'rb');
+  
+  // 发送合适的报头
+  header("Content-Type: image/png");
+  header("Content-Length: " . filesize($name));
+  
+  // 发送图片并终止脚本
+  fpassthru($fp);
+  exit;
+?>
+
+
+
+
+
+参见 |readfile|，|fopen|，|popen| 和 |fsockopen|。
+
+vim:ft=help:

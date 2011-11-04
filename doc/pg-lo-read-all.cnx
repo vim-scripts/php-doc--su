@@ -1,0 +1,16 @@
+pg_lo_read_all -- 读入整个大型对象并直接发送给浏览器
+
+  int pg_lo_read_all(resource large_object)~
+
+|pg_lo_read_all|
+读入一个大型对象并在（PHP）发送完所有待发的 header
+之后将其直接发送给浏览器。主要目的是发送图片或声音等二进制数据。返回值为读入的字节数，如果出错则返回
+FALSE。
+
+要使用大型对象（lo）接口，需要将其放置在事务块中。
+
+本函数以前的名字为 pg_loreadall()。
+
+参见 |pg_lo_read|。
+
+vim:ft=help:

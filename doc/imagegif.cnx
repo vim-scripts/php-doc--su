@@ -1,0 +1,55 @@
+imagegif -- 以 GIF 格式将图像输出到浏览器或文件
+
+  bool imagegif(resource image [, string filename])~
+
+|imagegif| 从 {image} 图像以 {filename} 为文件名创建一个 GIF
+图像。{image} 参数是 |imagecreate| 或 imagecreatefrom*
+函数的返回值。
+
+图像格式为 GIF87a。如果用了 |imagecolortransparent|
+使图像为透明，则其格式为 GIF89a。
+
+{filename}
+参数为可选，如果省略，则原始图像流将被直接输出。通过
+|header| 发送 Content-type: image/gif 可以使 PHP 脚本直接输出 GIF
+图像。 不过从 GD 库 1.6 起所有的 GIF
+支持都移除了，如果使用这些 GD
+库时本函数不可用。希望在 2004 年中期能够发布支持 GIF 的
+GD 库。更多信息见 GD Project 站点。
+
+以下代码段通过自动检测 GD
+支持的图像类型来写出移植性更好的 PHP
+程序。用更灵活的代码替代了原来的 header("Content-type:
+image/gif"); imagegif($im);：
+
+<?php >
+  if (function_exists("imagegif")) {
+      header("Content-type: image/gif");
+      imagegif($im);
+  } elseif (function_exists("imagejpeg")) {
+      header("Content-type: image/jpeg");
+      imagejpeg($im, "", 0.5);
+  } elseif (function_exists("imagepng")) {
+      header("Content-type: image/png");
+      imagepng($im);
+  } elseif (function_exists("imagewbmp")) {
+      header("Content-type: image/vnd.wap.wbmp");
+      imagewbmp($im);
+  } else {
+      die("No image support in this PHP server");
+  }
+
+自 PHP 3.0.18 和 4.0.2 起可以用 |imagetypes| 函数代替
+|function_exists| 来检查是否支持某种图像格式：
+
+<?php >
+  if (imagetypes() &amp; IMG_GIF) {
+      header ("Content-type: image/gif");
+      imagegif ($im);
+  } elseif (imagetypes() & IMG_JPG) {
+      /* ... etc. */
+  }
+
+参见 |imagepng|，|imagewbmp|，|imagejpeg| 和 |imagetypes|。
+
+vim:ft=help:

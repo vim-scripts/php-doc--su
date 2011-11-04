@@ -1,0 +1,14 @@
+pg_lo_close -- 关闭一个大型对象
+
+  bool pg_lo_close(resource large_object)~
+
+|pg_lo_close| 关闭一个大型对象。参数 {large_object} 是
+|pg_lo_open| 函数所返回的资源号。
+
+要使用大型对象（lo）接口，需要将其放置在事务块中。
+
+本函数以前的名字为 pg_loclose()。
+
+参见 |pg_lo_open|，|pg_lo_create| 和 |pg_lo_import|。
+
+vim:ft=help:

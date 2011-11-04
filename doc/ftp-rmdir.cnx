@@ -1,0 +1,37 @@
+ftp_rmdir -- 删除 FTP 服务器上的一个目录
+
+  bool ftp_rmdir(resource ftp_stream, string directory)~
+
+删除由参数 {directory} 指定的目录。
+
+{ftp_stream} FTP 连接资源。
+
+{directory}
+要删除的目录，必须是一个空目录的绝对路径或相对路径。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|ftp_rmdir| 例子
+
+<?php >
+  $dir = 'www/';
+  
+  $conn_id = ftp_connect($ftp_server);
+  $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+  
+  if (ftp_rmdir($conn_id, $dir)) {
+      echo 'Successfully deleted ' . $dir;
+  } else {
+      echo 'There was a problem while deleting ' . $dir;
+  }
+  
+  ftp_close($conn_id);
+?>
+
+
+
+
+
+|ftp_mkdir|
+
+vim:ft=help:

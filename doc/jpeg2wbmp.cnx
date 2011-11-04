@@ -1,0 +1,15 @@
+jpeg2wbmp -- 将 JPEG 图像文件转换为 WBMP 图像文件
+
+  int jpeg2wbmp(string jpegname, string wbmpname, int d_height, int d_width, int threshold)~
+
+将名为 {jpegname} 的 JPEG 文件转换为 WBMP 格式，并存为
+{wbmpname}。用 {d_height} 和 {d_width}
+指定目标图像的高度和宽度。
+
+JPEG 支持仅在 PHP 与 GD-1.8 或更高版本一起编译时可用.
+
+WBMP 支持仅在 PHP 与 GD-1.8 或更高版本一起编译时可用.
+
+参见 |png2wbmp|。
+
+vim:ft=help:

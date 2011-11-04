@@ -1,0 +1,30 @@
+checkdate -- 验证一个格里高里日期
+
+  bool checkdate(int month, int day, int year)~
+
+如果给出的日期有效则返回 TRUE，否则返回
+FALSE。检查由参数构成的日期的合法性。日期在以下情况下被认为有效：
+year 的值是从 1 到 32767
+
+month 的值是从 1 到 12
+
+{Day} 的值在给定的 {month}
+所应该具有的天数范围之内，闰年已经考虑进去了。
+
+|checkdate| 例子
+
+<?php >
+  var_dump(checkdate(12, 31, 2000));
+  var_dump(checkdate(2, 29, 2001));
+?>
+
+以上例程会输出：
+
+  bool(true)
+  bool(false)
+
+
+
+参见 |mktime| 和 |strtotime|。
+
+vim:ft=help:

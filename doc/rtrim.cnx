@@ -1,0 +1,71 @@
+rtrim -- 删除字符串末端的空白字符（或者其他字符）
+
+  string rtrim(string str [, string charlist])~
+
+该函数删除 {str} 末端的空白字符并返回。
+
+不使用第二个参数，|rtrim| 仅删除以下字符： " " (ASCII 32
+(0x20))，普通空白符。
+
+"\t" (ASCII 9 (0x09))，制表符。
+
+"\n" (ASCII 10 (0x0A))，换行符。
+
+"\r" (ASCII 13 (0x0D))，回车符。
+
+"\0" (ASCII 0 (0x00))，NUL 空字节符。
+
+"\x0B" (ASCII 11 (0x0B))，垂直制表符。
+
+{str} 输入字符串。
+
+{charlist} 通过指定
+{charlist}，可以指定想要删除的字符列表。简单地列出你想要删除的全部字符。使用
+.. 格式，可以指定一个范围。
+
+返回改变后的字符串。
+
+版本 说明 4.1.0 新增 {charlist} 参数。
+
+|rtrim| 使用范例
+
+<?php >
+  $text = "\t\tThese are a few words :) ...  ";
+  $binary = "\x09Example string\x0A";
+  $hello  = "Hello World";
+  var_dump($text, $binary, $hello);
+  
+  print "\n";
+  
+  $trimmed = rtrim($text);
+  var_dump($trimmed);
+  
+  $trimmed = rtrim($text, " \t.");
+  var_dump($trimmed);
+  
+  $trimmed = rtrim($hello, "Hdle");
+  var_dump($trimmed);
+  
+  // 删除 $binary 末端的 ASCII 码控制字符
+  // (包括 0 - 31)
+  $clean = rtrim($binary, "\x00..\x1F");
+  var_dump($clean);
+?>
+
+以上例程会输出：
+
+  string(32) "        These are a few words :) ...  "
+  string(16) "    Example string
+  "
+  string(11) "Hello World"
+  
+  string(30) "        These are a few words :) ..."
+  string(26) "        These are a few words :)"
+  string(9) "Hello Wor"
+  string(15) "    Example string"
+
+
+
+|trim| |ltrim|
+
+vim:ft=help:

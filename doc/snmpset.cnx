@@ -1,0 +1,12 @@
+snmpset -- 设置一个 SNMP 对象
+
+  bool snmpset(string hostname, string community, string object_id, string type, mixed value [, int timeout [, int retries]])~
+
+设置指定的 SNMP 对象的值，成功返回 TRUE，错误则返回
+FALSE。
+
+函数 |snmpset| 用于设置由 {object_id} 指定的 SNMP
+对象的值。{hostname} 指定 SNMP 代理，而 {community}
+参数指定具有读权限的域。
+
+vim:ft=help:

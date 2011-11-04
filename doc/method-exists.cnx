@@ -1,0 +1,23 @@
+method_exists -- 检查类的方法是否存在
+
+  bool method_exists(object object, string method_name)~
+
+如果 {method_name} 所指的方法在 {object}
+所指的对象类中已定义，则返回 TRUE，否则返回 FALSE。
+
+|method_exists| 例子
+
+<?php >
+  $directory = new Directory('.');
+  var_dump(method_exists($directory,'read'));
+?>
+
+以上例程会输出：
+
+  bool(true)
+
+
+
+参见 |function_exists| 和 |is_callable|。
+
+vim:ft=help:

@@ -1,0 +1,16 @@
+imagesettile -- 设定用于填充的贴图
+
+  bool imagesettile(resource image, resource tile)~
+
+|imagesettile| 设定所有区域填充函数（例如 |imagefill| 和
+|imagefilledpolygon|）在使用特殊颜色 IMG_COLOR_TILED
+填充时所使用的贴图。
+
+贴图是指用重复的样式来填充一块区域所使用的图像。任何
+GD 图像都能用作贴图，并且通过使用 |imagecolortransparent|
+来设定贴图的透明色，贴图可以使底层的特定区域透上来。
+
+使用完贴图后不需要采取什么特殊动作。但如果销毁了贴图，在设定一个新的贴图之前不能使用
+IMG_COLOR_TILED！
+
+vim:ft=help:

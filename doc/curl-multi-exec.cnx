@@ -1,0 +1,62 @@
+curl_multi_exec -- 解析一个cURL批处理句柄
+
+  int curl_multi_exec(resource mh, int still_running)~
+
+处理在栈中的么一个句柄。
+这个方法可以在需要读写数据时被调用。
+
+{mh} 由 |curl_multi_init| 返回的 cURL 多个句柄。
+
+{still_running}
+一个用来判断操作是否仍在执行的标识的引用。
+
+一个cURL码定义在cURL 预定义常量。
+
+该函数仅返回关于整个批处理栈相关的错误。当函数返回时独立的传输线程上可能仍然有问题发生。CURLM_OK.
+
+|curl_multi_exec| example
+这个范例将会创建2个cURL句柄，把它们加到批处理句柄，然后并行地运行它们。
+
+<?php >
+  // 创建一对cURL资源
+  $ch1 = curl_init();
+  $ch2 = curl_init();
+  
+  // 设置URL和相应的选项
+  curl_setopt($ch1, CURLOPT_URL, "http://lxr.php.net/");
+  curl_setopt($ch1, CURLOPT_HEADER, 0);
+  curl_setopt($ch2, CURLOPT_URL, "http://www.php.net/");
+  curl_setopt($ch2, CURLOPT_HEADER, 0);
+  
+  // 创建批处理cURL句柄
+  $mh = curl_multi_init();
+  
+  // 增加2个句柄
+  curl_multi_add_handle($mh,$ch1);
+  curl_multi_add_handle($mh,$ch2);
+  
+  $active = null;
+  // 执行批处理句柄
+  do {
+      $mrc = curl_multi_exec($mh, $active);
+  } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+  
+  while ($active &amp;& $mrc == CURLM_OK) {
+      if (curl_multi_select($mh) != -1) {
+          do {
+              $mrc = curl_multi_exec($mh, $active);
+          } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+      }
+  }
+  
+  // 关闭全部句柄
+  curl_multi_remove_handle($mh, $ch1);
+  curl_multi_remove_handle($mh, $ch2);
+  curl_multi_close($mh);
+?>
+
+
+
+|curl_multi_init| |curl_exec|
+
+vim:ft=help:

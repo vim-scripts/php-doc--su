@@ -1,0 +1,13 @@
+iterator_count -- 计算迭代器中元素的个数
+
+  int iterator_count(Traversable iterator)~
+
+本函数还未编写文档，仅有参数列表。
+
+计算迭代器中的元素个数。
+
+{iterator} 要计数的迭代器。
+
+迭代器{iterator}中的元素个数。
+
+vim:ft=help:

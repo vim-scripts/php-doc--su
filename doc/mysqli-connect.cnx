@@ -1,0 +1,5 @@
+mysqli_connect -- 别名 mysqli::__construct
+
+此函数是该函数的别名： mysqli::__construct
+
+vim:ft=help:

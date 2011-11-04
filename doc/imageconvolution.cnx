@@ -1,0 +1,11 @@
+imageconvolution -- 用系数 div 和 offset 申请一个 3x3 的卷积矩阵
+
+  bool imageconvolution(resource image, array matrix3x3, float div, float offset)~
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+本函数还未编写文档，仅有参数列表。
+
+此函数仅在与 GD 库捆绑编译的 PHP 版本中可用。
+
+vim:ft=help:

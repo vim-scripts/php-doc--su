@@ -1,0 +1,21 @@
+date_default_timezone_get --
+取得一个脚本中所有日期时间函数所使用的默认时区
+
+  string date_default_timezone_get()~
+
+本函数返回默认时区，使用如下“假定”的顺序： 用
+|date_default_timezone_set| 函数设定的时区（如果设定了的话）
+
+TZ 环境变量（如果非空）
+
+date.timezone 配置选项（如果设定了的话）
+
+自己推测（如果操作系统支持）
+
+如果以上选择都不成功，则返回 UTC
+
+返回一个 string。
+
+|date_default_timezone_set|
+
+vim:ft=help:

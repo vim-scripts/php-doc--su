@@ -1,0 +1,18 @@
+pg_lo_open -- 打开一个大型对象
+
+  resource pg_lo_open(resource connection, int oid, string mode)~
+
+|pg_lo_open|
+打开一个大型对象并返回大型对象资源号。该资源号内封装了连接号。{oid}
+指定了有效的大型对象的 oid，{mode} 可以为 "r"，"w" 或者
+"rw"。如果失败则返回 FALSE。
+
+在关闭大型对象资源之前不要关闭数据库连接。
+
+要使用大型对象（lo）接口，需要将其放置在事务块中。
+
+本函数以前的名字为 pg_loopen()。
+
+参见 |pg_lo_close| 和 |pg_lo_create|。
+
+vim:ft=help:

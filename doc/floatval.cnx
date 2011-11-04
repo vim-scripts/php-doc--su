@@ -1,0 +1,18 @@
+floatval -- 获取变量的浮点值
+
+  float floatval(mixed var)~
+
+返回变量 {var} 的 float 数值。
+
+{var} 可以是任何标量类型。你不能将 |floatval|
+用于数组或对象。
+
+<?php >
+  $var = '122.34343The';
+  $float_value_of_var = floatval ($var);
+  print $float_value_of_var; // 打印出 122.34343
+?>
+
+参见 |intval|、|strval|、|settype| 和 类型戏法。
+
+vim:ft=help:

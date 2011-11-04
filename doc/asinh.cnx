@@ -1,0 +1,12 @@
+asinh -- 反双曲正弦
+
+  float asinh(float arg)~
+
+返回 {arg} 的反双曲正弦值，即，其双曲正弦为 {arg}
+的那个值。
+
+此函数未在 Windows 平台下实现。
+
+参见： |asin|， |acosh|，和 |atanh|。
+
+vim:ft=help:

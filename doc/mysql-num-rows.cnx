@@ -1,0 +1,34 @@
+mysql_num_rows -- 取得结果集中行的数目
+
+  int mysql_num_rows(resource result)~
+
+|mysql_num_rows| 返回结果集中行的数目。此命令仅对 SELECT
+语句有效。要取得被 INSERT，UPDATE 或者 DELETE
+查询所影响到的行的数目，用 |mysql_affected_rows|。
+|mysql_num_rows| 例子
+
+<?php >
+  $link = mysql_connect("localhost", "mysql_user", "mysql_password");
+  mysql_select_db("database", $link);
+  
+  $result = mysql_query("SELECT * FROM table1", $link);
+  $num_rows = mysql_num_rows($result);
+  
+  echo "$num_rows Rows\n";
+?>
+
+
+
+
+
+如果使用
+|mysql_unbuffered_query|，则直到结果集中的所有行都被提取后
+|mysql_num_rows| 才能返回正确的值。
+
+参见
+|mysql_affected_rows|，|mysql_connect|，|mysql_data_seek|，|mysql_select_db|
+和 |mysql_query|。
+
+为向下兼容仍然可以使用 |mysql_numrows|，但反对这样做。
+
+vim:ft=help:

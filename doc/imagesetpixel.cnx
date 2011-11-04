@@ -1,0 +1,10 @@
+imagesetpixel -- 画一个单一像素
+
+  bool imagesetpixel(resource image, int x, int y, int color)~
+
+|imagesetpixel| 在 {image} 图像中用 {color} 颜色在 {x}，{y}
+坐标（图像左上角为 0，0）上画一个点。
+
+参见 |imagecreatetruecolor| 和 |imagecolorallocate|。
+
+vim:ft=help:

@@ -1,0 +1,66 @@
+split -- 用正则表达式将字符串分割到数组中
+
+  array split(string pattern, string string [, int limit])~
+
+|preg_split| 函数使用了 Perl 兼容正则表达式语法，通常是比
+|split|
+更快的替代方案。如果不需要正则表达式的威力，则使用
+|explode| 更快，这样就不会招致正则表达式引擎的浪费。
+
+本函数返回一个字符串数组，每个单元为 {string}
+经区分大小写的正则表达式 {pattern}
+作为边界分割出的子串。如果设定了
+{limit}，则返回的数组最多包含 {limit}
+个单元，而其中最后一个单元包含了 {string}
+中剩余的所有部分。如果出错，则 |split| 返回 FALSE。
+
+将 /etc/passwd 中的前四个字段分割出来：
+
+|split| 例子
+
+<?php >
+  list($user, $pass, $uid, $gid, $extra) =
+      split (":", $passwd_line, 5);
+?>
+
+
+
+
+
+如果字符串中有 n 个与 {pattern}
+匹配的项目，则返回的数组将包含 n+1
+个单元。例如，如果没有找到
+{pattern}，则会返回一个只有一个单元的数组。当然，如果
+{string} 为空也是这样。
+
+解析可能用斜线，点，或横线分割的日期：
+
+|split| 例子
+
+<?php >
+  // 分隔符可以是斜线，点，或横线
+  $date = "04/30/1973";
+  list($month, $day, $year) = split ('[/.-]', $date);
+  echo "Month: $month; Day: $day; Year: $year<br />\n";
+?>
+
+
+
+
+
+想仿效 Perl 中类似的 @chars = split('', $str) 行为，请参考
+|preg_split| 或 |str_split| 函数中的例子。
+
+注意 {pattern}
+是一个正则表达式。如果想要用的分割字符是正则表达式中的特殊字符，要先将其转义。如果觉得
+|split|（或其它任何 regex
+函数）行为古怪的话，请阅读包含在 PHP 发行包中 regex/
+子目录下的 regex.7
+文件。该文件是手册页面格式，可以用类似 man
+/usr/local/src/regex/regex.7 的命令来阅读。
+
+参见
+|preg_split|，|spliti|，|str_split|，|explode|，|implode|，|chunk_split|
+和 |wordwrap|。
+
+vim:ft=help:

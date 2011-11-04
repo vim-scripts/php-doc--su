@@ -1,0 +1,14 @@
+pg_lo_unlink -- 删除一个大型对象
+
+  bool pg_lo_unlink(resource connection, int oid)~
+
+|pg_lo_unlink| 删除由 {oid} 指定的大型对象。成功时返回 TRUE，
+或者在失败时返回 &false;.
+
+要使用大型对象（lo）接口，需要将其放置在事务块中。
+
+本函数以前的名字为 pg_lo_unlink()。
+
+参见 |pg_lo_create| 和 |pg_lo_import|。
+
+vim:ft=help:

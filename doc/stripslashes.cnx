@@ -1,0 +1,72 @@
+stripslashes -- 反引用一个引用字符串
+
+  string stripslashes(string str)~
+
+反引用一个引用字符串。
+
+如果 magic_quotes_sybase
+项开启，反斜线将被去除，但是两个反斜线将会被替换成一个。
+
+一个使用范例是使用 PHP 检测 magic_quotes_gpc 配置项的
+开启情况（默认是开启的）并且你不需要将数据插入到一个需要转义的位置（例如数据库）。例如，你只是简单地将表单数据直接输出。
+
+{str} 输入字符串。
+
+返回一个去除转义反斜线后的字符串（\' 转换为 '
+等等）。双反斜线（\\）被转换为单个反斜线（\）。
+
+|stripslashes| 范例
+
+<?php >
+  $str = "Is your name O\'reilly?";
+  
+  // 输出: Is your name O'reilly?
+  echo stripslashes($str);
+?>
+
+
+
+
+
+|stripslashes|
+是非递归的。如果你想要在多维数组中使用该函数，你需要使用递归函数。
+
+对数组使用 |stripslashes|
+
+<?php >
+  function stripslashes_deep($value)
+  {
+      $value = is_array($value) ?
+                  array_map('stripslashes_deep', $value) :
+                  stripslashes($value);
+  
+      return $value;
+  }
+  
+  // 范例
+  $array = array("f\\'oo", "b\\'ar", array("fo\\'o", "b\\'ar"));
+  $array = stripslashes_deep($array);
+  
+  // 输出
+  print_r($array);
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [0] => f'oo
+      [1] => b'ar
+      [2] => Array
+          (
+              [0] => fo'o
+              [1] => b'ar
+          )
+  
+  )
+
+
+
+|addslashes| |get_magic_quotes_gpc|
+
+vim:ft=help:

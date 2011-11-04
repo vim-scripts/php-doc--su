@@ -1,0 +1,16 @@
+imagepng -- 以 PNG 格式将图像输出到浏览器或文件
+
+  bool imagepng(resource image [, string filename])~
+
+|imagepng| 将 GD 图像流（{image}）以 PNG
+格式输出到标准输出（通常为浏览器），或者如果用
+{filename} 给出了文件名则将其输出到该文件。
+
+<?php >
+  $im = imagecreatefrompng("test.png");
+  imagepng($im);
+?>
+
+参见 |imagegif|，|imagewbmp|，|imagejpeg| 和 |imagetypes|。
+
+vim:ft=help:

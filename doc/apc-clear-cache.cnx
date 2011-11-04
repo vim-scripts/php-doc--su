@@ -1,0 +1,14 @@
+apc_clear_cache -- 清除APC缓存
+
+  bool apc_clear_cache([string cache_type])~
+
+清除用户或者系统缓存
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+{cache_type} 如果 {cache_type} 是 "user", 用户 的缓存将被清除;
+否则系统缓存(缓存文件)将被清除 will be cleared.
+
+|apc_cache_info|
+
+vim:ft=help:

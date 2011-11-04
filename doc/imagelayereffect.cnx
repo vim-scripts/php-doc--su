@@ -1,0 +1,12 @@
+imagelayereffect -- 设定 alpha 混色标志以使用绑定的 libgd
+分层效果
+
+  bool imagelayereffect(resource image, int effect)~
+
+本函数还未编写文档，仅有参数列表。
+
+此函数仅在与 GD 库捆绑编译的 PHP 版本中可用。
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+vim:ft=help:

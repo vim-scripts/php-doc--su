@@ -1,0 +1,20 @@
+xml_parser_create -- 建立一个 XML 解析器
+
+  resource xml_parser_create([string encoding])~
+
+函数 |xml_parser_create| 建立一个新的 XML
+解析器并返回可被其它 XML 函数使用的资源句柄。
+
+可选参数 {encoding} 在 PHP 4 中用来指定要被解析的 XML
+输入的字符编码方式。PHP 5 开始，自动侦测输入的 XML
+的编码，因此 {encoding}
+参数仅用来指定解析后输出数据的编码。在 PHP 4
+总，默认输出的编码与输入数据的编码是相同的。如果传递了空字符串，解析器会尝试搜索头
+3 或 4 个字节以确定文档的编码。在 PHP 5.0.0 和 5.0.1
+总，默认输出的字符编码是 ISO-8859-1，而 PHP 5.0.2
+及以上版本是 UTF-8。解析器支持的编码有 ISO-8859-1, UTF-8 和
+US-ASCII。
+
+请参阅函数 |xml_parser_create_ns| 和 |xml_parser_free|。
+
+vim:ft=help:

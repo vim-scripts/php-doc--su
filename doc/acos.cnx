@@ -1,0 +1,11 @@
+acos -- 反余弦
+
+  float acos(float arg)~
+
+返回 {arg} 的反余弦值，单位是弧度。|acos| 是 |cos|
+的反函数，它的意思是在 |acos| 范围里的每个值都是
+a==cos(acos(a)) 。
+
+参见 |acosh|, |asin| 和 |atan|。
+
+vim:ft=help:

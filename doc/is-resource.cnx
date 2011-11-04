@@ -1,0 +1,10 @@
+is_resource -- 检测变量是否为资源类型
+
+  bool is_resource(mixed var)~
+
+如果给出的参数 {var} 是 resource 类型，|is_resource| 返回
+TRUE，否则返回 FALSE。
+
+查看 resource 类型文档获取更多的信息。
+
+vim:ft=help:

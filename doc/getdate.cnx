@@ -1,0 +1,49 @@
+getdate -- 取得日期／时间信息
+
+  array getdate([int timestamp])~
+
+返回一个根据 {timestamp}
+得出的包含有日期信息的结合数组。如果没有给出时间戳则认为是当前本地时间。数组中的单元如下：
+
+返回的关联数组中的键名单元 键名 说明 返回值例子
+"seconds" 秒的数字表示 0 到 59 "minutes" 分钟的数字表示 0 到 59
+"hours" 小时的数字表示 0 到 23 "mday"
+月份中第几天的数字表示 1 到 31 "wday"
+星期中第几天的数字表示 0（表示星期天）到
+6（表示星期六） "mon" 月份的数字表示 1 到 12 "year" 4
+位数字表示的完整年份 例如：1999 或 2003 "yday"
+一年中第几天的数字表示 0 到 365 "weekday"
+星期几的完整文本表示 Sunday 到 Saturday "month"
+月份的完整文本表示 January> 到 December 0 自从 Unix
+纪元开始至今的秒数，和 |time| 的返回值以及用于 |date|
+的值类似。 系统相关，典型值为从 -2147483648 到 2147483647。
+
+|getdate| 例子
+
+<?php >
+  $today = getdate();
+  print_r($today);
+?>
+
+以上例程的输出类似于：
+
+  Array
+  (
+      [seconds] => 40
+      [minutes] => 58
+      [hours]   => 21
+      [mday]    => 17
+      [wday]    => 2
+      [mon]     => 6
+      [year]    => 2003
+      [yday]    => 167
+      [weekday] => Tuesday
+      [month]   => June
+      [0]       => 1055901520
+  )
+
+
+
+参见 |date|，|time| 和 |setlocale|。
+
+vim:ft=help:

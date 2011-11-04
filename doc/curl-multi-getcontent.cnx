@@ -1,0 +1,14 @@
+curl_multi_getcontent --
+如果设置了CURLOPT_RETURNTRANSFER，则返回获取的输出的文本流
+
+  string curl_multi_getcontent(resource ch)~
+
+如果CURLOPT_RETURNTRANSFER作为一个选项被设置到一个具体的句柄，那么这个函数将会以字符串的形式返回那个cURL句柄获取的内容。
+
+{ch} 由 |curl_init| 返回的 cURL 句柄。
+
+如果设置了CURLOPT_RETURNTRANSFER，则返回获取的输出的文本流。
+
+|curl_multi_init|
+
+vim:ft=help:

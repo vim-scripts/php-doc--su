@@ -1,0 +1,36 @@
+stat -- 给出文件的信息
+
+  array stat(string filename)~
+
+获取由 {filename} 指定的文件的统计信息。如果 {filename}
+是符号连接，则统计信息是关于被连接文件本身的，而不是符号连接。|lstat|
+和 |stat| 相同，只除了它会返回符号连接的状态。
+
+如果出错，|stat| 返回 FALSE，并且发出一条警告。
+
+返回一个数组包含有文件的统计信息，该数组具有以下列出的单元，数组下标从零开始。除了数字索引之外自
+PHP 4.0.6 起还可以通过关联索引来访问。
+
+|stat| 和 |fstat| 返回格式 数字下标 关联键名（自 PHP 4.0.6）
+说明 0 dev device number - 设备名 1 ino inode number - inode 号码 2
+mode inode protection mode - inode 保护模式 3 nlink number of links -
+被连接数目 4 uid userid of owner - 所有者的用户 id 5 gid groupid of
+owner- 所有者的组 id 6 rdev device type, if inode device * -
+设备类型，如果是 inode 设备的话 7 size size in bytes -
+文件大小的字节数 8 atime time of last access (unix timestamp) -
+上次访问时间（Unix 时间戳） 9 mtime time of last modification (unix
+timestamp) - 上次修改时间（Unix 时间戳） 10 ctime time of last
+change (unix timestamp) - 上次改变时间（Unix 时间戳） 11 blksize
+blocksize of filesystem IO * - 文件系统 IO 的块大小 12 blocks number
+of blocks allocated - 所占据块的数目 * - 仅在支持 st_blksize
+类型的系统下有效。其它系统（如 Windows）返回 -1。
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+参见 |lstat|，|fstat|，|filemtime| 和 |filegroup|。
+
+vim:ft=help:

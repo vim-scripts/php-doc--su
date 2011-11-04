@@ -1,0 +1,9 @@
+tanh -- 双曲正切
+
+  float tanh(float arg)~
+
+返回 {arg} 的双曲正切值，定义为 sinh(arg)/cosh(arg)。
+
+参见： |tan|、 |atanh|、 |sin|和 |cos|。
+
+vim:ft=help:

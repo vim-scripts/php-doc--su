@@ -1,0 +1,5 @@
+com_propset -- com_set 的别名
+
+此函数是 |com_set| 的别名。
+
+vim:ft=help:

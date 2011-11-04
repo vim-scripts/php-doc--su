@@ -1,0 +1,12 @@
+oci_internal_debug -- 打开或关闭内部调试输出
+
+  void oci_internal_debug(int onoff)~
+
+|oci_internal_debug| 打开或关闭内部调试输出。设置 {onoff} 为 0
+关闭调试输出，为 1 则打开。
+
+在 PHP 5.0.0 之前的版本必须使用 |ociinternaldebug|
+替代本函数。该函数名仍然可用，为向下兼容作为
+|oci_internal_debug| 的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

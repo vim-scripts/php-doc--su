@@ -1,0 +1,16 @@
+pcntl_wifsignaled --
+检查子进程状态码是否代表由于某个信号而中断
+
+  bool pcntl_wifsignaled(int status)~
+
+检查子进程是否是由于某个未捕获的信号退出的。
+
+{status} 参数 {status} 是提供给成功调用 |pcntl_waitpid|
+时的状态参数。
+
+如果子进程是由于某个未捕获的信号退出的返回 TRUE
+，其他情况返回 FALSE 。
+
+|pcntl_waitpid| |pcntl_signal|
+
+vim:ft=help:

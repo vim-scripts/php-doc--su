@@ -1,0 +1,23 @@
+fclose -- 关闭一个已打开的文件指针
+
+  bool fclose(resource handle)~
+
+将 {handle} 指向的文件关闭。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+文件指针必须有效，并且是通过 |fopen| 或 |fsockopen|
+成功打开的。
+
+一个简单 |fclose| 例子
+
+<?php >
+    $handle = fopen('somefile.txt', 'r');
+    fclose($handle);
+?>
+
+
+
+
+
+vim:ft=help:

@@ -1,0 +1,22 @@
+floor -- 舍去法取整
+
+  float floor(float value)~
+
+返回不大于 {value} 的下一个整数，将 {value}
+的小数部分舍去取整。|floor| 返回的类型仍然是 float，因为
+float 值的范围通常比 integer 要大。
+
+|floor| 例子
+
+<?php >
+  echo floor(4.3);   // 4
+  echo floor(9.999); // 9
+?>
+
+
+
+
+
+参见 |ceil| 和 |round|。
+
+vim:ft=help:

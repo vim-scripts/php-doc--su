@@ -1,0 +1,24 @@
+readlink -- 返回符号连接指向的目标
+
+  string readlink(string path)~
+
+|readlink| 和同名的 C
+函数做同样的事，返回符号连接的内容。如果出错返回
+FALSE。
+
+|readlink| 例子
+
+<?php >
+  // output e.g. /boot/vmlinux-2.4.20-xfs
+  echo readlink('/vmlinuz');
+?>
+
+
+
+
+
+此函数未在 Windows 平台下实现。
+
+参见 |is_link|，|symlink| 和 |linkinfo|。
+
+vim:ft=help:

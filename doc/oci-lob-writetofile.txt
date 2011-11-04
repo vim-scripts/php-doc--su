@@ -1,0 +1,5 @@
+OCI-Lob->writeToFile -- Alias of OCI-Lob->export
+
+This function is an alias of: OCI-Lob->export.
+
+vim:ft=help:

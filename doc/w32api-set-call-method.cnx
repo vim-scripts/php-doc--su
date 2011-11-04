@@ -1,0 +1,13 @@
+w32api_set_call_method -- 设置调用的方法
+
+  void w32api_set_call_method(int method)~
+
+此函数是实验性的。
+此函数的表象，包括名称及其相关文档都可能在未来的 PHP
+发布版本中未通知就被修改。使用本扩展风险自担 。
+
+这个函数设置了调用方法的类型。参数内容可以是
+DC_CALL_CDECL 或 DC_CALL_STD 中的一种。此扩展的默认值是
+DC_CALL_STD。
+
+vim:ft=help:

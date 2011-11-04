@@ -1,0 +1,21 @@
+strnatcasecmp --
+使用“自然顺序”算法比较字符串（不区分大小写）
+
+  int strnatcasecmp(string str1, string str2)~
+
+该函数实现了以人类习惯对数字型字符串进行排序的比较算法。除了不区分大小写，该函数的行为与
+|strnatcmp| 类似。更多信息，参见：Martin Pool
+的自然顺序的字符串比较页面。
+
+{str1} 第一个字符串。
+
+{str2} 第二个字符串。
+
+与其他字符串比较函数类似，如果 {str1} 小于
+{str2}，返回负数；如果 {str1} 大于
+{str2}，返回正数；二者相等则返回 0。
+
+|preg_match| |strcmp| |strcasecmp| |substr| |stristr| |strncasecmp| |strncmp|
+|strstr| |setlocale|
+
+vim:ft=help:

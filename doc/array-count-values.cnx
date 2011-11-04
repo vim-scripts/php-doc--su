@@ -1,0 +1,29 @@
+array_count_values -- 统计数组中所有的值出现的次数
+
+  array array_count_values(array input)~
+
+|array_count_values| 返回一个数组，该数组用 {input}
+数组中的值作为键名，该值在 {input}
+数组中出现的次数作为值。
+
+|array_count_values| 例子
+
+<?php >
+  $array = array(1, "hello", 1, "world", "hello");
+  print_r(array_count_values ($array));
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [1] => 2
+      [hello] => 2
+      [world] => 1
+  )
+
+
+
+参见 |count|，|array_unique|，|array_values| 和 |count_chars|。
+
+vim:ft=help:

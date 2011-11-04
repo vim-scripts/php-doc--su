@@ -1,0 +1,27 @@
+xml_parser_set_option -- 为指定 XML 解析进行选项设置
+
+  bool xml_parser_set_option(resource parser, int option, mixed value)~
+
+{parser} 指向要设置选项信息的 XML 解析器的指针。
+
+{option} 要设置的选项名称。请参考下文。
+
+{value} 要给选项设置的新值。
+
+如果 {parser}
+参数没有指向一个合法的解析器或者指定的选项无法设置，该函数将返回
+FALSE，否则将会把选项设置为指定的值并返回 TRUE。
+
+可被设置的选项如下： XML 解析器选项 选项常量 数据类型
+描述 XML_OPTION_CASE_FOLDING integer 控制在该 XML 解析器中
+大小写折叠（case-folding） 是否有效。其默认值为有效。
+XML_OPTION_SKIP_TAGSTART integer
+指明在一个标记名前应略过几个字符。 XML_OPTION_SKIP_WHITE
+integer 是否略过由白空字符组成的值。 XML_OPTION_TARGET_ENCODING
+string 设置该 XML 解析器所使用的目标编码（target
+encoding）方式。其默认值和由 |xml_parser_create|
+函数设置的源编码（source
+encoding）方式相同。支持的目标编码方式有 ISO-8859-1、US-ASCII
+和 UTF-8。
+
+vim:ft=help:

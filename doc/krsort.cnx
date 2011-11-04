@@ -1,0 +1,32 @@
+krsort -- 对数组按照键名逆向排序
+
+  bool krsort(array array [, int sort_flags])~
+
+对数组按照键名逆向排序，保留键名到数据的关联。主要用于结合数组。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|krsort| 例子
+
+<?php >
+  $fruits = array("d"=>"lemon", "a"=>"orange", "b"=>"banana", "c"=>"apple");
+  krsort($fruits);
+  foreach ($fruits as $key => $val) {
+      echo "$key = $val\n";
+  }
+?>
+
+以上例程会输出：
+
+  d = lemon
+  c = apple
+  b = banana
+  a = orange
+
+
+
+可以用可选参数 {sort_flags} 改变排序的行为，详情见 |sort|。
+
+参见 |asort|，|arsort|，|ksort|，|sort|，|natsort| 和 |rsort|。
+
+vim:ft=help:

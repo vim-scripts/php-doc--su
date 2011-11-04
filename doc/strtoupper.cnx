@@ -1,0 +1,30 @@
+strtoupper -- 将字符串转化为大写
+
+  string strtoupper(string string)~
+
+将 {string} 中所有的字母字符转换为大写并返回。
+
+注意 “字母” 与当前所在区域有关。例如，在默认的
+“C” 区域，字符 umlaut-a（ä）就不会被转换。
+
+{string} 输入字符串。
+
+返回转换后的大写字符串。
+
+|strtoupper| 范例
+
+<?php >
+  $str = "Mary Had A Little Lamb and She LOVED It So";
+  $str = strtoupper($str);
+  echo $str; // 打印 MARY HAD A LITTLE LAMB AND SHE LOVED IT SO
+?>
+
+
+
+
+
+此函数可安全用于二进制对象。
+
+|strtolower| |ucfirst| |ucwords| |mb_strtoupper|
+
+vim:ft=help:

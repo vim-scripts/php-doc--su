@@ -1,0 +1,28 @@
+imagettfbbox -- 取得使用 TrueType 字体的文本的范围
+
+  array imagettfbbox(float size, float angle, string fontfile, string text)~
+
+本函数计算并返回一个包围着 TrueType
+文本范围的虚拟方框的像素大小。 {size}
+像素单位的字体大小。
+
+{angle} {text} 将被度量的角度大小。
+
+{fontfile} TrueType 字体文件的文件名（可以是 URL）。根据 PHP
+所使用的 GD 库版本，可能尝试搜索那些不是以 '/'
+开头的文件名并加上 '.ttf'
+的后缀并搜索库定义的字体路径。
+
+{text} 要度量的字符串。
+
+|imagettfbbox| 返回一个含有 8
+个单元的数组表示了文本外框的四个角： 0 左下角 X 位置 1
+左下角 Y 位置 2 右下角 X 位置 3 右下角 Y 位置 4 右上角 X
+位置 5 右上角 Y 位置 6 左上角 X 位置 7 左上角 Y 位置
+这些点是相对于文本的而和角度无关，因此“左上角”指的是以水平方向看文字时其左上角。
+
+本函数同时需要 GD 库和 FreeType 库。
+
+参见 |imagettftext|。
+
+vim:ft=help:

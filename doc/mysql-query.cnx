@@ -1,0 +1,64 @@
+mysql_query -- 发送一条 MySQL 查询
+
+  resource mysql_query(string query [, resource link_identifier])~
+
+|mysql_query|
+向与指定的连接标识符关联的服务器中的当前活动数据库发送一条查询。如果没有指定
+{link_identifier}，则使用上一个打开的连接。如果没有打开的连接，本函数会尝试无参数调用
+|mysql_connect|
+函数来建立一个连接并使用之。查询结果会被缓存。
+
+查询字符串不应以分号结束。
+
+|mysql_query| 仅对 SELECT，SHOW，EXPLAIN 或 DESCRIBE
+语句返回一个资源标识符，如果查询执行不正确则返回
+FALSE。对于其它类型的 SQL 语句，|mysql_query|
+在执行成功时返回 TRUE，出错时返回 FALSE。非 FALSE
+的返回值意味着查询是合法的并能够被服务器执行。这并不说明任何有关影响到的或返回的行数。
+很有可能一条查询执行成功了但并未影响到或并未返回任何行。
+
+以下查询语法上有错，因此 |mysql_query| 失败并返回 FALSE：
+|mysql_query| 例子
+
+  <php
+  $result = mysql_query("SELECT * WHERE 1=1")
+      or die("Invalid query: " . mysql_error());
+?>
+
+
+
+
+
+以下查询当 my_col 并不是表 my_tbl
+中的列时语义上有错，因此 |mysql_query| 失败并返回 FALSE：
+|mysql_query|
+
+<?php >
+  $result = mysql_query("SELECT my_col FROM my_tbl")
+      or die("Invalid query: " . mysql_error());
+?>
+
+
+
+
+
+如果没有权限访问查询语句中引用的表时，|mysql_query|
+也会返回 FALSE。
+
+假定查询成功，可以调用 |mysql_num_rows| 来查看对应于 SELECT
+语句返回了多少行，或者调用 |mysql_affected_rows|
+来查看对应于 DELETE，INSERT，REPLACE 或 UPDATE
+语句影响到了多少行。
+
+仅对 SELECT，SHOW，DESCRIBE 或 EXPLAIN 语句 |mysql_query|
+才会返回一个新的结果标识符，可以将其传递给
+|mysql_fetch_array|
+和其它处理结果表的函数。处理完结果集后可以通过调用
+|mysql_free_result|
+来释放与之关联的资源，尽管脚本执行完毕后会自动释放内存。
+
+参见
+|mysql_num_rows|，|mysql_affected_rows|，|mysql_unbuffered_query|，|mysql_free_result|，|mysql_fetch_array|，|mysql_fetch_row|，|mysql_fetch_assoc|，|mysql_result|，|mysql_select_db|
+和 |mysql_connect|。
+
+vim:ft=help:

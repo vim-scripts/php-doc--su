@@ -1,0 +1,39 @@
+apc_store -- Cache a variable in the data store
+
+  bool apc_store(string key, mixed var [, int ttl])~
+
+缓存一个变量到APC中
+
+与PHP中其他的机制不同，使用|apc_store| 存储的变量
+在不同的请求之间一直持久存在（直到从缓存系统中移除）。
+
+{key} 存储缓存变量使用的名称.{key}是唯一的，所以
+两个值使用同一个名称，原来的将被新的值覆盖
+
+{var} The variable to store
+
+{ttl} 生存时间;在缓存中存储{var}共{ttl}秒,
+在{ttl}秒过去后,存储的变量将会从缓存中擦除(在下一次请求时),
+如果没有设置{ttl}(或者{ttl}是0),
+变量将一直存活到被手动移除为止,除此之外不在缓存中的可能原因是，
+缓存系统使用clear，或者restart等
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+A |apc_store| example
+
+<?php >
+  $bar = 'BAR';
+  apc_store('foo', $bar);
+  var_dump(apc_fetch('foo'));
+?>
+
+以上例程会输出：
+
+  string(3) "BAR"
+
+
+
+|apc_add| |apc_fetch| |apc_delete|
+
+vim:ft=help:

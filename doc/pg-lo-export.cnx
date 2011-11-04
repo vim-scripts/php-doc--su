@@ -1,0 +1,15 @@
+pg_lo_export -- 将大型对象导出到文件
+
+  bool pg_lo_export(int oid, string pathname [, resource connection])~
+
+{oid} 参数指定了要导出的大型对象的 oid，{pathname}
+参数则指明了文件名。成功时返回 TRUE， 或者在失败时返回
+&false;.
+
+要使用大型对象（lo）接口，需要将其放置在事务块中。
+
+本函数以前的名字为 pg_loexport()。
+
+参见 |pg_lo_import|。
+
+vim:ft=help:

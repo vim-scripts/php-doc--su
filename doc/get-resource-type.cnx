@@ -1,0 +1,22 @@
+get_resource_type -- 返回资源（resource）类型
+
+  string get_resource_type(resource handle)~
+
+此函数返回一个字符串，用于表示传递给它的 resource
+的类型。如果参数不是合法的 resource，将产生错误。
+
+<?php >
+  $c = mysql_connect();
+  echo get_resource_type($c)."\n";
+  // 打印：mysql link
+  
+  $fp = fopen("foo","w");
+  echo get_resource_type($fp)."\n";
+  // 打印：file
+  
+  $doc = new_xmldoc("1.0");
+  echo get_resource_type($doc->doc)."\n";
+  // 打印：domxml document
+?>
+
+vim:ft=help:

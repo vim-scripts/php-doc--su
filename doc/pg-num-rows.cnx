@@ -1,0 +1,16 @@
+pg_num_rows -- 返回行的数目
+
+  int pg_num_rows(resource result)~
+
+|pg_num_rows| 返回 PostgreSQL {result} 中的行的数目。{result}
+参数是由 |pg_query|
+函数返回的查询结果资源号。如果出错则返回 -1。
+
+用 |pg_affected_rows| 函数获得被 INSERT，UPDATE 和 DELETE
+命令影响到的行的数目。
+
+本函数以前的名字为 pg_numrows()。
+
+参见 |pg_num_fields| 和 |pg_affected_rows|。
+
+vim:ft=help:

@@ -1,0 +1,14 @@
+imagecolorclosest -- 取得与指定的颜色最接近的颜色的索引值
+
+  int imagecolorclosest(resource image, int red, int green, int blue)~
+
+返回图像调色板中与指定的 RGB 值最“接近”的颜色。
+
+指定的颜色与调色板中的每个颜色的“距离”的计算方法是把
+RGB 值当成三维空间中点的坐标。
+
+如果从文件创建了图像，只有图像中使用了的颜色会被辨析。仅出现在调色板中的颜色不会被辨析。
+
+参见 |imagecolorexact|。
+
+vim:ft=help:

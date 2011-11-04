@@ -1,0 +1,28 @@
+strlen -- 获取字符串长度
+
+  int strlen(string string)~
+
+返回给定的字符串 {string} 的长度。
+
+{string} 需要计算长度的字符串。
+
+成功则返回字符串 {string} 的长度；如果 {string}
+为空，则返回 0。
+
+|strlen| 范例
+
+<?php >
+  $str = 'abcdef';
+  echo strlen($str); // 6
+  
+  $str = ' ab cd ';
+  echo strlen($str); // 7
+?>
+
+
+
+
+
+|count| |mb_strlen|
+
+vim:ft=help:

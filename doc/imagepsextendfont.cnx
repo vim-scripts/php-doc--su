@@ -1,0 +1,10 @@
+imagepsextendfont -- 扩充或精简字体
+
+  bool imagepsextendfont(int font_index, float extend)~
+
+扩充或精简某字体（{font_index}）。如果 {extend}
+参数的值小于一则是精简该字体。
+
+此函数仅在 PHP 编译时指定了 --with-t1lib[=DIR] 时可用。
+
+vim:ft=help:

@@ -1,0 +1,29 @@
+imagefill -- 区域填充
+
+  bool imagefill(resource image, int x, int y, int color)~
+
+|imagefill| 在 {image} 图像的坐标 {x}，{y}（图像左上角为 0,
+0）处用 {color} 颜色执行区域填充（即与 x, y
+点颜色相同且相邻的点都会被填充）。
+
+|imagefill| 例子
+
+<?php >
+  $im = imagecreatetruecolor(100, 100);
+  
+  // 将背景设为红色
+  $red = imagecolorallocate($im, 255, 0, 0);
+  imagefill($im, 0, 0, $red);
+  
+  header('Content-type: image/png');
+  imagepng($im);
+  imagedestroy($im);
+?>
+
+
+
+
+
+参见 |imagecolorallocate|。
+
+vim:ft=help:

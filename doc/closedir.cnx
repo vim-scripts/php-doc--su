@@ -1,0 +1,28 @@
+closedir -- 关闭目录句柄
+
+  void closedir(resource dir_handle)~
+
+关闭由 {dir_handle} 指定的目录流。流必须之前被 |opendir|
+所打开。
+
+{dir_handle} 目录句柄的 resource，之前由 |opendir| 所打开的。
+
+|closedir| 例子
+
+<?php >
+  $dir = "/etc/php5/";
+  
+  // Open a known directory, read directory into variable and then close
+  if (is_dir($dir)) {
+      if ($dh = opendir($dir)) {
+          $directory = readdir($dh);
+          closedir($dh);
+      }
+  }
+?>
+
+
+
+
+
+vim:ft=help:

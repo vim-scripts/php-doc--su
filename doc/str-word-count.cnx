@@ -1,0 +1,83 @@
+str_word_count -- 返回字符串中单词的使用情况
+
+  mixed str_word_count(string string [, int format [, string charlist]])~
+
+统计 {string} 中单词的数量。如果可选的参数 {format}
+没有被指定，那么返回值是一个代表单词数量的整型数。如果指定了
+{format} 参数，返回值将是一个数组，数组的内容则取决于
+{format} 参数。{format} 的可能值和相应的输出结果如下所列。
+
+对于这个函数的目的来说，单词的定义是一个与区域设置相关的字符串。这个字符串可以包含字母字符，也可以包含
+"'" 和 "-" 字符（但不能以这两个字符开始）。
+
+{string} 字符串。
+
+{format} 指定函数的返回值。当前支持的值如下： 0 -
+返回单词数量
+
+1 - 返回一个包含 {string} 中全部单词的数组
+
+2 - 返回关联数组。数组的键是单词在 {string}
+中出现的数值位置，数组的值是这个单词
+
+{charlist}
+附加的字符串列表，其中的字符将被视为单词的一部分。
+
+返回一个数组或整型数，这取决于 {format} 参数的选择。
+
+版本 说明 5.1.0 新增 {charlist} 参数。
+
+|str_word_count| 范例
+
+<?php >
+  $str = "Hello fri3nd, you're
+         looking          good today!";
+  
+  print_r(str_word_count($str, 1));
+  print_r(str_word_count($str, 2));
+  print_r(str_word_count($str, 1, 'àáãç3'));
+  
+  echo str_word_count($str);
+?>
+
+以上例程会输出：
+
+  Array
+  (
+      [0] => Hello
+      [1] => fri
+      [2] => nd
+      [3] => you're
+      [4] => looking
+      [5] => good
+      [6] => today
+  )
+  
+  Array
+  (
+      [0] => Hello
+      [6] => fri
+      [10] => nd
+      [14] => you're
+      [29] => looking
+      [46] => good
+      [51] => today
+  )
+  
+  Array
+  (
+      [0] => Hello
+      [1] => fri3nd
+      [2] => you're
+      [3] => looking
+      [4] => good
+      [5] => today
+  )
+  
+  7
+
+
+
+|explode| |preg_split| |split| |count_chars| |substr_count|
+
+vim:ft=help:

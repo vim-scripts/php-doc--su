@@ -1,0 +1,55 @@
+get_class_vars -- 返回由类的默认属性组成的数组
+
+  array get_class_vars(string class_name)~
+
+返回由类的默认公有属性组成的关联数组，此数组的元素以
+{varname => value} 的形式存在。
+
+在 PHP 4.2.0 之前，|get_class_vars|
+不会包含未初始化的类变量。
+
+|get_class_vars| 示例
+
+<?php >
+  class myclass {
+  
+      var $var1; // 此变量没有默认值……
+      var $var2 = "xyz";
+      var $var3 = 100;
+      private $var4; // PHP 5
+  
+      // constructor
+      function myclass() {
+          // change some properties
+          $this->var1 = "foo";
+          $this->var2 = "bar";
+          return true;
+      }
+  
+  }
+  
+  $my_class = new myclass();
+  
+  $class_vars = get_class_vars(get_class($my_class));
+  
+  foreach ($class_vars as $name => $value) {
+      echo "$name : $value\n";
+  }
+?>
+
+以上例程会输出：
+
+  // 在 PHP 4.2.0 之前
+  var2 : xyz
+  var3 : 100
+  
+  // 从 PHP 4.2.0 开始
+  var1 :
+  var2 : xyz
+  var3 : 100
+
+
+
+参见 |get_class_methods|、 |get_object_vars|
+
+vim:ft=help:

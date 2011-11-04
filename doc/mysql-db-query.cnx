@@ -1,0 +1,24 @@
+mysql_db_query -- 发送一条 MySQL 查询
+
+  resource mysql_db_query(string database, string query [, resource link_identifier])~
+
+根据查询结果返回一个正的 MySQL 结果资源号，出错时返回
+FALSE。本函数会对 INSERT/UPDATE/DELETE 查询返回 TRUE/FALSE
+来指示成功或失败。
+
+|mysql_db_query|
+选择一个数据库并在其上执行查询。如果没有提供可选的连接标识，本函数会去找一个到
+MySQL
+服务器的已打开的连接，如果找不到已打开连接则会尝试无参数调用
+|mysql_connect| 来建立一个。
+
+注意此函数不会切换回先前连接到的数据库。换句话说，不能用此函数临时在另一个数据库上执行
+sql 查询，只能手工切换回来。强烈建议用户在 sql
+查询中使用 database.table 语法来替代此函数。
+
+参见 |mysql_connect| 和 |mysql_query|。
+
+自 PHP 4.0.6 起不提倡使用此函数。不要用此函数，用
+|mysql_select_db| 和 |mysql_query| 来替代。
+
+vim:ft=help:

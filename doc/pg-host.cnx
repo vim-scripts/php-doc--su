@@ -1,0 +1,10 @@
+pg_host -- 返回和某连接关联的主机名
+
+  string pg_host(resource connection)~
+
+|pg_host| 返回指定的 PostgreSQL {connection}
+资源号所连接到的主机名称。
+
+参见 |pg_connect| 和 |pg_pconnect|。
+
+vim:ft=help:

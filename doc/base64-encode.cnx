@@ -1,0 +1,27 @@
+base64_encode -- 使用 MIME base64 对数据进行编码
+
+  string base64_encode(string data)~
+
+|base64_encode| returns 使用 base64 对 {data}
+进行编码。设计此种编码是为了使二进制数据可以通过非纯
+8-bit 的传输层传输，例如电子邮件的主体。
+
+Base64-encoded 数据要比原始数据多占用 33% 左右的空间。
+
+|base64_encode| 示例
+
+<?php >
+    $str = 'This is an encoded string';
+    echo base64_encode($str);
+?>
+
+此示例将显示：
+
+  VGhpcyBpcyBhbiBlbmNvZGVkIHN0cmluZw==
+
+
+
+参见 |base64_decode|、|chunk_split|，|convert_uuencode| 和 RFC 2045 6.8
+章节。
+
+vim:ft=help:

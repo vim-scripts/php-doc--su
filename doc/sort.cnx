@@ -1,0 +1,57 @@
+sort -- 对数组排序
+
+  bool sort(array array [, int sort_flags])~
+
+本函数对数组进行排序。当本函数结束时数组单元将被从最低到最高重新安排。
+
+此函数为 {array}
+中的元素赋与新的键名。这将删除原有的键名，而不是仅仅将键名重新排序。
+
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+|sort| 例子
+
+<?php >
+  $fruits = array("lemon", "orange", "banana", "apple");
+  sort($fruits);
+  foreach ($fruits as $key => $val) {
+      echo "fruits[".$key."] = " . $val . "\n";
+  }
+?>
+
+以上例程会输出：
+
+  fruits[0] = apple
+  fruits[1] = banana
+  fruits[2] = lemon
+  fruits[3] = orange
+
+
+
+fruits 被按照字母顺序排序。
+
+可选的第二个参数 {sort_flags}
+可以用以下值改变排序的行为：
+
+排序类型标记： SORT_REGULAR - 正常比较单元（不改变类型）
+
+SORT_NUMERIC - 单元被作为数字来比较
+
+SORT_STRING - 单元被作为字符串来比较
+
+SORT_LOCALE_STRING -
+根据当前的区域（locale）设置来把单元当作字符串比较。PHP
+4.4.0 和 5.0.2 新加。在 PHP 6
+之前，使用了系统的区域设置，可以用 |setlocale|
+来改变。自 PHP 6 起，必须用 |i18n_loc_set_default| 函数。
+
+第二个参数是 PHP 4 新加的。
+
+在对含有混合类型值的数组排序时要小心，因为 |sort|
+可能会产生不可预知的结果。
+
+参见
+|arsort|，|asort|，|ksort|，|krsort|，|natsort|，|natcasesort|，|rsort|，|usort|，|array_multisort|
+和 |uksort|。
+
+vim:ft=help:

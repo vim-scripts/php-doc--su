@@ -1,0 +1,9 @@
+imagefontheight -- 取得字体高度
+
+  int imagefontheight(int font)~
+
+返回指定字体一个字符高度的像素值。
+
+参见 |imagefontwidth| 和 |imageloadfont|。
+
+vim:ft=help:

@@ -1,0 +1,40 @@
+array_diff_key -- 使用键名比较计算数组的差集
+
+  array array_diff_key(array array1, array array2 [, array ...])~
+
+|array_diff_key| 返回一个数组，该数组包括了所有出现在
+{array1}
+中但是未出现在任何其它参数数组中的键名的值。注意关联关系保留不变。本函数和
+|array_diff| 相同只除了比较是根据键名而不是值来进行的。
+
+|array_diff_key| 例子
+
+<?php >
+  $array1 = array('blue'  => 1, 'red'  => 2, 'green'  => 3, 'purple' => 4);
+  $array2 = array('green' => 5, 'blue' => 6, 'yellow' => 7, 'cyan'   => 8);
+  
+  var_dump(array_diff_key($array1, $array2));
+?>
+
+以上例程会输出：
+
+  array(2) {
+    ["red"]=>
+    int(2)
+    ["purple"]=>
+    int(4)
+  }
+
+
+
+在 key => value 对中的两个键名仅在 (string) $key1 === (string) $key2
+时被认为相等。换句话说，执行的是严格类型检查，因此字符串的表达必须完全一样。
+
+注意本函数只检查了多维数组中的一维。当然，可以用
+array_diff_key($array1[0], $array2[0]); 来检查更深的维度。
+
+参见
+|array_diff|，|array_udiff|，|array_diff_assoc|，|array_diff_uassoc|，|array_udiff_assoc|，|array_udiff_uassoc|，|array_diff_ukey|，|array_intersect|，|array_intersect_assoc|，|array_intersect_uassoc|，|array_intersect_key|
+和 |array_intersect_ukey|。
+
+vim:ft=help:

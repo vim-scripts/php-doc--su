@@ -1,0 +1,10 @@
+com_load -- 创建新的 COM 组件的引用
+
+  string com_load(string module_name [, string server_name [, int codepage]])~
+
+|com_load| 创建新的 COM
+组件同时返回此组件的引用。失败则返回 FALSE。{codepage}
+可用的值为：CP_ACP、CP_MACCP、CP_OEMCP、CP_SYMBOL、CP_THREAD_ACP,
+CP_UTF7 和 CP_UTF8。
+
+vim:ft=help:

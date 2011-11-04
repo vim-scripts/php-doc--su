@@ -1,0 +1,34 @@
+pg_connection_status -- 获得连接状态
+
+  int pg_connection_status(resource connection)~
+
+|pg_connection_status| 返回一个连接的状态。可能的状态为
+PGSQL_CONNECTION_OK 和 PGSQL_CONNECTION_BAD。
+
+|pg_connection_status| 例子
+
+<?php >
+      $dbconn = pg_connect("dbname=publisher") or die("Could not connect");
+      $stat = pg_connection_status($dbconn);
+      echo 'connection_status: '.$stat;
+?>
+
+
+
+
+
+|pg_connection_status| 例子
+
+<?php >
+      $dbconn = pg_connect("dbname=publisher") or die("Could not connect");
+      $stat = pg_connection_status($dbconn);
+      echo 'connection_status: '.$stat;
+?>
+
+
+
+
+
+参见 |pg_connection_busy|。
+
+vim:ft=help:

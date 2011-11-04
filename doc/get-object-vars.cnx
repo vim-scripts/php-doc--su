@@ -1,0 +1,65 @@
+get_object_vars -- 返回由对象属性组成的关联数组
+
+  array get_object_vars(object obj)~
+
+返回由 {obj} 指定的对象中定义的属性组成的关联数组。
+
+在 PHP 4.2.0 之前的版本中，如果在 {obj}
+对象实例中声明的变量没有被赋值，则它们将不会在返回的数组中。而在
+PHP 4.2.0 之后，这些变量作为键名将被赋予 NULL 值。
+
+使用 |get_object_vars|
+
+<?php >
+  class Point2D {
+      var $x, $y;
+      var $label;
+  
+      function Point2D($x, $y)
+      {
+          $this->x = $x;
+          $this->y = $y;
+      }
+  
+      function setLabel($label)
+      {
+          $this->label = $label;
+      }
+  
+      function getPoint()
+      {
+          return array("x" => $this->x,
+                       "y" => $this->y,
+                       "label" => $this->label);
+      }
+  }
+  
+  // "$label" is declared but not defined
+  $p1 = new Point2D(1.233, 3.445);
+  print_r(get_object_vars($p1));
+  
+  $p1->setLabel("point #1");
+  print_r(get_object_vars($p1));
+?>
+
+以上例程会输出：
+
+  Array
+   (
+       [x] => 1.233
+       [y] => 3.445
+       [label] =>
+   )
+  
+   Array
+   (
+       [x] => 1.233
+       [y] => 3.445
+       [label] => point #1
+   )
+
+
+
+参见 |get_class_methods| 和 |get_class_vars|。
+
+vim:ft=help:

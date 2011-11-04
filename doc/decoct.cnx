@@ -1,0 +1,25 @@
+decoct -- 十进制转换为八进制
+
+  string decoct(int number)~
+
+返回一字符串，包含有给定 {number}
+参数的八进制表示。所能转换的最大数值为十进制的
+4294967295，其结果为 "37777777777"。
+
+|decoct| 范例
+
+<?php >
+  echo decoct(15) . "\n";
+  echo decoct(264);
+?>
+
+以上例程会输出：
+
+  17
+  410
+
+
+
+参见 |octdec|。
+
+vim:ft=help:

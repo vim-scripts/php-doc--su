@@ -1,0 +1,17 @@
+w32api_register_function -- 从函数库中使用 PHP 注册一个函数
+function_name
+
+  bool w32api_register_function(string library, string function_name, string return_type)~
+
+此函数是实验性的。
+此函数的表象，包括名称及其相关文档都可能在未来的 PHP
+发布版本中未通知就被修改。使用本扩展风险自担 。
+
+这个函数尝试在 {libary} 中查找一个名为 {function_name}
+的函数并且尝试把它导入 PHP。这个函数将使用 {return_type}
+类型被注册。这个类型可以是一个标准的 PHP
+类型，或者使用 |w32api_deftype|
+函数定义类型。所有的名称大小写敏感，内建的函数使用小写字母。
+成功时返回 TRUE， 或者在失败时返回 &false;.
+
+vim:ft=help:

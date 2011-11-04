@@ -1,0 +1,30 @@
+str_repeat -- 重复一个字符串
+
+  string str_repeat(string input, int multiplier)~
+
+返回 {input} 重复 {multiplier} 次后的结果。
+
+{input} 待操作的字符串。
+
+{multiplier} {input} 被重复的次数。
+
+{multiplier} 必须大于等于 0。如果 {multiplier} 被设置为
+0，函数返回空字符串。
+
+返回重复后的字符串。
+
+|str_repeat| 范例
+
+<?php >
+  echo str_repeat("-=", 10);
+?>
+
+以上例程会输出：
+
+  -=-=-=-=-=-=-=-=-=-=
+
+
+
+for |str_pad| |substr_count|
+
+vim:ft=help:

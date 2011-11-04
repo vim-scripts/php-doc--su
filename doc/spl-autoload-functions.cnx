@@ -1,0 +1,11 @@
+spl_autoload_functions -- 返回所有已注册的__autoload()函数。
+
+  array spl_autoload_functions()~
+
+获取所有已注册的 __autoload() 函数。
+
+此函数没有参数。
+
+包含所有已注册的__autoload函数的数组（array）。如果自动装载函数栈未激活，则返回FALSE。如果没有已注册的函数，则返回一个空数组。
+
+vim:ft=help:

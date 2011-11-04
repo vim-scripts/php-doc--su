@@ -1,0 +1,20 @@
+filegroup -- 取得文件的组
+
+  int filegroup(string filename)~
+
+取得该文件所属组的 ID。如果出错则返回 FALSE。组 ID
+以数字格式返回，用 |posix_getgrgid|
+来将其解析为组名。如果失败返回 FALSE 以及一个 E_WARNING
+级别的错误。
+
+本函数的结果会被缓存。详细信息见 |clearstatcache|。
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+参见 |fileowner| 和 safe_mode_gid。
+
+vim:ft=help:

@@ -1,0 +1,60 @@
+oci_error -- 返回上一个错误
+
+  array oci_error([resource source])~
+
+对于大多数错误，参数是最适合的资源句柄。对于
+|oci_connect|，|oci_new_connect| 或 |oci_pconnect|
+的连接错误，不要传递参数。如果没有发现错误，|oci_error|
+返回 FALSE。|oci_error|
+以一个关联数组返回错误。在此数组中，code 是 oracle
+错误代码而 message 是 oracle 的错误字符串。
+
+offset 和 sqltext
+也包括在返回的数组中，用来指出错误发生的位置以及造成错误的原始的
+SQL 文本。
+
+连接错误后显示 Oracle 错误信息
+
+  $conn = @oci_connect("scott", "tiger", "mydb");
+  if (!$conn) {
+    $e = oci_error();   // For oci_connect errors pass no handle
+    echo htmlentities($e['message']);
+  }
+
+
+
+
+
+语法解析错误后显示 Oracle 错误信息
+
+  $stmt = @oci_parse($conn, "select ' from dual");  // note mismatched quote
+  if (!$stmt) {
+    $e = oci_error($conn);  // For oci_parse errors pass the connection handle
+    echo htmlentities($e['message']);
+  }
+
+
+
+
+
+执行错误后显示 Oracle 错误信息和出错的语句
+
+  $r = oci_execute($stmt);
+  if (!$r) {
+    $e = oci_error($stmt); // For oci_execute errors pass the statementhandle
+    echo htmlentities($e['message']);
+    echo "<pre>";
+    echo htmlentities($e['sqltext']);
+    printf("\n%".($e['offset']+1)."s", "^");
+    echo "</pre>";
+  }
+
+
+
+
+
+在 PHP 5.0.0 之前的版本必须使用 |ocierror|
+替代本函数。该函数名仍然可用，为向下兼容作为 |oci_error|
+的别名。不过其已被废弃，不推荐使用。
+
+vim:ft=help:

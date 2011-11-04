@@ -1,0 +1,11 @@
+mysql_field_seek -- 将结果集中的指针设定为制定的字段偏移量
+
+  int mysql_field_seek(resource result, int field_offset)~
+
+用指定的字段偏移量检索。如果下一个 |mysql_fetch_field|
+的调用不包括字段偏移量，则会返回本次 |mysql_field_seek|
+中指定的偏移量的字段。
+
+参见 |mysql_fetch_field|。
+
+vim:ft=help:

@@ -1,0 +1,10 @@
+utf8_decode -- 将用 UTF-8 方式编码的 ISO-8859-1
+字符串转换成单字节的 ISO-8859-1 字符串。
+
+  string utf8_decode(string data)~
+
+该函数将用 UTF-8 编码的数据解码为 ISO-8859-1 编码。
+
+请参阅 |utf8_encode| 以查看关于 UTF-8 编码的解释。
+
+vim:ft=help:

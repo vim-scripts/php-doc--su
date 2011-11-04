@@ -1,0 +1,8 @@
+com_invoke -- 调用 COM 组件的方法。
+
+  mixed com_invoke(resource com_object, string function_name [, mixed function parameters, ...])~
+
+|com_invoke| 调用由 {com_object} 所引用的对象的方法。出错返回
+FALSE，成功则返回 {function_name} 的返回值。
+
+vim:ft=help:

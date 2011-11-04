@@ -1,0 +1,32 @@
+imagecharup -- 垂直地画一个字符
+
+  bool imagecharup(resource image, int font, int x, int y, string c, int color)~
+
+|imagecharup| 将字符 {c} 垂直地画在 {image}
+指定的图像上，位于 {x}，{y}（图像左上角为 0, 0），颜色为
+{color}。如果 {font} 为 1，2，3，4 或 5，则使用内置的字体。
+
+|imagecharup| 例子
+
+<?php >
+  $im = imagecreate(100,100);
+  
+  $string = 'Note that the first letter is a N';
+  
+  $bg = imagecolorallocate($im, 255, 255, 255);
+  $black = imagecolorallocate($im, 0, 0, 0);
+  
+  // prints a black "Z" on a white background
+  imagecharup($im, 3, 10, 10, $string, $black);
+  
+  header('Content-type: image/png');
+  imagepng($im);
+?>
+
+
+
+
+
+参见 |imagechar| 和 |imageloadfont|。
+
+vim:ft=help:

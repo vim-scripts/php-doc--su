@@ -1,0 +1,6 @@
+call_user_method_array --
+调用一个用户方法，同时传递参数数组（已废弃）
+
+  mixed call_user_method_array(string method_name, object obj, array paramarr)~
+
+vim:ft=help:

@@ -1,0 +1,23 @@
+pcntl_sigtimedwait -- 带超时机制的信号等待
+
+  int pcntl_sigtimedwait(array set [, array siginfo [, int seconds [, int nanoseconds]]])~
+
+函数|pcntl_sigtimedwait|实际上与|pcntl_sigwaitinfo|
+的行为一致，不同在于它多了两个增强参数{seconds}和
+{nanoseconds}，这使得脚本等待的事件有了一个时间的上限。
+
+{set} 要等待的信号列表数组。
+
+{siginfo}
+{siginfo}是一个输出参数，用来返回信号的信息。更详细情况参见
+|pcntl_sigwaitinfo|。
+
+{seconds} 超时秒数。
+
+{nanoseconds} 超时纳秒数。
+
+成功时，函数|pcntl_sigtimedwait|返回信号编号。
+
+|pcntl_sigprocmask| |pcntl_sigwaitinfo|
+
+vim:ft=help:

@@ -1,0 +1,9 @@
+imagefontwidth -- 取得字体宽度
+
+  int imagefontwidth(int font)~
+
+返回指定字体一个字符宽度的像素值。
+
+参见 |imagefontheight| 和 |imageloadfont|。
+
+vim:ft=help:

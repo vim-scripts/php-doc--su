@@ -1,0 +1,16 @@
+ftruncate -- 将文件截断到给定的长度
+
+  bool ftruncate(resource handle, int size)~
+
+接受文件指针 {handle} 作为参数，并将文件大小截取为
+{size}。成功时返回 TRUE， 或者在失败时返回 &false;.
+
+文件只会在 append 模式下改变。在 write 模式下，必须加上
+|fseek| 操作。
+
+在 PHP 4.3.3 之前，|ftruncate| 在成功时返回一个 integer 值
+1，而不是 boolean 的 TRUE。
+
+参见 |fopen| 和 |fseek|。
+
+vim:ft=help:

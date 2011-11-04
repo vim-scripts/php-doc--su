@@ -1,0 +1,13 @@
+strval -- 获取变量的字符串值
+
+  string strval(mixed var)~
+
+返回 {var} 的 string 值。 参见 string
+文档获取更多关于字符串转换的信息。
+
+{var} 可以是任何标量类型。不能将 |strval|
+用于数组或对象。
+
+参见 |floatval|、|intval|、|settype| 和类型戏法。
+
+vim:ft=help:

@@ -1,0 +1,22 @@
+JDMonthName -- 返回月份的名称
+
+  string jdmonthname(int julianday, int mode)~
+
+返回一个月份名称的字符串，{mode}参数指定使用哪种历法和月份名称的形式。
+Calendar modes Mode Meaning Values 0 Gregorian - abbreviated Jan, Feb, Mar,
+Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec 1 Gregorian January, February,
+March, April, May, June, July, August, September, October, November, December
+2 Julian - abbreviated Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov,
+Dec 3 Julian January, February, March, April, May, June, July, August,
+September, October, November, December 4 Jewish Tishri, Heshvan, Kislev,
+Tevet, Shevat, AdarI, AdarII, Nisan, Iyyar, Sivan, Tammuz, Av, Elul 5 French
+Republican Vendemiaire, Brumaire, Frimaire, Nivose, Pluviose, Ventose,
+Germinal, Floreal, Prairial, Messidor, Thermidor, Fructidor, Extra
+
+{jday} 用来计算的julian天数
+
+{calendar} 历法的月份的名字
+
+根据指定的julian天数和{calendar}历法参数而得到月份的名称。
+
+vim:ft=help:

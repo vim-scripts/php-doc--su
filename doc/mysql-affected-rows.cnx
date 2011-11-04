@@ -1,0 +1,84 @@
+mysql_affected_rows -- 取得前一次 MySQL 操作所影响的记录行数
+
+  int mysql_affected_rows([resource link_identifier])~
+
+取得最近一次与 {link_identifier} 关联的 INSERT，UPDATE 或 DELETE
+查询所影响的记录行数。
+
+{ link_identifier}MySQL 连接。如不指定连接标识，则使用由
+|mysql_connect|
+最近打开的连接。如果没有找到该连接，会尝试不带参数调用
+|mysql_connect|
+来创建。如没有找到连接或无法建立连接，则会生成
+E_WARNING 级别的错误。
+
+执行成功则返回受影响的行的数目，如果最近一次查询失败的话，函数返回
+-1。
+
+如果最近一次操作是没有任何条件（WHERE）的 DELETE
+查询，在表中所有的记录都会被删除，但本函数返回值在
+4.1.2 版之前都为 0。
+
+当使用 UPDATE 查询，MySQL
+不会将原值和新值一样的列更新。这样使得
+|mysql_affected_rows|
+函数返回值不一定就是查询条件所符合的记录数，只有真正被修改的记录数才会被返回。
+
+REPLACE
+语句首先删除具有相同主键的记录，然后插入一个新记录。本函数返回的是被删除的记录数加上被插入的记录数。
+
+|mysql_affected_rows| 例子
+
+<?php >
+  $link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect: ' . mysql_error());
+  }
+  mysql_select_db('mydb');
+  
+  /* 本例返回被删除记录的准确数目 */
+  mysql_query('DELETE FROM mytable WHERE id < 10');
+  printf("Records deleted: %d\n", mysql_affected_rows());
+  
+  /* 对于非真值的 WHERE 子句，应返回 0 */
+  mysql_query('DELETE FROM mytable WHERE 0');
+  printf("Records deleted: %d\n", mysql_affected_rows());
+?>
+
+以上例程的输出类似于：
+
+  Records deleted: 10
+  Records deleted: 0
+
+
+
+使用事务处理的 |mysql_affected_rows| 例子
+
+<?php >
+  $link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect: ' . mysql_error());
+  }
+  mysql_select_db('mydb');
+  
+  /* Update records */
+  mysql_query("UPDATE mytable SET used=1 WHERE id < 10");
+  printf ("Updated records: %d\n", mysql_affected_rows());
+  mysql_query("COMMIT");
+?>
+
+以上例程的输出类似于：
+
+  Updated Records: 10
+
+
+
+如果使用事务处理（transactions），需要在 INSERT，UPDATE 或
+DELETE 查询后调用 |mysql_affected_rows| 函数，而不是在 COMMIT
+命令之后。
+
+要获取 SELECT 所返回的行数，可以用 |mysql_num_rows|。
+
+|mysql_num_rows| |mysql_info|
+
+vim:ft=help:

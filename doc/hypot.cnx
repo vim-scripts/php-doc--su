@@ -1,0 +1,9 @@
+hypot -- 计算一直角三角形的斜边长度
+
+  float hypot(float x, float y)~
+
+|hypot| 函数将会跟据直角三角形的两直解边长度 {x} 和 {y}
+计算其斜边的长度。或者是从标点 ({x}, {y})
+到原点的距离。该函数的算法等同于 sqrt(x*x + y*y)。
+
+vim:ft=help:

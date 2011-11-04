@@ -1,0 +1,35 @@
+filesize -- 取得文件大小
+
+  int filesize(string filename)~
+
+返回文件大小的字节数，如果出错返回 FALSE 并生成一条
+E_WARNING 级的错误。
+
+因为 PHP 的整数类型是有符号的，并且大多数平台使用 32
+位整数，|filesize| 函数在碰到大于 2GB
+的文件时可能会返回非预期的结果。对于 2GB 到 4GB
+之间的文件通常可以使用 sprintf("%u", filesize($file))
+来克服此问题。
+
+此函数的结果会被缓存。参见 |clearstatcache|
+以获得更多细节。
+
+自 PHP 5.0.0 起, 此函数也用于某些 URL 包装器。请参见
+以获得支持 |stat| 系列函数功能的包装器列表。
+
+|filesize| 例子
+
+<?php >
+  // 输出类似：somefile.txt: 1024 bytes
+  
+  $filename = 'somefile.txt';
+  echo $filename . ': ' . filesize($filename) . ' bytes';
+?>
+
+
+
+
+
+参见 |file_exists|。
+
+vim:ft=help:

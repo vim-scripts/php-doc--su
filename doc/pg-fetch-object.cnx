@@ -1,0 +1,62 @@
+pg_fetch_object -- 提取一行作为对象
+
+  object pg_fetch_object(resource result [, int row [, int result_type]])~
+
+|pg_fetch_object|
+返回与所提取行的属性相一致的一个对象。如果出错或者没有更多行可供提取时则返回
+FALSE。
+
+|pg_fetch_object| 和 |pg_fetch_array| 相似，只有一点区别 －
+返回一个对象而不是数组。间接的，这意味着只能通过字段名来访问数据而不能通过偏移量来访问（数字是非法的属性名）。
+
+{row} 是想要取得的行（记录）的编号。第一行为 0。
+
+除了速度之外，本函数和 |pg_fetch_array|
+完全一样，而且几乎和 |pg_fetch_row|
+一样快（速度上的差别很小）。
+
+从 4.1.0 版本开始，参数 {row} 变为可选参数。
+
+从 4.3.0 开始，{result_type} 默认值为
+PGSQL_ASSOC，而旧版本的默认值是
+PGSQL_BOTH。数字属性在这里没有用处，因为在 PHP
+中对象的属性不能是数字。
+
+{result_type} 参数在以后的版本中可能会删除。
+
+|pg_fetch_object|
+
+<?php >
+  $database = "store";
+  
+  $db_conn = pg_connect("host=localhost port=5432 dbname=$database");
+  if (!$db_conn) {
+      echo "Failed connecting to postgres database $database\n";
+      exit;
+  }
+  
+  $qu = pg_query($db_conn, "SELECT * FROM books ORDER BY author");
+  
+  $row = 0; // postgres needs a row counter 
+  
+  while ($data = pg_fetch_object($qu, $row)) {
+      echo $data->author . " (";
+      echo $data->year . "): ";
+      echo $data->title . "<br />";
+      $row++;
+  }
+  
+  pg_free_result ($qu);
+  pg_close ($db_conn);
+?>
+
+
+
+
+
+从 4.1.0 开始，{row} 成为可选参数。每次调用
+|pg_fetch_object|，内部的行计数器都会加一。
+
+参见 |pg_query|，|pg_fetch_array|，|pg_fetch_row| 和 |pg_fetch_result|。
+
+vim:ft=help:

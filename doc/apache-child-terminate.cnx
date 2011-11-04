@@ -1,0 +1,18 @@
+apache_child_terminate -- 在本次请求结束后终止 apache 进程
+
+  bool apache_child_terminate()~
+
+|apache_child_terminate| 将把运行当前 PHP 请求的 Apache
+进程注册为终止状态，一旦结束 PHP
+代码的运行此进程将终止。可以用在占用大量内存的脚本后面来终止该进程，因为通常内存只在内部释放而不会还给操作系统。
+
+如果 PHP 以 Apache 1 模块方式运行，且 Apache
+的版本是非多线程的，以及激活了 PHP 指令
+child_terminate，则返回 TRUE。如果不满足上述条件则返回 FALSE
+并生成一条 E_WARNING 级的错误信息。
+
+此函数未在 Windows 平台下实现。
+
+|exit|
+
+vim:ft=help:

@@ -1,0 +1,9 @@
+com_isenum -- 获取一个 IEnumVariant
+
+  void com_isenum(object com_module)~
+
+本函数还未编写文档，仅有参数列表。
+
+
+
+vim:ft=help:

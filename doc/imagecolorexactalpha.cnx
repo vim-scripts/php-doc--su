@@ -1,0 +1,13 @@
+imagecolorexactalpha -- 取得指定的颜色加透明度的索引值
+
+  int imagecolorexactalpha(resource image, int red, int green, int blue, int alpha)~
+
+返回图像调色板中指定颜色加透明度的索引值。
+
+如果颜色不在图像的调色板中，返回 -1。 returned.
+
+此函数需要 GD 2.0.1 或更高版本(推荐 2.0.28 及更高版本)。
+
+参见 |imagecolorclosestalpha|。
+
+vim:ft=help:

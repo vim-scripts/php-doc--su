@@ -1,0 +1,14 @@
+link -- 建立一个硬连接
+
+  bool link(string target, string link)~
+
+|link| 建立一个硬连接。成功时返回 TRUE，
+或者在失败时返回 &false;.
+
+此函数不能作用于远程文件，被检查的文件必须是可通过服务器的文件系统访问的。
+
+此函数未在 Windows 平台下实现。
+
+参见 |symlink| 来建立软连接，以及 |readlink| 和 |linkinfo|。
+
+vim:ft=help:
